@@ -5,5 +5,36 @@
     <title>Controller</title>
 </head>
 <body>
-</body>
+        <span id="now">UPDATED NOW</span>
+        <span id="next">UPDATED NEXT</span>
+        <button id="btn">UPDATE</button>
+    </body>
+    <script type="module">
+        const now = document.getElementById("now")
+        const next = document.getElementById("next")
+        const btn = document.getElementById("btn")
+        import { io } from "https://cdn.socket.io/4.8.1/socket.io.esm.min.js";
+      
+        const socket = io("http://localhost:3000");
+
+        socket.on("connect", () => {
+            console.log("connected");
+            socket.emit("room-request",{room: "NDST3", role: "CONTROLLER" })
+        });
+
+        socket.on("room-status", (d) => {
+            console.log(d)
+        });
+
+        btn.addEventListener("click", () => {
+
+            socket.emit("save", {
+                data: {
+                now: now.textContent,
+                next: next.textContent
+                }
+            })
+        })
+
+      </script>
 </html>
