@@ -1,0 +1,13 @@
+<footer>
+  <nav>
+    <ul>
+      <li><a href="{{ '/' | relative_url }}">Home</a></li>
+      <li><a href="{{ '/about.html' | relative_url }}">About</a></li>
+      <li><a href="{{ '/blog/post-one.html' | relative_url }}">Blog</a></li>
+    </ul>
+  </nav>
+  <p>© <span id="year"></span> {{ site.title | default: "Now Next Live" }}. Crafted for show callers everywhere.</p>
+</footer>
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
