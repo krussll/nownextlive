@@ -2,39 +2,392 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Controller</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Now &amp; Next Controller</title>
+    <style>
+        :root {
+            color-scheme: dark;
+            --bg: #020617;
+            --panel: #0f172a;
+            --card: #1e293b;
+            --border: rgba(148, 163, 184, 0.2);
+            --accent: #38bdf8;
+            --accent-soft: rgba(56, 189, 248, 0.15);
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5f5;
+            --muted: rgba(148, 163, 184, 0.55);
+            font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: clamp(1.5rem, 3vw, 3rem);
+            background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 50%),
+                        radial-gradient(circle at bottom right, rgba(168, 85, 247, 0.12), transparent 55%),
+                        var(--bg);
+            color: var(--text-primary);
+        }
+
+        main {
+            width: min(1200px, 100%);
+            background: rgba(15, 23, 42, 0.85);
+            border-radius: 24px;
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            box-shadow: 0 28px 70px rgba(2, 6, 23, 0.6);
+            backdrop-filter: blur(16px);
+            padding: clamp(1.5rem, 4vw, 2.75rem);
+            display: flex;
+            flex-direction: column;
+            gap: clamp(1.5rem, 3vw, 2.5rem);
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        header span {
+            font-size: 0.9rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 700;
+        }
+
+        header p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.95rem;
+            max-width: 48ch;
+        }
+
+        .status-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.85rem 1.2rem;
+            border-radius: 16px;
+            border: 1px dashed rgba(148, 163, 184, 0.35);
+            background: rgba(15, 23, 42, 0.6);
+        }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(1.5rem, 3vw, 2.25rem);
+        }
+
+        .spaces-grid {
+            display: grid;
+            gap: clamp(1rem, 2vw, 1.5rem);
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        }
+
+        .space-card {
+            background: var(--card);
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            padding: clamp(1.25rem, 2vw, 1.75rem);
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            box-shadow: 0 18px 40px rgba(2, 6, 23, 0.45);
+        }
+
+        .space-card h2 {
+            margin: 0;
+            font-size: 1.1rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+        }
+
+        fieldset {
+            margin: 0;
+            padding: 1rem;
+            border-radius: 16px;
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            background: rgba(15, 23, 42, 0.65);
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+
+        legend {
+            padding: 0 0.35rem;
+            font-size: 0.85rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+        }
+
+        label {
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+            font-size: 0.85rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            border: 1px solid rgba(148, 163, 184, 0.35);
+            border-radius: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: var(--text-primary);
+            padding: 0.75rem 0.85rem;
+            font: inherit;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        input[type="text"]:focus,
+        textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+            outline: none;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 1rem;
+        }
+
+        button {
+            border: none;
+            border-radius: 12px;
+            padding: 0.9rem 1.6rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.95), rgba(14, 165, 233, 0.9));
+            color: #0f172a;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 30px rgba(56, 189, 248, 0.35);
+        }
+
+        button:active {
+            transform: translateY(0);
+            box-shadow: none;
+        }
+
+        @media (max-width: 720px) {
+            main {
+                border-radius: 18px;
+                padding: 1.35rem;
+            }
+
+            .status-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .actions {
+                justify-content: stretch;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-        <span id="now">UPDATED NOW</span>
-        <span id="next">UPDATED NEXT</span>
-        <button id="btn">UPDATE</button>
-    </body>
-    <script type="module">
-        const now = document.getElementById("now")
-        const next = document.getElementById("next")
-        const btn = document.getElementById("btn")
-        import { io } from "https://cdn.socket.io/4.8.1/socket.io.esm.min.js";
-      
-        const socket = io("{{ site.socket_api_base_url }}");
+    <main>
+        <header>
+            <span>Controller Dashboard</span>
+            <h1>Now &amp; Next — North District Sports</h1>
+            <p>Enter the live activity details for each space. When you submit, every connected display will refresh instantly.</p>
+        </header>
 
-        socket.on("connect", () => {
-            console.log("connected");
-            socket.emit("room-request",{room: "NDST3", role: "CONTROLLER" })
-        });
+        <div class="status-bar" role="status">
+            <div class="status-pill">Awaiting Connection</div>
+            <div class="status-meta">Room: <strong>NDST3</strong></div>
+        </div>
 
-        socket.on("room-status", (d) => {
-            console.log(d)
-        });
+        <form>
+            <section class="spaces-grid">
+                <article class="space-card">
+                    <h2>Space 1</h2>
+                    <fieldset>
+                        <legend>Now</legend>
+                        <label for="space1-now-title">Session Title
+                            <input type="text" id="space1-now-title" name="space1-now-title" placeholder="e.g. Junior Netball Finals">
+                        </label>
+                        <label for="space1-now-description">Details
+                            <textarea id="space1-now-description" name="space1-now-description" placeholder="Include team names, coaches, or key notes"></textarea>
+                        </label>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Next</legend>
+                        <label for="space1-next-title">Session Title
+                            <input type="text" id="space1-next-title" name="space1-next-title" placeholder="e.g. Senior Warm-Up">
+                        </label>
+                        <label for="space1-next-description">Details
+                            <textarea id="space1-next-description" name="space1-next-description" placeholder="Start time, participants, or other info"></textarea>
+                        </label>
+                    </fieldset>
+                </article>
 
-        btn.addEventListener("click", () => {
+                <article class="space-card">
+                    <h2>Space 2</h2>
+                    <fieldset>
+                        <legend>Now</legend>
+                        <label for="space2-now-title">Session Title
+                            <input type="text" id="space2-now-title" name="space2-now-title" placeholder="e.g. Skills Workshop">
+                        </label>
+                        <label for="space2-now-description">Details
+                            <textarea id="space2-now-description" name="space2-now-description" placeholder="Include team names, coaches, or key notes"></textarea>
+                        </label>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Next</legend>
+                        <label for="space2-next-title">Session Title
+                            <input type="text" id="space2-next-title" name="space2-next-title" placeholder="e.g. Open Court Session">
+                        </label>
+                        <label for="space2-next-description">Details
+                            <textarea id="space2-next-description" name="space2-next-description" placeholder="Start time, participants, or other info"></textarea>
+                        </label>
+                    </fieldset>
+                </article>
 
-            socket.emit("save", {
-                data: {
-                now: now.textContent,
-                next: next.textContent
-                }
-            })
-        })
+                <article class="space-card">
+                    <h2>Space 3</h2>
+                    <fieldset>
+                        <legend>Now</legend>
+                        <label for="space3-now-title">Session Title
+                            <input type="text" id="space3-now-title" name="space3-now-title" placeholder="e.g. Community Pickup Game">
+                        </label>
+                        <label for="space3-now-description">Details
+                            <textarea id="space3-now-description" name="space3-now-description" placeholder="Include team names, coaches, or key notes"></textarea>
+                        </label>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Next</legend>
+                        <label for="space3-next-title">Session Title
+                            <input type="text" id="space3-next-title" name="space3-next-title" placeholder="e.g. Youth Training">
+                        </label>
+                        <label for="space3-next-description">Details
+                            <textarea id="space3-next-description" name="space3-next-description" placeholder="Start time, participants, or other info"></textarea>
+                        </label>
+                    </fieldset>
+                </article>
 
-      </script>
+                <article class="space-card">
+                    <h2>Space 4</h2>
+                    <fieldset>
+                        <legend>Now</legend>
+                        <label for="space4-now-title">Session Title
+                            <input type="text" id="space4-now-title" name="space4-now-title" placeholder="e.g. Mini Rookies Program">
+                        </label>
+                        <label for="space4-now-description">Details
+                            <textarea id="space4-now-description" name="space4-now-description" placeholder="Include team names, coaches, or key notes"></textarea>
+                        </label>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Next</legend>
+                        <label for="space4-next-title">Session Title
+                            <input type="text" id="space4-next-title" name="space4-next-title" placeholder="e.g. Mixed Social League">
+                        </label>
+                        <label for="space4-next-description">Details
+                            <textarea id="space4-next-description" name="space4-next-description" placeholder="Start time, participants, or other info"></textarea>
+                        </label>
+                    </fieldset>
+                </article>
+
+                <article class="space-card">
+                    <h2>Space 5</h2>
+                    <fieldset>
+                        <legend>Now</legend>
+                        <label for="space5-now-title">Session Title
+                            <input type="text" id="space5-now-title" name="space5-now-title" placeholder="e.g. Invitational Match">
+                        </label>
+                        <label for="space5-now-description">Details
+                            <textarea id="space5-now-description" name="space5-now-description" placeholder="Include team names, coaches, or key notes"></textarea>
+                        </label>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Next</legend>
+                        <label for="space5-next-title">Session Title
+                            <input type="text" id="space5-next-title" name="space5-next-title" placeholder="e.g. Courtside Workshop">
+                        </label>
+                        <label for="space5-next-description">Details
+                            <textarea id="space5-next-description" name="space5-next-description" placeholder="Start time, participants, or other info"></textarea>
+                        </label>
+                    </fieldset>
+                </article>
+
+                <article class="space-card">
+                    <h2>Space 6</h2>
+                    <fieldset>
+                        <legend>Now</legend>
+                        <label for="space6-now-title">Session Title
+                            <input type="text" id="space6-now-title" name="space6-now-title" placeholder="e.g. Volunteer Briefing">
+                        </label>
+                        <label for="space6-now-description">Details
+                            <textarea id="space6-now-description" name="space6-now-description" placeholder="Include team names, coaches, or key notes"></textarea>
+                        </label>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Next</legend>
+                        <label for="space6-next-title">Session Title
+                            <input type="text" id="space6-next-title" name="space6-next-title" placeholder="e.g. Courts Preparation">
+                        </label>
+                        <label for="space6-next-description">Details
+                            <textarea id="space6-next-description" name="space6-next-description" placeholder="Start time, participants, or other info"></textarea>
+                        </label>
+                    </fieldset>
+                </article>
+            </section>
+
+            <div class="actions">
+                <button type="submit">Broadcast Update</button>
+            </div>
+        </form>
+    </main>
+</body>
 </html>
