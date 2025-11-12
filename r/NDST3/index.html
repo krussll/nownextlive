@@ -2,8 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>NDST3</title>
+    <title>Display</title>
 </head>
 <body>
-</body>
+        <span id="now"></span>
+        <span id="next"></span>
+    </body>
+    <script type="module">
+        const now = document.getElementById("now")
+        const next = document.getElementById("next")
+        import { io } from "https://cdn.socket.io/4.8.1/socket.io.esm.min.js";
+      
+        const socket = io("http://localhost:3000");
+
+        socket.on("connect", () => {
+            console.log("connected");
+            socket.emit("room-request", {room: "NDST3", role: "DISPLAY" })
+        });
+
+        socket.on("room-status", (d) => {
+            console.log(d)
+        });
+
+        socket.on("update", (c) => {
+            now.textContent = c.now;
+            next.textContent = c.next;
+        });
+
+      </script>
 </html>
