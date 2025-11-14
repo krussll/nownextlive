@@ -434,7 +434,7 @@
             status.textContent = "Connected";
         });
 
-    socket.on("update", (c) => {
+    socket.on("init-load", (c) => {
             console.log(c);    
             now.value = c.space1.now.title;
             next.value = c.space1.next.title;
