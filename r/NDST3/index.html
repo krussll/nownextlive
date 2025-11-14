@@ -312,7 +312,8 @@
             console.log(d)
         });
 
-        socket.on("update", (c) => {
+        
+        const update_data = (c) => {
             now.textContent = c.space1.now.title;
             next.textContent = c.space1.next.title;
             nowDesc.textContent = c.space1.now.subtitle;
@@ -342,6 +343,11 @@
             next6.textContent = c.space6.next.title;
             now6Desc.textContent = c.space6.now.subtitle;
             next6Desc.textContent = c.space6.next.subtitle;
+        }
+        socket.on("update", update_data);
+        socket.on("init-load", (c) => {
+            // data loaded remove loading screen
+            update_data(c);
         });
 
       </script>
