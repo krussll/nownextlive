@@ -436,6 +436,7 @@
             let o = {
                 data: {
                     space1: {
+                        title: "Space 1",
                         now: {
                             title: now.value,
                             subtitle: nowDesc.value
@@ -446,6 +447,7 @@
                         }
                     },
                     space2: {
+                        title: "Space 2",
                         now: {
                             title: now2.value,
                             subtitle: nowDesc2.value
@@ -456,6 +458,7 @@
                         }
                     },
                     space3: {
+                        title: "Space 3",
                         now: {
                             title: now3.value,
                             subtitle: nowDesc3.value
@@ -466,6 +469,7 @@
                         }
                     },
                     space4: {
+                        title: "Space 4",
                         now: {
                             title: now4.value,
                             subtitle: nowDesc4.value
@@ -476,6 +480,7 @@
                         }
                     },
                     space5: {
+                        title: "Space 5",
                         now: {
                             title: now5.value,
                             subtitle: nowDesc5.value
@@ -486,6 +491,7 @@
                         }
                     },
                     space6: {
+                        title: "Space 6",
                         now: {
                             title: now6.value,
                             subtitle: nowDesc6.value
@@ -500,13 +506,7 @@
 
             console.log(o);
             
-            socket.emit("save", {
-                data: {
-                now: now.value,
-                next: next.value
-                }
-            })
-        })
-
+            socket.emit("save", o);
+        });
       </script>
 </html>
