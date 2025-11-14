@@ -385,9 +385,36 @@
             </section>
 
             <div class="actions">
-                <button type="submit">Broadcast Update</button>
+                <button id="btn" type="submit">SAVE</button>
             </div>
         </form>
     </main>
-</body>
+</body><script type="module">
+        const now = document.getElementById("now")
+        const next = document.getElementById("next")
+        const btn = document.getElementById("btn")
+        import { io } from "https://cdn.socket.io/4.8.1/socket.io.esm.min.js";
+      
+        const socket = io("https://hidden-journey-22873-ad31037ba953.herokuapp.com/:3000");
+
+        socket.on("connect", () => {
+            console.log("connected");
+            socket.emit("room-request",{room: "NDST3", role: "CONTROLLER" })
+        });
+
+        socket.on("room-status", (d) => {
+            console.log(d)
+        });
+
+        btn.addEventListener("click", () => {
+
+            socket.emit("save", {
+                data: {
+                now: now.textContent,
+                next: next.textContent
+                }
+            })
+        })
+
+      </script>
 </html>
