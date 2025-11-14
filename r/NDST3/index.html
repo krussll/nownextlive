@@ -5,8 +5,31 @@
     <title>Now &amp; Next Display</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/assets/NDST3/styles.css">
+    <style>
+        #loading-overlay {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.75);
+            color: #fff;
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            z-index: 9999;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        #loading-overlay.is-hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 200ms ease;
+        }
+    </style>
 </head>
 <body>
+    <div id="loading-overlay" role="status" aria-live="polite">Loading</div>
     <main>
         <header>
             <span>Live Schedule</span>
@@ -120,6 +143,8 @@
         })();
     </script>
     <script type="module">
+        const overlay = document.getElementById("loading-overlay")
+
         const now = document.getElementById("now")
         const nowDesc = document.getElementById("now-desc")
         const next = document.getElementById("next")
@@ -199,6 +224,9 @@
         socket.on("init-load", (c) => {
             // data loaded remove loading screen
             update_data(c);
+            if (overlay) {
+                overlay.classList.add("is-hidden")
+            }
         });
 
       </script>
