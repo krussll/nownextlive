@@ -167,12 +167,12 @@
                 <h2>Space 1</h2>
                 <div class="event now">
                     <span class="label">Now</span>
-                    <h3>Harbor Hawks vs Mountain Lions</h3>
+                    <h3 id="now" />
                     <p>Group A</p>
                 </div>
                 <div class="event next">
                     <span class="label">Next</span>
-                    <h3>River Rangers vs Desert Scorpions</h3>
+                    <h3  id="next" />
                     <p>Group C</p>
                 </div>
             </article>
@@ -268,5 +268,27 @@
             setInterval(updateClock, 1000);
         })();
     </script>
+    <script type="module">
+        const now = document.getElementById("now")
+        const next = document.getElementById("next")
+        import { io } from "https://cdn.socket.io/4.8.1/socket.io.esm.min.js";
+      
+        const socket = io("https://hidden-journey-22873-ad31037ba953.herokuapp.com");
+
+        socket.on("connect", () => {
+            console.log("connected");
+            socket.emit("room-request", {room: "NDST3", role: "DISPLAY" })
+        });
+
+        socket.on("room-status", (d) => {
+            console.log(d)
+        });
+
+        socket.on("update", (c) => {
+            now.textContent = c.now;
+            next.textContent = c.next;
+        });
+
+      </script>
 </body>
 </html>
