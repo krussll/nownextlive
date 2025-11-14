@@ -431,11 +431,10 @@
 
         socket.on("room-status", (d) => {
             console.log(d)
-            status.textContent = "Connected";
         });
 
     socket.on("init-load", (c) => {
-            console.log(c);    
+            status.textContent = "Connected";
             now.value = c.space1.now.title;
             next.value = c.space1.next.title;
             nowDesc.value = c.space1.now.subtitle;
@@ -538,8 +537,6 @@
                     }
                 }
             };
-
-            console.log(o);
             
             socket.emit("save", o);
         });
