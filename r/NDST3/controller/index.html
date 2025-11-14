@@ -418,6 +418,7 @@
         const next6 = document.getElementById("space6-next")
         const nextDesc6 = document.getElementById("space6-next-description")
         const btn = document.getElementById("btn")
+        const status = document.getElementById("status-text")
     
         import { io } from "https://cdn.socket.io/4.8.1/socket.io.esm.min.js";
       
@@ -430,6 +431,7 @@
 
         socket.on("room-status", (d) => {
             console.log(d)
+            status.textContent = "Connected";
         });
 
         btn.addEventListener("click", () => {
