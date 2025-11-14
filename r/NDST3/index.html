@@ -270,7 +270,10 @@
     </script>
     <script type="module">
         const now = document.getElementById("now")
+        const nowDesc = document.getElementById("now-desc")
         const next = document.getElementById("next")
+        const nextDesc = document.getElementById("next-desc")
+        
         import { io } from "https://cdn.socket.io/4.8.1/socket.io.esm.min.js";
       
         const socket = io("https://hidden-journey-22873-ad31037ba953.herokuapp.com");
@@ -287,6 +290,8 @@
         socket.on("update", (c) => {
             now.textContent = c.space1.now.title;
             next.textContent = c.space1.next.title;
+            nowDesc.textContent = c.space1.now.subtitle;
+            nextDesc.textContent = c.space1.next.subtitle;
         });
 
       </script>
