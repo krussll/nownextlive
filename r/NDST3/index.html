@@ -274,6 +274,31 @@
         const next = document.getElementById("next")
         const nextDesc = document.getElementById("next-desc")
         
+        const now2 = document.getElementById("now2")
+        const now2Desc = document.getElementById("now2-desc")
+        const next2 = document.getElementById("next2")
+        const next2Desc = document.getElementById("next2-desc")
+        
+        const now3 = document.getElementById("now3")
+        const now3Desc = document.getElementById("now3-desc")
+        const next3 = document.getElementById("next3")
+        const next3Desc = document.getElementById("next3-desc")
+        
+        const now4 = document.getElementById("now4")
+        const now4Desc = document.getElementById("now4-desc")
+        const next4 = document.getElementById("next4")
+        const next4Desc = document.getElementById("next4-desc")
+        
+        const now5 = document.getElementById("now5")
+        const now5Desc = document.getElementById("now5-desc")
+        const next5 = document.getElementById("next5")
+        const next5Desc = document.getElementById("next5-desc")
+        
+        const now6 = document.getElementById("now6")
+        const now6Desc = document.getElementById("now6-desc")
+        const next6 = document.getElementById("next6")
+        const next6Desc = document.getElementById("next6-desc")
+        
         import { io } from "https://cdn.socket.io/4.8.1/socket.io.esm.min.js";
       
         const socket = io("https://hidden-journey-22873-ad31037ba953.herokuapp.com");
@@ -292,6 +317,31 @@
             next.textContent = c.space1.next.title;
             nowDesc.textContent = c.space1.now.subtitle;
             nextDesc.textContent = c.space1.next.subtitle;
+            
+            now2.textContent = c.space2.now.title;
+            next2.textContent = c.space2.next.title;
+            now2Desc.textContent = c.space2.now.subtitle;
+            next2Desc.textContent = c.space2.next.subtitle;
+            
+            now3.textContent = c.space3.now.title;
+            next3.textContent = c.space3.next.title;
+            now3Desc.textContent = c.space3.now.subtitle;
+            next3Desc.textContent = c.space3.next.subtitle;
+            
+            now4.textContent = c.space4.now.title;
+            next4.textContent = c.space4.next.title;
+            now4Desc.textContent = c.space4.now.subtitle;
+            next4Desc.textContent = c.space4.next.subtitle;
+            
+            now5.textContent = c.space5.now.title;
+            next5.textContent = c.space5.next.title;
+            now5Desc.textContent = c.space5.now.subtitle;
+            next5Desc.textContent = c.space5.next.subtitle;
+            
+            now6.textContent = c.space6.now.title;
+            next6.textContent = c.space6.next.title;
+            now6Desc.textContent = c.space6.now.subtitle;
+            next6Desc.textContent = c.space6.next.subtitle;
         });
 
       </script>
