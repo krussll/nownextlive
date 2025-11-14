@@ -285,8 +285,8 @@
         });
 
         socket.on("update", (c) => {
-            now.textContent = c.now;
-            next.textContent = c.next;
+            now.textContent = c.space1.now.title;
+            next.textContent = c.space1.next.title;
         });
 
       </script>
