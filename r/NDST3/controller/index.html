@@ -405,7 +405,22 @@
         });
 
         btn.addEventListener("click", () => {
+            let o = > {
+                data: {
+                    space1: {
+                        now: {
+                            title: now.value,
+                            subtitle: ""
+                        },
+                        next: {
+                            title: next.value,
+                            subtitle: ""
+                        }
+                    }
+                }
+            };
 
+            console.log(o);
             socket.emit("save", {
                 data: {
                 now: now.value,
