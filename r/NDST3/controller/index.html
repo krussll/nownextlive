@@ -255,7 +255,7 @@
                     <fieldset>
                         <legend>Now</legend>
                         <label for="space1-now-title">Session Title
-                            <input type="text" id="space1-now-title" name="space1-now-title" placeholder="e.g. Junior Netball Finals">
+                            <input type="text" id="now" name="space1-now-title" placeholder="e.g. Junior Netball Finals">
                         </label>
                         <label for="space1-now-description">Details
                             <textarea id="space1-now-description" name="space1-now-description" placeholder="Include team names, coaches, or key notes"></textarea>
@@ -264,7 +264,7 @@
                     <fieldset>
                         <legend>Next</legend>
                         <label for="space1-next-title">Session Title
-                            <input type="text" id="space1-next-title" name="space1-next-title" placeholder="e.g. Senior Warm-Up">
+                            <input type="text" id="next" name="space1-next-title" placeholder="e.g. Senior Warm-Up">
                         </label>
                         <label for="space1-next-description">Details
                             <textarea id="space1-next-description" name="space1-next-description" placeholder="Start time, participants, or other info"></textarea>
@@ -408,8 +408,8 @@
 
             socket.emit("save", {
                 data: {
-                now: "ANOTHER EVENT",
-                next: "EVENT AFTER ANOTHER EVENT"
+                now: now.value,
+                next: next.value
                 }
             })
         })
