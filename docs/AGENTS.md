@@ -103,6 +103,14 @@ All data is ephemeral (in-memory only).
 
 ---
 
-**Maintainer:** Reece Williams  
-**Version:** MVP v1.0  
+**Maintainer:** Reece Williams
+**Version:** MVP v1.0
 **Date:** 2025-11-12
+
+---
+
+## 🌐 Frontend dependency guidance
+
+- Use [Material UI](https://mui.com/material-ui/getting-started/installation/) via CDN for static updates.
+- Load Inter from Google Fonts and keep the Material Icons font available (`https://fonts.googleapis.com/icon?family=Material+Icons`).
+- Favor light-theme tokens and components that align with MUI defaults; avoid reintroducing bespoke dark themes.

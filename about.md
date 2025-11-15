@@ -3,7 +3,10 @@ layout: default
 title: About Now Next Live
 main_class: article
 ---
-<a class="back-link" href="{{ '/' | relative_url }}">Back to home</a>
+<a class="back-link" href="{{ '/' | relative_url }}">
+  <span class="material-icons-round" aria-hidden="true">arrow_back</span>
+  <span>Back to home</span>
+</a>
 <header>
   <p class="article-meta">OUR STORY</p>
   <h1>The crew behind the countdown</h1>
