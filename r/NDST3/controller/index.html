@@ -5,6 +5,199 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Now &amp; Next Controller</title>
     <link rel="stylesheet" href="/assets/NDST3/controller/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            color-scheme: light;
+            --mui-primary: #1976d2;
+            --mui-surface: #ffffff;
+            --mui-background: #f5f7fb;
+            --mui-on-surface: #0f172a;
+            --mui-muted: #5f6b7a;
+            --mui-border: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, rgba(25, 118, 210, 0.1), rgba(25, 118, 210, 0)) no-repeat fixed,
+                var(--mui-background);
+            color: var(--mui-on-surface);
+            min-height: 100vh;
+            padding: 32px;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto 48px;
+        }
+
+        header {
+            background: linear-gradient(90deg, var(--mui-primary), #42a5f5);
+            color: #fff;
+            padding: 24px 28px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(25, 118, 210, 0.25);
+            display: grid;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        header span {
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            opacity: 0.9;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: clamp(1.4rem, 2vw, 1.8rem);
+        }
+
+        header p {
+            margin: 0;
+            max-width: 720px;
+            line-height: 1.5;
+        }
+
+        .status-bar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border: 1px solid var(--mui-border);
+            border-radius: 12px;
+            background: #f0f6ff;
+            margin-bottom: 20px;
+        }
+
+        .status-pill {
+            background: #e8f3ff;
+            color: var(--mui-primary);
+            padding: 8px 12px;
+            border-radius: 999px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            border: 1px solid #c2dafc;
+        }
+
+        .status-meta {
+            color: var(--mui-muted);
+            font-weight: 500;
+        }
+
+        .spaces-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .space-card {
+            background: var(--mui-surface);
+            border-radius: 16px;
+            padding: 18px;
+            border: 1px solid var(--mui-border);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+            display: grid;
+            gap: 14px;
+        }
+
+        .space-card h2 {
+            margin: 0;
+            color: var(--mui-primary);
+            font-size: 1.05rem;
+        }
+
+        fieldset {
+            border: 1px solid var(--mui-border);
+            border-radius: 12px;
+            padding: 12px;
+            background: #f9fbff;
+        }
+
+        legend {
+            padding: 0 8px;
+            font-weight: 700;
+            color: var(--mui-muted);
+        }
+
+        label {
+            display: grid;
+            gap: 6px;
+            font-weight: 500;
+            color: var(--mui-on-surface);
+            margin-bottom: 12px;
+        }
+
+        input,
+        textarea {
+            border: 1px solid var(--mui-border);
+            border-radius: 10px;
+            padding: 10px 12px;
+            font: inherit;
+            background: #fff;
+            transition: border-color 150ms ease, box-shadow 150ms ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--mui-primary);
+            box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.16);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 72px;
+        }
+
+        .actions {
+            margin-top: 28px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        button {
+            background: var(--mui-primary);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 12px 20px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            cursor: pointer;
+            box-shadow: 0 8px 16px rgba(25, 118, 210, 0.2);
+            transition: transform 120ms ease, box-shadow 120ms ease;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 20px rgba(25, 118, 210, 0.22);
+        }
+
+        button:active {
+            transform: translateY(0);
+            box-shadow: 0 6px 14px rgba(25, 118, 210, 0.18);
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 20px 16px 36px;
+            }
+
+            .status-bar {
+                padding: 10px 12px;
+            }
+        }
+    </style>
 </head>
 <body>
     <main>
@@ -162,36 +355,36 @@
         const nowDesc = document.getElementById("space1-now-description")
         const next = document.getElementById("space1-next")
         const nextDesc = document.getElementById("space1-next-description")
-    
+
         const now2 = document.getElementById("space2-now")
         const nowDesc2 = document.getElementById("space2-now-description")
         const next2 = document.getElementById("space2-next")
         const nextDesc2 = document.getElementById("space2-next-description")
-    
+
         const now3 = document.getElementById("space3-now")
         const nowDesc3 = document.getElementById("space3-now-description")
         const next3 = document.getElementById("space3-next")
         const nextDesc3 = document.getElementById("space3-next-description")
-    
+
         const now4 = document.getElementById("space4-now")
         const nowDesc4 = document.getElementById("space4-now-description")
         const next4 = document.getElementById("space4-next")
         const nextDesc4 = document.getElementById("space4-next-description")
-    
+
         const now5 = document.getElementById("space5-now")
         const nowDesc5 = document.getElementById("space5-now-description")
         const next5 = document.getElementById("space5-next")
         const nextDesc5 = document.getElementById("space5-next-description")
-    
+
         const now6 = document.getElementById("space6-now")
         const nowDesc6 = document.getElementById("space6-now-description")
         const next6 = document.getElementById("space6-next")
         const nextDesc6 = document.getElementById("space6-next-description")
         const btn = document.getElementById("btn")
         const status = document.getElementById("status-text")
-    
+
         import { io } from "https://cdn.socket.io/4.8.1/socket.io.esm.min.js";
-      
+
         const socket = io("https://hidden-journey-22873-ad31037ba953.herokuapp.com");
 
         socket.on("connect", () => {
@@ -209,33 +402,33 @@
             next.value = c.space1.next.title;
             nowDesc.value = c.space1.now.subtitle;
             nextDesc.value = c.space1.next.subtitle;
-            
+
             now2.value = c.space2.now.title;
             next2.value = c.space2.next.title;
             nowDesc2.value = c.space2.now.subtitle;
             nextDesc2.value = c.space2.next.subtitle;
-            
+
             now3.value = c.space3.now.title;
             next3.value = c.space3.next.title;
             nowDesc3.value = c.space3.now.subtitle;
             nextDesc3.value = c.space3.next.subtitle;
-            
+
             now4.value = c.space4.now.title;
             next4.value = c.space4.next.title;
             nowDesc4.value = c.space4.now.subtitle;
             nextDesc4.value = c.space4.next.subtitle;
-            
+
             now5.value = c.space5.now.title;
             next5.value = c.space5.next.title;
             nowDesc5.value = c.space5.now.subtitle;
             nextDesc5.value = c.space5.next.subtitle;
-            
+
             now6.value = c.space6.now.title;
             next6.value = c.space6.next.title;
             nowDesc6.value = c.space6.now.subtitle;
             nextDesc6.value = c.space6.next.subtitle;
         });
-    
+
         btn.addEventListener("click", () => {
             let o = {
                 data: {
@@ -307,7 +500,7 @@
                     }
                 }
             };
-            
+
             socket.emit("save", o);
         });
       </script>
