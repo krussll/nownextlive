@@ -5,183 +5,19 @@
     <title>Now &amp; Next Display</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/assets/NDST3/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            color-scheme: light;
-            --mui-primary: #1976d2;
-            --mui-surface: #ffffff;
-            --mui-background: #f5f7fb;
-            --mui-on-surface: #0f172a;
-            --mui-muted: #5f6b7a;
-            --mui-border: #e2e8f0;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: radial-gradient(circle at 20% 20%, rgba(25, 118, 210, 0.08), transparent 35%),
-                radial-gradient(circle at 80% 0%, rgba(25, 118, 210, 0.06), transparent 30%),
-                var(--mui-background);
-            color: var(--mui-on-surface);
-            min-height: 100vh;
-            padding: 32px;
-        }
-
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        header {
-            background: linear-gradient(90deg, var(--mui-primary), #42a5f5);
-            color: #fff;
-            padding: 24px 28px;
-            border-radius: 18px;
-            box-shadow: 0 10px 30px rgba(25, 118, 210, 0.25);
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-bottom: 24px;
-        }
-
-        header span {
-            font-weight: 700;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            opacity: 0.85;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: clamp(1.4rem, 2vw, 1.8rem);
-        }
-
-        .spaces-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .space-card {
-            background: var(--mui-surface);
-            border-radius: 16px;
-            padding: 20px;
-            border: 1px solid var(--mui-border);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-            transition: transform 150ms ease, box-shadow 150ms ease;
-        }
-
-        .space-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
-        }
-
-        .space-card h2 {
-            margin: 0 0 12px;
-            font-size: 1.05rem;
-            color: var(--mui-primary);
-        }
-
-        .event {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 12px;
-            align-items: center;
-            padding: 12px;
-            border-radius: 12px;
-            border: 1px solid var(--mui-border);
-            background: #f9fbff;
-            margin-bottom: 10px;
-        }
-
-        .event.now {
-            border-left: 4px solid var(--mui-primary);
-        }
-
-        .event.next {
-            border-left: 4px solid #90caf9;
-        }
-
-        .event-time {
-            font-weight: 700;
-            color: var(--mui-primary);
-            min-width: 56px;
-        }
-
-        .event-content {
-            display: grid;
-            gap: 4px;
-        }
-
-        .label {
-            font-size: 0.8rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--mui-muted);
-        }
-
-        .event-details h3 {
-            margin: 0;
-            font-size: 1rem;
-            font-weight: 700;
-        }
-
-        .event-details p {
-            margin: 4px 0 0;
-            color: var(--mui-muted);
-            line-height: 1.4;
-            min-height: 20px;
-        }
-
-        #clock {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            background: #fff;
-            border-radius: 12px;
-            padding: 12px 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-            border: 1px solid var(--mui-border);
-            font-weight: 700;
-            color: var(--mui-primary);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            line-height: 1;
-            white-space: nowrap;
-        }
-
         #loading-overlay {
             position: fixed;
             inset: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(8px);
-            color: var(--mui-on-surface);
-            font-size: 1.25rem;
+            background: #f8fafc;
+            color: #0f172a;
+            font-size: 1.5rem;
             z-index: 9999;
             text-transform: uppercase;
-            letter-spacing: 0.12em;
-        }
-
-        #loading-overlay::after {
-            content: "";
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            border: 4px solid #e3f2fd;
-            border-top-color: var(--mui-primary);
-            margin-left: 16px;
-            animation: spin 1s linear infinite;
+            letter-spacing: 0.15em;
         }
 
         #loading-overlay.is-hidden {
@@ -189,22 +25,6 @@
             visibility: hidden;
             pointer-events: none;
             transition: opacity 200ms ease;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        @media (max-width: 640px) {
-            body {
-                padding: 20px 16px 80px;
-            }
-
-            header {
-                padding: 20px;
-            }
         }
     </style>
 </head>
