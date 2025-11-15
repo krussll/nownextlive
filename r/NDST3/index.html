@@ -207,6 +207,12 @@
 
         const overlay = document.getElementById("loading-overlay");
 
+        const hideLoadingOverlay = () => {
+            if (overlay) {
+                overlay.classList.add("is-hidden");
+            }
+        };
+
         const spaces = Array.from({ length: 6 }, (_, index) => {
             const suffix = index === 0 ? "" : `${index + 1}`;
 
@@ -281,9 +287,12 @@
         socket.on("init-load", (c) => {
             // data loaded remove loading screen
             update_data(c);
-            if (overlay) {
-                overlay.classList.add("is-hidden");
-            }
+            hideLoadingOverlay();
+        });
+
+        socket.on("connect_error", (error) => {
+            console.error("WebSocket connection failed", error);
+            hideLoadingOverlay();
         });
 
       </script>
