@@ -3,17 +3,37 @@ layout: default
 title: Now Next Live
 ---
 <section class="hero">
-  <div>
+  <div class="hero-card">
+    <div class="chip-row">
+      <span class="chip"><span class="material-icons-round" aria-hidden="true">schedule</span>Light theme</span>
+      <span class="chip"><span class="material-icons-round" aria-hidden="true">bolt</span>Real-time</span>
+    </div>
     <h1>Time Your Events With Confidence</h1>
     <p>
-      Precision timers, effortless controls, and live cues designed for teams that
-      produce unforgettable experiences. Stay present in the moment while our tools
-      keep everything on schedule.
+      Precision timers, effortless controls, and live cues designed for teams that produce
+      unforgettable experiences. Stay present in the moment while our tools keep everything on
+      schedule.
     </p>
     <div class="cta-buttons">
-      <a class="button" href="{{ '/blog/post-one.html' | relative_url }}">Read the latest</a>
-      <a class="button secondary" href="{{ '/about.html' | relative_url }}">Meet the team</a>
+      <a class="button" href="{{ '/blog/post-one.html' | relative_url }}">
+        <span class="material-icons-round" aria-hidden="true">auto_awesome</span>
+        <span>Read the latest</span>
+      </a>
+      <a class="button secondary" href="{{ '/about.html' | relative_url }}">
+        <span class="material-icons-round" aria-hidden="true">emoji_people</span>
+        <span>Meet the team</span>
+      </a>
     </div>
+    <ul class="info-list">
+      <li class="info-item">
+        <span class="material-icons-round" aria-hidden="true">visibility</span>
+        <span>Material Icons are ready to use — this page includes quick visual cues for clarity.</span>
+      </li>
+      <li class="info-item">
+        <span class="material-icons-round" aria-hidden="true">palette</span>
+        <span>Built on a light Material UI-inspired palette that keeps focus on your show flow.</span>
+      </li>
+    </ul>
   </div>
   <div class="image-placeholder" data-image="Event control dashboard"></div>
 </section>
@@ -29,7 +49,7 @@ title: Now Next Live
   </div>
   <div class="card-grid">
     <article class="card">
-      <div class="meta">Focus</div>
+      <div class="meta"><span class="material-icons-round" aria-hidden="true">center_focus_strong</span>Focus</div>
       <h3>Minimal controls that highlight what matters</h3>
       <p>
         Our layout keeps cues, timers, and transitions visible at a glance so you can
@@ -37,7 +57,7 @@ title: Now Next Live
       </p>
     </article>
     <article class="card">
-      <div class="meta">Sync</div>
+      <div class="meta"><span class="material-icons-round" aria-hidden="true">sync_alt</span>Sync</div>
       <h3>Live collaboration for every production role</h3>
       <p>
         Share your show flow with operators, clients, and speakers. Updates sync
@@ -45,7 +65,7 @@ title: Now Next Live
       </p>
     </article>
     <article class="card">
-      <div class="meta">Adapt</div>
+      <div class="meta"><span class="material-icons-round" aria-hidden="true">device_hub</span>Adapt</div>
       <h3>Responsive by design for any venue</h3>
       <p>
         Whether you are streaming from a studio or coordinating a global conference,

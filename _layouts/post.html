@@ -4,9 +4,17 @@
   <body>
     {% include header.html %}
     <main class="article">
-      <a class="back-link" href="{{ '/' | relative_url }}">Back to home</a>
+      <a class="back-link" href="{{ '/' | relative_url }}">
+        <span class="material-icons-round" aria-hidden="true">arrow_back</span>
+        <span>Back to home</span>
+      </a>
       <header>
-        {% if page.meta %}<p class="article-meta">{{ page.meta }}</p>{% endif %}
+        {% if page.meta %}
+        <p class="article-meta">
+          <span class="material-icons-round" aria-hidden="true">calendar_today</span>
+          {{ page.meta }}
+        </p>
+        {% endif %}
         <h1>{{ page.title }}</h1>
         {% if page.summary %}<p>{{ page.summary }}</p>{% endif %}
       </header>
