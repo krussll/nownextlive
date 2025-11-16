@@ -8,30 +8,29 @@ title: Now Next Live
       <span class="chip"><span class="material-icons-round" aria-hidden="true">schedule</span>Light theme</span>
       <span class="chip"><span class="material-icons-round" aria-hidden="true">bolt</span>Real-time</span>
     </div>
-    <h1>Time Your Events With Confidence</h1>
+    <h1>Run every space in sync</h1>
     <p>
-      Precision timers, effortless controls, and live cues designed for teams that produce
-      unforgettable experiences. Stay present in the moment while our tools keep everything on
-      schedule.
+      Update Now &amp; Next screens from one browser. Six spaces, real-time refresh, and no installs
+      needed. Keep your club, courts, or rooms moving without slowing down.
     </p>
     <div class="cta-buttons">
-      <a class="button" href="{{ '/blog/post-one.html' | relative_url }}">
+      <a class="button" href="{{ '/about.html' | relative_url }}">
         <span class="material-icons-round" aria-hidden="true">auto_awesome</span>
-        <span>Read the latest</span>
+        <span>Try it free</span>
       </a>
-      <a class="button secondary" href="{{ '/about.html' | relative_url }}">
+      <a class="button secondary" href="{{ '/blog/post-one.html' | relative_url }}">
         <span class="material-icons-round" aria-hidden="true">emoji_people</span>
-        <span>Meet the team</span>
+        <span>See it update</span>
       </a>
     </div>
     <ul class="info-list">
       <li class="info-item">
         <span class="material-icons-round" aria-hidden="true">visibility</span>
-        <span>Material Icons are ready to use — this page includes quick visual cues for clarity.</span>
+        <span>Controller updates broadcast to every display the moment you hit send.</span>
       </li>
       <li class="info-item">
         <span class="material-icons-round" aria-hidden="true">palette</span>
-        <span>Built on a light Material UI-inspired palette that keeps focus on your show flow.</span>
+        <span>Built for the browser with a clean, light palette that stays readable in any venue.</span>
       </li>
     </ul>
   </div>
@@ -42,9 +41,8 @@ title: Now Next Live
   <div class="section-header">
     <h2>Why teams rely on Now Next Live</h2>
     <p>
-      Designed for stage managers, show callers, and production teams that demand
-      clarity. Clear typography, adaptive layouts, and lightning-fast workflows keep
-      your run of show right on track.
+      Keep six spaces updated from one place. Socket.IO keeps displays fresh without reloads, and the
+      clean layout makes every change clear for coaches, crews, and players.
     </p>
   </div>
   <div class="card-grid">
@@ -52,27 +50,47 @@ title: Now Next Live
       <div class="meta"><span class="material-icons-round" aria-hidden="true">center_focus_strong</span>Focus</div>
       <h3>Minimal controls that highlight what matters</h3>
       <p>
-        Our layout keeps cues, timers, and transitions visible at a glance so you can
-        react immediately and keep presenters calm.
+        Edit “Now” and “Next” for every room in seconds. Clear labels and a light interface keep you
+        focused on the action, not the controls.
       </p>
+      <a class="button tertiary" href="{{ '/about.html' | relative_url }}">Start free run</a>
     </article>
     <article class="card">
       <div class="meta"><span class="material-icons-round" aria-hidden="true">sync_alt</span>Sync</div>
       <h3>Live collaboration for every production role</h3>
       <p>
-        Share your show flow with operators, clients, and speakers. Updates sync
-        instantly across the control room and backstage monitors.
+        Controller updates reach every display instantly. No installs, no sign-in, just a shared view
+        that keeps the crew aligned.
       </p>
+      <a class="button tertiary" href="{{ '/blog/post-two.html' | relative_url }}">See live sync</a>
     </article>
     <article class="card">
       <div class="meta"><span class="material-icons-round" aria-hidden="true">device_hub</span>Adapt</div>
       <h3>Responsive by design for any venue</h3>
       <p>
-        Whether you are streaming from a studio or coordinating a global conference,
-        Now Next Live adapts to your screens and workflows.
+        The grid adapts to phones, tablets, or lobby screens. Large text keeps every participant clear
+        on what’s happening now and what’s next.
       </p>
+      <a class="button tertiary" href="{{ '/about.html' | relative_url }}">Launch free controller</a>
     </article>
   </div>
+</section>
+
+<section class="section cta-section">
+  <div class="section-header">
+    <h2>Fast setup, no downloads</h2>
+    <p>Open the controller in your browser, join your event room, and start sending updates right away.</p>
+  </div>
+  <div class="cta-buttons">
+      <a class="button" href="{{ '/about.html' | relative_url }}">
+      <span class="material-icons-round" aria-hidden="true">rocket_launch</span>
+      <span>Try board free</span>
+      </a>
+      <a class="button secondary" href="{{ '/blog/post-three.html' | relative_url }}">
+      <span class="material-icons-round" aria-hidden="true">play_circle</span>
+      <span>Watch in action</span>
+      </a>
+    </div>
 </section>
 
 <section class="section">
