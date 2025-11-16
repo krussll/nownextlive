@@ -37,7 +37,9 @@ a:focus {
   padding: 1rem clamp(1.5rem, 5vw, 4rem);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: clamp(1.5rem, 3vw, 3rem);
+  flex-wrap: wrap;
   position: sticky;
   top: 0;
   background: rgba(255, 255, 255, 0.95);
@@ -58,7 +60,7 @@ a:focus {
 }
 
 .brand-logo {
-  height: 3rem;
+  height: 3.5rem;
   width: auto;
   display: block;
 }
@@ -416,7 +418,7 @@ footer nav a {
   }
 
   .brand-logo {
-    height: 2.25rem;
+    height: 2.5rem;
   }
 
   .hero {
