@@ -8,18 +8,41 @@
 </head>
 <body>
     <main>
-        <header>
-            <span>Controller Dashboard</span>
-            <h1>Now &amp; Next — North District Sports</h1>
-            <p>Enter the live activity details for each space. When you submit, every connected display will refresh instantly.</p>
-        </header>
+        <div class="layout">
+            <aside class="sidebar">
+                <div class="sidebar-card">
+                    <h2>Displays</h2>
+                    <a class="display-link" href="/r/NDST3/index.html" target="_blank" rel="noopener noreferrer">
+                        <span>Open NDST3 Display</span>
+                        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14 5H19V10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M10 14L19 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M19 14V19H5V5H10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
 
-        <div class="status-bar" role="status">
-            <div class="status-pill" id="status-text">Awaiting Connection</div>
-            <div class="status-meta">Room: <strong>NDST3</strong></div>
-        </div>
+                <div class="sidebar-card">
+                    <h2>Connected Users</h2>
+                    <ul class="connections-list" id="connections-list" aria-live="polite">
+                        <li class="connections-empty">No connected users yet</li>
+                    </ul>
+                </div>
+            </aside>
 
-        <section class="spaces-grid">
+            <div class="content">
+                <header>
+                    <span>Controller Dashboard</span>
+                    <h1>Now &amp; Next — North District Sports</h1>
+                    <p>Enter the live activity details for each space. When you submit, every connected display will refresh instantly.</p>
+                </header>
+
+                <div class="status-bar" role="status">
+                    <div class="status-pill" id="status-text">Awaiting Connection</div>
+                    <div class="status-meta">Room: <strong>NDST3</strong></div>
+                </div>
+
+                <section class="spaces-grid">
             <details class="space-card" open>
                 <summary>
                     <div class="space-summary">
@@ -421,16 +444,19 @@
                     </details>
                 </div>
             </details>
-        </section>
+                </section>
 
-        <div class="actions">
-            <button id="btn">SAVE</button>
+                <div class="actions">
+                    <button id="btn">SAVE</button>
+                </div>
+            </div>
         </div>
     </main>
 </body>
 <script type="module">
     const status = document.getElementById("status-text");
     const submitButton = document.getElementById("btn");
+    const connectionsList = document.getElementById("connections-list");
 
     const spaceIds = Array.from({ length: 6 }, (_, index) => `space${index + 1}`);
     const eventKeys = [
@@ -495,8 +521,66 @@
         socket.emit("room-request", { room: "NDST3", role: "CONTROLLER" });
     });
 
-    socket.on("room-status", (d) => {
-        console.log(d);
+    const normalizeConnections = (payload = {}) => {
+        if (!payload) return [];
+
+        const directConnections = payload.connections ?? payload.users ?? payload.members ?? payload.participants;
+        if (Array.isArray(directConnections)) return directConnections;
+
+        const fromRoles = [];
+        const roleMappings = [
+            { key: "controllers", role: "controller" },
+            { key: "controller", role: "controller" },
+            { key: "displays", role: "display" },
+            { key: "display", role: "display" },
+        ];
+
+        roleMappings.forEach(({ key, role }) => {
+            const entries = payload[key];
+            if (Array.isArray(entries)) {
+                entries.forEach((id) => {
+                    fromRoles.push({ id, role });
+                });
+            }
+        });
+
+        return fromRoles;
+    };
+
+    const renderConnections = (connections = []) => {
+        if (!connectionsList) return;
+        connectionsList.innerHTML = "";
+
+        if (!connections.length) {
+            const empty = document.createElement("li");
+            empty.className = "connections-empty";
+            empty.textContent = "No connected users yet";
+            connectionsList.appendChild(empty);
+            return;
+        }
+
+        connections.forEach(({ id, role }) => {
+            const item = document.createElement("li");
+            item.className = "connection-item";
+
+            const idLabel = document.createElement("span");
+            idLabel.className = "connection-id";
+            idLabel.textContent = id ?? "Unknown ID";
+
+            const roleLabel = document.createElement("span");
+            const normalizedRole = role ? role.toString().toLowerCase() : "unknown";
+            roleLabel.className = `connection-role ${role ? `connection-role--${normalizedRole}` : ""}`;
+            roleLabel.textContent = normalizedRole;
+
+            item.appendChild(idLabel);
+            item.appendChild(roleLabel);
+            connectionsList.appendChild(item);
+        });
+    };
+
+    socket.on("room-status", (payload) => {
+        console.log(payload);
+        renderConnections(normalizeConnections(payload));
     });
 
     socket.on("init-load", (config) => {
