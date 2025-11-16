@@ -57,12 +57,10 @@ a:focus {
   color: var(--mui-text-primary);
 }
 
-.brand .material-icons-outlined {
-  color: var(--mui-primary);
-  background: #e8f2ff;
-  border-radius: 50%;
-  padding: 0.4rem;
-  font-size: 1.8rem;
+.brand-logo {
+  height: 3rem;
+  width: auto;
+  display: block;
 }
 
 nav ul {

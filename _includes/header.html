@@ -1,7 +1,10 @@
 <header class="app-bar">
   <div class="brand">
-    <span class="material-icons-outlined" aria-hidden="true">dynamic_feed</span>
-    <span class="brand-text">{{ site.title | default: "Now Next Live" }}</span>
+    <img
+      class="brand-logo"
+      src="{{ '/assets/now-next-live-logo.svg' | relative_url }}"
+      alt="{{ site.title | default: 'Now Next Live' }} logo"
+    />
   </div>
   <nav>
     <ul>
