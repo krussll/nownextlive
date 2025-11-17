@@ -72,26 +72,29 @@ header h1 {
 .spaces-grid {
     display: grid;
     gap: clamp(0.9rem, 1.7vw, 1.5rem);
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .space-card {
     background: var(--card);
-    border-radius: 16px;
-    padding: clamp(1.2rem, 2vw, 1.8rem);
+    border-radius: 0;
+    padding: 0;
     box-shadow: var(--shadow-soft);
     display: flex;
     flex-direction: column;
     gap: 0;
     border: 1px solid var(--border);
+    overflow: hidden;
 }
 
 .space-card h2 {
-    margin: 0 0 clamp(0.75rem, 1.2vw, 1rem);
+    margin: 0;
+    padding: clamp(1rem, 1.6vw, 1.25rem) clamp(1rem, 1.6vw, 1.25rem) clamp(0.6rem, 1.1vw, 0.9rem);
     font-size: 1rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--text-secondary);
+    border-bottom: 1px solid var(--border);
 }
 
 .event {
@@ -217,13 +220,21 @@ header h1 {
     visibility: hidden;
 }
 
+@media (max-width: 1280px) {
+    .spaces-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 860px) {
+    .spaces-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (max-width: 600px) {
     header span {
         font-size: 0.78rem;
-    }
-
-    .space-card {
-        padding: 0.9rem;
     }
 
     .event {
