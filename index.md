@@ -8,7 +8,7 @@ title: Now Next Live
       <h1>Your Club Schedule, Live</h1>
       <p>Update every screen instantly from your phone or laptop — no apps, no setup.</p>
       <div class="cta-buttons">
-        <a class="button cta-button" href="/r/NDST3">Try a Demo</a>
+        <a class="button cta-button" href="/r/NDST3" id="demo-cta">Try a Demo</a>
       </div>
     </div>
     <div class="hero-visual">
@@ -25,6 +25,68 @@ title: Now Next Live
     </div>
   </div>
 </section>
+
+<div
+  class="modal-overlay"
+  id="demo-modal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="demo-modal-title"
+  aria-hidden="true"
+>
+  <div class="modal" tabindex="-1">
+    <h2 id="demo-modal-title">NowNext Live is in beta</h2>
+    <p>
+      This product is currently in beta testing. If you’d like to join, please email
+      <a href="mailto:reece@reecewilliams.co">reece@reecewilliams.co</a>.
+    </p>
+    <div class="modal-actions">
+      <button type="button" class="modal-close" data-close-modal>Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const ctaButton = document.getElementById("demo-cta");
+    const modal = document.getElementById("demo-modal");
+    const closeButtons = modal?.querySelectorAll("[data-close-modal]") || [];
+    const modalCard = modal?.querySelector(".modal");
+
+    if (!ctaButton || !modal) return;
+
+    const openModal = (event) => {
+      event.preventDefault();
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      modalCard?.focus();
+    };
+
+    const closeModal = () => {
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      ctaButton.focus();
+    };
+
+    ctaButton.addEventListener("click", openModal);
+
+    closeButtons.forEach((button) => {
+      button.addEventListener("click", closeModal);
+    });
+
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && modal.classList.contains("is-open")) {
+        closeModal();
+      }
+    });
+  });
+</script>
 
 <section class="section">
   <div class="section-header">
