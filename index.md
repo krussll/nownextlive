@@ -6,107 +6,105 @@ title: Now Next Live
   <div class="hero-card">
     <div class="hero-copy">
       <h1>Your Club Schedule, Live</h1>
-      <p>
-        Update every screen instantly from your phone or laptop — no apps, no setup.
-      </p>
+      <p>Update every screen instantly from your phone or laptop — no apps, no setup.</p>
       <div class="cta-buttons">
-        <a class="button" href="{{ '/about.html' | relative_url }}">
-          <span class="material-icons-round" aria-hidden="true">auto_awesome</span>
-          <span>Try a Demo For Free</span>
-        </a>
+        <a class="button cta-button" href="/r/NDST3">Try a Demo</a>
       </div>
     </div>
     <div class="hero-visual">
-      <img
-        src="{{ '/assets/hero-diagram.png' | relative_url }}"
-        alt="Controller sending schedule updates to displays"
-        loading="lazy"
-      />
+      <div class="card-grid two-column">
+        <article class="card">
+          <h3>Instant updates</h3>
+          <p>Change what’s on now and what’s coming next — all screens update immediately.</p>
+        </article>
+        <article class="card">
+          <h3>No installs needed</h3>
+          <p>Runs in any browser on TVs, tablets, phones and laptops. Nothing to download.</p>
+        </article>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="section">
   <div class="section-header">
-    <h2>Why Clubs Love Now Next Live</h2>
+    <h2>Why Clubs Love NowNext</h2>
+    <p>Simple tools that keep every court, room, or table in sync.</p>
   </div>
-  <div class="card-grid">
+  <div class="card-grid three-column">
     <article class="card">
-      <div class="meta"><span class="material-icons-round" aria-hidden="true">center_focus_strong</span>Focus</div>
-      <h3>Instant updates</h3>
-      <p>
-        Change what’s on now and what’s coming, with all screens updating immediately.
-      </p>
-    </article>
-    <article class="card">
-      <div class="meta"><span class="material-icons-round" aria-hidden="true">sync_alt</span>Sync</div>
-      <h3>No installs needed</h3>
-      <p>
-        Runs in any browser on TVs, tablets, phones and laptops. Nothing to download.
-      </p>
-    </article>
-    <article class="card">
-      <div class="meta"><span class="material-icons-round" aria-hidden="true">device_hub</span>Adapt</div>
       <h3>Easy for anyone to use</h3>
-      <p>
-        If you can type, you can use it. No tech knowledge required.
-      </p>
+      <p>If you can type, you can use it. No tech knowledge required.</p>
+    </article>
+    <article class="card">
+      <h3>Works on match days</h3>
+      <p>Perfect for bowls, tennis, squash, darts, pool and other club events.</p>
+    </article>
+    <article class="card">
+      <h3>Simple control panel</h3>
+      <p>Update all your rooms or courts in seconds.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-header">
+    <h2>How It Works</h2>
+    <p>Three quick steps to keep everyone on the same page.</p>
+  </div>
+  <div class="card-grid three-column">
+    <article class="card">
+      <div class="meta">1. Create a board</div>
+      <h3>Start in 10 seconds</h3>
+      <p>Start a new board for your club or event — it takes 10 seconds.</p>
+    </article>
+    <article class="card">
+      <div class="meta">2. Open the controller</div>
+      <h3>Type what’s happening</h3>
+      <p>Type what’s happening now and what’s next for each space.</p>
+    </article>
+    <article class="card">
+      <div class="meta">3. Displays update</div>
+      <h3>Instantly everywhere</h3>
+      <p>Put the display view on TVs or tablets around the venue — they follow your changes automatically.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section testimonials">
+  <div class="section-header">
+    <h2>What Clubs Say</h2>
+  </div>
+  <div class="card-grid two-column">
+    <article class="card">
+      <blockquote>
+        <p>“Perfect for clubs with no tech team. We had it running in minutes.”</p>
+        <cite>— Club Secretary</cite>
+      </blockquote>
+    </article>
+    <article class="card">
+      <blockquote>
+        <p>“Members instantly knew where to go. So much calmer on match day.”</p>
+        <cite>— Tournament Organiser</cite>
+      </blockquote>
+    </article>
+    <article class="card">
+      <blockquote>
+        <p>“The fact it’s just in the browser is brilliant. No downloads!”</p>
+        <cite>— Volunteer</cite>
+      </blockquote>
     </article>
   </div>
 </section>
 
 <section class="section cta-section">
   <div class="section-header">
-    <h2>Fast setup, no downloads</h2>
-    <p>Open the controller in your browser, join your event room, and start sending updates right away.</p>
+    <h2>About NowNext</h2>
+    <p>Simple, live “Now & Next” boards for sports clubs.</p>
   </div>
   <div class="cta-buttons">
-      <a class="button" href="{{ '/about.html' | relative_url }}">
-      <span class="material-icons-round" aria-hidden="true">rocket_launch</span>
-      <span>Try board free</span>
-      </a>
-      <a class="button secondary" href="{{ '/blog/post-three.html' | relative_url }}">
-      <span class="material-icons-round" aria-hidden="true">play_circle</span>
-      <span>Watch in action</span>
-      </a>
-    </div>
-</section>
-
-<section class="section">
-  <div class="section-header">
-    <h2>From the blog</h2>
-    <p>
-      Insights from our production floor on keeping events smooth, connected, and
-      human.
-    </p>
-  </div>
-  <div class="card-grid">
-    <article class="card">
-      <div class="image-placeholder" data-image="Backstage team"></div>
-      <div class="meta">June 12, 2024</div>
-      <h3><a href="{{ '/blog/post-one.html' | relative_url }}">Building trust with presenters before they go live</a></h3>
-      <p>
-        Learn the ritual we use before every show to make sure everyone on stage feels
-        seen, heard, and ready to shine.
-      </p>
-    </article>
-    <article class="card">
-      <div class="image-placeholder" data-image="Production timeline"></div>
-      <div class="meta">May 29, 2024</div>
-      <h3><a href="{{ '/blog/post-two.html' | relative_url }}">Three timers every production team should run</a></h3>
-      <p>
-        The backstage, broadcast, and client timers that keep us aligned across every
-        timezone and venue.
-      </p>
-    </article>
-    <article class="card">
-      <div class="image-placeholder" data-image="Studio lighting"></div>
-      <div class="meta">May 8, 2024</div>
-      <h3><a href="{{ '/blog/post-three.html' | relative_url }}">Lighting cues that support remote audiences</a></h3>
-      <p>
-        Blend light and timing to create an engaging experience for remote viewers
-        without overwhelming the stage team.
-      </p>
-    </article>
+    <a class="button" href="/about">About</a>
+    <a class="button secondary" href="/contact">Contact</a>
+    <a class="button secondary" href="/privacy">Privacy</a>
   </div>
 </section>
