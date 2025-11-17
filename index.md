@@ -15,7 +15,12 @@ title: Now Next Live
       </a>
     </div>
   </div>
-  <div class="image-placeholder" data-image="Event control dashboard"></div>
+  <img
+    class="hero-visual"
+    src="{{ '/assets/hero-event-control.svg' | relative_url }}"
+    alt="Controller sending schedule updates to displays"
+    loading="lazy"
+  />
 </section>
 
 <section class="section">
