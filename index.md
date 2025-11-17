@@ -4,35 +4,16 @@ title: Now Next Live
 ---
 <section class="hero">
   <div class="hero-card">
-    <div class="chip-row">
-      <span class="chip"><span class="material-icons-round" aria-hidden="true">schedule</span>Light theme</span>
-      <span class="chip"><span class="material-icons-round" aria-hidden="true">bolt</span>Real-time</span>
-    </div>
-    <h1>Run every space in sync</h1>
+    <h1>Your Club Schedule, Live/h1>
     <p>
-      Update Now &amp; Next screens from one browser. Six spaces, real-time refresh, and no installs
-      needed. Keep your club, courts, or rooms moving without slowing down.
+      Update every screen instantly from your phone or laptop — no apps, no setup.
     </p>
     <div class="cta-buttons">
       <a class="button" href="{{ '/about.html' | relative_url }}">
         <span class="material-icons-round" aria-hidden="true">auto_awesome</span>
-        <span>Try it free</span>
-      </a>
-      <a class="button secondary" href="{{ '/blog/post-one.html' | relative_url }}">
-        <span class="material-icons-round" aria-hidden="true">emoji_people</span>
-        <span>See it update</span>
+        <span>Try a Demo For Free</span>
       </a>
     </div>
-    <ul class="info-list">
-      <li class="info-item">
-        <span class="material-icons-round" aria-hidden="true">visibility</span>
-        <span>Controller updates broadcast to every display the moment you hit send.</span>
-      </li>
-      <li class="info-item">
-        <span class="material-icons-round" aria-hidden="true">palette</span>
-        <span>Built for the browser with a clean, light palette that stays readable in any venue.</span>
-      </li>
-    </ul>
   </div>
   <div class="image-placeholder" data-image="Event control dashboard"></div>
 </section>
