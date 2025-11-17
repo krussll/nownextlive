@@ -25,39 +25,29 @@ title: Now Next Live
 
 <section class="section">
   <div class="section-header">
-    <h2>Why teams rely on Now Next Live</h2>
-    <p>
-      Keep six spaces updated from one place. Socket.IO keeps displays fresh without reloads, and the
-      clean layout makes every change clear for coaches, crews, and players.
-    </p>
+    <h2>Why Clubs Love Now Next Live</h2>
   </div>
   <div class="card-grid">
     <article class="card">
       <div class="meta"><span class="material-icons-round" aria-hidden="true">center_focus_strong</span>Focus</div>
-      <h3>Minimal controls that highlight what matters</h3>
+      <h3>Instant updates</h3>
       <p>
-        Edit “Now” and “Next” for every room in seconds. Clear labels and a light interface keep you
-        focused on the action, not the controls.
+        Change what’s on now and what’s coming, with all screens updating immediately.
       </p>
-      <a class="button tertiary" href="{{ '/about.html' | relative_url }}">Start free run</a>
     </article>
     <article class="card">
       <div class="meta"><span class="material-icons-round" aria-hidden="true">sync_alt</span>Sync</div>
-      <h3>Live collaboration for every production role</h3>
+      <h3>No installs needed</h3>
       <p>
-        Controller updates reach every display instantly. No installs, no sign-in, just a shared view
-        that keeps the crew aligned.
+        Runs in any browser on TVs, tablets, phones and laptops. Nothing to download.
       </p>
-      <a class="button tertiary" href="{{ '/blog/post-two.html' | relative_url }}">See live sync</a>
     </article>
     <article class="card">
       <div class="meta"><span class="material-icons-round" aria-hidden="true">device_hub</span>Adapt</div>
-      <h3>Responsive by design for any venue</h3>
+      <h3>Easy for anyone to use</h3>
       <p>
-        The grid adapts to phones, tablets, or lobby screens. Large text keeps every participant clear
-        on what’s happening now and what’s next.
+        If you can type, you can use it. No tech knowledge required.
       </p>
-      <a class="button tertiary" href="{{ '/about.html' | relative_url }}">Launch free controller</a>
     </article>
   </div>
 </section>
