@@ -168,6 +168,20 @@ header {
     gap: 0.5rem;
 }
 
+.header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.header-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
 header span {
     font-size: 0.8rem;
     letter-spacing: 0.14em;
