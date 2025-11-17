@@ -97,7 +97,7 @@ header h1 {
     border-bottom: 1px solid var(--border);
 }
 
-.event {
+.event { 
     padding: clamp(0.8rem, 1.35vw, 1.1rem) clamp(0.85rem, 1.5vw, 1.25rem);
     border-radius: 0;
     background: var(--muted);
@@ -122,6 +122,14 @@ header h1 {
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
 }
 
+.event-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+    min-width: 4.6ch;
+}
+
 .event-time {
     font-family: "JetBrains Mono", "Courier New", monospace;
     font-size: clamp(0.88rem, 1.1vw, 1.05rem);
@@ -129,8 +137,7 @@ header h1 {
     letter-spacing: 0.22em;
     color: rgba(71, 85, 105, 0.78);
     align-self: start;
-    min-width: 4.6ch;
-    text-align: right;
+    text-align: left;
 }
 
 .event.now .event-time {
@@ -154,6 +161,12 @@ header h1 {
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: rgba(71, 85, 105, 0.92);
+}
+
+.event .start-time {
+    font-family: "JetBrains Mono", "Courier New", monospace;
+    letter-spacing: 0.1em;
+    text-transform: none;
 }
 
 .event.now .label {
