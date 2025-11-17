@@ -1,0 +1,18 @@
+---
+layout: null
+permalink: /sitemap.xml
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {% assign candidate_pages = site.pages | where_exp: "page", "(page.path | split:'/' | size == 1) or page.path contains 'blog/'" %}
+  {% for page in candidate_pages %}
+    {% unless page.name == 'sitemap.xml' or page.path contains 'r/' %}
+    <url>
+      <loc>{{ site.url | default: "" }}{{ page.url | relative_url }}</loc>
+      {% if page.last_modified_at or page.date %}
+      <lastmod>{{ page.last_modified_at | default: page.date | date_to_xmlschema }}</lastmod>
+      {% endif %}
+    </url>
+    {% endunless %}
+  {% endfor %}
+</urlset>
