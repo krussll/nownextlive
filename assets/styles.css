@@ -96,10 +96,8 @@ main {
 
 .hero {
   margin-top: 2rem;
-  display: grid;
-  gap: 2.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 .hero h1 {
@@ -109,26 +107,58 @@ main {
 
 .hero p {
   color: var(--mui-text-secondary);
-  max-width: 36rem;
   margin: 0;
 }
 
+.hero-card {
+  background: linear-gradient(135deg, #f7fbff, #f0f5ff 40%, #ffffff);
+  border-radius: var(--mui-radius);
+  padding: clamp(1.5rem, 4vw, 2.75rem);
+  box-shadow: 0 14px 48px rgba(15, 23, 42, 0.1);
+  border: 1px solid var(--mui-border);
+  display: grid;
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 20%, rgba(30, 136, 229, 0.06), transparent 40%),
+    radial-gradient(circle at 80% 10%, rgba(21, 101, 192, 0.08), transparent 35%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-copy {
+  display: grid;
+  gap: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
 .hero-visual {
+  background: #ffffff;
+  border-radius: calc(var(--mui-radius) - 6px);
+  padding: 0.75rem;
+  border: 1px solid var(--mui-border);
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-visual img {
   width: 100%;
   max-width: 520px;
   display: block;
-  margin: 0 auto;
   filter: drop-shadow(0 16px 32px rgba(15, 23, 42, 0.12));
-}
-
-.hero-card {
-  background: var(--mui-surface);
-  border-radius: var(--mui-radius);
-  padding: 1.5rem;
-  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
-  border: 1px solid var(--mui-border);
-  display: grid;
-  gap: 1rem;
 }
 
 .chip-row {

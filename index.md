@@ -4,23 +4,26 @@ title: Now Next Live
 ---
 <section class="hero">
   <div class="hero-card">
-    <h1>Your Club Schedule, Live</h1>
-    <p>
-      Update every screen instantly from your phone or laptop — no apps, no setup.
-    </p>
-    <div class="cta-buttons">
-      <a class="button" href="{{ '/about.html' | relative_url }}">
-        <span class="material-icons-round" aria-hidden="true">auto_awesome</span>
-        <span>Try a Demo For Free</span>
-      </a>
+    <div class="hero-copy">
+      <h1>Your Club Schedule, Live</h1>
+      <p>
+        Update every screen instantly from your phone or laptop — no apps, no setup.
+      </p>
+      <div class="cta-buttons">
+        <a class="button" href="{{ '/about.html' | relative_url }}">
+          <span class="material-icons-round" aria-hidden="true">auto_awesome</span>
+          <span>Try a Demo For Free</span>
+        </a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img
+        src="{{ '/assets/hero-diagram.png' | relative_url }}"
+        alt="Controller sending schedule updates to displays"
+        loading="lazy"
+      />
     </div>
   </div>
-  <img
-    class="hero-visual"
-    src="{{ '/assets/hero-diagram.png' | relative_url }}"
-    alt="Controller sending schedule updates to displays"
-    loading="lazy"
-  />
 </section>
 
 <section class="section">
