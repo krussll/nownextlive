@@ -111,9 +111,6 @@ title: Now Next Live
         <h2 class="text-2xl font-bold text-slate-900 sm:text-3xl">Three quick steps to stay aligned</h2>
         <p class="max-w-2xl text-base text-slate-600 sm:text-lg">Move from setup to live in minutes. The control room and on-site displays stay perfectly synced.</p>
       </div>
-      <div class="inline-flex items-center gap-2 rounded-full bg-teal-50 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-brand">
-        Inspired by Parseur-style clarity
-      </div>
     </div>
     <div class="grid gap-6 lg:grid-cols-3">
       <article class="rounded-2xl border border-slate-100 bg-slate-50 p-6 shadow-lg">
