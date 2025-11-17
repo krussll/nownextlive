@@ -17,7 +17,7 @@ title: Now Next Live
   </div>
   <img
     class="hero-visual"
-    src="{{ '/assets/hero-event-control.svg' | relative_url }}"
+    src="{{ '/assets/hero-diagram.png' | relative_url }}"
     alt="Controller sending schedule updates to displays"
     loading="lazy"
   />
