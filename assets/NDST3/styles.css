@@ -31,7 +31,8 @@ body {
 }
 
 main {
-    width: min(96vw, 1600px);
+    width: 100%;
+    margin: 0 clamp(0.75rem, 2vw, 1.5rem);
 }
 
 #clock {
