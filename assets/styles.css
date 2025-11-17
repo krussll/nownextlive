@@ -355,6 +355,73 @@ footer nav a {
   font-weight: 600;
 }
 
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 100;
+}
+
+.modal-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.modal {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 1.5rem;
+  max-width: 520px;
+  width: min(520px, 100%);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.18);
+  border: 1px solid var(--mui-border);
+  display: grid;
+  gap: 0.75rem;
+  position: relative;
+}
+
+.modal h2 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.modal p {
+  margin: 0;
+  color: var(--mui-text-secondary);
+}
+
+.modal-actions {
+  margin-top: 0.25rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-close {
+  border: 1px solid var(--mui-border);
+  background: #fff;
+  color: var(--mui-text-primary);
+  border-radius: 10px;
+  padding: 0.6rem 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.modal-close:hover,
+.modal-close:focus-visible {
+  background: #e8f2ff;
+  box-shadow: inset 0 0 0 1px rgba(30, 136, 229, 0.2);
+}
+
 .article {
   max-width: 860px;
   margin: 0 auto;
