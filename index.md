@@ -4,7 +4,7 @@ title: Now Next Live
 ---
 <section class="hero">
   <div class="hero-card">
-    <h1>Your Club Schedule, Live/h1>
+    <h1>Your Club Schedule, Live</h1>
     <p>
       Update every screen instantly from your phone or laptop — no apps, no setup.
     </p>
