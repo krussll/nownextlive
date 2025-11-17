@@ -1,12 +1,16 @@
-<footer>
-  <nav>
-    <ul>
-      <li><a href="{{ '/' | relative_url }}">Home</a></li>
-      <li><a href="{{ '/about.html' | relative_url }}">About</a></li>
-      <li><a href="{{ '/blog/post-one.html' | relative_url }}">Blog</a></li>
-    </ul>
-  </nav>
-  <p>© <span id="year"></span> {{ site.title | default: "Now Next Live" }}. Crafted for show callers everywhere.</p>
+<footer class="border-t border-slate-100 bg-white py-10">
+  <div class="mx-auto flex max-w-6xl flex-col items-center gap-4 px-4 text-sm text-slate-600 sm:px-6 lg:px-8">
+    <nav aria-label="Footer">
+      <ul class="flex flex-wrap justify-center gap-3 font-semibold">
+        <li><a class="rounded-full px-3 py-2 transition hover:bg-teal-50 hover:text-brand" href="{{ '/' | relative_url }}">Home</a></li>
+        <li><a class="rounded-full px-3 py-2 transition hover:bg-teal-50 hover:text-brand" href="{{ '/about.html' | relative_url }}">About</a></li>
+        <li><a class="rounded-full px-3 py-2 transition hover:bg-teal-50 hover:text-brand" href="{{ '/blog/post-one.html' | relative_url }}">Blog</a></li>
+      </ul>
+    </nav>
+    <p class="text-center text-sm text-slate-500">
+      © <span id="year"></span> {{ site.title | default: "Now Next Live" }}. Crafted for show callers everywhere.
+    </p>
+  </div>
 </footer>
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
