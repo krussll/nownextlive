@@ -288,6 +288,10 @@ header h1 {
 }
 
 @media (max-width: 600px) {
+    main {
+        padding-top: 6.5rem;
+    }
+
     header span {
         font-size: 0.78rem;
     }
