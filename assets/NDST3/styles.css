@@ -58,11 +58,6 @@ main {
     align-items: center;
     gap: 0.65rem;
     padding: 0.6rem 0.85rem;
-    background: rgba(255, 255, 255, 0.92);
-    border: 1px solid rgba(148, 163, 184, 0.5);
-    border-radius: 12px;
-    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.1);
-    backdrop-filter: blur(12px);
 }
 
 .site-logo img {
