@@ -259,6 +259,47 @@ form {
     color: var(--text-secondary);
 }
 
+.space-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.space-title-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border: none;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    font-size: 1.1rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    cursor: text;
+}
+
+.space-title-button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.space-title-pencil {
+    display: inline-flex;
+    opacity: 0;
+    transition: opacity 0.18s ease;
+    color: var(--accent);
+}
+
+.space-title-button:hover .space-title-pencil,
+.space-title-button:focus-visible .space-title-pencil {
+    opacity: 1;
+}
+
 .space-name {
     margin-bottom: 0.35rem;
 }
