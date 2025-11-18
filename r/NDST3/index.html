@@ -377,6 +377,25 @@
         import { io } from "https://cdn.socket.io/4.8.1/socket.io.esm.min.js";
 
         const overlay = document.getElementById("loading-overlay");
+        const pageTitle = document.querySelector("main header h1");
+        const defaultPageTitle = pageTitle?.textContent?.trim() || "Live Schedule";
+        const defaultDocumentTitle = document.title;
+
+        const normalizeTitle = (value, fallback) => {
+            const normalized = (value ?? "").toString().trim();
+            return normalized || fallback;
+        };
+
+        const setPageTitle = (value) => {
+            if (!pageTitle) return;
+
+            const resolvedTitle = normalizeTitle(value, defaultPageTitle);
+            pageTitle.textContent = resolvedTitle;
+
+            document.title = defaultDocumentTitle.includes(defaultPageTitle)
+                ? defaultDocumentTitle.replace(defaultPageTitle, resolvedTitle)
+                : `${resolvedTitle} | Live Schedule`;
+        };
 
         const hideLoadingOverlay = () => {
             if (overlay) {
@@ -391,7 +410,9 @@
             { key: "upcoming2", descriptor: "LATER" },
         ];
 
-        const spaces = Array.from({ length: 6 }, (_, index) => {
+        const spaceCards = document.querySelectorAll(".space-card");
+
+        const spaces = Array.from(spaceCards, (card, index) => {
             const suffix = index === 0 ? "" : `${index + 1}`;
 
             const idFor = (prefix, part) => {
@@ -413,8 +434,17 @@
                 };
             });
 
-            return { events };
+            const titleElement = card.querySelector("h2");
+            const defaultTitle = titleElement?.textContent?.trim() || `Space ${index + 1}`;
+
+            return { events, titleElement, defaultTitle };
         });
+
+        const setSpaceTitle = (space, value, index) => {
+            if (!space?.titleElement) return;
+
+            space.titleElement.textContent = normalizeTitle(value, space.defaultTitle || `Space ${index + 1}`);
+        };
 
         const socket = io("https://hidden-journey-22873-ad31037ba953.herokuapp.com");
 
@@ -456,8 +486,17 @@
         };
 
         const update_data = (payload = {}) => {
+            const data = payload?.data ?? payload ?? {};
+            const incomingTitle = payload?.title ?? payload?.data?.title;
+
+            if (incomingTitle !== undefined) {
+                setPageTitle(incomingTitle);
+            }
+
             spaces.forEach((space, index) => {
-                const spaceData = payload[`space${index + 1}`];
+                const spaceData = data[`space${index + 1}`];
+
+                setSpaceTitle(space, spaceData?.title, index);
 
                 const upcomingLineup = [
                     spaceData?.now,
