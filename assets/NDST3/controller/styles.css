@@ -279,6 +279,7 @@ form {
     border-radius: 10px;
     color: var(--text-primary);
     box-shadow: var(--shadow-soft);
+    font-size: 0.95rem;
 }
 
 .event-row__info {
@@ -293,13 +294,12 @@ form {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 26px;
-    height: 26px;
-    border-radius: 6px;
-    border: 1px solid rgba(17, 28, 59, 0.14);
-    background: rgba(17, 28, 59, 0.06);
+    padding: 0;
+    border-radius: 0;
+    border: none;
+    background: transparent;
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--accent);
 }
 
@@ -312,7 +312,7 @@ form {
 
 .event-row__title {
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--text-primary);
     overflow: hidden;
     text-overflow: ellipsis;
