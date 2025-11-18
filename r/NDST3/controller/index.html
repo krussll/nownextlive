@@ -37,7 +37,7 @@
                             <span>Controller Dashboard</span>
                             <h1 class="event-title-heading">
                                 <button class="event-title-button" type="button" data-modal-target="event-title-modal" aria-controls="event-title-modal">
-                                    <span data-event-title>North District Sports</span>
+                                    <h1 data-event-title>North District Sports</h1>
                                     <span class="event-title-pencil" aria-hidden="true">
                                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M4 20H8.5L18.25 10.25C18.9404 9.55964 18.9404 8.44036 18.25 7.75C17.5596 7.05964 16.4404 7.05964 15.75 7.75L6 17.5L4 20Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -2219,14 +2219,14 @@
     submitButton.addEventListener("click", () => {
         const payload = { data: {} };
 
-        payload.title = getEventTitle();
-
         spaceIds.forEach((spaceKey, index) => {
             payload.data[`space${index + 1}`] = {
                 title: getSpaceTitle(spaceKey),
                 ...buildEventPayload(spaceKey),
             };
         });
+
+        payload.data["title"] = getEventTitle();
 
         console.log(payload)
         
