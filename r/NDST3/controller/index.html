@@ -68,6 +68,7 @@
                             <label for="event-title">Event title
                                 <input type="text" id="event-title" name="event-title" placeholder="Enter event title">
                             </label>
+                            <p class="input-error" data-event-title-error hidden role="alert">Event title is required.</p>
                         </div>
                         <div class="modal-actions">
                             <button class="button-secondary" type="button" data-cancel-modal>Cancel</button>
@@ -1761,6 +1762,9 @@
     const submitButton = document.getElementById("btn");
     const connectionsList = document.getElementById("connections-list");
     const eventTitleInput = document.getElementById("event-title");
+    const eventTitleModal = document.getElementById("event-title-modal");
+    const eventTitleConfirmButton = eventTitleModal?.querySelector("[data-confirm-modal]");
+    const eventTitleError = eventTitleModal?.querySelector("[data-event-title-error]");
     const eventTitleDisplay = document.querySelector("[data-event-title]");
     const defaultEventTitle = eventTitleDisplay?.textContent?.trim() || "Event title";
 
@@ -1829,6 +1833,42 @@
 
     let eventTitleState = defaultEventTitle;
 
+    const isEventTitleEmpty = () => !(eventTitleInput?.value?.trim());
+
+    const showEventTitleError = (message = "Event title is required.") => {
+        if (eventTitleError) {
+            eventTitleError.textContent = message;
+            eventTitleError.hidden = false;
+        }
+
+        if (eventTitleInput) {
+            eventTitleInput.setAttribute("aria-invalid", "true");
+            eventTitleInput.focus();
+        }
+    };
+
+    const clearEventTitleError = () => {
+        if (eventTitleError) {
+            eventTitleError.hidden = true;
+        }
+
+        eventTitleInput?.removeAttribute("aria-invalid");
+    };
+
+    const updateEventTitleConfirmState = () => {
+        const hasValue = !isEventTitleEmpty();
+        if (eventTitleConfirmButton) {
+            eventTitleConfirmButton.setAttribute("aria-disabled", hasValue ? "false" : "true");
+            eventTitleConfirmButton.classList.toggle("button-primary--disabled", !hasValue);
+        }
+
+        if (hasValue) {
+            clearEventTitleError();
+        }
+
+        return hasValue;
+    };
+
     const setEventTitle = (value) => {
         const normalized = (value ?? "").toString().trim();
         const resolved = normalized || defaultEventTitle;
@@ -1837,6 +1877,8 @@
         if (eventTitleInput) {
             eventTitleInput.value = resolved;
         }
+
+        updateEventTitleConfirmState();
 
         if (eventTitleDisplay) {
             eventTitleDisplay.textContent = resolved;
@@ -1851,6 +1893,9 @@
         if (eventTitleInput) {
             eventTitleInput.value = eventTitleState ?? defaultEventTitle;
         }
+
+        updateEventTitleConfirmState();
+        clearEventTitleError();
     };
 
     const defaultSpaceTitle = (index) => (index >= 0 ? `Space ${index + 1}` : "Space");
@@ -2068,6 +2113,13 @@
             const { scope, spaceKey, eventKey } = parseModalId(modal?.id ?? "");
             if (eventKey === "title") {
                 if (scope === "event") {
+                    const hasEventTitle = updateEventTitleConfirmState();
+                    if (!hasEventTitle) {
+                        showEventTitleError();
+                        return;
+                    }
+
+                    clearEventTitleError();
                     setEventTitle(eventTitleInput?.value);
                 } else if (scope === "space" && spaceKey) {
                     setSpaceTitle(spaceKey, spaceTitleInputs[spaceKey]?.value);
@@ -2078,6 +2130,20 @@
 
             closeModal(modal);
         });
+    });
+
+    eventTitleInput?.addEventListener("input", updateEventTitleConfirmState);
+
+    eventTitleInput?.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            if (!updateEventTitleConfirmState()) {
+                showEventTitleError();
+                return;
+            }
+
+            eventTitleConfirmButton?.click();
+        }
     });
 
     document.querySelectorAll("[data-cancel-modal]").forEach((cancelButton) => {
