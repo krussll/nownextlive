@@ -9,7 +9,7 @@ main_class: ""
       <path fill-rule="evenodd" d="M12.78 4.22a.75.75 0 0 1 0 1.06L8.06 10l4.72 4.72a.75.75 0 1 1-1.06 1.06l-5.25-5.25a.75.75 0 0 1 0-1.06l5.25-5.25a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd" />
     </svg>
     Back to home
-  </a>
+  </a> 
   <header class="space-y-3 border-b border-slate-100 pb-6">
     <p class="text-xs font-semibold uppercase tracking-wide text-brand">Our story</p>
     <h1 class="text-3xl font-bold text-slate-900 sm:text-4xl">The crew behind the countdown</h1>
