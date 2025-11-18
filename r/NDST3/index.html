@@ -487,6 +487,7 @@
 
         const update_data = (payload = {}) => {
             const data = payload?.data ?? payload ?? {};
+            console.log(data)
             const incomingTitle = payload?.title ?? payload?.data?.title;
 
             if (incomingTitle !== undefined) {
