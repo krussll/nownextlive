@@ -189,10 +189,43 @@ header span {
     color: rgba(51, 65, 85, 0.7);
 }
 
-header h1 {
+.event-title-heading {
     margin: 0;
     font-size: clamp(1.35rem, 3vw, 2rem);
     font-weight: 600;
+}
+
+.event-title-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    border: none;
+    background: transparent;
+    padding: 0.1rem 0.25rem;
+    margin: -0.1rem -0.25rem;
+    font: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    cursor: text;
+}
+
+.event-title-button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+.event-title-pencil {
+    display: inline-flex;
+    opacity: 0;
+    color: var(--accent);
+    transition: opacity 0.18s ease;
+}
+
+.event-title-button:hover .event-title-pencil,
+.event-title-button:focus-visible .event-title-pencil {
+    opacity: 1;
 }
 
 header p {
