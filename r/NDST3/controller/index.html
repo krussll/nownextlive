@@ -1860,6 +1860,7 @@
         if (eventTitleConfirmButton) {
             eventTitleConfirmButton.setAttribute("aria-disabled", hasValue ? "false" : "true");
             eventTitleConfirmButton.classList.toggle("button-primary--disabled", !hasValue);
+            eventTitleConfirmButton.disabled = !hasValue;
         }
 
         if (hasValue) {
