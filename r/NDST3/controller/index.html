@@ -51,14 +51,42 @@
             <details class="space-card" open>
                 <summary>
                     <div class="space-summary">
-                        <h2 data-space-heading="space1">Space 1</h2>
+                        <button class="space-title-button" type="button" data-modal-target="space1-title-modal" aria-controls="space1-title-modal" data-stop-propagation>
+                            <span data-space-heading="space1">Space 1</span>
+                            <span class="space-title-pencil" aria-hidden="true">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 20H8.5L18.25 10.25C18.9404 9.55964 18.9404 8.44036 18.25 7.75C17.5596 7.05964 16.4404 7.05964 15.75 7.75L6 17.5L4 20Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M13.5 8.5L15.5 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                        </button>
                         <span class="summary-hint">Toggle to show or hide fields</span>
                     </div>
                 </summary>
+                <div class="event-modal" id="space1-title-modal" hidden>
+                    <div class="event-modal__backdrop" data-close-modal></div>
+                    <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space1-title-modal-title">
+                        <div class="event-modal__header">
+                            <div>
+                                <p class="event-modal__eyebrow" data-space-label="space1">Space 1</p>
+                                <h3 id="space1-title-modal-title">Space name</h3>
+                            </div>
+                            <button class="icon-button" type="button" aria-label="Close modal" data-close-modal>
+                                <span aria-hidden="true">✕</span>
+                            </button>
+                        </div>
+                        <div class="event-fields">
+                            <label for="space1-title">Space Name
+                                <input type="text" id="space1-title" name="space1-title" placeholder="Space 1">
+                            </label>
+                        </div>
+                        <div class="modal-actions">
+                            <button class="button-secondary" type="button" data-cancel-modal>Cancel</button>
+                            <button class="button-primary" type="button" data-confirm-modal>Confirm</button>
+                        </div>
+                    </div>
+                </div>
                 <div class="space-fields">
-                    <label class="space-name" for="space1-title">Space Name
-                        <input type="text" id="space1-title" name="space1-title" placeholder="Space 1" value="Space 1">
-                    </label>
                     <div class="event-row-stack">
             <div class="event-row" data-space="space1" data-event="now" data-event-order="1">
                 <div class="event-row__info">
@@ -302,14 +330,42 @@
             <details class="space-card">
                 <summary>
                     <div class="space-summary">
-                        <h2 data-space-heading="space2">Space 2</h2>
+                        <button class="space-title-button" type="button" data-modal-target="space2-title-modal" aria-controls="space2-title-modal" data-stop-propagation>
+                            <span data-space-heading="space2">Space 2</span>
+                            <span class="space-title-pencil" aria-hidden="true">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 20H8.5L18.25 10.25C18.9404 9.55964 18.9404 8.44036 18.25 7.75C17.5596 7.05964 16.4404 7.05964 15.75 7.75L6 17.5L4 20Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M13.5 8.5L15.5 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                        </button>
                         <span class="summary-hint">Toggle to show or hide fields</span>
                     </div>
                 </summary>
+                <div class="event-modal" id="space2-title-modal" hidden>
+                    <div class="event-modal__backdrop" data-close-modal></div>
+                    <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space2-title-modal-title">
+                        <div class="event-modal__header">
+                            <div>
+                                <p class="event-modal__eyebrow" data-space-label="space2">Space 2</p>
+                                <h3 id="space2-title-modal-title">Space name</h3>
+                            </div>
+                            <button class="icon-button" type="button" aria-label="Close modal" data-close-modal>
+                                <span aria-hidden="true">✕</span>
+                            </button>
+                        </div>
+                        <div class="event-fields">
+                            <label for="space2-title">Space Name
+                                <input type="text" id="space2-title" name="space2-title" placeholder="Space 2">
+                            </label>
+                        </div>
+                        <div class="modal-actions">
+                            <button class="button-secondary" type="button" data-cancel-modal>Cancel</button>
+                            <button class="button-primary" type="button" data-confirm-modal>Confirm</button>
+                        </div>
+                    </div>
+                </div>
                 <div class="space-fields">
-                    <label class="space-name" for="space2-title">Space Name
-                        <input type="text" id="space2-title" name="space2-title" placeholder="Space 2" value="Space 2">
-                    </label>
                     <div class="event-row-stack">
             <div class="event-row" data-space="space2" data-event="now" data-event-order="1">
                 <div class="event-row__info">
@@ -553,14 +609,42 @@
             <details class="space-card">
                 <summary>
                     <div class="space-summary">
-                        <h2 data-space-heading="space3">Space 3</h2>
+                        <button class="space-title-button" type="button" data-modal-target="space3-title-modal" aria-controls="space3-title-modal" data-stop-propagation>
+                            <span data-space-heading="space3">Space 3</span>
+                            <span class="space-title-pencil" aria-hidden="true">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 20H8.5L18.25 10.25C18.9404 9.55964 18.9404 8.44036 18.25 7.75C17.5596 7.05964 16.4404 7.05964 15.75 7.75L6 17.5L4 20Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M13.5 8.5L15.5 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                        </button>
                         <span class="summary-hint">Toggle to show or hide fields</span>
                     </div>
                 </summary>
+                <div class="event-modal" id="space3-title-modal" hidden>
+                    <div class="event-modal__backdrop" data-close-modal></div>
+                    <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space3-title-modal-title">
+                        <div class="event-modal__header">
+                            <div>
+                                <p class="event-modal__eyebrow" data-space-label="space3">Space 3</p>
+                                <h3 id="space3-title-modal-title">Space name</h3>
+                            </div>
+                            <button class="icon-button" type="button" aria-label="Close modal" data-close-modal>
+                                <span aria-hidden="true">✕</span>
+                            </button>
+                        </div>
+                        <div class="event-fields">
+                            <label for="space3-title">Space Name
+                                <input type="text" id="space3-title" name="space3-title" placeholder="Space 3">
+                            </label>
+                        </div>
+                        <div class="modal-actions">
+                            <button class="button-secondary" type="button" data-cancel-modal>Cancel</button>
+                            <button class="button-primary" type="button" data-confirm-modal>Confirm</button>
+                        </div>
+                    </div>
+                </div>
                 <div class="space-fields">
-                    <label class="space-name" for="space3-title">Space Name
-                        <input type="text" id="space3-title" name="space3-title" placeholder="Space 3" value="Space 3">
-                    </label>
                     <div class="event-row-stack">
             <div class="event-row" data-space="space3" data-event="now" data-event-order="1">
                 <div class="event-row__info">
@@ -804,14 +888,42 @@
             <details class="space-card">
                 <summary>
                     <div class="space-summary">
-                        <h2 data-space-heading="space4">Space 4</h2>
+                        <button class="space-title-button" type="button" data-modal-target="space4-title-modal" aria-controls="space4-title-modal" data-stop-propagation>
+                            <span data-space-heading="space4">Space 4</span>
+                            <span class="space-title-pencil" aria-hidden="true">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 20H8.5L18.25 10.25C18.9404 9.55964 18.9404 8.44036 18.25 7.75C17.5596 7.05964 16.4404 7.05964 15.75 7.75L6 17.5L4 20Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M13.5 8.5L15.5 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                        </button>
                         <span class="summary-hint">Toggle to show or hide fields</span>
                     </div>
                 </summary>
+                <div class="event-modal" id="space4-title-modal" hidden>
+                    <div class="event-modal__backdrop" data-close-modal></div>
+                    <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space4-title-modal-title">
+                        <div class="event-modal__header">
+                            <div>
+                                <p class="event-modal__eyebrow" data-space-label="space4">Space 4</p>
+                                <h3 id="space4-title-modal-title">Space name</h3>
+                            </div>
+                            <button class="icon-button" type="button" aria-label="Close modal" data-close-modal>
+                                <span aria-hidden="true">✕</span>
+                            </button>
+                        </div>
+                        <div class="event-fields">
+                            <label for="space4-title">Space Name
+                                <input type="text" id="space4-title" name="space4-title" placeholder="Space 4">
+                            </label>
+                        </div>
+                        <div class="modal-actions">
+                            <button class="button-secondary" type="button" data-cancel-modal>Cancel</button>
+                            <button class="button-primary" type="button" data-confirm-modal>Confirm</button>
+                        </div>
+                    </div>
+                </div>
                 <div class="space-fields">
-                    <label class="space-name" for="space4-title">Space Name
-                        <input type="text" id="space4-title" name="space4-title" placeholder="Space 4" value="Space 4">
-                    </label>
                     <div class="event-row-stack">
             <div class="event-row" data-space="space4" data-event="now" data-event-order="1">
                 <div class="event-row__info">
@@ -1055,14 +1167,42 @@
             <details class="space-card">
                 <summary>
                     <div class="space-summary">
-                        <h2 data-space-heading="space5">Space 5</h2>
+                        <button class="space-title-button" type="button" data-modal-target="space5-title-modal" aria-controls="space5-title-modal" data-stop-propagation>
+                            <span data-space-heading="space5">Space 5</span>
+                            <span class="space-title-pencil" aria-hidden="true">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 20H8.5L18.25 10.25C18.9404 9.55964 18.9404 8.44036 18.25 7.75C17.5596 7.05964 16.4404 7.05964 15.75 7.75L6 17.5L4 20Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M13.5 8.5L15.5 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                        </button>
                         <span class="summary-hint">Toggle to show or hide fields</span>
                     </div>
                 </summary>
+                <div class="event-modal" id="space5-title-modal" hidden>
+                    <div class="event-modal__backdrop" data-close-modal></div>
+                    <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space5-title-modal-title">
+                        <div class="event-modal__header">
+                            <div>
+                                <p class="event-modal__eyebrow" data-space-label="space5">Space 5</p>
+                                <h3 id="space5-title-modal-title">Space name</h3>
+                            </div>
+                            <button class="icon-button" type="button" aria-label="Close modal" data-close-modal>
+                                <span aria-hidden="true">✕</span>
+                            </button>
+                        </div>
+                        <div class="event-fields">
+                            <label for="space5-title">Space Name
+                                <input type="text" id="space5-title" name="space5-title" placeholder="Space 5">
+                            </label>
+                        </div>
+                        <div class="modal-actions">
+                            <button class="button-secondary" type="button" data-cancel-modal>Cancel</button>
+                            <button class="button-primary" type="button" data-confirm-modal>Confirm</button>
+                        </div>
+                    </div>
+                </div>
                 <div class="space-fields">
-                    <label class="space-name" for="space5-title">Space Name
-                        <input type="text" id="space5-title" name="space5-title" placeholder="Space 5" value="Space 5">
-                    </label>
                     <div class="event-row-stack">
             <div class="event-row" data-space="space5" data-event="now" data-event-order="1">
                 <div class="event-row__info">
@@ -1306,14 +1446,42 @@
             <details class="space-card">
                 <summary>
                     <div class="space-summary">
-                        <h2 data-space-heading="space6">Space 6</h2>
+                        <button class="space-title-button" type="button" data-modal-target="space6-title-modal" aria-controls="space6-title-modal" data-stop-propagation>
+                            <span data-space-heading="space6">Space 6</span>
+                            <span class="space-title-pencil" aria-hidden="true">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 20H8.5L18.25 10.25C18.9404 9.55964 18.9404 8.44036 18.25 7.75C17.5596 7.05964 16.4404 7.05964 15.75 7.75L6 17.5L4 20Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M13.5 8.5L15.5 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                        </button>
                         <span class="summary-hint">Toggle to show or hide fields</span>
                     </div>
                 </summary>
+                <div class="event-modal" id="space6-title-modal" hidden>
+                    <div class="event-modal__backdrop" data-close-modal></div>
+                    <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space6-title-modal-title">
+                        <div class="event-modal__header">
+                            <div>
+                                <p class="event-modal__eyebrow" data-space-label="space6">Space 6</p>
+                                <h3 id="space6-title-modal-title">Space name</h3>
+                            </div>
+                            <button class="icon-button" type="button" aria-label="Close modal" data-close-modal>
+                                <span aria-hidden="true">✕</span>
+                            </button>
+                        </div>
+                        <div class="event-fields">
+                            <label for="space6-title">Space Name
+                                <input type="text" id="space6-title" name="space6-title" placeholder="Space 6">
+                            </label>
+                        </div>
+                        <div class="modal-actions">
+                            <button class="button-secondary" type="button" data-cancel-modal>Cancel</button>
+                            <button class="button-primary" type="button" data-confirm-modal>Confirm</button>
+                        </div>
+                    </div>
+                </div>
                 <div class="space-fields">
-                    <label class="space-name" for="space6-title">Space Name
-                        <input type="text" id="space6-title" name="space6-title" placeholder="Space 6" value="Space 6">
-                    </label>
                     <div class="event-row-stack">
             <div class="event-row" data-space="space6" data-event="now" data-event-order="1">
                 <div class="event-row__info">
@@ -1628,12 +1796,18 @@
         return spaceAcc;
     }, {});
 
-    const defaultSpaceTitle = (index) => `Space ${index + 1}`;
+    const defaultSpaceTitle = (index) => (index >= 0 ? `Space ${index + 1}` : "Space");
+    const getSpaceIndex = (spaceKey) => spaceIds.indexOf(spaceKey);
 
-    const updateSpaceTitleDisplay = (spaceKey, index, value) => {
+    const spaceTitleState = spaceIds.reduce((acc, spaceId, index) => {
+        acc[spaceId] = defaultSpaceTitle(index);
+        return acc;
+    }, {});
+
+    const updateSpaceTitleDisplay = (spaceKey) => {
+        const index = getSpaceIndex(spaceKey);
+        const title = spaceTitleState[spaceKey] ?? defaultSpaceTitle(index);
         const display = spaceTitleDisplays[spaceKey];
-        const normalizedValue = value ?? spaceTitleInputs[spaceKey]?.value ?? "";
-        const title = (normalizedValue ?? "").toString().trim() || defaultSpaceTitle(index);
 
         if (display) {
             display.textContent = title;
@@ -1646,28 +1820,33 @@
         return title;
     };
 
-    const setSpaceTitle = (spaceKey, index, value) => {
-        const input = spaceTitleInputs[spaceKey];
-        if (input && value !== undefined) {
-            input.value = value ?? "";
-        }
+    const getSpaceTitle = (spaceKey) => updateSpaceTitleDisplay(spaceKey);
 
-        return updateSpaceTitleDisplay(spaceKey, index, value);
+    const resetSpaceTitleField = (spaceKey) => {
+        const input = spaceTitleInputs[spaceKey];
+        if (input) {
+            input.value = getSpaceTitle(spaceKey);
+        }
     };
 
-    const getSpaceTitle = (spaceKey, index) => updateSpaceTitleDisplay(spaceKey, index);
+    const setSpaceTitle = (spaceKey, value) => {
+        const index = getSpaceIndex(spaceKey);
+        const normalizedValue = (value ?? "").toString().trim();
+        const title = normalizedValue || defaultSpaceTitle(index);
+        spaceTitleState[spaceKey] = title;
+
+        const input = spaceTitleInputs[spaceKey];
+        if (input) {
+            input.value = title;
+        }
+
+        return updateSpaceTitleDisplay(spaceKey);
+    };
 
     spaceIds.forEach((spaceKey, index) => {
         const input = spaceTitleInputs[spaceKey];
-        if (input) {
-            input.addEventListener("input", () => {
-                updateSpaceTitleDisplay(spaceKey, index, input.value);
-            });
-
-            updateSpaceTitleDisplay(spaceKey, index, input.value);
-        } else {
-            updateSpaceTitleDisplay(spaceKey, index);
-        }
+        const initialValue = input?.value ?? defaultSpaceTitle(index);
+        setSpaceTitle(spaceKey, initialValue);
     });
 
     import { io } from "https://cdn.socket.io/4.8.1/socket.io.esm.min.js";
@@ -1732,6 +1911,11 @@
         const { spaceKey, eventKey } = parseModalId(modal.id);
         if (!spaceKey || !eventKey) return;
 
+        if (eventKey === "title") {
+            resetSpaceTitleField(spaceKey);
+            return;
+        }
+
         applyEventStateToFields(spaceKey, eventKey);
     };
 
@@ -1761,7 +1945,11 @@
 
         const { spaceKey, eventKey } = parseModalId(modalId);
         if (spaceKey && eventKey) {
-            applyEventStateToFields(spaceKey, eventKey);
+            if (eventKey === "title") {
+                resetSpaceTitleField(spaceKey);
+            } else {
+                applyEventStateToFields(spaceKey, eventKey);
+            }
         }
 
         modal.hidden = false;
@@ -1783,7 +1971,13 @@
 
     document.querySelectorAll("[data-modal-target]").forEach((trigger) => {
         const targetId = trigger.getAttribute("data-modal-target");
-        trigger.addEventListener("click", () => openModal(targetId));
+        trigger.addEventListener("click", (event) => {
+            if (trigger.hasAttribute("data-stop-propagation")) {
+                event.stopPropagation();
+                event.preventDefault();
+            }
+            openModal(targetId);
+        });
     });
 
     document.querySelectorAll("[data-close-modal]").forEach((closer) => {
@@ -1795,7 +1989,11 @@
         confirmButton.addEventListener("click", () => {
             const { spaceKey, eventKey } = parseModalId(modal?.id ?? "");
             if (spaceKey && eventKey) {
-                saveEventFromFields(spaceKey, eventKey);
+                if (eventKey === "title") {
+                    setSpaceTitle(spaceKey, spaceTitleInputs[spaceKey]?.value);
+                } else {
+                    saveEventFromFields(spaceKey, eventKey);
+                }
             }
 
             closeModal(modal);
@@ -1928,7 +2126,7 @@
         status.textContent = "Connected";
         spaceIds.forEach((spaceKey, index) => {
             const incoming = config[`space${index + 1}`];
-            setSpaceTitle(spaceKey, index, incoming?.title);
+            setSpaceTitle(spaceKey, incoming?.title);
             populateSpace(spaceKey, incoming);
         });
     });
@@ -1938,7 +2136,7 @@
 
         spaceIds.forEach((spaceKey, index) => {
             payload.data[`space${index + 1}`] = {
-                title: getSpaceTitle(spaceKey, index),
+                title: getSpaceTitle(spaceKey),
                 ...buildEventPayload(spaceKey),
             };
         });
