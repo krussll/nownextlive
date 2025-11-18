@@ -425,14 +425,12 @@ form {
 .event-modal__backdrop {
     position: fixed;
     inset: 0;
-    background: rgba(15, 23, 42, 0.55);
     backdrop-filter: blur(3px);
 }
 
 .event-modal__dialog {
     position: relative;
     background: #ffffff;
-    border-radius: 14px;
     border: 1px solid var(--border);
     box-shadow: var(--shadow-strong);
     padding: 1.1rem 1.1rem 1.25rem;
