@@ -1761,6 +1761,8 @@
     const submitButton = document.getElementById("btn");
     const connectionsList = document.getElementById("connections-list");
     const eventTitleInput = document.getElementById("event-title");
+    const eventTitleModal = document.getElementById("event-title-modal");
+    const eventTitleConfirmButton = eventTitleModal?.querySelector("[data-confirm-modal]");
     const eventTitleDisplay = document.querySelector("[data-event-title]");
     const defaultEventTitle = eventTitleDisplay?.textContent?.trim() || "Event title";
 
@@ -1829,6 +1831,13 @@
 
     let eventTitleState = defaultEventTitle;
 
+    const updateEventTitleConfirmState = () => {
+        const hasValue = Boolean(eventTitleInput?.value?.trim());
+        if (eventTitleConfirmButton) {
+            eventTitleConfirmButton.disabled = !hasValue;
+        }
+    };
+
     const setEventTitle = (value) => {
         const normalized = (value ?? "").toString().trim();
         const resolved = normalized || defaultEventTitle;
@@ -1837,6 +1846,8 @@
         if (eventTitleInput) {
             eventTitleInput.value = resolved;
         }
+
+        updateEventTitleConfirmState();
 
         if (eventTitleDisplay) {
             eventTitleDisplay.textContent = resolved;
@@ -1851,6 +1862,8 @@
         if (eventTitleInput) {
             eventTitleInput.value = eventTitleState ?? defaultEventTitle;
         }
+
+        updateEventTitleConfirmState();
     };
 
     const defaultSpaceTitle = (index) => (index >= 0 ? `Space ${index + 1}` : "Space");
@@ -2065,6 +2078,8 @@
     document.querySelectorAll("[data-confirm-modal]").forEach((confirmButton) => {
         const modal = confirmButton.closest(".event-modal");
         confirmButton.addEventListener("click", () => {
+            if (confirmButton.disabled) return;
+
             const { scope, spaceKey, eventKey } = parseModalId(modal?.id ?? "");
             if (eventKey === "title") {
                 if (scope === "event") {
@@ -2079,6 +2094,8 @@
             closeModal(modal);
         });
     });
+
+    eventTitleInput?.addEventListener("input", updateEventTitleConfirmState);
 
     document.querySelectorAll("[data-cancel-modal]").forEach((cancelButton) => {
         cancelButton.addEventListener("click", () => closeModal(cancelButton.closest(".event-modal")));
