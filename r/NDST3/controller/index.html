@@ -67,8 +67,11 @@
                         </div>
                         <div class="event-fields">
                             <label for="event-title">Event title
-                                <input type="text" id="event-title" name="event-title" placeholder="Enter event title">
+                                <input type="text" id="event-title" name="event-title" placeholder="Enter event title" aria-describedby="event-title-validation">
                             </label>
+                            <p class="field-message field-message--error" id="event-title-validation" data-event-title-error hidden>
+                                Enter an event title to save your changes.
+                            </p>
                         </div>
                         <div class="modal-actions">
                             <button class="button-secondary" type="button" data-cancel-modal>Cancel</button>
@@ -1764,6 +1767,7 @@
     const eventTitleInput = document.getElementById("event-title");
     const eventTitleModal = document.getElementById("event-title-modal");
     const eventTitleConfirmButton = eventTitleModal?.querySelector("[data-confirm-modal]");
+    const eventTitleValidationMessage = eventTitleModal?.querySelector("[data-event-title-error]");
     const eventTitleDisplay = document.querySelector("[data-event-title]");
     const defaultEventTitle = eventTitleDisplay?.textContent?.trim() || "Event title";
 
@@ -1836,6 +1840,13 @@
         const hasValue = Boolean(eventTitleInput?.value?.trim());
         if (eventTitleConfirmButton) {
             eventTitleConfirmButton.disabled = !hasValue;
+        }
+
+        if (eventTitleValidationMessage) {
+            eventTitleValidationMessage.hidden = hasValue;
+            eventTitleValidationMessage.textContent = hasValue
+                ? ""
+                : "Enter an event title to save your changes.";
         }
     };
 

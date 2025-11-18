@@ -541,6 +541,16 @@ label {
     color: rgba(51, 65, 85, 0.8);
 }
 
+.field-message {
+    margin: -0.2rem 0 0;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+.field-message--error {
+    color: #b91c1c;
+}
+
 input[type="text"],
 textarea {
     width: 100%;
