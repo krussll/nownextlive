@@ -51,11 +51,14 @@
             <details class="space-card" open>
                 <summary>
                     <div class="space-summary">
-                        <h2>Space 1</h2>
+                        <h2 data-space-heading="space1">Space 1</h2>
                         <span class="summary-hint">Toggle to show or hide fields</span>
                     </div>
                 </summary>
                 <div class="space-fields">
+                    <label class="space-name" for="space1-title">Space Name
+                        <input type="text" id="space1-title" name="space1-title" placeholder="Space 1" value="Space 1">
+                    </label>
                     <details class="event-block" open>
                         <summary>Now</summary>
                         <div class="event-fields">
@@ -118,11 +121,14 @@
             <details class="space-card">
                 <summary>
                     <div class="space-summary">
-                        <h2>Space 2</h2>
+                        <h2 data-space-heading="space2">Space 2</h2>
                         <span class="summary-hint">Toggle to show or hide fields</span>
                     </div>
                 </summary>
                 <div class="space-fields">
+                    <label class="space-name" for="space2-title">Space Name
+                        <input type="text" id="space2-title" name="space2-title" placeholder="Space 2" value="Space 2">
+                    </label>
                     <details class="event-block" open>
                         <summary>Now</summary>
                         <div class="event-fields">
@@ -185,11 +191,14 @@
             <details class="space-card">
                 <summary>
                     <div class="space-summary">
-                        <h2>Space 3</h2>
+                        <h2 data-space-heading="space3">Space 3</h2>
                         <span class="summary-hint">Toggle to show or hide fields</span>
                     </div>
                 </summary>
                 <div class="space-fields">
+                    <label class="space-name" for="space3-title">Space Name
+                        <input type="text" id="space3-title" name="space3-title" placeholder="Space 3" value="Space 3">
+                    </label>
                     <details class="event-block" open>
                         <summary>Now</summary>
                         <div class="event-fields">
@@ -252,11 +261,14 @@
             <details class="space-card">
                 <summary>
                     <div class="space-summary">
-                        <h2>Space 4</h2>
+                        <h2 data-space-heading="space4">Space 4</h2>
                         <span class="summary-hint">Toggle to show or hide fields</span>
                     </div>
                 </summary>
                 <div class="space-fields">
+                    <label class="space-name" for="space4-title">Space Name
+                        <input type="text" id="space4-title" name="space4-title" placeholder="Space 4" value="Space 4">
+                    </label>
                     <details class="event-block" open>
                         <summary>Now</summary>
                         <div class="event-fields">
@@ -319,11 +331,14 @@
             <details class="space-card">
                 <summary>
                     <div class="space-summary">
-                        <h2>Space 5</h2>
+                        <h2 data-space-heading="space5">Space 5</h2>
                         <span class="summary-hint">Toggle to show or hide fields</span>
                     </div>
                 </summary>
                 <div class="space-fields">
+                    <label class="space-name" for="space5-title">Space Name
+                        <input type="text" id="space5-title" name="space5-title" placeholder="Space 5" value="Space 5">
+                    </label>
                     <details class="event-block" open>
                         <summary>Now</summary>
                         <div class="event-fields">
@@ -386,11 +401,14 @@
             <details class="space-card">
                 <summary>
                     <div class="space-summary">
-                        <h2>Space 6</h2>
+                        <h2 data-space-heading="space6">Space 6</h2>
                         <span class="summary-hint">Toggle to show or hide fields</span>
                     </div>
                 </summary>
                 <div class="space-fields">
+                    <label class="space-name" for="space6-title">Space Name
+                        <input type="text" id="space6-title" name="space6-title" placeholder="Space 6" value="Space 6">
+                    </label>
                     <details class="event-block" open>
                         <summary>Now</summary>
                         <div class="event-fields">
@@ -481,6 +499,54 @@
         spaceAcc[spaceId] = events;
         return spaceAcc;
     }, {});
+
+    const spaceTitleInputs = spaceIds.reduce((acc, spaceId) => {
+        acc[spaceId] = document.getElementById(`${spaceId}-title`);
+        return acc;
+    }, {});
+
+    const spaceTitleDisplays = spaceIds.reduce((acc, spaceId) => {
+        acc[spaceId] = document.querySelector(`[data-space-heading="${spaceId}"]`);
+        return acc;
+    }, {});
+
+    const defaultSpaceTitle = (index) => `Space ${index + 1}`;
+
+    const updateSpaceTitleDisplay = (spaceKey, index, value) => {
+        const display = spaceTitleDisplays[spaceKey];
+        const normalizedValue = value ?? spaceTitleInputs[spaceKey]?.value ?? "";
+        const title = (normalizedValue ?? "").toString().trim() || defaultSpaceTitle(index);
+
+        if (display) {
+            display.textContent = title;
+        }
+
+        return title;
+    };
+
+    const setSpaceTitle = (spaceKey, index, value) => {
+        const input = spaceTitleInputs[spaceKey];
+        if (input && value !== undefined) {
+            input.value = value ?? "";
+        }
+
+        return updateSpaceTitleDisplay(spaceKey, index, value);
+    };
+
+    const getSpaceTitle = (spaceKey, index) => updateSpaceTitleDisplay(spaceKey, index);
+
+    spaceIds.forEach((spaceKey, index) => {
+        const input = spaceTitleInputs[spaceKey];
+        if (input) {
+            input.addEventListener("input", () => {
+                updateSpaceTitleDisplay(spaceKey, index, input.value);
+            });
+
+            updateSpaceTitleDisplay(spaceKey, index, input.value);
+        } else {
+            updateSpaceTitleDisplay(spaceKey, index);
+        }
+    });
 
     import { io } from "https://cdn.socket.io/4.8.1/socket.io.esm.min.js";
 
@@ -589,6 +655,7 @@
         status.textContent = "Connected";
         spaceIds.forEach((spaceKey, index) => {
             const incoming = config[`space${index + 1}`];
+            setSpaceTitle(spaceKey, index, incoming?.title);
             populateSpace(spaceKey, incoming);
         });
     });
@@ -598,7 +665,7 @@
 
         spaceIds.forEach((spaceKey, index) => {
             payload.data[`space${index + 1}`] = {
-                title: `Space ${index + 1}`,
+                title: getSpaceTitle(spaceKey, index),
                 ...buildEventPayload(spaceKey),
             };
         });
