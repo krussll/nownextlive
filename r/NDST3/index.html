@@ -466,6 +466,7 @@
             const title = data?.title ?? "";
             const subtitle = data?.subtitle ?? "";
             const time = data?.time ?? "";
+            const hasData = Boolean(title || subtitle || time);
 
             if (refs.title) {
                 refs.title.textContent = title;
@@ -477,13 +478,41 @@
             }
 
             if (refs.time) {
-                refs.time.textContent = descriptor;
-                refs.time.removeAttribute("aria-hidden");
+                refs.time.textContent = hasData ? descriptor : "";
+                if (hasData) {
+                    refs.time.removeAttribute("aria-hidden");
+                } else {
+                    refs.time.setAttribute("aria-hidden", "true");
+                }
             }
 
             if (refs.label) {
-                refs.label.textContent = time || "—";
+                refs.label.textContent = hasData ? (time || "") : "";
             }
+        };
+
+        const buildLegacyLineup = (spaceData = {}) => [
+            spaceData?.now,
+            spaceData?.next,
+            spaceData?.upcoming1 ?? spaceData?.later ?? spaceData?.additional?.[0] ?? spaceData?.queue?.[0],
+            spaceData?.upcoming2 ?? spaceData?.later2 ?? spaceData?.additional?.[1] ?? spaceData?.queue?.[1],
+        ];
+
+        const buildSessionLineup = (spaceData = {}) => {
+            const sessions = Array.isArray(spaceData?.sessions) ? spaceData.sessions : [];
+
+            if (!sessions.length) {
+                return [];
+            }
+
+            const nowIndex = Number.isInteger(spaceData?.nowIndex) ? spaceData.nowIndex : 0;
+            const startIndex = Math.min(Math.max(nowIndex, 0), sessions.length);
+
+            if (startIndex >= sessions.length) {
+                return [];
+            }
+
+            return sessions.slice(startIndex, startIndex + eventSlots.length);
         };
 
         const update_data = (payload = {}) => {
@@ -500,12 +529,8 @@
 
                 setSpaceTitle(space, spaceData?.title, index);
 
-                const upcomingLineup = [
-                    spaceData?.now,
-                    spaceData?.next,
-                    spaceData?.upcoming1 ?? spaceData?.later ?? spaceData?.additional?.[0] ?? spaceData?.queue?.[0],
-                    spaceData?.upcoming2 ?? spaceData?.later2 ?? spaceData?.additional?.[1] ?? spaceData?.queue?.[1],
-                ];
+                const sessionLineup = buildSessionLineup(spaceData);
+                const upcomingLineup = sessionLineup.length ? sessionLineup : buildLegacyLineup(spaceData);
 
                 eventSlots.forEach(({ key, descriptor }, idx) => {
                     setEventContent(space.events[key], upcomingLineup[idx], descriptor);
