@@ -1892,6 +1892,7 @@
 
     const updateSessionIndicators = (spaceKey) => {
         const activeIndex = activeSessionIndex[spaceKey] ?? 0;
+        console.log(activeIndex)
         sessionKeys.forEach(({ key }, index) => {
             const row = sessionPreviews[spaceKey]?.[key]?.row;
             if (!row) return;
@@ -1924,6 +1925,7 @@
 
     const setActiveSessionIndex = (spaceKey, nextIndex) => {
         activeSessionIndex[spaceKey] = clampSessionIndex(nextIndex);
+        console.log(activeSessionIndex, "setActiveSessionIndex")
         updateSessionIndicators(spaceKey);
         updateAdvanceButtonState(spaceKey);
     };
