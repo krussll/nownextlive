@@ -2218,7 +2218,11 @@
                 if (scope === "event") {
                     setEventTitle(eventTitleInput?.value);
                 } else if (scope === "space" && spaceKey) {
-                    setSpaceTitle(spaceKey, spaceTitleInputs[spaceKey]?.value);
+                    const proposedTitle = spaceTitleInputs[spaceKey]?.value ?? "";
+                    if (!proposedTitle.trim()) {
+                        return;
+                    }
+                    setSpaceTitle(spaceKey, proposedTitle);
                 }
             } else if (scope === "space" && spaceKey) {
                 saveSessionFromFields(spaceKey, eventKey);
