@@ -98,6 +98,9 @@
                                 </svg>
                             </span>
                         </button>
+                        <button class="button-secondary space-advance-button" type="button" data-stop-propagation data-space-advance="space1" disabled>
+                            Advance to next session
+                        </button>
                     </div>
                 </summary>
                 <div class="event-modal" id="space1-title-modal" hidden>
@@ -125,7 +128,7 @@
                 </div>
                 <div class="space-fields">
                     <div class="event-row-stack">
-            <div class="event-row" data-space="space1" data-event="now" data-event-order="1">
+            <div class="event-row" data-space="space1" data-event="session1" data-event-order="1">
                 <div class="event-row__info">
                     <span class="event-row__index">1</span>
                     <div class="event-row__text">
@@ -141,7 +144,7 @@
                             <path d="M12 20C15.866 20 19 16.866 19 13C19 9.13401 15.866 6 12 6C8.13401 6 5 9.13401 5 13C5 16.866 8.13401 20 12 20Z" stroke="currentColor" stroke-width="1.6"/>
                         </svg>
                     </button>
-                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space1-now-modal" aria-controls="space1-now-modal">
+                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space1-session1-modal" aria-controls="space1-session1-modal">
                         <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.757.426 1.757 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.757-2.924 1.757-3.35 0a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.757-.426-1.757-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -154,27 +157,27 @@
                     </button>
                 </div>
             </div>
-            <div class="event-modal" id="space1-now-modal" hidden>
+            <div class="event-modal" id="space1-session1-modal" hidden>
                 <div class="event-modal__backdrop" data-close-modal></div>
-                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space1-now-modal-title">
+                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space1-session1-modal-title">
                     <div class="event-modal__header">
                         <div>
                             <p class="event-modal__eyebrow" data-space-label="space1">Space 1</p>
-                            <h3 id="space1-now-modal-title">Now</h3>
+                            <h3 id="space1-session1-modal-title">Session 1</h3>
                         </div>
                         <button class="icon-button" type="button" aria-label="Close modal" data-close-modal>
                             <span aria-hidden="true">✕</span>
                         </button>
                     </div>
                     <div class="event-fields">
-                        <label for="space1-now">Session Title
-                            <input type="text" id="space1-now" name="space1-now-title" placeholder="Enter session title">
+                        <label for="space1-session1">Session Title
+                            <input type="text" id="space1-session1" name="space1-session1-title" placeholder="Enter session title">
                         </label>
-                        <label for="space1-now-time">Time
-                            <input type="text" id="space1-now-time" name="space1-now-time" class="time-input" placeholder="e.g. 09:00">
+                        <label for="space1-session1-time">Time
+                            <input type="text" id="space1-session1-time" name="space1-session1-time" class="time-input" placeholder="e.g. 09:00">
                         </label>
-                        <label for="space1-now-description">Details
-                            <input type="text" id="space1-now-description" name="space1-now-description" placeholder="Add optional notes or team names">
+                        <label for="space1-session1-description">Details
+                            <input type="text" id="space1-session1-description" name="space1-session1-description" placeholder="Add optional notes or team names">
                         </label>
                     </div>
                     <div class="modal-actions">
@@ -184,7 +187,7 @@
                 </div>
             </div>
 
-            <div class="event-row" data-space="space1" data-event="next" data-event-order="2">
+            <div class="event-row" data-space="space1" data-event="session2" data-event-order="2">
                 <div class="event-row__info">
                     <span class="event-row__index">2</span>
                     <div class="event-row__text">
@@ -200,7 +203,7 @@
                             <path d="M12 20C15.866 20 19 16.866 19 13C19 9.13401 15.866 6 12 6C8.13401 6 5 9.13401 5 13C5 16.866 8.13401 20 12 20Z" stroke="currentColor" stroke-width="1.6"/>
                         </svg>
                     </button>
-                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space1-next-modal" aria-controls="space1-next-modal">
+                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space1-session2-modal" aria-controls="space1-session2-modal">
                         <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.757.426 1.757 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.757-2.924 1.757-3.35 0a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.757-.426-1.757-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -213,27 +216,27 @@
                     </button>
                 </div>
             </div>
-            <div class="event-modal" id="space1-next-modal" hidden>
+            <div class="event-modal" id="space1-session2-modal" hidden>
                 <div class="event-modal__backdrop" data-close-modal></div>
-                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space1-next-modal-title">
+                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space1-session2-modal-title">
                     <div class="event-modal__header">
                         <div>
                             <p class="event-modal__eyebrow" data-space-label="space1">Space 1</p>
-                            <h3 id="space1-next-modal-title">Next</h3>
+                            <h3 id="space1-session2-modal-title">Session 2</h3>
                         </div>
                         <button class="icon-button" type="button" aria-label="Close modal" data-close-modal>
                             <span aria-hidden="true">✕</span>
                         </button>
                     </div>
                     <div class="event-fields">
-                        <label for="space1-next">Session Title
-                            <input type="text" id="space1-next" name="space1-next-title" placeholder="Enter session title">
+                        <label for="space1-session2">Session Title
+                            <input type="text" id="space1-session2" name="space1-session2-title" placeholder="Enter session title">
                         </label>
-                        <label for="space1-next-time">Time
-                            <input type="text" id="space1-next-time" name="space1-next-time" class="time-input" placeholder="e.g. 09:00">
+                        <label for="space1-session2-time">Time
+                            <input type="text" id="space1-session2-time" name="space1-session2-time" class="time-input" placeholder="e.g. 09:00">
                         </label>
-                        <label for="space1-next-description">Details
-                            <input type="text" id="space1-next-description" name="space1-next-description" placeholder="Add optional notes or team names">
+                        <label for="space1-session2-description">Details
+                            <input type="text" id="space1-session2-description" name="space1-session2-description" placeholder="Add optional notes or team names">
                         </label>
                     </div>
                     <div class="modal-actions">
@@ -243,7 +246,7 @@
                 </div>
             </div>
 
-            <div class="event-row" data-space="space1" data-event="upcoming1" data-event-order="3">
+            <div class="event-row" data-space="space1" data-event="session3" data-event-order="3">
                 <div class="event-row__info">
                     <span class="event-row__index">3</span>
                     <div class="event-row__text">
@@ -259,7 +262,7 @@
                             <path d="M12 20C15.866 20 19 16.866 19 13C19 9.13401 15.866 6 12 6C8.13401 6 5 9.13401 5 13C5 16.866 8.13401 20 12 20Z" stroke="currentColor" stroke-width="1.6"/>
                         </svg>
                     </button>
-                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space1-upcoming1-modal" aria-controls="space1-upcoming1-modal">
+                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space1-session3-modal" aria-controls="space1-session3-modal">
                         <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.757.426 1.757 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.757-2.924 1.757-3.35 0a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.757-.426-1.757-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -272,27 +275,27 @@
                     </button>
                 </div>
             </div>
-            <div class="event-modal" id="space1-upcoming1-modal" hidden>
+            <div class="event-modal" id="space1-session3-modal" hidden>
                 <div class="event-modal__backdrop" data-close-modal></div>
-                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space1-upcoming1-modal-title">
+                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space1-session3-modal-title">
                     <div class="event-modal__header">
                         <div>
                             <p class="event-modal__eyebrow" data-space-label="space1">Space 1</p>
-                            <h3 id="space1-upcoming1-modal-title">Event 1</h3>
+                            <h3 id="space1-session3-modal-title">Session 3</h3>
                         </div>
                         <button class="icon-button" type="button" aria-label="Close modal" data-close-modal>
                             <span aria-hidden="true">✕</span>
                         </button>
                     </div>
                     <div class="event-fields">
-                        <label for="space1-upcoming1">Session Title
-                            <input type="text" id="space1-upcoming1" name="space1-upcoming1-title" placeholder="Enter session title">
+                        <label for="space1-session3">Session Title
+                            <input type="text" id="space1-session3" name="space1-session3-title" placeholder="Enter session title">
                         </label>
-                        <label for="space1-upcoming1-time">Time
-                            <input type="text" id="space1-upcoming1-time" name="space1-upcoming1-time" class="time-input" placeholder="e.g. 09:00">
+                        <label for="space1-session3-time">Time
+                            <input type="text" id="space1-session3-time" name="space1-session3-time" class="time-input" placeholder="e.g. 09:00">
                         </label>
-                        <label for="space1-upcoming1-description">Details
-                            <input type="text" id="space1-upcoming1-description" name="space1-upcoming1-description" placeholder="Add optional notes or team names">
+                        <label for="space1-session3-description">Details
+                            <input type="text" id="space1-session3-description" name="space1-session3-description" placeholder="Add optional notes or team names">
                         </label>
                     </div>
                     <div class="modal-actions">
@@ -302,7 +305,7 @@
                 </div>
             </div>
 
-            <div class="event-row" data-space="space1" data-event="upcoming2" data-event-order="4">
+            <div class="event-row" data-space="space1" data-event="session4" data-event-order="4">
                 <div class="event-row__info">
                     <span class="event-row__index">4</span>
                     <div class="event-row__text">
@@ -318,7 +321,7 @@
                             <path d="M12 20C15.866 20 19 16.866 19 13C19 9.13401 15.866 6 12 6C8.13401 6 5 9.13401 5 13C5 16.866 8.13401 20 12 20Z" stroke="currentColor" stroke-width="1.6"/>
                         </svg>
                     </button>
-                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space1-upcoming2-modal" aria-controls="space1-upcoming2-modal">
+                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space1-session4-modal" aria-controls="space1-session4-modal">
                         <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.757.426 1.757 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.757-2.924 1.757-3.35 0a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.757-.426-1.757-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -331,27 +334,27 @@
                     </button>
                 </div>
             </div>
-            <div class="event-modal" id="space1-upcoming2-modal" hidden>
+            <div class="event-modal" id="space1-session4-modal" hidden>
                 <div class="event-modal__backdrop" data-close-modal></div>
-                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space1-upcoming2-modal-title">
+                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space1-session4-modal-title">
                     <div class="event-modal__header">
                         <div>
                             <p class="event-modal__eyebrow" data-space-label="space1">Space 1</p>
-                            <h3 id="space1-upcoming2-modal-title">Event 2</h3>
+                            <h3 id="space1-session4-modal-title">Session 4</h3>
                         </div>
                         <button class="icon-button" type="button" aria-label="Close modal" data-close-modal>
                             <span aria-hidden="true">✕</span>
                         </button>
                     </div>
                     <div class="event-fields">
-                        <label for="space1-upcoming2">Session Title
-                            <input type="text" id="space1-upcoming2" name="space1-upcoming2-title" placeholder="Enter session title">
+                        <label for="space1-session4">Session Title
+                            <input type="text" id="space1-session4" name="space1-session4-title" placeholder="Enter session title">
                         </label>
-                        <label for="space1-upcoming2-time">Time
-                            <input type="text" id="space1-upcoming2-time" name="space1-upcoming2-time" class="time-input" placeholder="e.g. 09:00">
+                        <label for="space1-session4-time">Time
+                            <input type="text" id="space1-session4-time" name="space1-session4-time" class="time-input" placeholder="e.g. 09:00">
                         </label>
-                        <label for="space1-upcoming2-description">Details
-                            <input type="text" id="space1-upcoming2-description" name="space1-upcoming2-description" placeholder="Add optional notes or team names">
+                        <label for="space1-session4-description">Details
+                            <input type="text" id="space1-session4-description" name="space1-session4-description" placeholder="Add optional notes or team names">
                         </label>
                     </div>
                     <div class="modal-actions">
@@ -375,6 +378,9 @@
                                     <path d="M13.5 8.5L15.5 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </span>
+                        </button>
+                        <button class="button-secondary space-advance-button" type="button" data-stop-propagation data-space-advance="space2" disabled>
+                            Advance to next session
                         </button>
                     </div>
                 </summary>
@@ -403,7 +409,7 @@
                 </div>
                 <div class="space-fields">
                     <div class="event-row-stack">
-            <div class="event-row" data-space="space2" data-event="now" data-event-order="1">
+            <div class="event-row" data-space="space2" data-event="session1" data-event-order="1">
                 <div class="event-row__info">
                     <span class="event-row__index">1</span>
                     <div class="event-row__text">
@@ -419,7 +425,7 @@
                             <path d="M12 20C15.866 20 19 16.866 19 13C19 9.13401 15.866 6 12 6C8.13401 6 5 9.13401 5 13C5 16.866 8.13401 20 12 20Z" stroke="currentColor" stroke-width="1.6"/>
                         </svg>
                     </button>
-                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space2-now-modal" aria-controls="space2-now-modal">
+                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space2-session1-modal" aria-controls="space2-session1-modal">
                         <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.757.426 1.757 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.757-2.924 1.757-3.35 0a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.757-.426-1.757-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -432,27 +438,27 @@
                     </button>
                 </div>
             </div>
-            <div class="event-modal" id="space2-now-modal" hidden>
+            <div class="event-modal" id="space2-session1-modal" hidden>
                 <div class="event-modal__backdrop" data-close-modal></div>
-                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space2-now-modal-title">
+                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space2-session1-modal-title">
                     <div class="event-modal__header">
                         <div>
                             <p class="event-modal__eyebrow" data-space-label="space2">Space 2</p>
-                            <h3 id="space2-now-modal-title">Now</h3>
+                            <h3 id="space2-session1-modal-title">Session 1</h3>
                         </div>
                         <button class="icon-button" type="button" aria-label="Close modal" data-close-modal>
                             <span aria-hidden="true">✕</span>
                         </button>
                     </div>
                     <div class="event-fields">
-                        <label for="space2-now">Session Title
-                            <input type="text" id="space2-now" name="space2-now-title" placeholder="Enter session title">
+                        <label for="space2-session1">Session Title
+                            <input type="text" id="space2-session1" name="space2-session1-title" placeholder="Enter session title">
                         </label>
-                        <label for="space2-now-time">Time
-                            <input type="text" id="space2-now-time" name="space2-now-time" class="time-input" placeholder="e.g. 09:00">
+                        <label for="space2-session1-time">Time
+                            <input type="text" id="space2-session1-time" name="space2-session1-time" class="time-input" placeholder="e.g. 09:00">
                         </label>
-                        <label for="space2-now-description">Details
-                            <input type="text" id="space2-now-description" name="space2-now-description" placeholder="Add optional notes or team names">
+                        <label for="space2-session1-description">Details
+                            <input type="text" id="space2-session1-description" name="space2-session1-description" placeholder="Add optional notes or team names">
                         </label>
                     </div>
                     <div class="modal-actions">
@@ -462,7 +468,7 @@
                 </div>
             </div>
 
-            <div class="event-row" data-space="space2" data-event="next" data-event-order="2">
+            <div class="event-row" data-space="space2" data-event="session2" data-event-order="2">
                 <div class="event-row__info">
                     <span class="event-row__index">2</span>
                     <div class="event-row__text">
@@ -478,7 +484,7 @@
                             <path d="M12 20C15.866 20 19 16.866 19 13C19 9.13401 15.866 6 12 6C8.13401 6 5 9.13401 5 13C5 16.866 8.13401 20 12 20Z" stroke="currentColor" stroke-width="1.6"/>
                         </svg>
                     </button>
-                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space2-next-modal" aria-controls="space2-next-modal">
+                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space2-session2-modal" aria-controls="space2-session2-modal">
                         <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.757.426 1.757 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.757-2.924 1.757-3.35 0a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.757-.426-1.757-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -491,27 +497,27 @@
                     </button>
                 </div>
             </div>
-            <div class="event-modal" id="space2-next-modal" hidden>
+            <div class="event-modal" id="space2-session2-modal" hidden>
                 <div class="event-modal__backdrop" data-close-modal></div>
-                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space2-next-modal-title">
+                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space2-session2-modal-title">
                     <div class="event-modal__header">
                         <div>
                             <p class="event-modal__eyebrow" data-space-label="space2">Space 2</p>
-                            <h3 id="space2-next-modal-title">Next</h3>
+                            <h3 id="space2-session2-modal-title">Session 2</h3>
                         </div>
                         <button class="icon-button" type="button" aria-label="Close modal" data-close-modal>
                             <span aria-hidden="true">✕</span>
                         </button>
                     </div>
                     <div class="event-fields">
-                        <label for="space2-next">Session Title
-                            <input type="text" id="space2-next" name="space2-next-title" placeholder="Enter session title">
+                        <label for="space2-session2">Session Title
+                            <input type="text" id="space2-session2" name="space2-session2-title" placeholder="Enter session title">
                         </label>
-                        <label for="space2-next-time">Time
-                            <input type="text" id="space2-next-time" name="space2-next-time" class="time-input" placeholder="e.g. 09:00">
+                        <label for="space2-session2-time">Time
+                            <input type="text" id="space2-session2-time" name="space2-session2-time" class="time-input" placeholder="e.g. 09:00">
                         </label>
-                        <label for="space2-next-description">Details
-                            <input type="text" id="space2-next-description" name="space2-next-description" placeholder="Add optional notes or team names">
+                        <label for="space2-session2-description">Details
+                            <input type="text" id="space2-session2-description" name="space2-session2-description" placeholder="Add optional notes or team names">
                         </label>
                     </div>
                     <div class="modal-actions">
@@ -521,7 +527,7 @@
                 </div>
             </div>
 
-            <div class="event-row" data-space="space2" data-event="upcoming1" data-event-order="3">
+            <div class="event-row" data-space="space2" data-event="session3" data-event-order="3">
                 <div class="event-row__info">
                     <span class="event-row__index">3</span>
                     <div class="event-row__text">
@@ -537,7 +543,7 @@
                             <path d="M12 20C15.866 20 19 16.866 19 13C19 9.13401 15.866 6 12 6C8.13401 6 5 9.13401 5 13C5 16.866 8.13401 20 12 20Z" stroke="currentColor" stroke-width="1.6"/>
                         </svg>
                     </button>
-                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space2-upcoming1-modal" aria-controls="space2-upcoming1-modal">
+                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space2-session3-modal" aria-controls="space2-session3-modal">
                         <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.757.426 1.757 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.757-2.924 1.757-3.35 0a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.757-.426-1.757-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -550,27 +556,27 @@
                     </button>
                 </div>
             </div>
-            <div class="event-modal" id="space2-upcoming1-modal" hidden>
+            <div class="event-modal" id="space2-session3-modal" hidden>
                 <div class="event-modal__backdrop" data-close-modal></div>
-                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space2-upcoming1-modal-title">
+                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space2-session3-modal-title">
                     <div class="event-modal__header">
                         <div>
                             <p class="event-modal__eyebrow" data-space-label="space2">Space 2</p>
-                            <h3 id="space2-upcoming1-modal-title">Event 1</h3>
+                            <h3 id="space2-session3-modal-title">Session 3</h3>
                         </div>
                         <button class="icon-button" type="button" aria-label="Close modal" data-close-modal>
                             <span aria-hidden="true">✕</span>
                         </button>
                     </div>
                     <div class="event-fields">
-                        <label for="space2-upcoming1">Session Title
-                            <input type="text" id="space2-upcoming1" name="space2-upcoming1-title" placeholder="Enter session title">
+                        <label for="space2-session3">Session Title
+                            <input type="text" id="space2-session3" name="space2-session3-title" placeholder="Enter session title">
                         </label>
-                        <label for="space2-upcoming1-time">Time
-                            <input type="text" id="space2-upcoming1-time" name="space2-upcoming1-time" class="time-input" placeholder="e.g. 09:00">
+                        <label for="space2-session3-time">Time
+                            <input type="text" id="space2-session3-time" name="space2-session3-time" class="time-input" placeholder="e.g. 09:00">
                         </label>
-                        <label for="space2-upcoming1-description">Details
-                            <input type="text" id="space2-upcoming1-description" name="space2-upcoming1-description" placeholder="Add optional notes or team names">
+                        <label for="space2-session3-description">Details
+                            <input type="text" id="space2-session3-description" name="space2-session3-description" placeholder="Add optional notes or team names">
                         </label>
                     </div>
                     <div class="modal-actions">
@@ -580,7 +586,7 @@
                 </div>
             </div>
 
-            <div class="event-row" data-space="space2" data-event="upcoming2" data-event-order="4">
+            <div class="event-row" data-space="space2" data-event="session4" data-event-order="4">
                 <div class="event-row__info">
                     <span class="event-row__index">4</span>
                     <div class="event-row__text">
@@ -596,7 +602,7 @@
                             <path d="M12 20C15.866 20 19 16.866 19 13C19 9.13401 15.866 6 12 6C8.13401 6 5 9.13401 5 13C5 16.866 8.13401 20 12 20Z" stroke="currentColor" stroke-width="1.6"/>
                         </svg>
                     </button>
-                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space2-upcoming2-modal" aria-controls="space2-upcoming2-modal">
+                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space2-session4-modal" aria-controls="space2-session4-modal">
                         <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.757.426 1.757 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.757-2.924 1.757-3.35 0a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.757-.426-1.757-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -609,27 +615,27 @@
                     </button>
                 </div>
             </div>
-            <div class="event-modal" id="space2-upcoming2-modal" hidden>
+            <div class="event-modal" id="space2-session4-modal" hidden>
                 <div class="event-modal__backdrop" data-close-modal></div>
-                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space2-upcoming2-modal-title">
+                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space2-session4-modal-title">
                     <div class="event-modal__header">
                         <div>
                             <p class="event-modal__eyebrow" data-space-label="space2">Space 2</p>
-                            <h3 id="space2-upcoming2-modal-title">Event 2</h3>
+                            <h3 id="space2-session4-modal-title">Session 4</h3>
                         </div>
                         <button class="icon-button" type="button" aria-label="Close modal" data-close-modal>
                             <span aria-hidden="true">✕</span>
                         </button>
                     </div>
                     <div class="event-fields">
-                        <label for="space2-upcoming2">Session Title
-                            <input type="text" id="space2-upcoming2" name="space2-upcoming2-title" placeholder="Enter session title">
+                        <label for="space2-session4">Session Title
+                            <input type="text" id="space2-session4" name="space2-session4-title" placeholder="Enter session title">
                         </label>
-                        <label for="space2-upcoming2-time">Time
-                            <input type="text" id="space2-upcoming2-time" name="space2-upcoming2-time" class="time-input" placeholder="e.g. 09:00">
+                        <label for="space2-session4-time">Time
+                            <input type="text" id="space2-session4-time" name="space2-session4-time" class="time-input" placeholder="e.g. 09:00">
                         </label>
-                        <label for="space2-upcoming2-description">Details
-                            <input type="text" id="space2-upcoming2-description" name="space2-upcoming2-description" placeholder="Add optional notes or team names">
+                        <label for="space2-session4-description">Details
+                            <input type="text" id="space2-session4-description" name="space2-session4-description" placeholder="Add optional notes or team names">
                         </label>
                     </div>
                     <div class="modal-actions">
@@ -653,6 +659,9 @@
                                     <path d="M13.5 8.5L15.5 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </span>
+                        </button>
+                        <button class="button-secondary space-advance-button" type="button" data-stop-propagation data-space-advance="space3" disabled>
+                            Advance to next session
                         </button>
                     </div>
                 </summary>
@@ -681,7 +690,7 @@
                 </div>
                 <div class="space-fields">
                     <div class="event-row-stack">
-            <div class="event-row" data-space="space3" data-event="now" data-event-order="1">
+            <div class="event-row" data-space="space3" data-event="session1" data-event-order="1">
                 <div class="event-row__info">
                     <span class="event-row__index">1</span>
                     <div class="event-row__text">
@@ -697,7 +706,7 @@
                             <path d="M12 20C15.866 20 19 16.866 19 13C19 9.13401 15.866 6 12 6C8.13401 6 5 9.13401 5 13C5 16.866 8.13401 20 12 20Z" stroke="currentColor" stroke-width="1.6"/>
                         </svg>
                     </button>
-                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space3-now-modal" aria-controls="space3-now-modal">
+                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space3-session1-modal" aria-controls="space3-session1-modal">
                         <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.757.426 1.757 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.757-2.924 1.757-3.35 0a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.757-.426-1.757-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -710,27 +719,27 @@
                     </button>
                 </div>
             </div>
-            <div class="event-modal" id="space3-now-modal" hidden>
+            <div class="event-modal" id="space3-session1-modal" hidden>
                 <div class="event-modal__backdrop" data-close-modal></div>
-                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space3-now-modal-title">
+                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space3-session1-modal-title">
                     <div class="event-modal__header">
                         <div>
                             <p class="event-modal__eyebrow" data-space-label="space3">Space 3</p>
-                            <h3 id="space3-now-modal-title">Now</h3>
+                            <h3 id="space3-session1-modal-title">Session 1</h3>
                         </div>
                         <button class="icon-button" type="button" aria-label="Close modal" data-close-modal>
                             <span aria-hidden="true">✕</span>
                         </button>
                     </div>
                     <div class="event-fields">
-                        <label for="space3-now">Session Title
-                            <input type="text" id="space3-now" name="space3-now-title" placeholder="Enter session title">
+                        <label for="space3-session1">Session Title
+                            <input type="text" id="space3-session1" name="space3-session1-title" placeholder="Enter session title">
                         </label>
-                        <label for="space3-now-time">Time
-                            <input type="text" id="space3-now-time" name="space3-now-time" class="time-input" placeholder="e.g. 09:00">
+                        <label for="space3-session1-time">Time
+                            <input type="text" id="space3-session1-time" name="space3-session1-time" class="time-input" placeholder="e.g. 09:00">
                         </label>
-                        <label for="space3-now-description">Details
-                            <input type="text" id="space3-now-description" name="space3-now-description" placeholder="Add optional notes or team names">
+                        <label for="space3-session1-description">Details
+                            <input type="text" id="space3-session1-description" name="space3-session1-description" placeholder="Add optional notes or team names">
                         </label>
                     </div>
                     <div class="modal-actions">
@@ -740,7 +749,7 @@
                 </div>
             </div>
 
-            <div class="event-row" data-space="space3" data-event="next" data-event-order="2">
+            <div class="event-row" data-space="space3" data-event="session2" data-event-order="2">
                 <div class="event-row__info">
                     <span class="event-row__index">2</span>
                     <div class="event-row__text">
@@ -756,7 +765,7 @@
                             <path d="M12 20C15.866 20 19 16.866 19 13C19 9.13401 15.866 6 12 6C8.13401 6 5 9.13401 5 13C5 16.866 8.13401 20 12 20Z" stroke="currentColor" stroke-width="1.6"/>
                         </svg>
                     </button>
-                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space3-next-modal" aria-controls="space3-next-modal">
+                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space3-session2-modal" aria-controls="space3-session2-modal">
                         <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.757.426 1.757 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.757-2.924 1.757-3.35 0a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.757-.426-1.757-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -769,27 +778,27 @@
                     </button>
                 </div>
             </div>
-            <div class="event-modal" id="space3-next-modal" hidden>
+            <div class="event-modal" id="space3-session2-modal" hidden>
                 <div class="event-modal__backdrop" data-close-modal></div>
-                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space3-next-modal-title">
+                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space3-session2-modal-title">
                     <div class="event-modal__header">
                         <div>
                             <p class="event-modal__eyebrow" data-space-label="space3">Space 3</p>
-                            <h3 id="space3-next-modal-title">Next</h3>
+                            <h3 id="space3-session2-modal-title">Session 2</h3>
                         </div>
                         <button class="icon-button" type="button" aria-label="Close modal" data-close-modal>
                             <span aria-hidden="true">✕</span>
                         </button>
                     </div>
                     <div class="event-fields">
-                        <label for="space3-next">Session Title
-                            <input type="text" id="space3-next" name="space3-next-title" placeholder="Enter session title">
+                        <label for="space3-session2">Session Title
+                            <input type="text" id="space3-session2" name="space3-session2-title" placeholder="Enter session title">
                         </label>
-                        <label for="space3-next-time">Time
-                            <input type="text" id="space3-next-time" name="space3-next-time" class="time-input" placeholder="e.g. 09:00">
+                        <label for="space3-session2-time">Time
+                            <input type="text" id="space3-session2-time" name="space3-session2-time" class="time-input" placeholder="e.g. 09:00">
                         </label>
-                        <label for="space3-next-description">Details
-                            <input type="text" id="space3-next-description" name="space3-next-description" placeholder="Add optional notes or team names">
+                        <label for="space3-session2-description">Details
+                            <input type="text" id="space3-session2-description" name="space3-session2-description" placeholder="Add optional notes or team names">
                         </label>
                     </div>
                     <div class="modal-actions">
@@ -799,7 +808,7 @@
                 </div>
             </div>
 
-            <div class="event-row" data-space="space3" data-event="upcoming1" data-event-order="3">
+            <div class="event-row" data-space="space3" data-event="session3" data-event-order="3">
                 <div class="event-row__info">
                     <span class="event-row__index">3</span>
                     <div class="event-row__text">
@@ -815,7 +824,7 @@
                             <path d="M12 20C15.866 20 19 16.866 19 13C19 9.13401 15.866 6 12 6C8.13401 6 5 9.13401 5 13C5 16.866 8.13401 20 12 20Z" stroke="currentColor" stroke-width="1.6"/>
                         </svg>
                     </button>
-                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space3-upcoming1-modal" aria-controls="space3-upcoming1-modal">
+                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space3-session3-modal" aria-controls="space3-session3-modal">
                         <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.757.426 1.757 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.757-2.924 1.757-3.35 0a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.757-.426-1.757-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -828,27 +837,27 @@
                     </button>
                 </div>
             </div>
-            <div class="event-modal" id="space3-upcoming1-modal" hidden>
+            <div class="event-modal" id="space3-session3-modal" hidden>
                 <div class="event-modal__backdrop" data-close-modal></div>
-                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space3-upcoming1-modal-title">
+                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space3-session3-modal-title">
                     <div class="event-modal__header">
                         <div>
                             <p class="event-modal__eyebrow" data-space-label="space3">Space 3</p>
-                            <h3 id="space3-upcoming1-modal-title">Event 1</h3>
+                            <h3 id="space3-session3-modal-title">Session 3</h3>
                         </div>
                         <button class="icon-button" type="button" aria-label="Close modal" data-close-modal>
                             <span aria-hidden="true">✕</span>
                         </button>
                     </div>
                     <div class="event-fields">
-                        <label for="space3-upcoming1">Session Title
-                            <input type="text" id="space3-upcoming1" name="space3-upcoming1-title" placeholder="Enter session title">
+                        <label for="space3-session3">Session Title
+                            <input type="text" id="space3-session3" name="space3-session3-title" placeholder="Enter session title">
                         </label>
-                        <label for="space3-upcoming1-time">Time
-                            <input type="text" id="space3-upcoming1-time" name="space3-upcoming1-time" class="time-input" placeholder="e.g. 09:00">
+                        <label for="space3-session3-time">Time
+                            <input type="text" id="space3-session3-time" name="space3-session3-time" class="time-input" placeholder="e.g. 09:00">
                         </label>
-                        <label for="space3-upcoming1-description">Details
-                            <input type="text" id="space3-upcoming1-description" name="space3-upcoming1-description" placeholder="Add optional notes or team names">
+                        <label for="space3-session3-description">Details
+                            <input type="text" id="space3-session3-description" name="space3-session3-description" placeholder="Add optional notes or team names">
                         </label>
                     </div>
                     <div class="modal-actions">
@@ -858,7 +867,7 @@
                 </div>
             </div>
 
-            <div class="event-row" data-space="space3" data-event="upcoming2" data-event-order="4">
+            <div class="event-row" data-space="space3" data-event="session4" data-event-order="4">
                 <div class="event-row__info">
                     <span class="event-row__index">4</span>
                     <div class="event-row__text">
@@ -874,7 +883,7 @@
                             <path d="M12 20C15.866 20 19 16.866 19 13C19 9.13401 15.866 6 12 6C8.13401 6 5 9.13401 5 13C5 16.866 8.13401 20 12 20Z" stroke="currentColor" stroke-width="1.6"/>
                         </svg>
                     </button>
-                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space3-upcoming2-modal" aria-controls="space3-upcoming2-modal">
+                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space3-session4-modal" aria-controls="space3-session4-modal">
                         <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.757.426 1.757 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.757-2.924 1.757-3.35 0a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.757-.426-1.757-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -887,27 +896,27 @@
                     </button>
                 </div>
             </div>
-            <div class="event-modal" id="space3-upcoming2-modal" hidden>
+            <div class="event-modal" id="space3-session4-modal" hidden>
                 <div class="event-modal__backdrop" data-close-modal></div>
-                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space3-upcoming2-modal-title">
+                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space3-session4-modal-title">
                     <div class="event-modal__header">
                         <div>
                             <p class="event-modal__eyebrow" data-space-label="space3">Space 3</p>
-                            <h3 id="space3-upcoming2-modal-title">Event 2</h3>
+                            <h3 id="space3-session4-modal-title">Session 4</h3>
                         </div>
                         <button class="icon-button" type="button" aria-label="Close modal" data-close-modal>
                             <span aria-hidden="true">✕</span>
                         </button>
                     </div>
                     <div class="event-fields">
-                        <label for="space3-upcoming2">Session Title
-                            <input type="text" id="space3-upcoming2" name="space3-upcoming2-title" placeholder="Enter session title">
+                        <label for="space3-session4">Session Title
+                            <input type="text" id="space3-session4" name="space3-session4-title" placeholder="Enter session title">
                         </label>
-                        <label for="space3-upcoming2-time">Time
-                            <input type="text" id="space3-upcoming2-time" name="space3-upcoming2-time" class="time-input" placeholder="e.g. 09:00">
+                        <label for="space3-session4-time">Time
+                            <input type="text" id="space3-session4-time" name="space3-session4-time" class="time-input" placeholder="e.g. 09:00">
                         </label>
-                        <label for="space3-upcoming2-description">Details
-                            <input type="text" id="space3-upcoming2-description" name="space3-upcoming2-description" placeholder="Add optional notes or team names">
+                        <label for="space3-session4-description">Details
+                            <input type="text" id="space3-session4-description" name="space3-session4-description" placeholder="Add optional notes or team names">
                         </label>
                     </div>
                     <div class="modal-actions">
@@ -931,6 +940,9 @@
                                     <path d="M13.5 8.5L15.5 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </span>
+                        </button>
+                        <button class="button-secondary space-advance-button" type="button" data-stop-propagation data-space-advance="space4" disabled>
+                            Advance to next session
                         </button>
                     </div>
                 </summary>
@@ -959,7 +971,7 @@
                 </div>
                 <div class="space-fields">
                     <div class="event-row-stack">
-            <div class="event-row" data-space="space4" data-event="now" data-event-order="1">
+            <div class="event-row" data-space="space4" data-event="session1" data-event-order="1">
                 <div class="event-row__info">
                     <span class="event-row__index">1</span>
                     <div class="event-row__text">
@@ -975,7 +987,7 @@
                             <path d="M12 20C15.866 20 19 16.866 19 13C19 9.13401 15.866 6 12 6C8.13401 6 5 9.13401 5 13C5 16.866 8.13401 20 12 20Z" stroke="currentColor" stroke-width="1.6"/>
                         </svg>
                     </button>
-                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space4-now-modal" aria-controls="space4-now-modal">
+                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space4-session1-modal" aria-controls="space4-session1-modal">
                         <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.757.426 1.757 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.757-2.924 1.757-3.35 0a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.757-.426-1.757-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -988,27 +1000,27 @@
                     </button>
                 </div>
             </div>
-            <div class="event-modal" id="space4-now-modal" hidden>
+            <div class="event-modal" id="space4-session1-modal" hidden>
                 <div class="event-modal__backdrop" data-close-modal></div>
-                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space4-now-modal-title">
+                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space4-session1-modal-title">
                     <div class="event-modal__header">
                         <div>
                             <p class="event-modal__eyebrow" data-space-label="space4">Space 4</p>
-                            <h3 id="space4-now-modal-title">Now</h3>
+                            <h3 id="space4-session1-modal-title">Session 1</h3>
                         </div>
                         <button class="icon-button" type="button" aria-label="Close modal" data-close-modal>
                             <span aria-hidden="true">✕</span>
                         </button>
                     </div>
                     <div class="event-fields">
-                        <label for="space4-now">Session Title
-                            <input type="text" id="space4-now" name="space4-now-title" placeholder="Enter session title">
+                        <label for="space4-session1">Session Title
+                            <input type="text" id="space4-session1" name="space4-session1-title" placeholder="Enter session title">
                         </label>
-                        <label for="space4-now-time">Time
-                            <input type="text" id="space4-now-time" name="space4-now-time" class="time-input" placeholder="e.g. 09:00">
+                        <label for="space4-session1-time">Time
+                            <input type="text" id="space4-session1-time" name="space4-session1-time" class="time-input" placeholder="e.g. 09:00">
                         </label>
-                        <label for="space4-now-description">Details
-                            <input type="text" id="space4-now-description" name="space4-now-description" placeholder="Add optional notes or team names">
+                        <label for="space4-session1-description">Details
+                            <input type="text" id="space4-session1-description" name="space4-session1-description" placeholder="Add optional notes or team names">
                         </label>
                     </div>
                     <div class="modal-actions">
@@ -1018,7 +1030,7 @@
                 </div>
             </div>
 
-            <div class="event-row" data-space="space4" data-event="next" data-event-order="2">
+            <div class="event-row" data-space="space4" data-event="session2" data-event-order="2">
                 <div class="event-row__info">
                     <span class="event-row__index">2</span>
                     <div class="event-row__text">
@@ -1034,7 +1046,7 @@
                             <path d="M12 20C15.866 20 19 16.866 19 13C19 9.13401 15.866 6 12 6C8.13401 6 5 9.13401 5 13C5 16.866 8.13401 20 12 20Z" stroke="currentColor" stroke-width="1.6"/>
                         </svg>
                     </button>
-                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space4-next-modal" aria-controls="space4-next-modal">
+                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space4-session2-modal" aria-controls="space4-session2-modal">
                         <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.757.426 1.757 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.757-2.924 1.757-3.35 0a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.757-.426-1.757-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1047,27 +1059,27 @@
                     </button>
                 </div>
             </div>
-            <div class="event-modal" id="space4-next-modal" hidden>
+            <div class="event-modal" id="space4-session2-modal" hidden>
                 <div class="event-modal__backdrop" data-close-modal></div>
-                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space4-next-modal-title">
+                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space4-session2-modal-title">
                     <div class="event-modal__header">
                         <div>
                             <p class="event-modal__eyebrow" data-space-label="space4">Space 4</p>
-                            <h3 id="space4-next-modal-title">Next</h3>
+                            <h3 id="space4-session2-modal-title">Session 2</h3>
                         </div>
                         <button class="icon-button" type="button" aria-label="Close modal" data-close-modal>
                             <span aria-hidden="true">✕</span>
                         </button>
                     </div>
                     <div class="event-fields">
-                        <label for="space4-next">Session Title
-                            <input type="text" id="space4-next" name="space4-next-title" placeholder="Enter session title">
+                        <label for="space4-session2">Session Title
+                            <input type="text" id="space4-session2" name="space4-session2-title" placeholder="Enter session title">
                         </label>
-                        <label for="space4-next-time">Time
-                            <input type="text" id="space4-next-time" name="space4-next-time" class="time-input" placeholder="e.g. 09:00">
+                        <label for="space4-session2-time">Time
+                            <input type="text" id="space4-session2-time" name="space4-session2-time" class="time-input" placeholder="e.g. 09:00">
                         </label>
-                        <label for="space4-next-description">Details
-                            <input type="text" id="space4-next-description" name="space4-next-description" placeholder="Add optional notes or team names">
+                        <label for="space4-session2-description">Details
+                            <input type="text" id="space4-session2-description" name="space4-session2-description" placeholder="Add optional notes or team names">
                         </label>
                     </div>
                     <div class="modal-actions">
@@ -1077,7 +1089,7 @@
                 </div>
             </div>
 
-            <div class="event-row" data-space="space4" data-event="upcoming1" data-event-order="3">
+            <div class="event-row" data-space="space4" data-event="session3" data-event-order="3">
                 <div class="event-row__info">
                     <span class="event-row__index">3</span>
                     <div class="event-row__text">
@@ -1093,7 +1105,7 @@
                             <path d="M12 20C15.866 20 19 16.866 19 13C19 9.13401 15.866 6 12 6C8.13401 6 5 9.13401 5 13C5 16.866 8.13401 20 12 20Z" stroke="currentColor" stroke-width="1.6"/>
                         </svg>
                     </button>
-                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space4-upcoming1-modal" aria-controls="space4-upcoming1-modal">
+                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space4-session3-modal" aria-controls="space4-session3-modal">
                         <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.757.426 1.757 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.757-2.924 1.757-3.35 0a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.757-.426-1.757-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1106,27 +1118,27 @@
                     </button>
                 </div>
             </div>
-            <div class="event-modal" id="space4-upcoming1-modal" hidden>
+            <div class="event-modal" id="space4-session3-modal" hidden>
                 <div class="event-modal__backdrop" data-close-modal></div>
-                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space4-upcoming1-modal-title">
+                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space4-session3-modal-title">
                     <div class="event-modal__header">
                         <div>
                             <p class="event-modal__eyebrow" data-space-label="space4">Space 4</p>
-                            <h3 id="space4-upcoming1-modal-title">Event 1</h3>
+                            <h3 id="space4-session3-modal-title">Session 3</h3>
                         </div>
                         <button class="icon-button" type="button" aria-label="Close modal" data-close-modal>
                             <span aria-hidden="true">✕</span>
                         </button>
                     </div>
                     <div class="event-fields">
-                        <label for="space4-upcoming1">Session Title
-                            <input type="text" id="space4-upcoming1" name="space4-upcoming1-title" placeholder="Enter session title">
+                        <label for="space4-session3">Session Title
+                            <input type="text" id="space4-session3" name="space4-session3-title" placeholder="Enter session title">
                         </label>
-                        <label for="space4-upcoming1-time">Time
-                            <input type="text" id="space4-upcoming1-time" name="space4-upcoming1-time" class="time-input" placeholder="e.g. 09:00">
+                        <label for="space4-session3-time">Time
+                            <input type="text" id="space4-session3-time" name="space4-session3-time" class="time-input" placeholder="e.g. 09:00">
                         </label>
-                        <label for="space4-upcoming1-description">Details
-                            <input type="text" id="space4-upcoming1-description" name="space4-upcoming1-description" placeholder="Add optional notes or team names">
+                        <label for="space4-session3-description">Details
+                            <input type="text" id="space4-session3-description" name="space4-session3-description" placeholder="Add optional notes or team names">
                         </label>
                     </div>
                     <div class="modal-actions">
@@ -1136,7 +1148,7 @@
                 </div>
             </div>
 
-            <div class="event-row" data-space="space4" data-event="upcoming2" data-event-order="4">
+            <div class="event-row" data-space="space4" data-event="session4" data-event-order="4">
                 <div class="event-row__info">
                     <span class="event-row__index">4</span>
                     <div class="event-row__text">
@@ -1152,7 +1164,7 @@
                             <path d="M12 20C15.866 20 19 16.866 19 13C19 9.13401 15.866 6 12 6C8.13401 6 5 9.13401 5 13C5 16.866 8.13401 20 12 20Z" stroke="currentColor" stroke-width="1.6"/>
                         </svg>
                     </button>
-                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space4-upcoming2-modal" aria-controls="space4-upcoming2-modal">
+                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space4-session4-modal" aria-controls="space4-session4-modal">
                         <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.757.426 1.757 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.757-2.924 1.757-3.35 0a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.757-.426-1.757-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1165,27 +1177,27 @@
                     </button>
                 </div>
             </div>
-            <div class="event-modal" id="space4-upcoming2-modal" hidden>
+            <div class="event-modal" id="space4-session4-modal" hidden>
                 <div class="event-modal__backdrop" data-close-modal></div>
-                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space4-upcoming2-modal-title">
+                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space4-session4-modal-title">
                     <div class="event-modal__header">
                         <div>
                             <p class="event-modal__eyebrow" data-space-label="space4">Space 4</p>
-                            <h3 id="space4-upcoming2-modal-title">Event 2</h3>
+                            <h3 id="space4-session4-modal-title">Session 4</h3>
                         </div>
                         <button class="icon-button" type="button" aria-label="Close modal" data-close-modal>
                             <span aria-hidden="true">✕</span>
                         </button>
                     </div>
                     <div class="event-fields">
-                        <label for="space4-upcoming2">Session Title
-                            <input type="text" id="space4-upcoming2" name="space4-upcoming2-title" placeholder="Enter session title">
+                        <label for="space4-session4">Session Title
+                            <input type="text" id="space4-session4" name="space4-session4-title" placeholder="Enter session title">
                         </label>
-                        <label for="space4-upcoming2-time">Time
-                            <input type="text" id="space4-upcoming2-time" name="space4-upcoming2-time" class="time-input" placeholder="e.g. 09:00">
+                        <label for="space4-session4-time">Time
+                            <input type="text" id="space4-session4-time" name="space4-session4-time" class="time-input" placeholder="e.g. 09:00">
                         </label>
-                        <label for="space4-upcoming2-description">Details
-                            <input type="text" id="space4-upcoming2-description" name="space4-upcoming2-description" placeholder="Add optional notes or team names">
+                        <label for="space4-session4-description">Details
+                            <input type="text" id="space4-session4-description" name="space4-session4-description" placeholder="Add optional notes or team names">
                         </label>
                     </div>
                     <div class="modal-actions">
@@ -1209,6 +1221,9 @@
                                     <path d="M13.5 8.5L15.5 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </span>
+                        </button>
+                        <button class="button-secondary space-advance-button" type="button" data-stop-propagation data-space-advance="space5" disabled>
+                            Advance to next session
                         </button>
                     </div>
                 </summary>
@@ -1237,7 +1252,7 @@
                 </div>
                 <div class="space-fields">
                     <div class="event-row-stack">
-            <div class="event-row" data-space="space5" data-event="now" data-event-order="1">
+            <div class="event-row" data-space="space5" data-event="session1" data-event-order="1">
                 <div class="event-row__info">
                     <span class="event-row__index">1</span>
                     <div class="event-row__text">
@@ -1253,7 +1268,7 @@
                             <path d="M12 20C15.866 20 19 16.866 19 13C19 9.13401 15.866 6 12 6C8.13401 6 5 9.13401 5 13C5 16.866 8.13401 20 12 20Z" stroke="currentColor" stroke-width="1.6"/>
                         </svg>
                     </button>
-                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space5-now-modal" aria-controls="space5-now-modal">
+                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space5-session1-modal" aria-controls="space5-session1-modal">
                         <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.757.426 1.757 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.757-2.924 1.757-3.35 0a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.757-.426-1.757-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1266,27 +1281,27 @@
                     </button>
                 </div>
             </div>
-            <div class="event-modal" id="space5-now-modal" hidden>
+            <div class="event-modal" id="space5-session1-modal" hidden>
                 <div class="event-modal__backdrop" data-close-modal></div>
-                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space5-now-modal-title">
+                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space5-session1-modal-title">
                     <div class="event-modal__header">
                         <div>
                             <p class="event-modal__eyebrow" data-space-label="space5">Space 5</p>
-                            <h3 id="space5-now-modal-title">Now</h3>
+                            <h3 id="space5-session1-modal-title">Session 1</h3>
                         </div>
                         <button class="icon-button" type="button" aria-label="Close modal" data-close-modal>
                             <span aria-hidden="true">✕</span>
                         </button>
                     </div>
                     <div class="event-fields">
-                        <label for="space5-now">Session Title
-                            <input type="text" id="space5-now" name="space5-now-title" placeholder="Enter session title">
+                        <label for="space5-session1">Session Title
+                            <input type="text" id="space5-session1" name="space5-session1-title" placeholder="Enter session title">
                         </label>
-                        <label for="space5-now-time">Time
-                            <input type="text" id="space5-now-time" name="space5-now-time" class="time-input" placeholder="e.g. 09:00">
+                        <label for="space5-session1-time">Time
+                            <input type="text" id="space5-session1-time" name="space5-session1-time" class="time-input" placeholder="e.g. 09:00">
                         </label>
-                        <label for="space5-now-description">Details
-                            <input type="text" id="space5-now-description" name="space5-now-description" placeholder="Add optional notes or team names">
+                        <label for="space5-session1-description">Details
+                            <input type="text" id="space5-session1-description" name="space5-session1-description" placeholder="Add optional notes or team names">
                         </label>
                     </div>
                     <div class="modal-actions">
@@ -1296,7 +1311,7 @@
                 </div>
             </div>
 
-            <div class="event-row" data-space="space5" data-event="next" data-event-order="2">
+            <div class="event-row" data-space="space5" data-event="session2" data-event-order="2">
                 <div class="event-row__info">
                     <span class="event-row__index">2</span>
                     <div class="event-row__text">
@@ -1312,7 +1327,7 @@
                             <path d="M12 20C15.866 20 19 16.866 19 13C19 9.13401 15.866 6 12 6C8.13401 6 5 9.13401 5 13C5 16.866 8.13401 20 12 20Z" stroke="currentColor" stroke-width="1.6"/>
                         </svg>
                     </button>
-                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space5-next-modal" aria-controls="space5-next-modal">
+                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space5-session2-modal" aria-controls="space5-session2-modal">
                         <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.757.426 1.757 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.757-2.924 1.757-3.35 0a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.757-.426-1.757-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1325,27 +1340,27 @@
                     </button>
                 </div>
             </div>
-            <div class="event-modal" id="space5-next-modal" hidden>
+            <div class="event-modal" id="space5-session2-modal" hidden>
                 <div class="event-modal__backdrop" data-close-modal></div>
-                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space5-next-modal-title">
+                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space5-session2-modal-title">
                     <div class="event-modal__header">
                         <div>
                             <p class="event-modal__eyebrow" data-space-label="space5">Space 5</p>
-                            <h3 id="space5-next-modal-title">Next</h3>
+                            <h3 id="space5-session2-modal-title">Session 2</h3>
                         </div>
                         <button class="icon-button" type="button" aria-label="Close modal" data-close-modal>
                             <span aria-hidden="true">✕</span>
                         </button>
                     </div>
                     <div class="event-fields">
-                        <label for="space5-next">Session Title
-                            <input type="text" id="space5-next" name="space5-next-title" placeholder="Enter session title">
+                        <label for="space5-session2">Session Title
+                            <input type="text" id="space5-session2" name="space5-session2-title" placeholder="Enter session title">
                         </label>
-                        <label for="space5-next-time">Time
-                            <input type="text" id="space5-next-time" name="space5-next-time" class="time-input" placeholder="e.g. 09:00">
+                        <label for="space5-session2-time">Time
+                            <input type="text" id="space5-session2-time" name="space5-session2-time" class="time-input" placeholder="e.g. 09:00">
                         </label>
-                        <label for="space5-next-description">Details
-                            <input type="text" id="space5-next-description" name="space5-next-description" placeholder="Add optional notes or team names">
+                        <label for="space5-session2-description">Details
+                            <input type="text" id="space5-session2-description" name="space5-session2-description" placeholder="Add optional notes or team names">
                         </label>
                     </div>
                     <div class="modal-actions">
@@ -1355,7 +1370,7 @@
                 </div>
             </div>
 
-            <div class="event-row" data-space="space5" data-event="upcoming1" data-event-order="3">
+            <div class="event-row" data-space="space5" data-event="session3" data-event-order="3">
                 <div class="event-row__info">
                     <span class="event-row__index">3</span>
                     <div class="event-row__text">
@@ -1371,7 +1386,7 @@
                             <path d="M12 20C15.866 20 19 16.866 19 13C19 9.13401 15.866 6 12 6C8.13401 6 5 9.13401 5 13C5 16.866 8.13401 20 12 20Z" stroke="currentColor" stroke-width="1.6"/>
                         </svg>
                     </button>
-                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space5-upcoming1-modal" aria-controls="space5-upcoming1-modal">
+                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space5-session3-modal" aria-controls="space5-session3-modal">
                         <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.757.426 1.757 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.757-2.924 1.757-3.35 0a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.757-.426-1.757-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1384,27 +1399,27 @@
                     </button>
                 </div>
             </div>
-            <div class="event-modal" id="space5-upcoming1-modal" hidden>
+            <div class="event-modal" id="space5-session3-modal" hidden>
                 <div class="event-modal__backdrop" data-close-modal></div>
-                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space5-upcoming1-modal-title">
+                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space5-session3-modal-title">
                     <div class="event-modal__header">
                         <div>
                             <p class="event-modal__eyebrow" data-space-label="space5">Space 5</p>
-                            <h3 id="space5-upcoming1-modal-title">Event 1</h3>
+                            <h3 id="space5-session3-modal-title">Session 3</h3>
                         </div>
                         <button class="icon-button" type="button" aria-label="Close modal" data-close-modal>
                             <span aria-hidden="true">✕</span>
                         </button>
                     </div>
                     <div class="event-fields">
-                        <label for="space5-upcoming1">Session Title
-                            <input type="text" id="space5-upcoming1" name="space5-upcoming1-title" placeholder="Enter session title">
+                        <label for="space5-session3">Session Title
+                            <input type="text" id="space5-session3" name="space5-session3-title" placeholder="Enter session title">
                         </label>
-                        <label for="space5-upcoming1-time">Time
-                            <input type="text" id="space5-upcoming1-time" name="space5-upcoming1-time" class="time-input" placeholder="e.g. 09:00">
+                        <label for="space5-session3-time">Time
+                            <input type="text" id="space5-session3-time" name="space5-session3-time" class="time-input" placeholder="e.g. 09:00">
                         </label>
-                        <label for="space5-upcoming1-description">Details
-                            <input type="text" id="space5-upcoming1-description" name="space5-upcoming1-description" placeholder="Add optional notes or team names">
+                        <label for="space5-session3-description">Details
+                            <input type="text" id="space5-session3-description" name="space5-session3-description" placeholder="Add optional notes or team names">
                         </label>
                     </div>
                     <div class="modal-actions">
@@ -1414,7 +1429,7 @@
                 </div>
             </div>
 
-            <div class="event-row" data-space="space5" data-event="upcoming2" data-event-order="4">
+            <div class="event-row" data-space="space5" data-event="session4" data-event-order="4">
                 <div class="event-row__info">
                     <span class="event-row__index">4</span>
                     <div class="event-row__text">
@@ -1430,7 +1445,7 @@
                             <path d="M12 20C15.866 20 19 16.866 19 13C19 9.13401 15.866 6 12 6C8.13401 6 5 9.13401 5 13C5 16.866 8.13401 20 12 20Z" stroke="currentColor" stroke-width="1.6"/>
                         </svg>
                     </button>
-                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space5-upcoming2-modal" aria-controls="space5-upcoming2-modal">
+                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space5-session4-modal" aria-controls="space5-session4-modal">
                         <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.757.426 1.757 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.757-2.924 1.757-3.35 0a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.757-.426-1.757-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1443,27 +1458,27 @@
                     </button>
                 </div>
             </div>
-            <div class="event-modal" id="space5-upcoming2-modal" hidden>
+            <div class="event-modal" id="space5-session4-modal" hidden>
                 <div class="event-modal__backdrop" data-close-modal></div>
-                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space5-upcoming2-modal-title">
+                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space5-session4-modal-title">
                     <div class="event-modal__header">
                         <div>
                             <p class="event-modal__eyebrow" data-space-label="space5">Space 5</p>
-                            <h3 id="space5-upcoming2-modal-title">Event 2</h3>
+                            <h3 id="space5-session4-modal-title">Session 4</h3>
                         </div>
                         <button class="icon-button" type="button" aria-label="Close modal" data-close-modal>
                             <span aria-hidden="true">✕</span>
                         </button>
                     </div>
                     <div class="event-fields">
-                        <label for="space5-upcoming2">Session Title
-                            <input type="text" id="space5-upcoming2" name="space5-upcoming2-title" placeholder="Enter session title">
+                        <label for="space5-session4">Session Title
+                            <input type="text" id="space5-session4" name="space5-session4-title" placeholder="Enter session title">
                         </label>
-                        <label for="space5-upcoming2-time">Time
-                            <input type="text" id="space5-upcoming2-time" name="space5-upcoming2-time" class="time-input" placeholder="e.g. 09:00">
+                        <label for="space5-session4-time">Time
+                            <input type="text" id="space5-session4-time" name="space5-session4-time" class="time-input" placeholder="e.g. 09:00">
                         </label>
-                        <label for="space5-upcoming2-description">Details
-                            <input type="text" id="space5-upcoming2-description" name="space5-upcoming2-description" placeholder="Add optional notes or team names">
+                        <label for="space5-session4-description">Details
+                            <input type="text" id="space5-session4-description" name="space5-session4-description" placeholder="Add optional notes or team names">
                         </label>
                     </div>
                     <div class="modal-actions">
@@ -1487,6 +1502,9 @@
                                     <path d="M13.5 8.5L15.5 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </span>
+                        </button>
+                        <button class="button-secondary space-advance-button" type="button" data-stop-propagation data-space-advance="space6" disabled>
+                            Advance to next session
                         </button>
                     </div>
                 </summary>
@@ -1515,7 +1533,7 @@
                 </div>
                 <div class="space-fields">
                     <div class="event-row-stack">
-            <div class="event-row" data-space="space6" data-event="now" data-event-order="1">
+            <div class="event-row" data-space="space6" data-event="session1" data-event-order="1">
                 <div class="event-row__info">
                     <span class="event-row__index">1</span>
                     <div class="event-row__text">
@@ -1531,7 +1549,7 @@
                             <path d="M12 20C15.866 20 19 16.866 19 13C19 9.13401 15.866 6 12 6C8.13401 6 5 9.13401 5 13C5 16.866 8.13401 20 12 20Z" stroke="currentColor" stroke-width="1.6"/>
                         </svg>
                     </button>
-                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space6-now-modal" aria-controls="space6-now-modal">
+                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space6-session1-modal" aria-controls="space6-session1-modal">
                         <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.757.426 1.757 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.757-2.924 1.757-3.35 0a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.757-.426-1.757-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1544,27 +1562,27 @@
                     </button>
                 </div>
             </div>
-            <div class="event-modal" id="space6-now-modal" hidden>
+            <div class="event-modal" id="space6-session1-modal" hidden>
                 <div class="event-modal__backdrop" data-close-modal></div>
-                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space6-now-modal-title">
+                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space6-session1-modal-title">
                     <div class="event-modal__header">
                         <div>
                             <p class="event-modal__eyebrow" data-space-label="space6">Space 6</p>
-                            <h3 id="space6-now-modal-title">Now</h3>
+                            <h3 id="space6-session1-modal-title">Session 1</h3>
                         </div>
                         <button class="icon-button" type="button" aria-label="Close modal" data-close-modal>
                             <span aria-hidden="true">✕</span>
                         </button>
                     </div>
                     <div class="event-fields">
-                        <label for="space6-now">Session Title
-                            <input type="text" id="space6-now" name="space6-now-title" placeholder="Enter session title">
+                        <label for="space6-session1">Session Title
+                            <input type="text" id="space6-session1" name="space6-session1-title" placeholder="Enter session title">
                         </label>
-                        <label for="space6-now-time">Time
-                            <input type="text" id="space6-now-time" name="space6-now-time" class="time-input" placeholder="e.g. 09:00">
+                        <label for="space6-session1-time">Time
+                            <input type="text" id="space6-session1-time" name="space6-session1-time" class="time-input" placeholder="e.g. 09:00">
                         </label>
-                        <label for="space6-now-description">Details
-                            <input type="text" id="space6-now-description" name="space6-now-description" placeholder="Add optional notes or team names">
+                        <label for="space6-session1-description">Details
+                            <input type="text" id="space6-session1-description" name="space6-session1-description" placeholder="Add optional notes or team names">
                         </label>
                     </div>
                     <div class="modal-actions">
@@ -1574,7 +1592,7 @@
                 </div>
             </div>
 
-            <div class="event-row" data-space="space6" data-event="next" data-event-order="2">
+            <div class="event-row" data-space="space6" data-event="session2" data-event-order="2">
                 <div class="event-row__info">
                     <span class="event-row__index">2</span>
                     <div class="event-row__text">
@@ -1590,7 +1608,7 @@
                             <path d="M12 20C15.866 20 19 16.866 19 13C19 9.13401 15.866 6 12 6C8.13401 6 5 9.13401 5 13C5 16.866 8.13401 20 12 20Z" stroke="currentColor" stroke-width="1.6"/>
                         </svg>
                     </button>
-                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space6-next-modal" aria-controls="space6-next-modal">
+                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space6-session2-modal" aria-controls="space6-session2-modal">
                         <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.757.426 1.757 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.757-2.924 1.757-3.35 0a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.757-.426-1.757-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1603,27 +1621,27 @@
                     </button>
                 </div>
             </div>
-            <div class="event-modal" id="space6-next-modal" hidden>
+            <div class="event-modal" id="space6-session2-modal" hidden>
                 <div class="event-modal__backdrop" data-close-modal></div>
-                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space6-next-modal-title">
+                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space6-session2-modal-title">
                     <div class="event-modal__header">
                         <div>
                             <p class="event-modal__eyebrow" data-space-label="space6">Space 6</p>
-                            <h3 id="space6-next-modal-title">Next</h3>
+                            <h3 id="space6-session2-modal-title">Session 2</h3>
                         </div>
                         <button class="icon-button" type="button" aria-label="Close modal" data-close-modal>
                             <span aria-hidden="true">✕</span>
                         </button>
                     </div>
                     <div class="event-fields">
-                        <label for="space6-next">Session Title
-                            <input type="text" id="space6-next" name="space6-next-title" placeholder="Enter session title">
+                        <label for="space6-session2">Session Title
+                            <input type="text" id="space6-session2" name="space6-session2-title" placeholder="Enter session title">
                         </label>
-                        <label for="space6-next-time">Time
-                            <input type="text" id="space6-next-time" name="space6-next-time" class="time-input" placeholder="e.g. 09:00">
+                        <label for="space6-session2-time">Time
+                            <input type="text" id="space6-session2-time" name="space6-session2-time" class="time-input" placeholder="e.g. 09:00">
                         </label>
-                        <label for="space6-next-description">Details
-                            <input type="text" id="space6-next-description" name="space6-next-description" placeholder="Add optional notes or team names">
+                        <label for="space6-session2-description">Details
+                            <input type="text" id="space6-session2-description" name="space6-session2-description" placeholder="Add optional notes or team names">
                         </label>
                     </div>
                     <div class="modal-actions">
@@ -1633,7 +1651,7 @@
                 </div>
             </div>
 
-            <div class="event-row" data-space="space6" data-event="upcoming1" data-event-order="3">
+            <div class="event-row" data-space="space6" data-event="session3" data-event-order="3">
                 <div class="event-row__info">
                     <span class="event-row__index">3</span>
                     <div class="event-row__text">
@@ -1649,7 +1667,7 @@
                             <path d="M12 20C15.866 20 19 16.866 19 13C19 9.13401 15.866 6 12 6C8.13401 6 5 9.13401 5 13C5 16.866 8.13401 20 12 20Z" stroke="currentColor" stroke-width="1.6"/>
                         </svg>
                     </button>
-                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space6-upcoming1-modal" aria-controls="space6-upcoming1-modal">
+                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space6-session3-modal" aria-controls="space6-session3-modal">
                         <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.757.426 1.757 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.757-2.924 1.757-3.35 0a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.757-.426-1.757-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1662,27 +1680,27 @@
                     </button>
                 </div>
             </div>
-            <div class="event-modal" id="space6-upcoming1-modal" hidden>
+            <div class="event-modal" id="space6-session3-modal" hidden>
                 <div class="event-modal__backdrop" data-close-modal></div>
-                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space6-upcoming1-modal-title">
+                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space6-session3-modal-title">
                     <div class="event-modal__header">
                         <div>
                             <p class="event-modal__eyebrow" data-space-label="space6">Space 6</p>
-                            <h3 id="space6-upcoming1-modal-title">Event 1</h3>
+                            <h3 id="space6-session3-modal-title">Session 3</h3>
                         </div>
                         <button class="icon-button" type="button" aria-label="Close modal" data-close-modal>
                             <span aria-hidden="true">✕</span>
                         </button>
                     </div>
                     <div class="event-fields">
-                        <label for="space6-upcoming1">Session Title
-                            <input type="text" id="space6-upcoming1" name="space6-upcoming1-title" placeholder="Enter session title">
+                        <label for="space6-session3">Session Title
+                            <input type="text" id="space6-session3" name="space6-session3-title" placeholder="Enter session title">
                         </label>
-                        <label for="space6-upcoming1-time">Time
-                            <input type="text" id="space6-upcoming1-time" name="space6-upcoming1-time" class="time-input" placeholder="e.g. 09:00">
+                        <label for="space6-session3-time">Time
+                            <input type="text" id="space6-session3-time" name="space6-session3-time" class="time-input" placeholder="e.g. 09:00">
                         </label>
-                        <label for="space6-upcoming1-description">Details
-                            <input type="text" id="space6-upcoming1-description" name="space6-upcoming1-description" placeholder="Add optional notes or team names">
+                        <label for="space6-session3-description">Details
+                            <input type="text" id="space6-session3-description" name="space6-session3-description" placeholder="Add optional notes or team names">
                         </label>
                     </div>
                     <div class="modal-actions">
@@ -1692,7 +1710,7 @@
                 </div>
             </div>
 
-            <div class="event-row" data-space="space6" data-event="upcoming2" data-event-order="4">
+            <div class="event-row" data-space="space6" data-event="session4" data-event-order="4">
                 <div class="event-row__info">
                     <span class="event-row__index">4</span>
                     <div class="event-row__text">
@@ -1708,7 +1726,7 @@
                             <path d="M12 20C15.866 20 19 16.866 19 13C19 9.13401 15.866 6 12 6C8.13401 6 5 9.13401 5 13C5 16.866 8.13401 20 12 20Z" stroke="currentColor" stroke-width="1.6"/>
                         </svg>
                     </button>
-                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space6-upcoming2-modal" aria-controls="space6-upcoming2-modal">
+                    <button class="icon-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-modal-target="space6-session4-modal" aria-controls="space6-session4-modal">
                         <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.757.426 1.757 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.757-2.924 1.757-3.35 0a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.757-.426-1.757-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1721,27 +1739,27 @@
                     </button>
                 </div>
             </div>
-            <div class="event-modal" id="space6-upcoming2-modal" hidden>
+            <div class="event-modal" id="space6-session4-modal" hidden>
                 <div class="event-modal__backdrop" data-close-modal></div>
-                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space6-upcoming2-modal-title">
+                <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="space6-session4-modal-title">
                     <div class="event-modal__header">
                         <div>
                             <p class="event-modal__eyebrow" data-space-label="space6">Space 6</p>
-                            <h3 id="space6-upcoming2-modal-title">Event 2</h3>
+                            <h3 id="space6-session4-modal-title">Session 4</h3>
                         </div>
                         <button class="icon-button" type="button" aria-label="Close modal" data-close-modal>
                             <span aria-hidden="true">✕</span>
                         </button>
                     </div>
                     <div class="event-fields">
-                        <label for="space6-upcoming2">Session Title
-                            <input type="text" id="space6-upcoming2" name="space6-upcoming2-title" placeholder="Enter session title">
+                        <label for="space6-session4">Session Title
+                            <input type="text" id="space6-session4" name="space6-session4-title" placeholder="Enter session title">
                         </label>
-                        <label for="space6-upcoming2-time">Time
-                            <input type="text" id="space6-upcoming2-time" name="space6-upcoming2-time" class="time-input" placeholder="e.g. 09:00">
+                        <label for="space6-session4-time">Time
+                            <input type="text" id="space6-session4-time" name="space6-session4-time" class="time-input" placeholder="e.g. 09:00">
                         </label>
-                        <label for="space6-upcoming2-description">Details
-                            <input type="text" id="space6-upcoming2-description" name="space6-upcoming2-description" placeholder="Add optional notes or team names">
+                        <label for="space6-session4-description">Details
+                            <input type="text" id="space6-session4-description" name="space6-session4-description" placeholder="Add optional notes or team names">
                         </label>
                     </div>
                     <div class="modal-actions">
@@ -1772,15 +1790,21 @@
     const defaultEventTitle = eventTitleDisplay?.textContent?.trim() || "Event title";
 
     const spaceIds = Array.from({ length: 6 }, (_, index) => `space${index + 1}`);
-    const eventKeys = [
-        { key: "now", label: "Now", order: 1 },
-        { key: "next", label: "Next", order: 2 },
-        { key: "upcoming1", label: "Event 1", order: 3 },
-        { key: "upcoming2", label: "Event 2", order: 4 },
+    const sessionKeys = [
+        { key: "session1", label: "Session 1", order: 1 },
+        { key: "session2", label: "Session 2", order: 2 },
+        { key: "session3", label: "Session 3", order: 3 },
+        { key: "session4", label: "Session 4", order: 4 },
     ];
+    const legacySessionMapping = {
+        session1: "now",
+        session2: "next",
+        session3: "upcoming1",
+        session4: "upcoming2",
+    };
 
     const fields = spaceIds.reduce((spaceAcc, spaceId) => {
-        const events = eventKeys.reduce((eventAcc, { key }) => {
+        const events = sessionKeys.reduce((eventAcc, { key }) => {
             eventAcc[key] = {
                 title: document.getElementById(`${spaceId}-${key}`),
                 subtitle: document.getElementById(`${spaceId}-${key}-description`),
@@ -1793,8 +1817,8 @@
         return spaceAcc;
     }, {});
 
-    const eventState = spaceIds.reduce((spaceAcc, spaceId) => {
-        spaceAcc[spaceId] = eventKeys.reduce((eventAcc, { key }) => {
+    const sessionState = spaceIds.reduce((spaceAcc, spaceId) => {
+        spaceAcc[spaceId] = sessionKeys.reduce((eventAcc, { key }) => {
             eventAcc[key] = { title: "", subtitle: "", time: "" };
             return eventAcc;
         }, {});
@@ -1817,12 +1841,13 @@
         return acc;
     }, {});
 
-    const eventPreviews = spaceIds.reduce((spaceAcc, spaceId) => {
-        spaceAcc[spaceId] = eventKeys.reduce((eventAcc, { key }) => {
+    const sessionPreviews = spaceIds.reduce((spaceAcc, spaceId) => {
+        spaceAcc[spaceId] = sessionKeys.reduce((eventAcc, { key }) => {
             const row = document.querySelector(`[data-space="${spaceId}"][data-event="${key}"]`);
             if (!row) return eventAcc;
 
             eventAcc[key] = {
+                row,
                 title: row.querySelector("[data-event-title-display]"),
                 subtitle: row.querySelector("[data-event-subtitle-display]"),
                 time: row.querySelector("[data-event-time-display]"),
@@ -1833,6 +1858,94 @@
 
         return spaceAcc;
     }, {});
+
+    const advanceButtons = spaceIds.reduce((acc, spaceId) => {
+        acc[spaceId] = document.querySelector(`[data-space-advance="${spaceId}"]`);
+        return acc;
+    }, {});
+
+    const activeSessionIndex = spaceIds.reduce((acc, spaceId) => {
+        acc[spaceId] = 0;
+        return acc;
+    }, {});
+
+    const clampSessionIndex = (value = 0) => {
+        if (typeof value !== "number") {
+            const parsed = parseInt(value, 10);
+            if (!Number.isNaN(parsed)) {
+                value = parsed;
+            } else {
+                value = 0;
+            }
+        }
+        if (Number.isNaN(value)) {
+            value = 0;
+        }
+        return Math.min(Math.max(value, 0), sessionKeys.length - 1);
+    };
+
+    const hasSessionData = (spaceKey, key) => {
+        const state = sessionState[spaceKey]?.[key];
+        if (!state) return false;
+        return Boolean((state.title ?? "").trim() || (state.subtitle ?? "").trim() || (state.time ?? "").trim());
+    };
+
+    const updateSessionIndicators = (spaceKey) => {
+        const activeIndex = activeSessionIndex[spaceKey] ?? 0;
+        sessionKeys.forEach(({ key }, index) => {
+            const row = sessionPreviews[spaceKey]?.[key]?.row;
+            if (!row) return;
+
+            const state = index === activeIndex ? "now" : index === activeIndex + 1 ? "next" : "";
+            if (state) {
+                row.setAttribute("data-session-state", state);
+            } else {
+                row.removeAttribute("data-session-state");
+            }
+        });
+    };
+
+    const findNextPopulatedSessionIndex = (spaceKey, startIndex) => {
+        for (let index = startIndex + 1; index < sessionKeys.length; index += 1) {
+            if (hasSessionData(spaceKey, sessionKeys[index].key)) {
+                return index;
+            }
+        }
+        return -1;
+    };
+
+    const updateAdvanceButtonState = (spaceKey) => {
+        const button = advanceButtons[spaceKey];
+        if (!button) return;
+        const currentIndex = activeSessionIndex[spaceKey] ?? 0;
+        const nextIndex = findNextPopulatedSessionIndex(spaceKey, currentIndex);
+        button.disabled = nextIndex === -1;
+    };
+
+    const setActiveSessionIndex = (spaceKey, nextIndex) => {
+        activeSessionIndex[spaceKey] = clampSessionIndex(nextIndex);
+        updateSessionIndicators(spaceKey);
+        updateAdvanceButtonState(spaceKey);
+    };
+
+    const advanceSession = (spaceKey) => {
+        const currentIndex = activeSessionIndex[spaceKey] ?? 0;
+        const nextIndex = findNextPopulatedSessionIndex(spaceKey, currentIndex);
+        if (nextIndex === -1) return;
+        setActiveSessionIndex(spaceKey, nextIndex);
+    };
+
+    Object.entries(advanceButtons).forEach(([spaceKey, button]) => {
+        if (!button) return;
+        button.addEventListener("click", (event) => {
+            if (button.disabled) return;
+            if (button.hasAttribute("data-stop-propagation")) {
+                event.stopPropagation();
+                event.preventDefault();
+            }
+            advanceSession(spaceKey);
+        });
+    });
 
     let eventTitleState = defaultEventTitle;
 
@@ -1942,9 +2055,9 @@
         return normalized || fallback;
     };
 
-    const renderEventPreview = (spaceKey, key) => {
-        const preview = eventPreviews[spaceKey]?.[key];
-        const state = eventState[spaceKey]?.[key];
+    const renderSessionPreview = (spaceKey, key) => {
+        const preview = sessionPreviews[spaceKey]?.[key];
+        const state = sessionState[spaceKey]?.[key];
         if (!preview || !state) return;
 
         if (preview.title) {
@@ -1956,19 +2069,21 @@
         if (preview.time) {
             preview.time.textContent = fallbackValue(state.time, "");
         }
+
+        updateAdvanceButtonState(spaceKey);
     };
 
-    const renderAllEventPreviews = () => {
+    const renderAllSessionPreviews = () => {
         spaceIds.forEach((spaceKey) => {
-            eventKeys.forEach(({ key }) => {
-                renderEventPreview(spaceKey, key);
+            sessionKeys.forEach(({ key }) => {
+                renderSessionPreview(spaceKey, key);
             });
         });
     };
 
-    const applyEventStateToFields = (spaceKey, key) => {
+    const applySessionStateToFields = (spaceKey, key) => {
         const refs = fields[spaceKey]?.[key];
-        const state = eventState[spaceKey]?.[key];
+        const state = sessionState[spaceKey]?.[key];
         if (!refs || !state) return;
 
         setFieldValue(refs.title, state.title);
@@ -2014,26 +2129,26 @@
         }
 
         if (scope === "space") {
-            applyEventStateToFields(spaceKey, eventKey);
+            applySessionStateToFields(spaceKey, eventKey);
         }
     };
 
-    const saveEventFromFields = (spaceKey, key) => {
+    const saveSessionFromFields = (spaceKey, key) => {
         const refs = fields[spaceKey]?.[key];
-        const state = eventState[spaceKey]?.[key];
+        const state = sessionState[spaceKey]?.[key];
         if (!refs || !state) return;
 
         state.title = refs.title?.value ?? "";
         state.subtitle = refs.subtitle?.value ?? "";
         state.time = refs.time?.value ?? "";
 
-        renderEventPreview(spaceKey, key);
+        renderSessionPreview(spaceKey, key);
     };
 
     const syncStateFromFields = () => {
         spaceIds.forEach((spaceKey) => {
-            eventKeys.forEach(({ key }) => {
-                saveEventFromFields(spaceKey, key);
+            sessionKeys.forEach(({ key }) => {
+                saveSessionFromFields(spaceKey, key);
             });
         });
     };
@@ -2051,7 +2166,7 @@
                     resetSpaceTitleField(spaceKey);
                 }
             } else if (scope === "space") {
-                applyEventStateToFields(spaceKey, eventKey);
+                applySessionStateToFields(spaceKey, eventKey);
             }
         }
 
@@ -2100,7 +2215,7 @@
                     setSpaceTitle(spaceKey, spaceTitleInputs[spaceKey]?.value);
                 }
             } else if (scope === "space" && spaceKey) {
-                saveEventFromFields(spaceKey, eventKey);
+                saveSessionFromFields(spaceKey, eventKey);
             }
 
             closeModal(modal);
@@ -2134,35 +2249,48 @@
     };
 
     const populateSpace = (spaceKey, data = {}) => {
-        eventKeys.forEach(({ key }) => {
-            const incoming = data[key] ?? {};
-            const state = eventState[spaceKey]?.[key];
+        const sessions = Array.isArray(data.sessions)
+            ? data.sessions
+            : sessionKeys.map(({ key }) => data[key] ?? data[legacySessionMapping[key]] ?? {});
+
+        sessionKeys.forEach(({ key }, index) => {
+            const incoming = sessions[index] ?? {};
+            const state = sessionState[spaceKey]?.[key];
             if (!state) return;
 
             state.title = incoming.title ?? "";
             state.subtitle = incoming.subtitle ?? "";
             state.time = incoming.time ?? "";
 
-            applyEventStateToFields(spaceKey, key);
-            renderEventPreview(spaceKey, key);
+            applySessionStateToFields(spaceKey, key);
+            renderSessionPreview(spaceKey, key);
         });
+
+        const incomingIndex = data.nowIndex ?? data.activeIndex ?? data.now?.order;
+        setActiveSessionIndex(spaceKey, clampSessionIndex(incomingIndex ?? 0));
     };
 
     const buildEventPayload = (spaceKey) => {
-        const events = {};
-        eventKeys.forEach(({ key }) => {
-            const state = eventState[spaceKey]?.[key];
-            if (!state) return;
-            events[key] = {
+        const sessions = sessionKeys.map(({ key }) => {
+            const state = sessionState[spaceKey]?.[key] ?? {};
+            return {
                 title: state.title ?? "",
                 subtitle: state.subtitle ?? "",
                 time: state.time ?? "",
             };
         });
-        return events;
+
+        return {
+            title: getSpaceTitle(spaceKey),
+            sessions,
+            nowIndex: activeSessionIndex[spaceKey] ?? 0,
+        };
     };
 
     syncStateFromFields();
+    spaceIds.forEach((spaceKey) => {
+        setActiveSessionIndex(spaceKey, activeSessionIndex[spaceKey] ?? 0);
+    });
 
     socket.on("connect", () => {
         console.log("connected");
@@ -2249,13 +2377,10 @@
         const payload = { data: {} };
 
         spaceIds.forEach((spaceKey, index) => {
-            payload.data[`space${index + 1}`] = {
-                title: getSpaceTitle(spaceKey),
-                ...buildEventPayload(spaceKey),
-            };
+            payload.data[`space${index + 1}`] = buildEventPayload(spaceKey);
         });
 
-        payload.data["title"] = getEventTitle();
+        payload.data.title = getEventTitle();
 
         console.log(payload)
         
