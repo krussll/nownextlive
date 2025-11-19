@@ -375,6 +375,10 @@ form {
     opacity: 1;
 }
 
+.event-row[data-session-state="now"] [data-session-now-button] {
+    color: #16a34a;
+}
+
 .event-row[data-session-state="next"] {
     border-color: rgba(17, 28, 59, 0.18);
     background: rgba(148, 163, 184, 0.16);
