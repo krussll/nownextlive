@@ -6,6 +6,28 @@
     <title>Now &amp; Next Controller</title>
     <link rel="stylesheet" href="/assets/NDST3/controller/styles.css">
     <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <style>
+        #loading-overlay {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8fafc;
+            color: #0f172a;
+            font-size: 1.5rem;
+            z-index: 9999;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        #loading-overlay.is-hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 200ms ease;
+        }
+    </style>
 
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-QSCLS15XJM"></script>
@@ -18,6 +40,7 @@
 </script>
 </head>
 <body>
+    <div id="loading-overlay" role="status" aria-live="polite">Loading</div>
     <main>
         <div class="layout">
             <aside class="sidebar">
@@ -1918,6 +1941,14 @@
     const eventTitleValidationMessage = eventTitleModal?.querySelector("[data-event-title-error]");
     const eventTitleDisplay = document.querySelector("[data-event-title]");
     const defaultEventTitle = eventTitleDisplay?.textContent?.trim() || "Event title";
+    const loadingOverlay = document.getElementById("loading-overlay");
+
+    const hideLoadingOverlay = () => {
+        if (!loadingOverlay || loadingOverlay.classList.contains("is-hidden")) {
+            return;
+        }
+        loadingOverlay.classList.add("is-hidden");
+    };
 
     const spaceIds = Array.from({ length: 6 }, (_, index) => `space${index + 1}`);
     const sessionKeys = [
@@ -2205,6 +2236,14 @@
 
     const socket = io("https://hidden-journey-22873-ad31037ba953.herokuapp.com");
 
+    const handleConnectionFailure = (error) => {
+        console.error("Socket connection failed", error);
+        if (status) {
+            status.textContent = "Connection Error";
+        }
+        hideLoadingOverlay();
+    };
+
     const fallbackValue = (value, fallback) => {
         const normalized = (value ?? "").toString().trim();
         return normalized || fallback;
@@ -2456,6 +2495,9 @@
         socket.emit("room-request", { room: "NDST3", role: "CONTROLLER" });
     });
 
+    socket.on("connect_error", handleConnectionFailure);
+    socket.on("connect_failed", handleConnectionFailure);
+
     const normalizeConnections = (payload = {}) => {
         if (!payload) return [];
 
@@ -2530,6 +2572,13 @@
             setSpaceTitle(spaceKey, incoming?.title);
             populateSpace(spaceKey, incoming);
         });
+
+        const finalizeOverlay = () => hideLoadingOverlay();
+        if (typeof requestAnimationFrame === "function") {
+            requestAnimationFrame(finalizeOverlay);
+        } else {
+            finalizeOverlay();
+        }
     });
 
     submitButton.addEventListener("click", () => {
