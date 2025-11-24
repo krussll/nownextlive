@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['@nuxt/ui'],
+  modules: ['@nuxt/ui', 'nuxt-gtag'],
   css: ['~/assets/css/main.css'],
   
   colorMode: {
@@ -10,8 +10,10 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: 'Now. Next. Live.',
+      title: 'Now. Next. Live.'
     }
-  } 
-  
+  },
+  gtag: {
+    id: 'G-QSCLS15XJM'
+  }
 })

@@ -4,7 +4,7 @@
     <!-- Header -->
     <div class="flex items-center justify-between mb-10">
     <div>
-      <img src="/imgs/logo.png"  style="height: 55px;" />
+      <img src="/imgs/now-next-live-logo.svg"  style="height: 55px;" />
     </div>
       <div class="text-center">
         <p class="uppercase tracking-widest text-slate-400 text-xs font-semibold">
@@ -28,7 +28,7 @@
         :key="space.id"
         :title="space.title"
         :now="space.now"
-        :group="space.group"
+        :nowGroup="space.group"
         :next="space.next"
       />
     </div>
@@ -63,3 +63,12 @@ onMounted(() => {
   }, 1000)
 })
 </script>
+
+<style>
+
+.remove-padding > div {
+  padding-left: 0px;
+  padding-right: 0px;
+  max-width: 85rem;
+}
+</style>

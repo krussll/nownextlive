@@ -54,4 +54,6 @@ const items = computed<NavigationMenuItem[]>(() => [{
   to: '/contact',
   active: route.path.startsWith('/contact')
 }])
+
+
 </script>
