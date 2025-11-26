@@ -12,11 +12,11 @@
         <p class="py-1 text-xs uppercase tracking-widest font-semibold text-slate-300 mb-1">
           Now
         </p>
-        <span>-</span>
+        <span>{{ nowTime}}</span>
       </div>
       <div class="flex-auto">
         <p class="text-xl font-semibold">{{ now }}</p>
-        <p v-if="nowGroup" class="text-sm text-slate-300 mt-1">{{ group }}</p>
+        <p v-if="nowGroup" class="text-sm text-slate-300 mt-1">{{ nowGroup }}</p>
       </div>
     </div>
 
@@ -26,10 +26,11 @@
         <p class="py-1 text-xs uppercase tracking-widest font-semibold text-slate-400 mb-1">
           Next
         </p>
-        <span>-</span>
+        <span>{{ nextTime }}</span>
       </div>
       <div class="flex-auto">
         <p class="text-slate-700 font-medium">{{ next }}</p>
+        <p v-if="nextGroup" class="text-sm text-slate-300 mt-1">{{ nextGroup }}</p>
       </div>
     </div>
   </div>
@@ -39,7 +40,10 @@
 defineProps({
   title: String,
   now: String,
-  group: String,
-  next: String
+  nowGroup: String,
+  nowTime: String,
+  next: String,
+  nextGroup: String,
+  nextTime: String
 })
 </script>
