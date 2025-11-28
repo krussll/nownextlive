@@ -84,16 +84,20 @@
         >
           <template #default="{ item, open }">
             <span class="text-slate-700 font-semibold tracking-wide">
-              {{ item.label }}
+              {{ item.title }}
             </span>
 
             <UButton
               color="white"
               variant="solid"
-              class="border text-slate-700"
-            >
-              Advance to next session
-            </UButton>
+              icon="i-heroicons-cog-6-tooth"
+            />
+            <UButton
+              color="white"
+              variant="solid"
+              icon="i-heroicons-forward"
+            />
+            
           </template>
 
           <!-- EXPANDED CONTENT VIEW -->
@@ -110,28 +114,27 @@
                 <!-- Left Colour Bar -->
                 <div
                   class="w-1 h-full absolute left-0 top-0"
-                  :class="session.color"
+                 
                 ></div>
 
                 <!-- Session Number -->
                 <p class="pl-6 py-5 font-semibold text-slate-700">
-                  {{ session.number }}
+                  {{ session.title }}
                 </p>
 
                 <!-- Controls -->
                 <div class="flex items-center space-x-2 pr-4">
 
-                  <UButton
-                    color="white"
-                    variant="solid"
-                    icon="i-heroicons-cog-6-tooth"
-                    class="!rounded-none"
-                  />
+                <Modal
+                  :title="`Editing session ${session.title}`"
+                  :data="session"
+                  @update:session="$s => (session = $s)"
+                />
 
                   <UButton
                     color="white"
                     variant="solid"
-                    :icon="session.icon"
+                    icon="i-heroicons-play"
                     class="!rounded-none"
                   />
                 </div>
@@ -149,54 +152,28 @@
 </template>
 
 <script setup>
+  import Modal from '~/components/ModalSessionEdit.vue'
   definePageMeta({
     layout: 'app'
   })
 
-const spaces = [
+const spaces = ref([
   {
-    label: "Rink 1",
+    title: "Rink 1",
     sessions: [
       {
-        id: 1,
-        number: "1",
-        color: "bg-blue-600",
-        icon: "i-heroicons-play-20-solid"
+        id: "1",
+        title: "Test 1",
+        subtitle: "Group A",
+        time: ""
       },
       {
-        id: 2,
-        number: "2",
-        color: "bg-orange-500",
-        icon: "i-heroicons-play"
-      },
-      {
-        id: 3,
-        number: "3",
-        color: "bg-slate-300",
-        icon: "i-heroicons-play"
-      },
-      {
-        id: 4,
-        number: "4",
-        color: "bg-slate-300",
-        icon: "i-heroicons-play"
+        id: "2",
+        title: "Test 2",
+        subtitle: "Group B",
+        time: ""
       }
     ]
-  },
-
-  {
-    label: "Rink 2",
-    sessions: [
-      { id: 1, number: "1", color: "bg-blue-600", icon: "i-heroicons-play" },
-      { id: 2, number: "2", color: "bg-orange-500", icon: "i-heroicons-play" },
-    ]
-  },
-
-  {
-    label: "Rink 3",
-    sessions: [
-      { id: 1, number: "1", color: "bg-blue-600", icon: "i-heroicons-play" },
-    ]
   }
-];
+]);
 </script>
