@@ -1,5 +1,9 @@
 <template>
+
   <UContainer class="py-10">
+  <div v-if="showloading" class="flex justify-center items-center h-screen fixed top-0 left-0 right-0 bottom-0 w-full z-50 overflow-hidden bg-gray-700 opacity-75">
+    <p class="text-slate-500">Loading...</p>
+  </div>
 
     <!-- Header -->
     <div class="flex items-center justify-between mb-10">
@@ -87,11 +91,11 @@
               {{ item.title }}
             </span>
 
-            <UButton
-              color="white"
-              variant="solid"
-              icon="i-heroicons-cog-6-tooth"
-            />
+            <ModalSpace
+                  :title="`Editing space ${item.title}`"
+                  :data="item"
+                  @update:space="$s => (item = $s)"
+                />
             <UButton
               color="white"
               variant="solid"
@@ -138,7 +142,6 @@
                     class="!rounded-none"
                   />
                 </div>
-
               </div>
 
             </div>
@@ -153,13 +156,17 @@
 
 <script setup>
   import Modal from '~/components/ModalSessionEdit.vue'
+  import ModalSpace from '~/components/ModalSpaceEdit.vue'
   definePageMeta({
     layout: 'app'
   })
 
+  const showloading = ref(false);
+
 const spaces = ref([
   {
     title: "Rink 1",
+    now: "1",
     sessions: [
       {
         id: "1",
@@ -176,4 +183,6 @@ const spaces = ref([
     ]
   }
 ]);
+
+showloading.value = false;
 </script>

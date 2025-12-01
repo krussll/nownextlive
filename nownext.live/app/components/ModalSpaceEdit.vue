@@ -14,16 +14,6 @@
                     <UInput v-model="props.data.title" />
                 </UFormField>
             </div>
-            <div class="sm:col-span-4">
-                <UFormField label="Sub-title" hint="Optional">
-                    <UInput v-model="props.data.subtitle" />
-                </UFormField>
-            </div>
-            <div class="sm:col-span-4">
-                <UFormField label="Time" hint="Optional">
-                    <UInputTime v-model="props.data.time" />
-                </UFormField>
-            </div>
         </div>
     </template>
 
@@ -38,10 +28,10 @@
 let open = ref(false)
 
 const props = defineProps(['title','data'])
-const emit = defineEmits(['update:session'])
+const emit = defineEmits(['update:space'])
 
 function submit(e) {
-    emit('update:session', props.data)
+    emit('update:space', props.data)
     open.value = false;
 }
 </script>
