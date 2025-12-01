@@ -14,10 +14,10 @@
       </div>
     </div>
 
-    <div class="grid grid-cols-12 gap-6">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
 
       <!-- SIDEBAR -->
-      <aside class="col-span-3 space-y-6">
+      <aside class="lg:col-span-3 space-y-6 order-2 lg:order-1">
 
         <!-- Displays -->
         <UCard class="rounded-none">
@@ -51,7 +51,7 @@
 
 
       <!-- MAIN CONTENT -->
-      <main class="col-span-9">
+      <main class="lg:col-span-9 order-1 lg:order-2">
 
         <div class="px-6 py-6 rounded-none overflow-hidden bg-default ring ring-default">
 
@@ -60,13 +60,13 @@
           <!-- Status + Room -->
           <div class="flex justify-between items-center mt-6">
 
-            <UButton
-              color="white"
-              variant="solid"
-              class="border border-slate-200 text-slate-700"
+            <UBadge
+              color="red"
+              variant="subtle"
+              class="px-3 py-1"
             >
-              Connection Error
-            </UButton>
+              Disconnected
+            </UBadge>
 
             <p class="text-sm text-slate-500">
               Room: <span class="font-semibold text-slate-700">NDST3</span>
@@ -77,6 +77,17 @@
 
 
         <!-- Accordion List -->
+        <div class="flex justify-end mb-4">
+          <UButton
+            icon="i-heroicons-plus"
+            size="sm"
+            color="primary"
+            variant="soft"
+            label="Add Space"
+            @click="addSpace"
+          />
+        </div>
+
         <UAccordion
           :items="spaces"
           class="space-y-4"
@@ -91,16 +102,18 @@
               {{ item.title }}
             </span>
 
-            <ModalSpace
-                  :title="`Editing space ${item.title}`"
-                  :data="item"
-                  @update:space="$s => (item = $s)"
-                />
-            <UButton
-              color="white"
-              variant="solid"
-              icon="i-heroicons-forward"
-            />
+            <div class="flex items-center gap-2" @click.stop>
+              <ModalSpace
+                    :title="`Editing space ${item.title}`"
+                    :data="item"
+                    @update:space="$s => (item = $s)"
+                  />
+              <UButton
+                color="white"
+                variant="solid"
+                icon="i-heroicons-forward"
+              />
+            </div>
             
           </template>
 
@@ -112,19 +125,25 @@
               <div
                 v-for="session in item.sessions"
                 :key="session.id"
-                class="flex justify-between items-center border rounded-none bg-gradient-to-br from-slate-50 to-slate-100 relative overflow-hidden"
+                class="flex justify-between items-center border rounded-none bg-gradient-to-br from-slate-50 to-slate-100 relative overflow-hidden group"
               >
 
                 <!-- Left Colour Bar -->
                 <div
-                  class="w-1 h-full absolute left-0 top-0"
-                 
+                  class="w-1 h-full absolute left-0 top-0 transition-colors duration-300"
+                  :class="session.active ? 'bg-green-500' : 'bg-transparent'"
                 ></div>
 
                 <!-- Session Number -->
-                <p class="pl-6 py-5 font-semibold text-slate-700">
-                  {{ session.title }}
-                </p>
+                <div class="pl-6 py-5">
+                   <p class="font-semibold text-slate-700">
+                    {{ session.title }}
+                  </p>
+                  <p v-if="session.subtitle" class="text-xs text-slate-500 mt-0.5">
+                    {{ session.subtitle }}
+                  </p>
+                </div>
+               
 
                 <!-- Controls -->
                 <div class="flex items-center space-x-2 pr-4">
@@ -135,13 +154,27 @@
                   @update:session="$s => (session = $s)"
                 />
 
-                  <UButton
-                    color="white"
-                    variant="solid"
-                    icon="i-heroicons-play"
-                    class="!rounded-none"
-                  />
+                  <UTooltip text="Set Live">
+                    <UButton
+                      color="white"
+                      variant="solid"
+                      icon="i-heroicons-play"
+                      class="!rounded-none"
+                    />
+                  </UTooltip>
                 </div>
+              </div>
+
+              <!-- Add Session Button -->
+              <div class="flex justify-center pt-2">
+                 <UButton
+                  icon="i-heroicons-plus"
+                  size="xs"
+                  color="gray"
+                  variant="ghost"
+                  label="Add Session"
+                  @click="addSession(item)"
+                />
               </div>
 
             </div>
@@ -183,6 +216,23 @@ const spaces = ref([
     ]
   }
 ]);
+
+const addSpace = () => {
+  spaces.value.push({
+    title: `New Space ${spaces.value.length + 1}`,
+    now: "",
+    sessions: []
+  })
+}
+
+const addSession = (space) => {
+  space.sessions.push({
+    id: Date.now().toString(),
+    title: "New Session",
+    subtitle: "",
+    time: ""
+  })
+}
 
 showloading.value = false;
 </script>

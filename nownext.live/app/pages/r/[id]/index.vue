@@ -11,7 +11,7 @@
           Live Schedule
         </p>
         <h1 class="text-4xl font-semibold text-slate-900">
-          North District Sports
+          {{ roomName }}
         </h1>
       </div>
 
@@ -22,7 +22,7 @@
     </div>
 
     <!-- Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
       <ScheduleCard
         v-for="space in spaces"
         :key="space.id"
@@ -30,6 +30,7 @@
         :now="space.now"
         :nowGroup="space.group"
         :next="space.next"
+        class="w-full"
       />
     </div>
 
@@ -56,6 +57,7 @@ const spaces = [
 
 /* Simple live clock */
 const time = ref('00:00')
+const roomName = ref('North District Sports')
 onMounted(() => {
   setInterval(() => {
     const d = new Date()

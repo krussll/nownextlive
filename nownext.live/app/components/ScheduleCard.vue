@@ -1,36 +1,36 @@
 <template>
-  <div class="border rounded-none overflow-hidden bg-white border-slate-300">
+  <div class="border rounded-none overflow-hidden bg-white border-slate-300 flex flex-col h-full">
 
     <!-- Header -->
     <div class="px-4 py-3 bg-white text-xs uppercase tracking-wider text-slate-500 font-semibold border-b">
-      <h3 class="text-base">{{ title }}</h3>
+      <h3 class="text-base truncate">{{ title }}</h3>
     </div>
 
     <!-- NOW -->
-    <div class="bg-slate-900 text-white px-4 py-6 flex gap-4">
+    <div class="bg-slate-900 text-white px-4 py-6 flex gap-4 flex-grow">
       <div>
         <p class="py-1 text-xs uppercase tracking-widest font-semibold text-slate-300 mb-1">
           Now
         </p>
-        <span>{{ nowTime}}</span>
+        <span v-if="nowTime" class="font-mono">{{ nowTime}}</span>
       </div>
       <div class="flex-auto">
-        <p class="text-xl font-semibold">{{ now }}</p>
+        <p class="text-xl font-semibold leading-tight">{{ now }}</p>
         <p v-if="nowGroup" class="text-sm text-slate-300 mt-1">{{ nowGroup }}</p>
       </div>
     </div>
 
     <!-- NEXT -->
-    <div class="px-4 py-4 bg-white flex gap-4">
+    <div v-if="next" class="px-4 py-4 bg-white flex gap-4 border-t border-slate-100">
       <div>
         <p class="py-1 text-xs uppercase tracking-widest font-semibold text-slate-400 mb-1">
           Next
         </p>
-        <span>{{ nextTime }}</span>
+        <span v-if="nextTime" class="font-mono text-slate-600">{{ nextTime }}</span>
       </div>
       <div class="flex-auto">
-        <p class="text-slate-700 font-medium">{{ next }}</p>
-        <p v-if="nextGroup" class="text-sm text-slate-300 mt-1">{{ nextGroup }}</p>
+        <p class="text-slate-700 font-medium leading-tight">{{ next }}</p>
+        <p v-if="nextGroup" class="text-sm text-slate-500 mt-1">{{ nextGroup }}</p>
       </div>
     </div>
   </div>
