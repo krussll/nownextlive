@@ -15,6 +15,7 @@
         variant="ghost"
         to="/login"
         class="lg:hidden"
+        size="lg"
       />
 
       <UButton
@@ -22,14 +23,16 @@
         color="neutral"
         variant="outline"
         to="/login"
-        class="hidden lg:inline-flex"
+        size="lg"
+        class="hidden lg:inline-flex rounded-none font-semibold hover:shadow-lg"
       />
 
       <UButton
         label="Sign up"
         color="neutral"
         trailing-icon="i-lucide-arrow-right"
-        class="hidden lg:inline-flex"
+        size="lg"
+        class="hidden lg:inline-flex rounded-none font-semibold hover:shadow-lg"
         to="/signup"
       />
     </template>

@@ -112,6 +112,14 @@
                 color="white"
                 variant="solid"
                 icon="i-heroicons-forward"
+                :disabled="!canGoNext(item)"
+                @click="setNextSession(item)"
+              />
+              <UButton
+                color="red"
+                variant="ghost"
+                icon="i-heroicons-trash"
+                @click="deleteSpace(item)"
               />
             </div>
             
@@ -131,7 +139,7 @@
                 <!-- Left Colour Bar -->
                 <div
                   class="w-1 h-full absolute left-0 top-0 transition-colors duration-300"
-                  :class="session.active ? 'bg-green-500' : 'bg-transparent'"
+                  :class="session.id === item.now ? 'bg-green-500 animate-pulse' : 'bg-transparent'"
                 ></div>
 
                 <!-- Session Number -->
@@ -160,6 +168,18 @@
                       variant="solid"
                       icon="i-heroicons-play"
                       class="!rounded-none"
+                      :disabled="session.id === item.now"
+                      @click="item.now = session.id"
+                    />
+                  </UTooltip>
+
+                  <UTooltip text="Delete Session">
+                    <UButton
+                      color="red"
+                      variant="ghost"
+                      icon="i-heroicons-trash"
+                      class="!rounded-none"
+                      @click="deleteSession(item, session)"
                     />
                   </UTooltip>
                 </div>
@@ -184,12 +204,19 @@
       </main>
 
     </div>
+  <ModalConfirm
+    v-model:open="confirmModalOpen"
+    :title="confirmTitle"
+    :message="confirmMessage"
+    @confirm="handleConfirm"
+  />
   </UContainer>
 </template>
 
 <script setup>
   import Modal from '~/components/ModalSessionEdit.vue'
   import ModalSpace from '~/components/ModalSpaceEdit.vue'
+  import ModalConfirm from '~/components/ModalConfirm.vue'
   definePageMeta({
     layout: 'app'
   })
@@ -232,6 +259,59 @@ const addSession = (space) => {
     subtitle: "",
     time: ""
   })
+}
+
+const setNextSession = (space) => {
+  const currentIndex = space.sessions.findIndex(s => s.id === space.now);
+  if (currentIndex === -1) {
+    if (space.sessions.length > 0) {
+      space.now = space.sessions[0].id;
+    }
+  } else if (currentIndex < space.sessions.length - 1) {
+    space.now = space.sessions[currentIndex + 1].id;
+  }
+}
+
+const canGoNext = (space) => {
+  if (!space.sessions || space.sessions.length === 0) return false;
+  const currentIndex = space.sessions.findIndex(s => s.id === space.now);
+  // If not started, can go next (to first)
+  if (currentIndex === -1) return true;
+  // If started, can go next if not last
+  return currentIndex < space.sessions.length - 1;
+}
+
+
+
+const deleteSpace = (space) => {
+  confirmTitle.value = "Delete Space";
+  confirmMessage.value = `Are you sure you want to delete the space "${space.title}"? This action cannot be undone.`;
+  onConfirm.value = () => {
+    spaces.value = spaces.value.filter(s => s !== space);
+  };
+  confirmModalOpen.value = true;
+}
+
+const deleteSession = (space, session) => {
+  confirmTitle.value = "Delete Session";
+  confirmMessage.value = `Are you sure you want to delete the session "${session.title}"? This action cannot be undone.`;
+  onConfirm.value = () => {
+    if (space.now === session.id) {
+      space.now = "";
+    }
+    space.sessions = space.sessions.filter(s => s.id !== session.id);
+  };
+  confirmModalOpen.value = true;
+}
+
+// Confirmation Modal State
+const confirmModalOpen = ref(false);
+const confirmTitle = ref("");
+const confirmMessage = ref("");
+const onConfirm = ref(() => {});
+
+const handleConfirm = () => {
+  onConfirm.value();
 }
 
 showloading.value = false;
