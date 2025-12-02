@@ -2,11 +2,11 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['@nuxt/ui', 'nuxt-gtag'],
+  modules: ['@nuxt/ui', 'nuxt-gtag', '@nuxt/eslint'],
   css: ['~/assets/css/main.css'],
-  
+
   colorMode: {
-    preference:'light'
+    preference: 'light'
   },
   app: {
     head: {

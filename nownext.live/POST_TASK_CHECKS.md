@@ -1,5 +1,8 @@
+```
 # Post-Task Checks
 
 Perform these checks after every task to ensure the application remains stable.
 
-- [ ] **Build Verification**: Run `npm run dev -- -o` and ensure it completes without errors.
+- [ ] **Build Verification**: `npm run build` - Ensure the build passes
+- [ ] `npm run lint` - Ensure code meets quality standards
+```

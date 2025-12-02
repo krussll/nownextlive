@@ -1,9 +1,7 @@
 <template>
-    <UMain class="bg-gray-100 remove-padding">
-        <NuxtPage />
-    </UMain>
+  <UMain class="bg-gray-100 remove-padding">
+    <NuxtPage />
+  </UMain>
 </template>
 
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>

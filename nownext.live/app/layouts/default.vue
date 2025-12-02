@@ -1,14 +1,12 @@
 <template>
-    <UHeader>
+  <UHeader>
+    <template #title>
+      <img src="/imgs/logo.png" style="height: 35px" />
+    </template>
 
-      <template #title>
-        <img src="/imgs/logo.png" style="height: 35px;" />
-      </template>
+    <UNavigationMenu :items="items" />
 
-      <UNavigationMenu :items="items" />
-
-      <template #right>
-
+    <template #right>
       <UButton
         icon="i-lucide-log-in"
         color="neutral"
@@ -36,11 +34,11 @@
         to="/signup"
       />
     </template>
-    </UHeader>
-    <UMain>
-        <NuxtPage />
-    </UMain>
-    <UFooter />
+  </UHeader>
+  <UMain>
+    <NuxtPage />
+  </UMain>
+  <UFooter />
 </template>
 
 <script setup lang="ts">
@@ -48,15 +46,16 @@ import type { NavigationMenuItem } from '@nuxt/ui'
 
 const route = useRoute()
 
-const items = computed<NavigationMenuItem[]>(() => [{
-  label: 'About',
-  to: '/about',
-  active: route.path.startsWith('/about')
-}, {
-  label: 'Contact',
-  to: '/contact',
-  active: route.path.startsWith('/contact')
-}])
-
-
+const items = computed<NavigationMenuItem[]>(() => [
+  {
+    label: 'About',
+    to: '/about',
+    active: route.path.startsWith('/about')
+  },
+  {
+    label: 'Contact',
+    to: '/contact',
+    active: route.path.startsWith('/contact')
+  }
+])
 </script>
