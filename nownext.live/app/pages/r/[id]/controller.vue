@@ -10,7 +10,9 @@
     <!-- Header -->
     <div class="flex items-center justify-between mb-10">
       <div>
-        <h1 class="text-4xl font-semibold text-slate-900">Unnamed</h1>
+        <h1 class="text-4xl font-semibold text-slate-900">
+          {{ data?.title || 'Unnamed' }}
+        </h1>
       </div>
     </div>
 

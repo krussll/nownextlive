@@ -25,6 +25,7 @@ export default defineEventHandler((event) => {
 
   return {
     id,
+    title: 'North District Sports',
     spaces
   }
 })

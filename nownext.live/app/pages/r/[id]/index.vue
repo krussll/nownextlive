@@ -76,7 +76,7 @@ const spaces = computed(() => {
 
 /* Simple live clock */
 const time = ref('00:00')
-const roomName = ref('North District Sports')
+const roomName = computed(() => data.value?.title || 'North District Sports')
 onMounted(() => {
   setInterval(() => {
     const d = new Date()
