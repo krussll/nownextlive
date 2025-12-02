@@ -7,6 +7,24 @@
       <p class="text-slate-700">Loading...</p>
     </div>
 
+    <!-- Error State -->
+    <div
+      v-if="error && error.statusCode === 404"
+      class="flex flex-col items-center justify-center min-h-[50vh] text-center"
+    >
+      <UIcon
+        name="i-heroicons-exclamation-circle"
+        class="w-16 h-16 text-red-500 mb-4"
+      />
+      <h2 class="text-2xl font-bold text-slate-900 mb-2">
+        Event can not be found
+      </h2>
+      <p class="text-slate-500">
+        The event you are looking for does not exist or has been removed.
+      </p>
+    </div>
+
+    <div v-else>
     <!-- Header -->
     <div class="flex items-center justify-between mb-10">
       <div>
@@ -200,6 +218,7 @@
         </div>
       </main>
     </div>
+    </div>
     <ModalConfirm
       v-model:open="confirmModalOpen"
       :title="confirmTitle"
@@ -242,7 +261,7 @@ watch(error, (newError) => {
   if (newError) {
     showloading.value = false
   }
-})
+}, { immediate: true })
 
 const addSpace = () => {
   spaces.value.push({

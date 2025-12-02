@@ -1,6 +1,13 @@
 export default defineEventHandler((event) => {
   const id = getRouterParam(event, 'id')
 
+  if (id === 'missing') {
+    throw createError({
+      statusCode: 404,
+      statusMessage: 'Event not found'
+    })
+  }
+
   // Hardcoded data for now
   const spaces = [
     {
