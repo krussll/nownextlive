@@ -232,6 +232,7 @@
 import Modal from '~/components/ModalSessionEdit.vue'
 import ModalSpace from '~/components/ModalSpaceEdit.vue'
 import ModalConfirm from '~/components/ModalConfirm.vue'
+
 definePageMeta({
   layout: 'app'
 })
@@ -265,6 +266,7 @@ watch(error, (newError) => {
 
 const addSpace = () => {
   spaces.value.push({
+    id: generateId(),
     title: `New Space ${spaces.value.length + 1}`,
     now: '',
     sessions: []
@@ -273,7 +275,7 @@ const addSpace = () => {
 
 const addSession = (space) => {
   space.sessions.push({
-    id: Date.now().toString(),
+    id: generateId(),
     title: 'New Session',
     subtitle: '',
     time: ''
