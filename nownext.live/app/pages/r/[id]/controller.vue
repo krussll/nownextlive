@@ -122,19 +122,25 @@
                   :data="item"
                   @update:space="updateSpace(item, $event)"
                 />
-                <UButton
-                  color="white"
-                  variant="solid"
-                  icon="i-heroicons-forward"
-                  :disabled="!canGoNext(item)"
-                  @click="setNextSession(item)"
-                />
-                <UButton
-                  color="red"
-                  variant="ghost"
-                  icon="i-heroicons-trash"
-                  @click="deleteSpace(item)"
-                />
+                <UTooltip text="Advance to Next Session">
+                  <UButton
+                    color="white"
+                    variant="solid"
+                    icon="i-heroicons-forward"
+                    class="cursor-pointer"
+                    :disabled="!canGoNext(item)"
+                    @click="setNextSession(item)"
+                  />
+                </UTooltip>
+                <UTooltip text="Delete Space">
+                  <UButton
+                    color="red"
+                    variant="ghost"
+                    icon="i-heroicons-trash"
+                    class="cursor-pointer"
+                    @click="deleteSpace(item)"
+                  />
+                </UTooltip>
               </div>
             </template>
 
@@ -183,7 +189,7 @@
                         color="white"
                         variant="solid"
                         icon="i-heroicons-play"
-                        class="!rounded-none"
+                        class="!rounded-none cursor-pointer"
                         :disabled="session.id === item.now"
                         @click="setLive(item, session.id)"
                       />
@@ -194,7 +200,7 @@
                         color="red"
                         variant="ghost"
                         icon="i-heroicons-trash"
-                        class="!rounded-none"
+                        class="!rounded-none cursor-pointer"
                         @click="deleteSession(item, session)"
                       />
                     </UTooltip>

@@ -35,5 +35,24 @@
         ]
       }
     ]
+  },
+  "6NUPCPHCNRTU89N0": {
+    "id": "6NUPCPHCNRTU89N0",
+    "title": "Unnamed",
+    "spaces": [
+      {
+        "id": "LC3XHWIXNF73E8RU",
+        "title": "Main Space",
+        "now": "",
+        "sessions": [
+          {
+            "id": "N6EGSULU4V0GOKYY",
+            "title": "Session 1",
+            "subtitle": "",
+            "time": ""
+          }
+        ]
+      }
+    ]
   }
 }

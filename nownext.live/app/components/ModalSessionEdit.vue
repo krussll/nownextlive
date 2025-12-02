@@ -1,11 +1,13 @@
 <template>
   <UModal :title="props.title" v-model:open="open">
-    <UButton
-      color="white"
-      variant="solid"
-      icon="i-heroicons-cog-6-tooth"
-      class="!rounded-none"
-    />
+    <UTooltip text="Edit Session">
+      <UButton
+        color="white"
+        variant="solid"
+        icon="i-heroicons-cog-6-tooth"
+        class="!rounded-none cursor-pointer"
+      />
+    </UTooltip>
 
     <template #body>
       <div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
