@@ -215,28 +215,31 @@ definePageMeta({
   layout: 'app'
 })
 
-const showloading = ref(false)
+const showloading = ref(true)
 
-const spaces = ref([
-  {
-    title: 'Rink 1',
-    now: '1',
-    sessions: [
-      {
-        id: '1',
-        title: 'Test 1',
-        subtitle: 'Group A',
-        time: ''
-      },
-      {
-        id: '2',
-        title: 'Test 2',
-        subtitle: 'Group B',
-        time: ''
-      }
-    ]
+const route = useRoute()
+const { data, error } = await useFetch(`/api/events/${route.params.id}`, {
+  lazy: true
+})
+
+const spaces = ref([])
+
+watch(
+  data,
+  (newData) => {
+    if (newData?.spaces) {
+      spaces.value = newData.spaces
+      showloading.value = false
+    }
+  },
+  { immediate: true }
+)
+
+watch(error, (newError) => {
+  if (newError) {
+    showloading.value = false
   }
-])
+})
 
 const addSpace = () => {
   spaces.value.push({
@@ -306,5 +309,5 @@ const handleConfirm = () => {
   onConfirm.value()
 }
 
-showloading.value = false
+
 </script>

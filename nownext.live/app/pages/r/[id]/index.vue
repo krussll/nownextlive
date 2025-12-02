@@ -49,14 +49,30 @@ definePageMeta({
   layout: 'app'
 })
 
-const spaces = [
-  { id: 1, title: 'Space 1', now: 'Test 3', group: null, next: 'Test 4' },
-  { id: 2, title: 'Space 2', now: 'Test 4', group: 'Group D', next: null },
-  { id: 3, title: 'Space 3', now: 'Test 6', group: 'Group F', next: null },
-  { id: 4, title: 'Space 4', now: 'Test 8', group: 'Group H', next: null },
-  { id: 5, title: 'Space 5', now: 'Test 9', group: 'Group I', next: 'Test 10' },
-  { id: 6, title: 'Space 6', now: 'Test 11', group: 'Group K', next: 'Test 12' }
-]
+const route = useRoute()
+const { data, status, error, refresh } = await useFetch(
+  `/api/events/${route.params.id}`
+)
+
+const spaces = computed(() => {
+  if (!data.value?.spaces) return []
+  return data.value.spaces.map((space) => {
+    const nowSession = space.sessions.find((s) => s.id === space.now)
+    const nowIndex = space.sessions.findIndex((s) => s.id === space.now)
+    const nextSession =
+      nowIndex !== -1 && nowIndex < space.sessions.length - 1
+        ? space.sessions[nowIndex + 1]
+        : null
+
+    return {
+      id: space.title, // Using title as ID for now since API doesn't have space IDs
+      title: space.title,
+      now: nowSession ? nowSession.title : '',
+      group: nowSession ? nowSession.subtitle : '',
+      next: nextSession ? nextSession.title : ''
+    }
+  })
+})
 
 /* Simple live clock */
 const time = ref('00:00')
