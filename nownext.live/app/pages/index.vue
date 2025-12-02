@@ -96,8 +96,8 @@ const testimonials = [
 
           <div class="mt-10 flex flex-col sm:flex-row gap-4">
             <UButton
-              to="/r/NDST3"
-              label="Try a Demo"
+              to="/r/generate"
+              label="Try for free"
               color="primary"
               variant="solid"
               size="xl"

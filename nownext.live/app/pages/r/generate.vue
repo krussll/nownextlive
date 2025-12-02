@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-center justify-center h-screen w-screen bg-white">
-    <p class="text-slate-700 text-lg font-medium animate-pulse">Loading…</p>
+    <p class="text-slate-700 text-lg font-medium animate-pulse">Generating your event...</p>
   </div>
 </template>
 
@@ -9,7 +9,20 @@ definePageMeta({
   layout: 'app'
 })
 
-await setTimeout(() => {
-  window.location.replace('/r/NDST3/')
-}, 2000)
+const router = useRouter()
+
+onMounted(async () => {
+  try {
+    const newEventId = await $fetch('/api/generate', {
+      method: 'POST'
+    })
+    
+    if (newEventId) {
+      router.push(`/r/${newEventId}/controller`)
+    }
+  } catch (error) {
+    console.error('Failed to generate event:', error)
+    alert('Failed to generate event. Please try again.')
+  }
+})
 </script>
