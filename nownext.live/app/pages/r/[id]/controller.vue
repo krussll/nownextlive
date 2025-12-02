@@ -32,10 +32,10 @@
             variant="solid"
             class="w-full justify-between"
             icon="i-heroicons-arrow-top-right-on-square"
-            to="/r/NDST3"
+            :to="`/r/${eventId}`"
             target="_blank"
           >
-            Open NDST3 Display
+            Open Display
           </UButton>
         </UCard>
 
@@ -65,7 +65,7 @@
               </UBadge>
 
               <p class="text-sm text-slate-500">
-                Room: <span class="font-semibold text-slate-700">NDST3</span>
+                Room: <span class="font-semibold text-slate-700">{{ eventId }}</span>
               </p>
             </div>
           </div>
@@ -220,6 +220,7 @@ definePageMeta({
 const showloading = ref(true)
 
 const route = useRoute()
+const eventId = route.params.id
 const { data, error } = await useFetch(`/api/events/${route.params.id}`, {
   lazy: true
 })
