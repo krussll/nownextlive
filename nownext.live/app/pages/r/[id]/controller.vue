@@ -28,7 +28,7 @@
     <!-- Header -->
     <div class="flex items-center justify-between mb-10">
       <div>
-        <h1 class="text-4xl font-semibold text-slate-900">
+        <h1 class="text-4xl font-semibold text-slate-600 cursor-pointer hover:underline hover:decoration-dashed">
           {{ data?.title || 'Unnamed' }}
         </h1>
       </div>
