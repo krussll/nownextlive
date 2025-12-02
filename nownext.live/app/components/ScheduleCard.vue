@@ -10,7 +10,10 @@
     </div>
 
     <!-- NOW -->
-    <div class="bg-slate-900 text-white px-4 py-6 flex gap-4 flex-grow">
+    <div
+      v-if="now"
+      class="bg-slate-900 text-white px-4 py-6 flex gap-4 flex-grow"
+    >
       <div>
         <p
           class="py-1 text-xs uppercase tracking-widest font-semibold text-slate-300 mb-1"

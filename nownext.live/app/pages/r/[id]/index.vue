@@ -100,11 +100,16 @@ const spaces = computed(() => {
   if (!data.value?.spaces) return []
   return data.value.spaces.map((space) => {
     const nowSession = space.sessions.find((s) => s.id === space.now)
-    const nowIndex = space.sessions.findIndex((s) => s.id === space.now)
-    const nextSession =
-      nowIndex !== -1 && nowIndex < space.sessions.length - 1
-        ? space.sessions[nowIndex + 1]
-        : null
+    let nextSession = null
+
+    if (nowSession) {
+      const nowIndex = space.sessions.findIndex((s) => s.id === space.now)
+      if (nowIndex !== -1 && nowIndex < space.sessions.length - 1) {
+        nextSession = space.sessions[nowIndex + 1]
+      }
+    } else if (space.sessions.length > 0) {
+      nextSession = space.sessions[0]
+    }
 
     return {
       id: space.title, // Using title as ID for now since API doesn't have space IDs
