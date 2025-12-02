@@ -1,5 +1,12 @@
 <template>
   <UContainer class="py-10">
+    <div
+      v-if="showloading"
+      class="flex justify-center items-center h-screen fixed top-0 left-0 right-0 bottom-0 w-full z-50 overflow-hidden bg-gray-100"
+    >
+      <p class="text-slate-700">Loading...</p>
+    </div>
+
     <!-- Header -->
     <div class="flex items-center justify-between mb-10">
       <div>
@@ -42,17 +49,33 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import ScheduleCard from '~/components/ScheduleCard.vue'
 
 definePageMeta({
   layout: 'app'
 })
 
+const showloading = ref(true)
+const clockReady = ref(false)
+
 const route = useRoute()
 const { data, status, error, refresh } = await useFetch(
-  `/api/events/${route.params.id}`
+  `/api/events/${route.params.id}`,
+  {
+    lazy: true
+  }
 )
+
+const checkLoading = () => {
+  if ((data.value || error.value) && clockReady.value) {
+    showloading.value = false
+  }
+}
+
+watch([data, error, clockReady], () => {
+  checkLoading()
+})
 
 const spaces = computed(() => {
   if (!data.value?.spaces) return []
@@ -84,6 +107,9 @@ onMounted(() => {
       hour: '2-digit',
       minute: '2-digit'
     })
+    if (!clockReady.value) {
+      clockReady.value = true
+    }
   }, 1000)
 })
 </script>

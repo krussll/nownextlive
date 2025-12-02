@@ -2,9 +2,9 @@
   <UContainer class="py-10">
     <div
       v-if="showloading"
-      class="flex justify-center items-center h-screen fixed top-0 left-0 right-0 bottom-0 w-full z-50 overflow-hidden bg-gray-700 opacity-75"
+      class="flex justify-center items-center h-screen fixed top-0 left-0 right-0 bottom-0 w-full z-50 overflow-hidden bg-gray-100"
     >
-      <p class="text-slate-500">Loading...</p>
+      <p class="text-slate-700">Loading...</p>
     </div>
 
     <!-- Header -->
