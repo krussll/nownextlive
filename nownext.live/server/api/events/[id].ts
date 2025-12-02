@@ -1,38 +1,30 @@
-export default defineEventHandler((event) => {
+import fs from 'node:fs/promises'
+import path from 'node:path'
+
+export default defineEventHandler(async (event) => {
   const id = getRouterParam(event, 'id')
 
-  if (id === 'missing') {
+  if (!id || id === 'missing') {
     throw createError({
       statusCode: 404,
       statusMessage: 'Event not found'
     })
   }
 
-  // Hardcoded data for now
-  const spaces = [
-    {
-      title: 'Rink 1',
-      now: '1',
-      sessions: [
-        {
-          id: '1',
-          title: 'Test 1',
-          subtitle: 'Group A',
-          time: ''
-        },
-        {
-          id: '2',
-          title: 'Test 2',
-          subtitle: 'Group B',
-          time: ''
-        }
-      ]
-    }
-  ]
+  try {
+    const filePath = path.join(process.cwd(), 'server/data/events.json')
+    const fileContent = await fs.readFile(filePath, 'utf-8')
+    const events = JSON.parse(fileContent)
 
-  return {
-    id,
-    title: 'North District Sports',
-    spaces
+    if (events[id]) {
+      return events[id]
+    }
+  } catch (error) {
+    console.error('Error reading events file:', error)
   }
+
+  throw createError({
+    statusCode: 404,
+    statusMessage: 'Event not found'
+  })
 })

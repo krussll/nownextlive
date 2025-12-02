@@ -1,0 +1,26 @@
+{
+    "NDST3": {
+        "id": "NDST3",
+        "title": "North District Sports",
+        "spaces": [
+            {
+                "title": "Rink 1",
+                "now": "1",
+                "sessions": [
+                    {
+                        "id": "1",
+                        "title": "Test 1",
+                        "subtitle": "Group A",
+                        "time": ""
+                    },
+                    {
+                        "id": "2",
+                        "title": "Test 2",
+                        "subtitle": "Group B",
+                        "time": ""
+                    }
+                ]
+            }
+        ]
+    }
+}
