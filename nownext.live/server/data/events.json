@@ -1,26 +1,39 @@
 {
-    "NDST3": {
-        "id": "NDST3",
-        "title": "North District Sports",
-        "spaces": [
-            {
-                "title": "Rink 1",
-                "now": "1",
-                "sessions": [
-                    {
-                        "id": "1",
-                        "title": "Test 1",
-                        "subtitle": "Group A",
-                        "time": ""
-                    },
-                    {
-                        "id": "2",
-                        "title": "Test 2",
-                        "subtitle": "Group B",
-                        "time": ""
-                    }
-                ]
-            }
+  "NDST3": {
+    "id": "NDST3",
+    "title": "North District Sports",
+    "spaces": [
+      {
+        "title": "Rink 1",
+        "now": "1",
+        "sessions": [
+          {
+            "id": "1",
+            "title": "Test 1",
+            "subtitle": "Group A",
+            "time": ""
+          },
+          {
+            "id": "4F1GO56F7LCRN121",
+            "title": "New Session",
+            "subtitle": "",
+            "time": ""
+          }
         ]
-    }
+      },
+      {
+        "id": "7AR0VZRPIPVJFR66",
+        "title": "Space 2",
+        "now": "",
+        "sessions": [
+          {
+            "id": "93ZXYJIU4F133O1G",
+            "title": "New Session Name",
+            "subtitle": "",
+            "time": ""
+          }
+        ]
+      }
+    ]
+  }
 }

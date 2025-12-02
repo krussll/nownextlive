@@ -120,7 +120,7 @@
                 <ModalSpace
                   :title="`Editing space ${item.title}`"
                   :data="item"
-                  @update:space="($s) => (item = $s)"
+                  @update:space="updateSpace(item, $event)"
                 />
                 <UButton
                   color="white"
@@ -175,7 +175,7 @@
                     <Modal
                       :title="`Editing session ${session.title}`"
                       :data="session"
-                      @update:session="($s) => (session = $s)"
+                      @update:session="updateSession(item, session, $event)"
                     />
 
                     <UTooltip text="Set Live">
@@ -185,7 +185,7 @@
                         icon="i-heroicons-play"
                         class="!rounded-none"
                         :disabled="session.id === item.now"
-                        @click="item.now = session.id"
+                        @click="setLive(item, session.id)"
                       />
                     </UTooltip>
 
@@ -245,6 +245,23 @@ const { data, error } = await useFetch(`/api/events/${route.params.id}`, {
   lazy: true
 })
 
+const toast = useToast()
+
+const saveEvent = async () => {
+  try {
+    await $fetch(`/api/events/${eventId}`, {
+      method: 'POST',
+      body: {
+        ...data.value,
+        spaces: spaces.value
+      }
+    })
+    toast.add({ title: 'Event saved', color: 'green' })
+  } catch (e) {
+    toast.add({ title: 'Error saving event', description: e.message, color: 'red' })
+  }
+}
+
 const spaces = ref([])
 
 watch(
@@ -271,6 +288,7 @@ const addSpace = () => {
     now: '',
     sessions: []
   })
+  saveEvent()
 }
 
 const addSession = (space) => {
@@ -280,6 +298,7 @@ const addSession = (space) => {
     subtitle: '',
     time: ''
   })
+  saveEvent()
 }
 
 const setNextSession = (space) => {
@@ -291,6 +310,7 @@ const setNextSession = (space) => {
   } else if (currentIndex < space.sessions.length - 1) {
     space.now = space.sessions[currentIndex + 1].id
   }
+  saveEvent()
 }
 
 const canGoNext = (space) => {
@@ -307,6 +327,7 @@ const deleteSpace = (space) => {
   confirmMessage.value = `Are you sure you want to delete the space "${space.title}"? This action cannot be undone.`
   onConfirm.value = () => {
     spaces.value = spaces.value.filter((s) => s !== space)
+    saveEvent()
   }
   confirmModalOpen.value = true
 }
@@ -319,6 +340,7 @@ const deleteSession = (space, session) => {
       space.now = ''
     }
     space.sessions = space.sessions.filter((s) => s.id !== session.id)
+    saveEvent()
   }
   confirmModalOpen.value = true
 }
@@ -334,4 +356,25 @@ const handleConfirm = () => {
 }
 
 
+
+const updateSpace = (space, newSpace) => {
+  const index = spaces.value.indexOf(space)
+  if (index !== -1) {
+    spaces.value[index] = newSpace
+    saveEvent()
+  }
+}
+
+const updateSession = (space, session, newSession) => {
+  const index = space.sessions.indexOf(session)
+  if (index !== -1) {
+    space.sessions[index] = newSession
+    saveEvent()
+  }
+}
+
+const setLive = (space, sessionId) => {
+  space.now = sessionId
+  saveEvent()
+}
 </script>
