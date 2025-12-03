@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@nuxt/ui', 'nuxt-gtag', '@nuxt/eslint'],
   css: ['~/assets/css/main.css'],
-
+  ssr: false,
   colorMode: {
     preference: 'light'
   },
