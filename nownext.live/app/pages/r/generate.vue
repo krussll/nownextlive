@@ -13,12 +13,12 @@ const router = useRouter()
 
 onMounted(async () => {
   try {
-    const newEventId = await $fetch('/api/generate', {
+    const { id } = await $fetch('/api/events/generate', {
       method: 'POST'
     })
     
-    if (newEventId) {
-      router.push(`/r/${newEventId}/controller`)
+    if (id) {
+      router.push(`/r/${id}/controller`)
     }
   } catch (error) {
     console.error('Failed to generate event:', error)
