@@ -82,16 +82,15 @@ const testimonials = [
           <h1
             class="text-6xl md:text-7xl font-extrabold tracking-tighter leading-tight"
           >
-            Your Club Schedule,
+            Keep Everyone On The Same Page
             <span
               class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 via-purple-600 to-cyan-500"
             >
-              Live.
+              Instantly.
             </span>
           </h1>
           <p class="mt-6 text-xl text-gray-600 max-w-lg">
-            Update every screen instantly from your phone or laptop — no apps,
-            no setup.
+            Effortlessly display live schedules and updates across any screen. Change it once, and every device updates automatically.
           </p>
 
           <div class="mt-10 flex flex-col sm:flex-row gap-4">
@@ -102,14 +101,6 @@ const testimonials = [
               variant="solid"
               size="xl"
               class="rounded-none font-bold shadow-xl shadow-primary-200/50"
-            />
-            <UButton
-              to="#features"
-              label="Learn More"
-              color="primary"
-              variant="outline"
-              size="xl"
-              class="rounded-none font-semibold"
             />
           </div>
         </div>

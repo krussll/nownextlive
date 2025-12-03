@@ -87,7 +87,7 @@
             <!-- Status + Room -->
             <div class="flex justify-between items-center mt-6">
               <UBadge color="red" variant="subtle" class="px-3 py-1">
-                Disconnected
+                Connected
               </UBadge>
 
               <p class="text-sm text-slate-500">

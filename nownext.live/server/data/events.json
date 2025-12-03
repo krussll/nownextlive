@@ -22,13 +22,57 @@
         ]
       },
       {
-        "id": "7AR0VZRPIPVJFR66",
-        "title": "Space 2",
-        "now": "",
+        "id": "KI1RG2ONT10CB8Z2",
+        "title": "New Space 3",
+        "now": "22NU9OXTY5Z9Z3OC",
         "sessions": [
           {
-            "id": "93ZXYJIU4F133O1G",
-            "title": "New Session Name",
+            "id": "22NU9OXTY5Z9Z3OC",
+            "title": "New Session",
+            "subtitle": "",
+            "time": ""
+          },
+          {
+            "id": "5YN0SK65EMSJF6NW",
+            "title": "New Session",
+            "subtitle": "",
+            "time": ""
+          }
+        ]
+      },
+      {
+        "id": "K56ZV4DK7NWP2UBH",
+        "title": "New Space 4",
+        "now": "D4B53J79WPKVH4EH",
+        "sessions": [
+          {
+            "id": "D4B53J79WPKVH4EH",
+            "title": "New Session",
+            "subtitle": "",
+            "time": ""
+          },
+          {
+            "id": "1JJPHPO8BOFM0O6D",
+            "title": "New Session",
+            "subtitle": "",
+            "time": ""
+          }
+        ]
+      },
+      {
+        "id": "E6KENHGS35VZXBYJ",
+        "title": "New Space 5",
+        "now": "SHY3P4HN8E17SUS2",
+        "sessions": [
+          {
+            "id": "SHY3P4HN8E17SUS2",
+            "title": "New Session",
+            "subtitle": "",
+            "time": ""
+          },
+          {
+            "id": "07GTLW9PNEK8ENS8",
+            "title": "New Session",
             "subtitle": "",
             "time": ""
           }
