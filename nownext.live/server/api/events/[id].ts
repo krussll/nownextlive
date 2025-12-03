@@ -1,30 +1,31 @@
-import fs from 'node:fs/promises'
-import path from 'node:path'
+import { serverSupabaseClient } from '#supabase/server'
 
 export default defineEventHandler(async (event) => {
-  const id = getRouterParam(event, 'id')
+  const client = await serverSupabaseClient(event)
+  const id = event.context.params!.id
 
-  if (!id || id === 'missing') {
+  const { data, error } = await client.rpc(
+    'get_event',
+    { event_id: id } as any
+  )
+
+  // Handle Supabase error
+  if (error) {
+    console.error('Supabase error:', error)
     throw createError({
-      statusCode: 404,
-      statusMessage: 'Event not found'
+      statusCode: 500,
+      statusMessage: error.message
     })
   }
 
-  try {
-    const filePath = path.join(process.cwd(), 'server/data/events.json')
-    const fileContent = await fs.readFile(filePath, 'utf-8')
-    const events = JSON.parse(fileContent)
-
-    if (events[id]) {
-      return events[id]
-    }
-  } catch (error) {
-    console.error('Error reading events file:', error)
+  // Handle "not found"
+  if (!data) {
+    throw createError({
+      statusCode: 404,
+      statusMessage: `Event ${id} not found`
+    })
   }
 
-  throw createError({
-    statusCode: 404,
-    statusMessage: 'Event not found'
-  })
+  // All good → return event JSON
+  return data
 })

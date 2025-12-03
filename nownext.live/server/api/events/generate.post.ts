@@ -1,50 +1,31 @@
-import fs from 'node:fs/promises'
-import path from 'node:path'
-import { generateId } from '../../utils/id'
+import { serverSupabaseClient } from '#supabase/server'
 
-export default defineEventHandler(async () => {
-  const filePath = path.join(process.cwd(), 'server/data/events.json')
+export default defineEventHandler(async (event) => {
+  const client = await serverSupabaseClient(event)
 
-  try {
-    const fileContent = await fs.readFile(filePath, 'utf-8')
-    const events = JSON.parse(fileContent)
+  // Call Supabase RPC
+  const { data, error } = await client.rpc(
+    'create_new_event',
+    {} as any
+  )
 
-    let id = generateId(8)
-    while (events[id]) {
-      id = generateId(8)
-    }
-
-    const newEvent = {
-      id,
-      title: 'Unnamed',
-      spaces: [
-        {
-          id: generateId(),
-          title: 'Main Space',
-          now: '',
-          sessions: [
-            {
-              id: generateId(),
-              title: 'Session 1',
-              subtitle: '',
-              time: ''
-            }
-          ]
-        }
-      ]
-    }
-
-    events[id] = newEvent
-    await fs.writeFile(filePath, JSON.stringify(events, null, 2))
-
-    return {
-      id
-    }
-  } catch (error) {
-    console.error('Error generating event:', error)
+  if (error) {
+    console.error('Error creating event:', error)
     throw createError({
       statusCode: 500,
-      statusMessage: 'Failed to generate event'
+      statusMessage: error.message
     })
+  }
+
+  if (!data) {
+    throw createError({
+      statusCode: 500,
+      statusMessage: 'Unexpected empty response from RPC'
+    })
+  }
+
+  // Return new event ID
+  return {
+    id: data
   }
 })
