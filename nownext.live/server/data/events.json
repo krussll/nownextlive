@@ -54,5 +54,24 @@
         ]
       }
     ]
+  },
+  "HW4YPSFFP0W4L158": {
+    "id": "HW4YPSFFP0W4L158",
+    "title": "Gala Day",
+    "spaces": [
+      {
+        "id": "7X6HJBVUY718197B",
+        "title": "Main Space",
+        "now": "",
+        "sessions": [
+          {
+            "id": "JSOUIWGQT7S1R0OS",
+            "title": "Session 1",
+            "subtitle": "",
+            "time": ""
+          }
+        ]
+      }
+    ]
   }
 }

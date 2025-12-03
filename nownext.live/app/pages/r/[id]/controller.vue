@@ -28,9 +28,17 @@
     <!-- Header -->
     <div class="flex items-center justify-between mb-10">
       <div>
-        <h1 class="text-4xl font-semibold text-slate-600 cursor-pointer hover:underline hover:decoration-dashed">
+        <h1 
+          class="text-4xl font-semibold text-slate-600 cursor-pointer hover:underline hover:decoration-dashed"
+          @click="isEditingEvent = true"
+        >
           {{ data?.title || 'Unnamed' }}
         </h1>
+        <ModalEventEdit
+          v-model="isEditingEvent"
+          :title="data?.title || 'Unnamed'"
+          @save="updateEventTitle"
+        />
       </div>
     </div>
 
@@ -237,6 +245,7 @@
 <script setup>
 import Modal from '~/components/ModalSessionEdit.vue'
 import ModalSpace from '~/components/ModalSpaceEdit.vue'
+import ModalEventEdit from '~/components/ModalEventEdit.vue'
 import ModalConfirm from '~/components/ModalConfirm.vue'
 
 definePageMeta({
@@ -382,5 +391,15 @@ const updateSession = (space, session, newSession) => {
 const setLive = (space, sessionId) => {
   space.now = sessionId
   saveEvent()
+}
+
+// Event Title Editing
+const isEditingEvent = ref(false)
+
+const updateEventTitle = (newTitle) => {
+  if (data.value) {
+    data.value.title = newTitle
+    saveEvent()
+  }
 }
 </script>
