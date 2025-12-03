@@ -152,7 +152,7 @@ const testimonials = [
     <section id="features" class="py-24 bg-gray-50 border-b border-gray-100">
       <UContainer>
         <h2 class="text-4xl font-extrabold text-center mb-16">
-          Why Clubs Love <span class="text-indigo-600">NowNext</span>
+          Why Clubs Love <SiteLogo class="text-4xl font-extrabold tracking-tight" />
         </h2>
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -226,9 +226,7 @@ const testimonials = [
       :ui="{ wrapper: 'border-none' }"
     >
       <template #left>
-        <span class="text-xl font-bold text-gray-900">
-          NowNext<span class="text-indigo-600">Live</span>
-        </span>
+        <SiteLogo />
         <p class="text-sm text-gray-500">
           Simple, live “Now & Next” boards for sports clubs.
         </p>

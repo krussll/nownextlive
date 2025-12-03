@@ -57,7 +57,7 @@ const handleSignup = async () => {
         <!-- Logo/Brand -->
         <div class="text-center mb-8">
           <h1 class="text-4xl font-extrabold tracking-tight">
-            Now<span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 via-purple-600 to-cyan-500">Next</span>
+            <SiteLogo class="text-4xl font-extrabold tracking-tight" />
           </h1>
           <p class="mt-2 text-gray-600">Create your account</p>
         </div>

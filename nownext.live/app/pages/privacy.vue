@@ -40,7 +40,7 @@ useSeoMeta({
             <section class="mb-8">
               <h2 class="text-2xl font-bold text-gray-900 mb-4">Introduction</h2>
               <p class="text-gray-700 leading-relaxed mb-4">
-                Welcome to Now<span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 via-purple-600 to-cyan-500">Next</span>. 
+                Welcome to <SiteLogo class="inline" />. 
                 We are committed to protecting your privacy and ensuring the security of your personal information. 
                 This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our event management platform.
               </p>
