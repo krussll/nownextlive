@@ -70,6 +70,12 @@
 <script setup>
 import { ref, onMounted, watch } from 'vue'
 import ScheduleCard from '~/components/ScheduleCard.vue'
+import { createClient } from '@supabase/supabase-js'
+
+const SUPABASE_URL = 'https://xsijzyhfivzknrpxmtfk.supabase.co'
+const SUPABASE_KEY = 'sb_publishable_f7LEykuQEqIaa30-x718nQ_jVoJ-txz'
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
 
 definePageMeta({
   layout: 'app'
@@ -85,6 +91,20 @@ const { data, status, error, refresh } = await useFetch(
     lazy: true
   }
 )
+
+const myChannel = supabase.channel(`events/${route.params.id}`)
+// Simple function to log any messages we receive
+function messageReceived(payload) {
+  console.log(payload)
+}
+// Subscribe to the Channel
+myChannel
+  .on(
+    'broadcast',
+    { event: 'update' }, // Listen for "shout". Can be "*" to listen to all events
+    (payload) => messageReceived(payload)
+  )
+  .subscribe()
 
 const checkLoading = () => {
   if ((data.value || error.value) && clockReady.value) {

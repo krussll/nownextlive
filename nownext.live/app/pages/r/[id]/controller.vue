@@ -247,6 +247,26 @@ import Modal from '~/components/ModalSessionEdit.vue'
 import ModalSpace from '~/components/ModalSpaceEdit.vue'
 import ModalEventEdit from '~/components/ModalEventEdit.vue'
 import ModalConfirm from '~/components/ModalConfirm.vue'
+import { createClient } from '@supabase/supabase-js'
+
+const SUPABASE_URL = 'https://xsijzyhfivzknrpxmtfk.supabase.co'
+const SUPABASE_KEY = 'sb_publishable_f7LEykuQEqIaa30-x718nQ_jVoJ-txz'
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
+
+const route = useRoute()
+
+const myChannel = supabase.channel(`events/${route.params.id}`)
+/**
+ * Sending a message before subscribing will use HTTP
+ */
+myChannel
+  .send({
+    type: 'broadcast',
+    event: 'update',
+    payload: { message: 'Hi' },
+  })
+  .then((resp) => console.log(resp))
 
 definePageMeta({
   layout: 'app'
@@ -254,7 +274,6 @@ definePageMeta({
 
 const showloading = ref(true)
 
-const route = useRoute()
 const eventId = route.params.id
 const { data, error } = await useFetch(`/api/events/${route.params.id}`, {
   lazy: true
