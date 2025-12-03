@@ -32,11 +32,11 @@
           class="text-4xl font-semibold text-slate-600 cursor-pointer hover:underline hover:decoration-dashed"
           @click="isEditingEvent = true"
         >
-          {{ data?.title || 'Unnamed' }}
+          {{ event.title || 'Unnamed' }}
         </h1>
         <ModalEventEdit
           v-model="isEditingEvent"
-          :title="data?.title || 'Unnamed'"
+          :title="event.title || 'Unnamed'"
           @save="updateEventTitle"
         />
       </div>
@@ -108,8 +108,8 @@
             />
           </div>
 
-          <UAccordion
-            :items="spaces"
+          <UCollapsible
+            v-for="item in event.spaces"
             class="space-y-4"
             :ui="{
               item: { base: 'border rounded-none bg-white shadow-sm' },
@@ -119,8 +119,8 @@
               body: { base: 'px-0 pb-4' }
             }"
           >
-            <template #default="{ item, open }">
-              <span class="text-slate-700 font-semibold tracking-wide">
+          <div block>
+              <span  class="text-slate-700 font-semibold tracking-wide">
                 {{ item.title }}
               </span>
 
@@ -150,10 +150,10 @@
                   />
                 </UTooltip>
               </div>
-            </template>
+            </div>           
 
             <!-- EXPANDED CONTENT VIEW -->
-            <template #body="{ item }">
+            <template #content>
               <div class="space-y-4 px-4">
                 <!-- Session Card Loop -->
                 <div
@@ -228,7 +228,7 @@
                 </div>
               </div>
             </template>
-          </UAccordion>
+          </UCollapsible>
         </div>
       </main>
     </div>
@@ -272,11 +272,16 @@ definePageMeta({
   layout: 'app'
 })
 
-const showloading = ref(true)
+const showloading = ref(false)
 
 const eventId = route.params.id
 const { data, error } = await useFetch(`/api/events/${route.params.id}`, {
   lazy: true
+})
+
+const event = computed(() => {
+  if (!data.value?.spaces) return []
+  return data.value
 })
 
 const toast = useToast()
@@ -286,8 +291,8 @@ const saveEvent = async () => {
     await $fetch(`/api/events/${eventId}`, {
       method: 'POST',
       body: {
-        ...data.value,
-        spaces: spaces.value
+        ...event.value,
+        spaces: event.value.spaces
       }
     })
     toast.add({ title: 'Event saved', color: 'green' })
@@ -296,26 +301,6 @@ const saveEvent = async () => {
   }
 }
 
-const spacesData = ref([])
-
-const spaces = computed(() => {
-  return spacesData.value.map(space => ({
-    ...space,
-    value: space.id
-  }))
-})
-
-watch(
-  data,
-  (newData) => {
-    if (newData?.spaces) {
-      spacesData.value = newData.spaces
-      showloading.value = false
-    }
-  },
-  { immediate: true }
-)
-
 watch(error, (newError) => {
   if (newError) {
     showloading.value = false
@@ -323,9 +308,9 @@ watch(error, (newError) => {
 }, { immediate: true })
 
 const addSpace = () => {
-  spacesData.value.push({
+  event.value.spaces.push({
     id: generateId(),
-    title: `New Space ${spacesData.value.length + 1}`,
+    title: `New Space ${event.value.spaces.length + 1}`,
     now: '',
     sessions: []
   })
@@ -367,7 +352,7 @@ const deleteSpace = (space) => {
   confirmTitle.value = 'Delete Space'
   confirmMessage.value = `Are you sure you want to delete the space "${space.title}"? This action cannot be undone.`
   onConfirm.value = () => {
-    spacesData.value = spacesData.value.filter((s) => s.id !== space.id)
+    event.value.spaces = event.value.spaces.filter((s) => s.id !== space.id)
     saveEvent()
   }
   confirmModalOpen.value = true
@@ -399,9 +384,9 @@ const handleConfirm = () => {
 
 
 const updateSpace = (space, newSpace) => {
-  const index = spacesData.value.findIndex((s) => s.id === space.id)
+  const index = event.value.spaces.findIndex((s) => s.id === space.id)
   if (index !== -1) {
-    spacesData.value[index] = newSpace
+    event.value.spaces[index] = newSpace
     saveEvent()
   }
 }
@@ -423,8 +408,8 @@ const setLive = (space, sessionId) => {
 const isEditingEvent = ref(false)
 
 const updateEventTitle = (newTitle) => {
-  if (data.value) {
-    data.value.title = newTitle
+  if (event.value) {
+    event.value.title = newTitle
     saveEvent()
   }
 }
