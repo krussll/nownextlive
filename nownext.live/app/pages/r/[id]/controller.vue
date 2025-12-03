@@ -290,14 +290,14 @@ const saveEvent = async () => {
         spaces: event.value.spaces
       }
     })
-    toast.add({ title: 'Event saved', color: 'green' })
+    
     myChannel
-  .send({
-    type: 'broadcast',
-    event: 'update',
-    payload: { message: 'Hi' },
-  })
-  .then((resp) => console.log(resp))
+      .send({
+        type: 'broadcast',
+        event: 'update',
+        payload: { message: 'update' },
+      })
+  .then((resp) => toast.add({ title: 'Event saved', color: 'green' }))
   } catch (e) {
     toast.add({ title: 'Error saving event', description: e.message, color: 'red' })
   }
@@ -310,9 +310,9 @@ watch(error, (newError) => {
 }, { immediate: true })
 
 const addSpace = () => {
-  event.value.spaces.push({
+  data.value.spaces.push({
     id: generateId(),
-    title: `New Space ${event.value.spaces.length + 1}`,
+    title: `New Space ${data.value.spaces.length + 1}`,
     now: '',
     sessions: []
   })
@@ -382,7 +382,6 @@ const onConfirm = ref(() => {})
 const handleConfirm = () => {
   onConfirm.value()
 }
-
 
 
 const updateSpace = (space, newSpace) => {
