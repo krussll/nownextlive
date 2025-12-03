@@ -1,37 +1,33 @@
-import fs from 'node:fs/promises'
-import path from 'node:path'
+import { serverSupabaseClient } from '#supabase/server'
 
 export default defineEventHandler(async (event) => {
-  const id = getRouterParam(event, 'id')
+  const client = await serverSupabaseClient(event)
+  const id = event.context.params!.id
+
   const body = await readBody(event)
 
-  if (!id || id === 'missing') {
+  if (!body || body.id !== id) {
     throw createError({
-      statusCode: 404,
-      statusMessage: 'Event not found'
+      statusCode: 400,
+      statusMessage: 'Invalid event payload'
     })
   }
 
-  try {
-    const filePath = path.join(process.cwd(), 'server/data/events.json')
-    const fileContent = await fs.readFile(filePath, 'utf-8')
-    const events = JSON.parse(fileContent)
+  const { data, error } = await client.rpc(
+    'update_full_event',
+    { payload: body } as any
+  )
 
-    if (events[id]) {
-      events[id] = body
-      await fs.writeFile(filePath, JSON.stringify(events, null, 2))
-      return { success: true, event: events[id] }
-    }
-  } catch (error) {
-    console.error('Error updating events file:', error)
+  if (error) {
+    console.error('RPC error:', error)
     throw createError({
       statusCode: 500,
-      statusMessage: 'Failed to update event'
+      statusMessage: error.message
     })
   }
 
-  throw createError({
-    statusCode: 404,
-    statusMessage: 'Event not found'
-  })
+  return {
+    id: data,
+    status: 'updated'
+  }
 })
