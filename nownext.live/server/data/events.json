@@ -4,6 +4,7 @@
     "title": "North District Sports",
     "spaces": [
       {
+        "id": "RINK1SPACE000001",
         "title": "Rink 1",
         "now": "1",
         "sessions": [

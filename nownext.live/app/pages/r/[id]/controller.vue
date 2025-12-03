@@ -277,13 +277,20 @@ const saveEvent = async () => {
   }
 }
 
-const spaces = ref([])
+const spacesData = ref([])
+
+const spaces = computed(() => {
+  return spacesData.value.map(space => ({
+    ...space,
+    value: space.id
+  }))
+})
 
 watch(
   data,
   (newData) => {
     if (newData?.spaces) {
-      spaces.value = newData.spaces
+      spacesData.value = newData.spaces
       showloading.value = false
     }
   },
@@ -297,9 +304,9 @@ watch(error, (newError) => {
 }, { immediate: true })
 
 const addSpace = () => {
-  spaces.value.push({
+  spacesData.value.push({
     id: generateId(),
-    title: `New Space ${spaces.value.length + 1}`,
+    title: `New Space ${spacesData.value.length + 1}`,
     now: '',
     sessions: []
   })
@@ -341,7 +348,7 @@ const deleteSpace = (space) => {
   confirmTitle.value = 'Delete Space'
   confirmMessage.value = `Are you sure you want to delete the space "${space.title}"? This action cannot be undone.`
   onConfirm.value = () => {
-    spaces.value = spaces.value.filter((s) => s !== space)
+    spacesData.value = spacesData.value.filter((s) => s.id !== space.id)
     saveEvent()
   }
   confirmModalOpen.value = true
@@ -373,9 +380,9 @@ const handleConfirm = () => {
 
 
 const updateSpace = (space, newSpace) => {
-  const index = spaces.value.indexOf(space)
+  const index = spacesData.value.findIndex((s) => s.id === space.id)
   if (index !== -1) {
-    spaces.value[index] = newSpace
+    spacesData.value[index] = newSpace
     saveEvent()
   }
 }
