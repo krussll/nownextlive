@@ -250,5 +250,24 @@
         ]
       }
     ]
+  },
+  "3F8MQZS3": {
+    "id": "3F8MQZS3",
+    "title": "Unnamed",
+    "spaces": [
+      {
+        "id": "D5MUAPN5O6KFB92V",
+        "title": "Main Space",
+        "now": "",
+        "sessions": [
+          {
+            "id": "TABD6NBMDWNYO407",
+            "title": "Session 1",
+            "subtitle": "",
+            "time": ""
+          }
+        ]
+      }
+    ]
   }
 }

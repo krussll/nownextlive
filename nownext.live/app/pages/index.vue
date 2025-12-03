@@ -76,18 +76,18 @@ const testimonials = [
 
 <template>
   <div class="bg-white text-gray-900 antialiased min-h-screen">
-    <section class="py-24 md:py-36 border-b border-gray-100">
+    <section class="py-24 md:py-24 border-b border-gray-100">
       <UContainer class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <div>
           <h1
-            class="text-6xl md:text-7xl font-extrabold tracking-tighter leading-tight"
+            class="text-6xl md:text-6xl font-extrabold tracking-tighter leading-tight"
           >
-            Keep Everyone On The Same Page
-            <span
+            Ditch the paper.
+            <div
               class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 via-purple-600 to-cyan-500"
             >
-              Instantly.
-            </span>
+              Your schedule. Updating everywhere. Instantly.
+            </div>
           </h1>
           <p class="mt-6 text-xl text-gray-600 max-w-lg">
             Effortlessly display live schedules and updates across any screen. Change it once, and every device updates automatically.
@@ -112,6 +112,38 @@ const testimonials = [
               alt="Diagram of NowNext live updating system"
               class="w-full h-auto max-w-xl rounded-none"
             />
+          </div>
+        </div>
+      </UContainer>
+    </section>
+
+    
+
+    <section class="py-24 border-b border-gray-100">
+      <UContainer>
+        <h2 class="text-4xl font-extrabold text-center mb-16">
+          How It
+          <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-cyan-500"
+            >Works</span
+          >
+        </h2>
+
+        <div class="grid lg:grid-cols-3 gap-12">
+          <div
+            v-for="step in steps"
+            :key="step.number"
+            class="text-center p-6 border border-gray-200 rounded-none hover:shadow-xl transition-shadow"
+          >
+            <p
+              class="text-8xl font-black mb-4 text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-cyan-400 leading-none"
+            >
+              {{ step.number }}
+            </p>
+            <h3 class="text-2xl font-bold mb-3 text-gray-900">
+              {{ step.title }}
+            </h3>
+            <p class="text-gray-600">{{ step.description }}</p>
           </div>
         </div>
       </UContainer>
@@ -149,37 +181,6 @@ const testimonials = [
         </div>
       </UContainer>
     </section>
-
-    <section class="py-24 border-b border-gray-100">
-      <UContainer>
-        <h2 class="text-4xl font-extrabold text-center mb-16">
-          How It
-          <span
-            class="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-cyan-500"
-            >Works</span
-          >
-        </h2>
-
-        <div class="grid lg:grid-cols-3 gap-12">
-          <div
-            v-for="step in steps"
-            :key="step.number"
-            class="text-center p-6 border border-gray-200 rounded-none hover:shadow-xl transition-shadow"
-          >
-            <p
-              class="text-8xl font-black mb-4 text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-cyan-400 leading-none"
-            >
-              {{ step.number }}
-            </p>
-            <h3 class="text-2xl font-bold mb-3 text-gray-900">
-              {{ step.title }}
-            </h3>
-            <p class="text-gray-600">{{ step.description }}</p>
-          </div>
-        </div>
-      </UContainer>
-    </section>
-
     <section class="py-24 bg-gray-50 border-b border-gray-100">
       <UContainer>
         <h2 class="text-4xl font-extrabold text-center mb-16">
@@ -226,7 +227,7 @@ const testimonials = [
     >
       <template #left>
         <span class="text-xl font-bold text-gray-900">
-          Now<span class="text-indigo-600">Next</span>
+          NowNext<span class="text-indigo-600">Live</span>
         </span>
         <p class="text-sm text-gray-500">
           Simple, live “Now & Next” boards for sports clubs.
