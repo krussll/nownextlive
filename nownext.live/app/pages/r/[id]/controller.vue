@@ -260,13 +260,7 @@ const myChannel = supabase.channel(`events/${route.params.id}`)
 /**
  * Sending a message before subscribing will use HTTP
  */
-myChannel
-  .send({
-    type: 'broadcast',
-    event: 'update',
-    payload: { message: 'Hi' },
-  })
-  .then((resp) => console.log(resp))
+
 
 definePageMeta({
   layout: 'app'
@@ -274,9 +268,10 @@ definePageMeta({
 
 const showloading = ref(false)
 
+
 const eventId = route.params.id
 const { data, error } = await useFetch(`/api/events/${route.params.id}`, {
-  lazy: true
+  lazy: true,
 })
 
 const event = computed(() => {
@@ -296,6 +291,13 @@ const saveEvent = async () => {
       }
     })
     toast.add({ title: 'Event saved', color: 'green' })
+    myChannel
+  .send({
+    type: 'broadcast',
+    event: 'update',
+    payload: { message: 'Hi' },
+  })
+  .then((resp) => console.log(resp))
   } catch (e) {
     toast.add({ title: 'Error saving event', description: e.message, color: 'red' })
   }

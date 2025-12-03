@@ -83,19 +83,21 @@ definePageMeta({
 
 const showloading = ref(true)
 const clockReady = ref(false)
+const searchQuery = ref(0)
 
 const route = useRoute()
 const { data, status, error, refresh } = await useFetch(
   `/api/events/${route.params.id}`,
   {
+  query: { q: searchQuery },
     lazy: true
   }
 )
 
 const myChannel = supabase.channel(`events/${route.params.id}`)
 // Simple function to log any messages we receive
-function messageReceived(payload) {
-  console.log(payload)
+async function messageReceived(payload) {
+  searchQuery.value++
 }
 // Subscribe to the Channel
 myChannel
