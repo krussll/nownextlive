@@ -51,7 +51,12 @@
 
     <!-- Grid -->
     <div
-      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-center"
+      :class="[
+        'grid gap-6',
+        spaces.length < 3 
+          ? 'grid-cols-1 sm:grid-cols-2 justify-items-center' 
+          : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
+      ]"
     >
       <ScheduleCard
         v-for="space in spaces"
@@ -60,7 +65,7 @@
         :now="space.now"
         :nowGroup="space.group"
         :next="space.next"
-        class="w-full"
+        :class="spaces.length < 3 ? 'w-full max-w-md' : 'w-full'"
       />
     </div>
     </div>
