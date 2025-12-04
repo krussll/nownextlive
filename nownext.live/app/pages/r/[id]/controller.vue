@@ -65,11 +65,15 @@
           </UButton>
         </UCard>
 
-        <iframe
+        <UCard  class="relative w-full h-64 overflow-hidden">
+<iframe
   id="inlineFrameExample"
   title="Inline Frame Example"
-  class="origin-top-left w-[1920px] h-[1080px] scale-[0.15] pointer-events-none"
+  height="200"
+  class="origin-top-left w-[1920px] h-[1080px] scale-[0.14] pointer-events-none"
   :src="`http://localhost:3000/r/${eventId}`" />
+        </UCard>
+        
 
         <!-- Connected Users -->
         <UCard class="rounded-none">
