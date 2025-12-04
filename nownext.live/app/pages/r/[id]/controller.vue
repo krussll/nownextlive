@@ -305,6 +305,8 @@ onMounted(() => {
     currentTime.value = new Date()
   }, 5000)
 
+  const STALE_MS = 2 * 60 * 1000;
+  const now = Date.now();
   // Subscribe to presence events (client-side only to prevent SSR duplicates)
   myChannel
     .on('presence', { event: 'sync' }, () => {
@@ -312,6 +314,10 @@ onMounted(() => {
       // Convert presence state to array of users and sort by most recent first
       connectedUsers.value = Object.keys(state)
         .flatMap(key => state[key])
+        .filter(meta => {
+    const ts = new Date(meta.online_at).getTime();
+    return now - ts < STALE_MS; // keep only recent presence
+  })
         .sort((a, b) => new Date(b.online_at) - new Date(a.online_at))
     })
     .on('presence', { event: 'join' }, ({ newPresences }) => {
