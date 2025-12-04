@@ -297,6 +297,11 @@ watch(data, (newData) => {
 
 const event = computed(() => localEvent.value)
 
+// Set page title with event title prefix
+useHead(() => ({
+  title: `${event.value?.title || 'Unnamed'} - Controller`
+}))
+
 const toast = useToast()
 
 const saveEvent = async () => {

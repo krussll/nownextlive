@@ -146,6 +146,11 @@ const spaces = computed(() => {
 /* Simple live clock */
 const time = ref('00:00')
 const roomName = computed(() => data.value?.title || 'North District Sports')
+
+// Set page title with event title prefix
+useHead(() => ({
+  title: `${data.value?.title || 'North District Sports'} - Live Schedule`
+}))
 onMounted(() => {
   setInterval(() => {
     const d = new Date()
