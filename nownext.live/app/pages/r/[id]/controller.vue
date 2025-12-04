@@ -111,7 +111,7 @@
             <!-- Status + Room -->
             <div class="flex justify-between items-center mt-6">
               <UBadge color="red" variant="subtle" class="px-3 py-1">
-                Connected
+                 {{ userSession?.value.capabilities.max_spaces }}
               </UBadge>
 
               <p class="text-sm text-slate-500">
@@ -375,6 +375,8 @@ const eventId = route.params.id
 const { data, error } = await useFetch(`/api/events/${route.params.id}`, {
   lazy: true,
 })
+
+const { userSession } = await useFetch(`/api/user/me`)
 
 const localEvent = ref({ spaces: [] })
 
