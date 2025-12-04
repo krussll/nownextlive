@@ -47,33 +47,29 @@
       <aside class="lg:col-span-3 space-y-6 order-2 lg:order-1">
         <!-- Displays -->
         <UCard class="rounded-none">
-          <p
-            class="text-xs uppercase font-semibold tracking-wider text-slate-500 mb-3"
-          >
-            Displays
-          </p>
-
+          
+         <div class="relative w-full h-48 overflow-hidden">
+          <iframe
+  id="inlineFrameExample"
+  title="Inline Frame Example"
+  height="200"
+  class="origin-top-left absolute top-0 left-0 w-[1920px] h-[1080px] scale-[0.14] pointer-events-none"
+  :src="`http://localhost:3000/r/${eventId}?nopresence=true`" />
           <UButton
             color="white"
             variant="solid"
-            class="w-full justify-between"
+            class="absolute top-2 right-2"
             icon="i-heroicons-arrow-top-right-on-square"
             :to="`/r/${eventId}`"
             target="_blank"
           >
-            Open Display
           </UButton>
+
+         </div>
+
         </UCard>
 
-        <UCard  class="relative w-full h-64 overflow-hidden">
-<iframe
-  id="inlineFrameExample"
-  title="Inline Frame Example"
-  height="200"
-  class="origin-top-left w-[1920px] h-[1080px] scale-[0.14] pointer-events-none"
-  :src="`http://localhost:3000/r/${eventId}?nopresence=true`" />
-        </UCard>
-        
+    
 
         <!-- Connected Users -->
         <UCard class="rounded-none">
