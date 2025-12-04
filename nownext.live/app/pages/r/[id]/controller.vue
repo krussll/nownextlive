@@ -117,7 +117,7 @@
             <!-- Status + Room -->
             <div class="flex justify-between items-center mt-6">
               <UBadge color="red" variant="subtle" class="px-3 py-1">
-                 {{ userSession?.value.capabilities.max_spaces }}
+                 {{ userSession?.capabilities?.max_spaces || 'Loading...' }}
               </UBadge>
 
               <p class="text-sm text-slate-500">
@@ -382,7 +382,9 @@ const { data, error } = await useFetch(`/api/events/${route.params.id}`, {
   lazy: true,
 })
 
-const { userSession } = await useFetch(`/api/user/me`)
+const { data: userSession } = await useFetch(`/api/user/me`, {
+  lazy: true,
+})
 
 const localEvent = ref({ spaces: [] })
 
