@@ -110,6 +110,7 @@
 
           <UCollapsible
             v-for="item in event.spaces"
+            :key="item.id"
             class="space-y-4"
             :ui="{
               item: { base: 'border rounded-none bg-white shadow-sm' },
@@ -154,7 +155,7 @@
 
             <!-- EXPANDED CONTENT VIEW -->
             <template #content>
-              <div class="space-y-4 px-4">
+              <div class="space-y-4 px-4" :key="item.now">
                 <!-- Session Card Loop -->
                 <div
                   v-for="session in item.sessions"
@@ -266,18 +267,27 @@ definePageMeta({
   layout: 'app'
 })
 
-const showloading = ref(false)
+const showloading = ref(true)
 
+onMounted(() => { 
+      showloading.value = false 
+      
+    });
 
 const eventId = route.params.id
 const { data, error } = await useFetch(`/api/events/${route.params.id}`, {
   lazy: true,
 })
 
-const event = computed(() => {
-  if (!data.value?.spaces) return []
-  return data.value
-})
+const localEvent = ref({ spaces: [] })
+
+watch(data, (newData) => {
+  if (newData) {
+    localEvent.value = JSON.parse(JSON.stringify(newData))
+  }
+}, { immediate: true, deep: true })
+
+const event = computed(() => localEvent.value)
 
 const toast = useToast()
 
@@ -286,8 +296,8 @@ const saveEvent = async () => {
     await $fetch(`/api/events/${eventId}`, {
       method: 'POST',
       body: {
-        ...event.value,
-        spaces: event.value.spaces
+        ...localEvent.value,
+        spaces: localEvent.value.spaces
       }
     })
     
@@ -310,9 +320,9 @@ watch(error, (newError) => {
 }, { immediate: true })
 
 const addSpace = () => {
-  data.value.spaces.push({
+  localEvent.value.spaces.push({
     id: generateId(),
-    title: `New Space ${data.value.spaces.length + 1}`,
+    title: `New Space ${localEvent.value.spaces.length + 1}`,
     now: '',
     sessions: []
   })
@@ -401,8 +411,11 @@ const updateSession = (space, session, newSession) => {
 }
 
 const setLive = (space, sessionId) => {
-  space.now = sessionId
-  saveEvent()
+  const spaceIndex = localEvent.value.spaces.findIndex((s) => s.id === space.id)
+  if (spaceIndex !== -1) {
+    localEvent.value.spaces[spaceIndex].now = sessionId
+    saveEvent()
+  }
 }
 
 // Event Title Editing
