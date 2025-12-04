@@ -38,7 +38,7 @@ const handleSignup = async () => {
     await new Promise(resolve => setTimeout(resolve, 1000))
     
     // Placeholder logic - replace with actual registration
-    console.log('Signup attempt:', { name: name.value, email: email.value })
+    // Signup attempt
     
     // On success, redirect to login or dashboard
     // navigateTo('/login')

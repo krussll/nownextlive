@@ -21,7 +21,7 @@ const handleLogin = async () => {
     await new Promise(resolve => setTimeout(resolve, 1000))
     
     // Placeholder logic - replace with actual authentication
-    console.log('Login attempt:', { email: email.value })
+    // Login attempt
     
     // On success, redirect to home or dashboard
     // navigateTo('/r/generate')

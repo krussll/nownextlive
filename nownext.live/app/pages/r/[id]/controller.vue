@@ -73,7 +73,31 @@
             Connected Users
           </p>
 
-          <p class="text-slate-400 text-sm">No connected users yet</p>
+          <div v-if="connectedUsers.length === 0">
+            <p class="text-slate-400 text-sm">No connected users yet</p>
+          </div>
+          
+          <div v-else class="space-y-2">
+            <div
+              v-for="user in connectedUsers"
+              :key="user.user_id"
+              class="flex items-center gap-2 text-sm transition-opacity"
+              :class="getConnectionAge(user.online_at) > 60 ? 'opacity-50' : 'opacity-100'"
+            >
+              <UBadge 
+                :color="user.user_type === 'controller' ? 'blue' : 'green'" 
+                variant="subtle"
+              >
+                {{ user.user_type }}
+              </UBadge>
+              <span class="text-slate-600 font-mono text-xs">
+                {{ user.user_id.substring(0, 8) }}
+              </span>
+              <span class="text-slate-400 text-xs ml-auto">
+                {{ formatConnectionAge(user.online_at) }}
+              </span>
+            </div>
+          </div>
         </UCard>
       </aside>
 
@@ -270,6 +294,64 @@ const myChannel = supabase.channel(`events/${route.params.id}`)
  * Sending a message before subscribing will use HTTP
  */
 
+// Connected users tracking
+const connectedUsers = ref([])
+const currentTime = ref(new Date())
+
+// Update current time every 5 seconds for connection age display (client-side only)
+onMounted(() => {
+  setInterval(() => {
+    currentTime.value = new Date()
+  }, 5000)
+
+  // Subscribe to presence events (client-side only to prevent SSR duplicates)
+  myChannel
+    .on('presence', { event: 'sync' }, () => {
+      const state = myChannel.presenceState()
+      // Convert presence state to array of users and sort by most recent first
+      connectedUsers.value = Object.keys(state)
+        .flatMap(key => state[key])
+        .sort((a, b) => new Date(b.online_at) - new Date(a.online_at))
+    })
+    .on('presence', { event: 'join' }, ({ newPresences }) => {
+      // User joined
+    }).on('presence', { event: 'leave' }, ({ leftPresences }) => {
+      // User left
+    })
+    .subscribe(async (status) => {
+      if (status === 'SUBSCRIBED') {
+        // Track this user's presence
+        await myChannel.track({
+          user_id: generateId(),
+          user_type: 'controller',
+          online_at: new Date().toISOString()
+        })
+      }
+    })
+})
+
+// Helper function to get connection age in seconds
+const getConnectionAge = (onlineAt) => {
+  const connectedTime = new Date(onlineAt)
+  return Math.floor((currentTime.value - connectedTime) / 1000)
+}
+
+// Helper function to format connection age
+const formatConnectionAge = (onlineAt) => {
+  const ageInSeconds = getConnectionAge(onlineAt)
+  
+  if (ageInSeconds < 10) return 'just now'
+  if (ageInSeconds < 60) return `${ageInSeconds}s ago`
+  
+  const ageInMinutes = Math.floor(ageInSeconds / 60)
+  if (ageInMinutes < 60) return `${ageInMinutes}m ago`
+  
+  const ageInHours = Math.floor(ageInMinutes / 60)
+  return `${ageInHours}h ago`
+}
+
+
+
 
 definePageMeta({
   layout: 'app'
@@ -440,4 +522,9 @@ const updateEventTitle = (newTitle) => {
     saveEvent()
   }
 }
+
+// Cleanup presence tracking on unmount
+onUnmounted(() => {
+  myChannel.untrack()
+})
 </script>

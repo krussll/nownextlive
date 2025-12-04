@@ -104,14 +104,7 @@ const myChannel = supabase.channel(`events/${route.params.id}`)
 async function messageReceived(payload) {
   searchQuery.value++
 }
-// Subscribe to the Channel
-myChannel
-  .on(
-    'broadcast',
-    { event: 'update' }, // Listen for "shout". Can be "*" to listen to all events
-    (payload) => messageReceived(payload)
-  )
-  .subscribe()
+
 
 const checkLoading = () => {
   if ((data.value || error.value) && clockReady.value) {
@@ -157,6 +150,35 @@ useHead(() => ({
   title: `${data.value?.title || 'North District Sports'} - Live Schedule`
 }))
 onMounted(() => {
+  // Subscribe to the Channel with broadcast and presence (client-side only)
+  myChannel
+    .on(
+      'broadcast',
+      { event: 'update' }, // Listen for "shout". Can be "*" to listen to all events
+      (payload) => messageReceived(payload)
+    )
+    .on('presence', { event: 'sync' }, () => {
+      const state = myChannel.presenceState()
+      // Presence synced
+    })
+    .on('presence', { event: 'join' }, ({ newPresences }) => {
+      // User joined
+    })
+    .on('presence', { event: 'leave' }, ({ leftPresences }) => {
+      // User left
+    })
+    .subscribe(async (status) => {
+      if (status === 'SUBSCRIBED') {
+        // Track this viewer's presence
+        await myChannel.track({
+          user_id: generateId(),
+          user_type: 'viewer',
+          online_at: new Date().toISOString()
+        })
+      }
+    })
+
+  // Start the clock
   setInterval(() => {
     const d = new Date()
     time.value = d.toLocaleTimeString([], {
@@ -167,6 +189,11 @@ onMounted(() => {
       clockReady.value = true
     }
   }, 1000)
+})
+
+// Cleanup presence tracking on unmount
+onUnmounted(() => {
+  myChannel.untrack()
 })
 </script>
 
