@@ -71,7 +71,7 @@
   title="Inline Frame Example"
   height="200"
   class="origin-top-left w-[1920px] h-[1080px] scale-[0.14] pointer-events-none"
-  :src="`http://localhost:3000/r/${eventId}`" />
+  :src="`http://localhost:3000/r/${eventId}?nopresence=true`" />
         </UCard>
         
 
