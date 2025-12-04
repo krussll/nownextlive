@@ -134,8 +134,9 @@
 
           <div class="space-y-6">
             <UCollapsible
-              v-for="item in event.spaces"
+              v-for="(item, index) in event.spaces"
               :key="item.id"
+              :default-open="index === 0"
               class="space-y-4 border border-gray-200 rounded-none bg-white shadow-sm"
               :ui="{
                 header: {
@@ -145,15 +146,15 @@
               }"
             >
               <template #default="{ open }">
-                <div class="flex items-center gap-3 cursor-pointer w-full">
-                  <UIcon
-                    name="i-heroicons-chevron-down"
-                    class="w-5 h-5 text-gray-500 transition-transform duration-200"
-                    :class="[open && 'transform rotate-180']"
-                  />
+                <div class="flex items-center gap-3 cursor-pointer w-full px-6 py-5">
                   <span class="text-slate-700 font-semibold tracking-wide">
                     {{ item.title }}
                   </span>
+                  <UIcon
+                    name="i-heroicons-chevron-down"
+                    class="w-5 h-5 text-gray-500 transition-transform duration-200 ml-auto"
+                    :class="[open && 'transform rotate-180']"
+                  />
                 </div>
 
                 <div class="flex items-center gap-2" @click.stop>
