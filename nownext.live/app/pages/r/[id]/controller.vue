@@ -108,128 +108,136 @@
             />
           </div>
 
-          <UCollapsible
-            v-for="item in event.spaces"
-            :key="item.id"
-            class="space-y-4"
-            :ui="{
-              item: { base: 'border rounded-none bg-white shadow-sm' },
-              header: {
-                base: 'flex justify-between w-full px-4 py-4 text-left'
-              },
-              body: { base: 'px-0 pb-4' }
-            }"
-          >
-          <div block>
-              <span  class="text-slate-700 font-semibold tracking-wide">
-                {{ item.title }}
-              </span>
-
-              <div class="flex items-center gap-2" @click.stop>
-                <ModalSpace
-                  :title="`Editing space ${item.title}`"
-                  :data="item"
-                  @update:space="updateSpace(item, $event)"
-                />
-                <UTooltip text="Advance to Next Session">
-                  <UButton
-                    color="white"
-                    variant="solid"
-                    icon="i-heroicons-forward"
-                    class="cursor-pointer"
-                    :disabled="!canGoNext(item)"
-                    @click="setNextSession(item)"
+          <div class="space-y-6">
+            <UCollapsible
+              v-for="item in event.spaces"
+              :key="item.id"
+              class="space-y-4 border border-gray-200 rounded-none bg-white shadow-sm"
+              :ui="{
+                header: {
+                  base: 'flex justify-between w-full px-4 py-4 text-left cursor-pointer items-center'
+                },
+                body: { base: 'px-0 pb-4 bg-gray-50 border-t border-gray-100' }
+              }"
+            >
+              <template #default="{ open }">
+                <div class="flex items-center gap-3 cursor-pointer w-full">
+                  <UIcon
+                    name="i-heroicons-chevron-down"
+                    class="w-5 h-5 text-gray-500 transition-transform duration-200"
+                    :class="[open && 'transform rotate-180']"
                   />
-                </UTooltip>
-                <UTooltip text="Delete Space">
-                  <UButton
-                    color="red"
-                    variant="ghost"
-                    icon="i-heroicons-trash"
-                    class="cursor-pointer"
-                    @click="deleteSpace(item)"
+                  <span class="text-slate-700 font-semibold tracking-wide">
+                    {{ item.title }}
+                  </span>
+                </div>
+
+                <div class="flex items-center gap-2" @click.stop>
+                  <ModalSpace
+                    :title="`Editing space ${item.title}`"
+                    :data="item"
+                    @update:space="updateSpace(item, $event)"
                   />
-                </UTooltip>
-              </div>
-            </div>           
-
-            <!-- EXPANDED CONTENT VIEW -->
-            <template #content>
-              <div class="space-y-4 px-4" :key="item.now">
-                <!-- Session Card Loop -->
-                <div
-                  v-for="session in item.sessions"
-                  :key="session.id"
-                  class="flex justify-between items-center border rounded-none bg-gradient-to-br from-slate-50 to-slate-100 relative overflow-hidden group"
-                >
-                  <!-- Left Colour Bar -->
-                  <div
-                    class="w-1 h-full absolute left-0 top-0 transition-colors duration-300"
-                    :class="
-                      session.id === item.now
-                        ? 'bg-green-500 animate-pulse'
-                        : 'bg-transparent'
-                    "
-                  ></div>
-
-                  <!-- Session Number -->
-                  <div class="pl-6 py-5">
-                    <p class="font-semibold text-slate-700">
-                      {{ session.title }}
-                    </p>
-                    <p
-                      v-if="session.subtitle"
-                      class="text-xs text-slate-500 mt-0.5"
-                    >
-                      {{ session.subtitle }}
-                    </p>
-                  </div>
-
-                  <!-- Controls -->
-                  <div class="flex items-center space-x-2 pr-4">
-                    <Modal
-                      :title="`Editing session ${session.title}`"
-                      :data="session"
-                      @update:session="updateSession(item, session, $event)"
+                  <UTooltip text="Advance to Next Session">
+                    <UButton
+                      color="white"
+                      variant="solid"
+                      icon="i-heroicons-forward"
+                      class="cursor-pointer"
+                      :disabled="!canGoNext(item)"
+                      @click="setNextSession(item)"
                     />
+                  </UTooltip>
+                  <UTooltip text="Delete Space">
+                    <UButton
+                      color="red"
+                      variant="ghost"
+                      icon="i-heroicons-trash"
+                      class="cursor-pointer"
+                      @click="deleteSpace(item)"
+                    />
+                  </UTooltip>
+                </div>
+              </template>           
 
-                    <UTooltip text="Set Live">
-                      <UButton
-                        color="white"
-                        variant="solid"
-                        icon="i-heroicons-play"
-                        class="!rounded-none cursor-pointer"
-                        :disabled="session.id === item.now"
-                        @click="setLive(item, session.id)"
-                      />
-                    </UTooltip>
+              <!-- EXPANDED CONTENT VIEW -->
+              <template #content>
+                <div class="space-y-4 px-4" :key="item.now">
+                  <!-- Session Card Loop -->
+                  <div
+                    v-for="session in item.sessions"
+                    :key="session.id"
+                    class="flex justify-between items-center border rounded-none bg-gradient-to-br from-slate-50 to-slate-100 relative overflow-hidden group"
+                  >
+                    <!-- Left Colour Bar -->
+                    <div
+                      class="w-1 h-full absolute left-0 top-0 transition-colors duration-300"
+                      :class="
+                        session.id === item.now
+                          ? 'bg-green-500 animate-pulse'
+                          : 'bg-transparent'
+                      "
+                    ></div>
 
-                    <UTooltip text="Delete Session">
-                      <UButton
-                        color="red"
-                        variant="ghost"
-                        icon="i-heroicons-trash"
-                        class="!rounded-none cursor-pointer"
-                        @click="deleteSession(item, session)"
+                    <!-- Session Number -->
+                    <div class="pl-6 py-5">
+                      <p class="font-semibold text-slate-700">
+                        {{ session.title }}
+                      </p>
+                      <p
+                        v-if="session.subtitle"
+                        class="text-xs text-slate-500 mt-0.5"
+                      >
+                        {{ session.subtitle }}
+                      </p>
+                    </div>
+
+                    <!-- Controls -->
+                    <div class="flex items-center space-x-2 pr-4">
+                      <Modal
+                        :title="`Editing session ${session.title}`"
+                        :data="session"
+                        @update:session="updateSession(item, session, $event)"
                       />
-                    </UTooltip>
+
+                      <UTooltip text="Set Live">
+                        <UButton
+                          color="white"
+                          variant="solid"
+                          icon="i-heroicons-play"
+                          class="!rounded-none cursor-pointer"
+                          :disabled="session.id === item.now"
+                          @click="setLive(item, session.id)"
+                        />
+                      </UTooltip>
+
+                      <UTooltip text="Delete Session">
+                        <UButton
+                          color="red"
+                          variant="ghost"
+                          icon="i-heroicons-trash"
+                          class="!rounded-none cursor-pointer"
+                          @click="deleteSession(item, session)"
+                        />
+                      </UTooltip>
+                    </div>
+                  </div>
+
+                  <!-- Add Session Button -->
+                  <div class="flex justify-center pt-2">
+                    <UButton
+                      icon="i-heroicons-plus"
+                      size="xs"
+                      color="gray"
+                      variant="ghost"
+                      label="Add Session"
+                      @click="addSession(item)"
+                    />
                   </div>
                 </div>
-
-                <!-- Add Session Button -->
-                <div class="flex justify-center pt-2">
-                  <UButton
-                    icon="i-heroicons-plus"
-                    size="xs"
-                    color="gray"
-                    variant="ghost"
-                    label="Add Session"
-                    @click="addSession(item)"
-                  />
-                </div>
-              </div>
-            </template>
-          </UCollapsible>
+              </template>
+            </UCollapsible>
+          </div>
         </div>
       </main>
     </div>
