@@ -54,7 +54,7 @@
   title="Inline Frame Example"
   height="200"
   class="origin-top-left absolute top-0 left-0 w-[1920px] h-[1080px] scale-[0.14] pointer-events-none"
-  :src="`http://localhost:3000/r/${eventId}?nopresence=true`" />
+  :src="`http://www.nownext.live/r/${eventId}?nopresence=true`" />
           <UButton
             color="white"
             variant="solid"
