@@ -105,6 +105,25 @@
             </div>
           </div>
         </UCard>
+
+        <!-- Footer -->
+        <div class="fixed bottom-0 left-0 w-full z-50 pointer-events-none">
+          <UContainer>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+              <div class="lg:col-span-3 pb-6 pointer-events-auto flex items-center justify-between text-xs text-slate-400">
+                <div class="flex items-center gap-2">
+                  <NuxtLink to="/" class="hover:text-slate-600 transition-colors underline decoration-dotted underline-offset-2">
+                    nownext.live
+                  </NuxtLink>
+                  <span>v{{ config.public.version }}</span>
+                </div>
+                <UBadge :color="connectionStatusColor" variant="subtle" size="xs">
+                  {{ connectionStatusLabel }}
+                </UBadge>
+              </div>
+            </div>
+          </UContainer>
+        </div>
       </aside>
 
       <!-- MAIN CONTENT -->
@@ -116,10 +135,6 @@
           <div class="mb-8">
             <!-- Status + Room -->
             <div class="flex justify-between items-center mt-6">
-              <UBadge color="red" variant="subtle" class="px-3 py-1">
-                 {{ userSession?.capabilities?.max_spaces || 'Loading...' }}
-              </UBadge>
-
               <p class="text-sm text-slate-500">
                 Room: <span class="font-semibold text-slate-700">{{ eventId }}</span>
               </p>
@@ -295,6 +310,7 @@ const SUPABASE_KEY = 'sb_publishable_f7LEykuQEqIaa30-x718nQ_jVoJ-txz'
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
 
 const route = useRoute()
+const config = useRuntimeConfig()
 
 const myChannel = supabase.channel(`events/${route.params.id}`)
 /**
@@ -332,6 +348,7 @@ onMounted(() => {
       // User left
     })
     .subscribe(async (status) => {
+      connectionStatus.value = status
       if (status === 'SUBSCRIBED') {
         // Track this user's presence
         await myChannel.track({
@@ -341,6 +358,36 @@ onMounted(() => {
         })
       }
     })
+})
+
+const connectionStatus = ref('CONNECTING')
+
+const connectionStatusColor = computed(() => {
+  switch (connectionStatus.value) {
+    case 'SUBSCRIBED':
+      return 'green'
+    case 'CLOSED':
+    case 'CHANNEL_ERROR':
+    case 'TIMED_OUT':
+      return 'red'
+    default:
+      return 'orange'
+  }
+})
+
+const connectionStatusLabel = computed(() => {
+  switch (connectionStatus.value) {
+    case 'SUBSCRIBED':
+      return 'Connected'
+    case 'CLOSED':
+      return 'Disconnected'
+    case 'CHANNEL_ERROR':
+      return 'Error'
+    case 'TIMED_OUT':
+      return 'Timed Out'
+    default:
+      return 'Connecting...'
+  }
 })
 
 // Helper function to get connection age in seconds
