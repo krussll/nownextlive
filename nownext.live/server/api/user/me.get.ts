@@ -17,7 +17,7 @@ function getCapabilities(level: string) {
         case 'free':
             return {
                 max_spaces: 3,
-                max_sessions: 10,
+                max_sessions: 6,
                 custom_displays: false
             }
         case 'pro':

@@ -149,7 +149,8 @@
               color="primary"
               variant="soft"
               label="Add Space"
-              @click="addSpace"
+              :class="{ 'opacity-50': !canAddSpace }"
+              @click="handleAddSpace"
             />
           </div>
 
@@ -277,7 +278,8 @@
                       color="gray"
                       variant="ghost"
                       label="Add Session"
-                      @click="addSession(item)"
+                      :class="{ 'opacity-50': !canAddSession(item) }"
+                      @click="handleAddSession(item)"
                     />
                   </div>
                 </div>
@@ -489,6 +491,23 @@ watch(error, (newError) => {
   }
 }, { immediate: true })
 
+const canAddSpace = computed(() => {
+  if (!userSession.value?.capabilities) return false
+  return event.value.spaces.length < userSession.value.capabilities.max_spaces
+})
+
+const handleAddSpace = () => {
+  if (!canAddSpace.value) {
+    toast.add({
+      title: 'Upgrade Required',
+      description: `You have reached the maximum number of spaces (${userSession.value.capabilities.max_spaces}) for your plan.`,
+      color: 'amber'
+    })
+    return
+  }
+  addSpace()
+}
+
 const addSpace = () => {
   localEvent.value.spaces.push({
     id: generateId(),
@@ -497,6 +516,23 @@ const addSpace = () => {
     sessions: []
   })
   saveEvent()
+}
+
+const canAddSession = (space) => {
+  if (!userSession.value?.capabilities) return false
+  return space.sessions.length < userSession.value.capabilities.max_sessions
+}
+
+const handleAddSession = (space) => {
+  if (!canAddSession(space)) {
+    toast.add({
+      title: 'Upgrade Required',
+      description: `You have reached the maximum number of sessions (${userSession.value.capabilities.max_sessions}) for this space.`,
+      color: 'amber'
+    })
+    return
+  }
+  addSession(space)
 }
 
 const addSession = (space) => {
