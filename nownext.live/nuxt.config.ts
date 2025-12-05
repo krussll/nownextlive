@@ -4,7 +4,8 @@ import pkg from './package.json'
 export default defineNuxtConfig({
   runtimeConfig: {
     public: {
-      version: pkg.version
+      version: pkg.version,
+      enableBetaModal: true
     }
   },
   compatibilityDate: '2025-07-15',

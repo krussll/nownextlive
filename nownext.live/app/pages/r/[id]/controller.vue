@@ -296,6 +296,29 @@
       :message="confirmMessage"
       @confirm="handleConfirm"
     />
+
+    <!-- Beta Mode Modal -->
+    <UModal
+      v-model:open="showBetaModal"
+      title="Beta Mode"
+      prevent-close
+    >
+      <template #body>
+        <div class="py-4">
+          <p class="text-sm text-gray-500">
+            This product is currently in beta mode. You may experience some bugs or incomplete features.
+          </p>
+        </div>
+      </template>
+
+      <template #footer>
+        <div class="flex justify-end">
+          <UButton color="primary" @click="dismissBetaModal">
+            I Understand
+          </UButton>
+        </div>
+      </template>
+    </UModal>
   </UContainer>
 </template>
 
@@ -431,10 +454,19 @@ definePageMeta({
 })
 
 const showloading = ref(true)
+const showBetaModal = ref(false)
+
+const dismissBetaModal = () => {
+  showBetaModal.value = false
+  sessionStorage.setItem('beta_modal_dismissed', 'true')
+}
 
 onMounted(() => { 
       showloading.value = false 
       
+      if (config.public.enableBetaModal && !sessionStorage.getItem('beta_modal_dismissed')) {
+        showBetaModal.value = true
+      }
     });
 
 const eventId = route.params.id
