@@ -173,6 +173,8 @@ onMounted(() => {
     })
     .subscribe(async (status) => {
       if (status === 'SUBSCRIBED') {
+        if (route.query.nopresence === 'true') return
+
         const trackPresence = async () => {
           await myChannel.track({
             user_id: myUserId,
