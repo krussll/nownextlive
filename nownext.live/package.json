@@ -1,6 +1,6 @@
 {
   "name": "nownext-live",
-  "version": "0.0.1",
+  "version": "0.0.1-beta",
   "type": "module",
   "private": true,
   "scripts": {
@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.11.0",
+    "@nuxtjs/google-fonts": "^3.2.0",
     "@types/node": "^24.10.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-security": "^3.0.1",
