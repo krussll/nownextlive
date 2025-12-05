@@ -154,7 +154,7 @@
             />
           </div>
 
-          <div class="space-y-6">
+          <div class="space-y-6" ref="spacesContainer">
             <UCollapsible
               v-for="(item, index) in event.spaces"
               :key="item.id"
@@ -168,10 +168,15 @@
               }"
             >
               <template #default="{ open }">
-                <div class="flex items-center gap-3 cursor-pointer w-full px-6 py-5">
-                  <span class="text-slate-700 font-semibold tracking-wide">
-                    {{ item.title }}
-                  </span>
+                  <div class="flex items-center gap-3 cursor-pointer w-full px-6 py-5">
+                    <UIcon
+                      name="i-heroicons-bars-3"
+                      class="w-5 h-5 text-gray-400 space-drag-handle cursor-move hover:text-gray-600"
+                      @click.stop
+                    />
+                    <span class="text-slate-700 font-semibold tracking-wide">
+                      {{ item.title }}
+                    </span>
                   <UIcon
                     name="i-heroicons-chevron-down"
                     class="w-5 h-5 text-gray-500 transition-transform duration-200 ml-auto"
@@ -209,7 +214,7 @@
 
               <!-- EXPANDED CONTENT VIEW -->
               <template #content>
-                <div class="space-y-4 px-4" :key="item.now">
+                <div class="space-y-4 px-4" :key="item.now" :ref="(el) => setSessionContainerRef(el, item.id)">
                   <!-- Session Card Loop -->
                   <div
                     v-for="session in item.sessions"
@@ -226,8 +231,16 @@
                       "
                     ></div>
 
+                    <!-- Drag Handle -->
+                    <div class="pl-4 py-5 flex items-center">
+                       <UIcon
+                        name="i-heroicons-bars-3"
+                        class="w-4 h-4 text-gray-300 session-drag-handle cursor-move hover:text-gray-500"
+                      />
+                    </div>
+
                     <!-- Session Number -->
-                    <div class="pl-6 py-5">
+                    <div class="pl-2 py-5">
                       <p class="font-semibold text-slate-700">
                         {{ session.title }}
                       </p>
@@ -328,6 +341,7 @@ import ModalSpace from '~/components/ModalSpaceEdit.vue'
 import ModalEventEdit from '~/components/ModalEventEdit.vue'
 import ModalConfirm from '~/components/ModalConfirm.vue'
 import { createClient } from '@supabase/supabase-js'
+import Sortable from 'sortablejs'
 
 const SUPABASE_URL = 'https://xsijzyhfivzknrpxmtfk.supabase.co'
 const SUPABASE_KEY = 'sb_publishable_f7LEykuQEqIaa30-x718nQ_jVoJ-txz'
@@ -670,4 +684,53 @@ const updateEventTitle = (newTitle) => {
 onUnmounted(() => {
   myChannel.untrack()
 })
+
+// Drag and Drop Logic
+const spacesContainer = ref(null)
+const sessionSortableInstances = new Map()
+
+watch(spacesContainer, (el) => {
+  if (el) {
+    Sortable.create(el, {
+      animation: 150,
+      handle: '.space-drag-handle',
+      onEnd: (evt) => {
+        const item = localEvent.value.spaces.splice(evt.oldIndex, 1)[0]
+        localEvent.value.spaces.splice(evt.newIndex, 0, item)
+        saveEvent()
+      }
+    })
+  }
+})
+
+const setSessionContainerRef = (el, spaceId) => {
+  if (el) {
+    if (!sessionSortableInstances.has(spaceId)) {
+      const sortable = Sortable.create(el, {
+        animation: 150,
+        handle: '.session-drag-handle',
+        group: {
+          name: `sessions-${spaceId}`,
+          pull: false,
+          put: false
+        },
+        onEnd: (evt) => {
+          const space = localEvent.value.spaces.find(s => s.id === spaceId)
+          if (space) {
+            const item = space.sessions.splice(evt.oldIndex, 1)[0]
+            space.sessions.splice(evt.newIndex, 0, item)
+            saveEvent()
+          }
+        }
+      })
+      sessionSortableInstances.set(spaceId, sortable)
+    }
+  } else {
+    const instance = sessionSortableInstances.get(spaceId)
+    if (instance) {
+      instance.destroy()
+      sessionSortableInstances.delete(spaceId)
+    }
+  }
+}
 </script>
