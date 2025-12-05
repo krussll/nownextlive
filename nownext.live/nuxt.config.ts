@@ -1,10 +1,23 @@
+import pkg from './package.json'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      version: pkg.version,
+      enableBetaModal: true
+    }
+  },
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['@nuxt/ui', 'nuxt-gtag', '@nuxt/eslint'],
+  modules: ['@nuxt/ui', 'nuxt-gtag', '@nuxt/eslint', '@nuxtjs/supabase', '@nuxtjs/google-fonts'],
+  googleFonts: {
+    families: {
+      Inter: [400, 500, 600, 700]
+    }
+  },
   css: ['~/assets/css/main.css'],
-
+  ssr: true,
   colorMode: {
     preference: 'light'
   },
@@ -15,5 +28,11 @@ export default defineNuxtConfig({
   },
   gtag: {
     id: 'G-QSCLS15XJM'
+  },
+  supabase: {
+    url: process.env.SUPABASE_URL,
+    key: process.env.SUPABASE_PUBLISHABLE_KEY,
+    redirect: false,
   }
+
 })

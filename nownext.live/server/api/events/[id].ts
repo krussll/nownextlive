@@ -1,38 +1,31 @@
-export default defineEventHandler((event) => {
-  const id = getRouterParam(event, 'id')
+import { serverSupabaseClient } from '#supabase/server'
 
-  if (id === 'missing') {
+export default defineEventHandler(async (event) => {
+  const client = await serverSupabaseClient(event)
+  const id = event.context.params!.id
+
+  const { data, error } = await client.rpc(
+    'get_event',
+    { event_id: id } as any
+  )
+
+  // Handle Supabase error
+  if (error) {
+    console.error('Supabase error:', error)
     throw createError({
-      statusCode: 404,
-      statusMessage: 'Event not found'
+      statusCode: 500,
+      statusMessage: error.message
     })
   }
 
-  // Hardcoded data for now
-  const spaces = [
-    {
-      title: 'Rink 1',
-      now: '1',
-      sessions: [
-        {
-          id: '1',
-          title: 'Test 1',
-          subtitle: 'Group A',
-          time: ''
-        },
-        {
-          id: '2',
-          title: 'Test 2',
-          subtitle: 'Group B',
-          time: ''
-        }
-      ]
-    }
-  ]
-
-  return {
-    id,
-    title: 'North District Sports',
-    spaces
+  // Handle "not found"
+  if (!data) {
+    throw createError({
+      statusCode: 404,
+      statusMessage: `Event ${id} not found`
+    })
   }
+
+  // All good → return event JSON
+  return data
 })

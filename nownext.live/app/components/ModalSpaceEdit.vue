@@ -1,17 +1,19 @@
 <template>
   <UModal :title="props.title" v-model:open="open">
-    <UButton
-      color="white"
-      variant="solid"
-      icon="i-heroicons-cog-6-tooth"
-      class="!rounded-none"
-    />
+    <UTooltip text="Edit Space">
+      <UButton
+        color="white"
+        variant="solid"
+        icon="i-heroicons-cog-6-tooth"
+        class="!rounded-none cursor-pointer"
+      />
+    </UTooltip>
 
     <template #body>
       <div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
         <div class="sm:col-span-4">
-          <UFormField label="Title">
-            <UInput v-model="props.data.title" />
+          <UFormField label="Title" :error="error">
+            <UInput v-model="localData.title" />
           </UFormField>
         </div>
       </div>
@@ -35,8 +37,24 @@ let open = ref(false)
 const props = defineProps(['title', 'data'])
 const emit = defineEmits(['update:space'])
 
+const error = ref('')
+const localData = ref({ title: '' })
+
+watch(open, (newValue) => {
+  if (newValue) {
+    // Create a deep copy of the data when modal opens
+    localData.value = JSON.parse(JSON.stringify(props.data))
+    error.value = ''
+  }
+})
+
 function submit(e) {
-  emit('update:space', props.data)
+  if (!localData.value.title || localData.value.title.trim() === '') {
+    error.value = 'Title is required'
+    return
+  }
+  error.value = ''
+  emit('update:space', localData.value)
   open.value = false
 }
 </script>

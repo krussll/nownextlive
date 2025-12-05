@@ -1,0 +1,274 @@
+{
+  "NDST3": {
+    "id": "NDST3",
+    "title": "North District Sports",
+    "spaces": [
+      {
+        "id": "RINK1SPACE000001",
+        "title": "Rink 1",
+        "now": "1",
+        "sessions": [
+          {
+            "id": "1",
+            "title": "Test 1",
+            "subtitle": "Group A",
+            "time": ""
+          },
+          {
+            "id": "4F1GO56F7LCRN121",
+            "title": "New Session",
+            "subtitle": "",
+            "time": ""
+          }
+        ]
+      },
+      {
+        "id": "KI1RG2ONT10CB8Z2",
+        "title": "New Space 3",
+        "now": "22NU9OXTY5Z9Z3OC",
+        "sessions": [
+          {
+            "id": "22NU9OXTY5Z9Z3OC",
+            "title": "New Session",
+            "subtitle": "",
+            "time": ""
+          },
+          {
+            "id": "5YN0SK65EMSJF6NW",
+            "title": "New Session",
+            "subtitle": "",
+            "time": ""
+          }
+        ]
+      },
+      {
+        "id": "K56ZV4DK7NWP2UBH",
+        "title": "New Space 4",
+        "now": "D4B53J79WPKVH4EH",
+        "sessions": [
+          {
+            "id": "D4B53J79WPKVH4EH",
+            "title": "New Session",
+            "subtitle": "",
+            "time": ""
+          },
+          {
+            "id": "1JJPHPO8BOFM0O6D",
+            "title": "New Session",
+            "subtitle": "",
+            "time": ""
+          }
+        ]
+      },
+      {
+        "id": "E6KENHGS35VZXBYJ",
+        "title": "New Space 5",
+        "now": "SHY3P4HN8E17SUS2",
+        "sessions": [
+          {
+            "id": "SHY3P4HN8E17SUS2",
+            "title": "New Session",
+            "subtitle": "",
+            "time": ""
+          },
+          {
+            "id": "07GTLW9PNEK8ENS8",
+            "title": "New Session",
+            "subtitle": "",
+            "time": ""
+          }
+        ]
+      }
+    ]
+  },
+  "6NUPCPHCNRTU89N0": {
+    "id": "6NUPCPHCNRTU89N0",
+    "title": "Unnamed",
+    "spaces": [
+      {
+        "id": "LC3XHWIXNF73E8RU",
+        "title": "Main Space",
+        "now": "",
+        "sessions": [
+          {
+            "id": "N6EGSULU4V0GOKYY",
+            "title": "Session 1",
+            "subtitle": "",
+            "time": ""
+          }
+        ]
+      }
+    ]
+  },
+  "HW4YPSFFP0W4L158": {
+    "id": "HW4YPSFFP0W4L158",
+    "title": "Gala Day",
+    "spaces": [
+      {
+        "id": "7X6HJBVUY718197B",
+        "title": "Main Space",
+        "now": "",
+        "sessions": [
+          {
+            "id": "JSOUIWGQT7S1R0OS",
+            "title": "Session 1",
+            "subtitle": "",
+            "time": ""
+          }
+        ]
+      }
+    ]
+  },
+  "P93753UV": {
+    "id": "P93753UV",
+    "title": "Unnamed",
+    "spaces": [
+      {
+        "id": "EFRCARPH2HLONDAD",
+        "title": "Main Space",
+        "now": "",
+        "sessions": [
+          {
+            "id": "4BET91T8QAECI8A6",
+            "title": "Session 1",
+            "subtitle": "",
+            "time": ""
+          }
+        ]
+      }
+    ]
+  },
+  "KSY40EQ5CTSVE8MJ": {
+    "id": "KSY40EQ5CTSVE8MJ",
+    "title": "Unnamed",
+    "spaces": [
+      {
+        "id": "7MTNM7H5PSIIPODG",
+        "title": "Main Space",
+        "now": "",
+        "sessions": [
+          {
+            "id": "HA3OIISLRYYN2M0Z",
+            "title": "Session 1",
+            "subtitle": "",
+            "time": ""
+          }
+        ]
+      }
+    ]
+  },
+  "I75C7AQ3B0DGVBAQ": {
+    "id": "I75C7AQ3B0DGVBAQ",
+    "title": "Unnamed",
+    "spaces": [
+      {
+        "id": "IE0CBNYC01E2UTEU",
+        "title": "Main Space",
+        "now": "",
+        "sessions": [
+          {
+            "id": "5LR15P520HLDL94Q",
+            "title": "Session 1",
+            "subtitle": "",
+            "time": ""
+          }
+        ]
+      }
+    ]
+  },
+  "ZNH713K6": {
+    "id": "ZNH713K6",
+    "title": "Unnamed",
+    "spaces": [
+      {
+        "id": "JSEQAXDGR9WE75BQ",
+        "title": "Main Space",
+        "now": "",
+        "sessions": [
+          {
+            "id": "KF0BLGMQ1OGI47SV",
+            "title": "Session 1",
+            "subtitle": "",
+            "time": ""
+          }
+        ]
+      }
+    ]
+  },
+  "V3Q0A2H6": {
+    "id": "V3Q0A2H6",
+    "title": "Unnamed",
+    "spaces": [
+      {
+        "id": "M687EYGG9SZFJRKP",
+        "title": "Main Space",
+        "now": "",
+        "sessions": [
+          {
+            "id": "4QD91A25KNWKV2GP",
+            "title": "Session 1",
+            "subtitle": "",
+            "time": ""
+          }
+        ]
+      }
+    ]
+  },
+  "0O2Q85T4": {
+    "id": "0O2Q85T4",
+    "title": "Unnamed",
+    "spaces": [
+      {
+        "id": "3K72SR8MZYUG9FR9",
+        "title": "Main Space",
+        "now": "",
+        "sessions": [
+          {
+            "id": "81Q6Y1Q330U2SF1M",
+            "title": "Session 1",
+            "subtitle": "",
+            "time": ""
+          }
+        ]
+      }
+    ]
+  },
+  "B18IFEXN": {
+    "id": "B18IFEXN",
+    "title": "Unnamed",
+    "spaces": [
+      {
+        "id": "67FI3ZTMSJL9UMDQ",
+        "title": "Main Space",
+        "now": "",
+        "sessions": [
+          {
+            "id": "1GH9IH48QE3CSFJ1",
+            "title": "Session 1",
+            "subtitle": "",
+            "time": ""
+          }
+        ]
+      }
+    ]
+  },
+  "3F8MQZS3": {
+    "id": "3F8MQZS3",
+    "title": "Unnamed",
+    "spaces": [
+      {
+        "id": "D5MUAPN5O6KFB92V",
+        "title": "Main Space",
+        "now": "",
+        "sessions": [
+          {
+            "id": "TABD6NBMDWNYO407",
+            "title": "Session 1",
+            "subtitle": "",
+            "time": ""
+          }
+        ]
+      }
+    ]
+  }
+}

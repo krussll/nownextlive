@@ -34,7 +34,7 @@
         <p
           class="uppercase tracking-widest text-slate-400 text-xs font-semibold"
         >
-          Live Schedule
+          Full Schedule
         </p>
         <h1 class="text-4xl font-semibold text-slate-900">
           {{ roomName }}
@@ -58,13 +58,12 @@
           : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
       ]"
     >
-      <ScheduleCard
+      <FullScheduleCard
         v-for="space in spaces"
         :key="space.id"
         :title="space.title"
-        :now="space.now"
-        :nowGroup="space.group"
-        :next="space.next"
+        :sessions="space.sessions"
+        :nowSessionId="space.now"
         :class="spaces.length < 3 ? 'w-full max-w-md' : 'w-full'"
       />
     </div>
@@ -73,8 +72,8 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue'
-import ScheduleCard from '~/components/ScheduleCard.vue'
+import { ref, onMounted, watch, computed, onUnmounted } from 'vue'
+import FullScheduleCard from '~/components/FullScheduleCard.vue'
 import { createClient } from '@supabase/supabase-js'
 
 const SUPABASE_URL = 'https://xsijzyhfivzknrpxmtfk.supabase.co'
@@ -119,24 +118,11 @@ watch([data, error, clockReady], () => {
 const spaces = computed(() => {
   if (!data.value?.spaces) return []
   return data.value.spaces.map((space) => {
-    const nowSession = space.sessions.find((s) => s.id === space.now)
-    let nextSession = null
-
-    if (nowSession) {
-      const nowIndex = space.sessions.findIndex((s) => s.id === space.now)
-      if (nowIndex !== -1 && nowIndex < space.sessions.length - 1) {
-        nextSession = space.sessions[nowIndex + 1]
-      }
-    } else if (space.sessions.length > 0) {
-      nextSession = space.sessions[0]
-    }
-
     return {
       id: space.title, // Using title as ID for now since API doesn't have space IDs
       title: space.title,
-      now: nowSession ? nowSession.title : '',
-      group: nowSession ? nowSession.subtitle : '',
-      next: nextSession ? nextSession.title : ''
+      sessions: space.sessions,
+      now: space.now // This is the ID of the current session
     }
   })
 })
@@ -147,7 +133,7 @@ const roomName = computed(() => data.value?.title || 'North District Sports')
 
 // Set page title with event title prefix
 useHead(() => ({
-  title: `${data.value?.title || 'North District Sports'} - Live Schedule`
+  title: `${data.value?.title || 'North District Sports'} - Full Schedule`
 }))
 
 const myUserId = generateId()
@@ -173,8 +159,6 @@ onMounted(() => {
     })
     .subscribe(async (status) => {
       if (status === 'SUBSCRIBED') {
-        if (route.query.nopresence === 'true') return
-
         const trackPresence = async () => {
           await myChannel.track({
             user_id: myUserId,

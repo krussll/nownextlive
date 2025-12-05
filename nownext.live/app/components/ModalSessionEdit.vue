@@ -1,27 +1,29 @@
 <template>
   <UModal :title="props.title" v-model:open="open">
-    <UButton
-      color="white"
-      variant="solid"
-      icon="i-heroicons-cog-6-tooth"
-      class="!rounded-none"
-    />
+    <UTooltip text="Edit Session">
+      <UButton
+        color="white"
+        variant="solid"
+        icon="i-heroicons-cog-6-tooth"
+        class="!rounded-none cursor-pointer"
+      />
+    </UTooltip>
 
     <template #body>
       <div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
         <div class="sm:col-span-4">
-          <UFormField label="Title">
-            <UInput v-model="props.data.title" />
+          <UFormField label="Title" :error="error">
+            <UInput v-model="localData.title" />
           </UFormField>
         </div>
         <div class="sm:col-span-4">
           <UFormField label="Sub-title" hint="Optional">
-            <UInput v-model="props.data.subtitle" />
+            <UInput v-model="localData.subtitle" />
           </UFormField>
         </div>
         <div class="sm:col-span-4">
           <UFormField label="Time" hint="Optional">
-            <UInputTime v-model="props.data.time" />
+            <UInputTime v-model="localData.time" />
           </UFormField>
         </div>
       </div>
@@ -45,8 +47,24 @@ let open = ref(false)
 const props = defineProps(['title', 'data'])
 const emit = defineEmits(['update:session'])
 
+const error = ref('')
+const localData = ref({ title: '', subtitle: '', time: '' })
+
+watch(open, (newValue) => {
+  if (newValue) {
+    // Create a deep copy of the data when modal opens
+    localData.value = JSON.parse(JSON.stringify(props.data))
+    error.value = ''
+  }
+})
+
 function submit(e) {
-  emit('update:session', props.data)
+  if (!localData.value.title || localData.value.title.trim() === '') {
+    error.value = 'Title is required'
+    return
+  }
+  error.value = ''
+  emit('update:session', localData.value)
   open.value = false
 }
 </script>

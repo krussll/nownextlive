@@ -76,40 +76,31 @@ const testimonials = [
 
 <template>
   <div class="bg-white text-gray-900 antialiased min-h-screen">
-    <section class="py-24 md:py-36 border-b border-gray-100">
+    <section class="py-24 md:py-24 border-b border-gray-100">
       <UContainer class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <div>
           <h1
-            class="text-6xl md:text-7xl font-extrabold tracking-tighter leading-tight"
+            class="text-6xl md:text-6xl font-extrabold tracking-tighter leading-tight"
           >
-            Your Club Schedule,
-            <span
+            Ditch the paper.
+            <div
               class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 via-purple-600 to-cyan-500"
             >
-              Live.
-            </span>
+              Your schedule. Updating everywhere. Instantly.
+            </div>
           </h1>
           <p class="mt-6 text-xl text-gray-600 max-w-lg">
-            Update every screen instantly from your phone or laptop — no apps,
-            no setup.
+            Effortlessly display live schedules and updates across any screen. Change it once, and every device updates automatically.
           </p>
 
           <div class="mt-10 flex flex-col sm:flex-row gap-4">
             <UButton
-              to="/r/NDST3"
-              label="Try a Demo"
+              to="/r/generate"
+              label="Try for free"
               color="primary"
               variant="solid"
               size="xl"
               class="rounded-none font-bold shadow-xl shadow-primary-200/50"
-            />
-            <UButton
-              to="#features"
-              label="Learn More"
-              color="primary"
-              variant="outline"
-              size="xl"
-              class="rounded-none font-semibold"
             />
           </div>
         </div>
@@ -126,38 +117,7 @@ const testimonials = [
       </UContainer>
     </section>
 
-    <section id="features" class="py-24 bg-gray-50 border-b border-gray-100">
-      <UContainer>
-        <h2 class="text-4xl font-extrabold text-center mb-16">
-          Why Clubs Love <span class="text-indigo-600">NowNext</span>
-        </h2>
-
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          <UCard
-            v-for="feature in features"
-            :key="feature.title"
-            :ui="{
-              base: 'rounded-none', // Enforce sharp corners
-              body: 'flex flex-col items-center text-center',
-              ring: 'ring-1 ring-gray-200 hover:ring-indigo-300 transition-all',
-              divide: 'divide-none' // Remove internal dividers
-            }"
-            class="hover:bg-indigo-50/50 transition-colors"
-          >
-            <div
-              class="w-16 h-16 mb-4 flex items-center justify-center mx-auto bg-gradient-to-br from-indigo-500 to-cyan-400 p-1 rounded-none shadow-lg"
-            >
-              <UIcon :name="feature.icon" class="w-8 h-8 text-white" />
-            </div>
-
-            <h3 class="text-xl font-bold mb-2 text-gray-900">
-              {{ feature.title }}
-            </h3>
-            <p class="text-gray-600">{{ feature.description }}</p>
-          </UCard>
-        </div>
-      </UContainer>
-    </section>
+    
 
     <section class="py-24 border-b border-gray-100">
       <UContainer>
@@ -189,6 +149,38 @@ const testimonials = [
       </UContainer>
     </section>
 
+    <section id="features" class="py-24 bg-gray-50 border-b border-gray-100">
+      <UContainer>
+        <h2 class="text-4xl font-extrabold text-center mb-16">
+          Why Clubs Love <SiteLogo class="text-4xl font-extrabold tracking-tight" />
+        </h2>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <UCard
+            v-for="feature in features"
+            :key="feature.title"
+            :ui="{
+              base: 'rounded-none', // Enforce sharp corners
+              body: 'flex flex-col items-center text-center',
+              ring: 'ring-1 ring-gray-200 hover:ring-indigo-300 transition-all',
+              divide: 'divide-none' // Remove internal dividers
+            }"
+            class="hover:bg-indigo-50/50 transition-colors"
+          >
+            <div
+              class="w-16 h-16 mb-4 flex items-center justify-center mx-auto bg-gradient-to-br from-indigo-500 to-cyan-400 p-1 rounded-none shadow-lg"
+            >
+              <UIcon :name="feature.icon" class="w-8 h-8 text-white" />
+            </div>
+
+            <h3 class="text-xl font-bold mb-2 text-gray-900">
+              {{ feature.title }}
+            </h3>
+            <p class="text-gray-600">{{ feature.description }}</p>
+          </UCard>
+        </div>
+      </UContainer>
+    </section>
     <section class="py-24 bg-gray-50 border-b border-gray-100">
       <UContainer>
         <h2 class="text-4xl font-extrabold text-center mb-16">
@@ -234,9 +226,7 @@ const testimonials = [
       :ui="{ wrapper: 'border-none' }"
     >
       <template #left>
-        <span class="text-xl font-bold text-gray-900">
-          Now<span class="text-indigo-600">Next</span>
-        </span>
+        <SiteLogo />
         <p class="text-sm text-gray-500">
           Simple, live “Now & Next” boards for sports clubs.
         </p>
