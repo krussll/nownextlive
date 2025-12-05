@@ -11,31 +11,32 @@
       <form @submit.prevent="submitForm" class="space-y-6">
 
         <!-- Name -->
-        <UFormGroup label="Your Name" name="name">
-          <UInput v-model="form.name" placeholder="John Smith" required />
-        </UFormGroup>
+        <UFormField label="Your Name" name="name">
+          <UInput v-model="form.name" placeholder="John Smith" class="w-full" required />
+        </UFormField>
 
         <!-- Email -->
-        <UFormGroup label="Email Address" name="email">
-          <UInput v-model="form.email" type="email" placeholder="you@example.com" required />
-        </UFormGroup>
+        <UFormField label="Email Address" name="email">
+          <UInput v-model="form.email" type="email" placeholder="you@example.com" class="w-full" required />
+        </UFormField>
 
         <!-- Message -->
-        <UFormGroup label="Message" name="message">
+        <UFormField label="Message" name="message">
           <UTextarea
             v-model="form.message"
             placeholder="How can we help?"
             rows="6"
+            class="w-full"
             required
           />
-        </UFormGroup>
+        </UFormField>
 
         <!-- Submit -->
         <UButton
           type="submit"
           color="primary"
           :loading="loading"
-          class="w-full"
+          
         >
           Send Message
         </UButton>
