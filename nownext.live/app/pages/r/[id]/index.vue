@@ -149,6 +149,10 @@ const roomName = computed(() => data.value?.title || 'North District Sports')
 useHead(() => ({
   title: `${data.value?.title || 'North District Sports'} - Live Schedule`
 }))
+
+const myUserId = generateId()
+let heartbeatInterval
+
 onMounted(() => {
   // Subscribe to the Channel with broadcast and presence (client-side only)
   myChannel
@@ -169,12 +173,19 @@ onMounted(() => {
     })
     .subscribe(async (status) => {
       if (status === 'SUBSCRIBED') {
-        // Track this viewer's presence
-        await myChannel.track({
-          user_id: generateId(),
-          user_type: 'viewer',
-          online_at: new Date().toISOString()
-        })
+        const trackPresence = async () => {
+          await myChannel.track({
+            user_id: myUserId,
+            user_type: 'viewer',
+            online_at: new Date().toISOString()
+          })
+        }
+
+        // Track initial presence
+        await trackPresence()
+
+        // Set up heartbeat
+        heartbeatInterval = setInterval(trackPresence, 30000)
       }
     })
 
@@ -193,6 +204,7 @@ onMounted(() => {
 
 // Cleanup presence tracking on unmount
 onUnmounted(() => {
+  if (heartbeatInterval) clearInterval(heartbeatInterval)
   myChannel.untrack()
 })
 </script>

@@ -320,6 +320,8 @@ const myChannel = supabase.channel(`events/${route.params.id}`)
 // Connected users tracking
 const connectedUsers = ref([])
 const currentTime = ref(new Date())
+const myUserId = generateId()
+let heartbeatInterval
 
 // Update current time every 5 seconds for connection age display (client-side only)
 onMounted(() => {
@@ -328,11 +330,12 @@ onMounted(() => {
   }, 5000)
 
   const STALE_MS = 2 * 60 * 1000;
-  const now = Date.now();
+  
   // Subscribe to presence events (client-side only to prevent SSR duplicates)
   myChannel
     .on('presence', { event: 'sync' }, () => {
       const state = myChannel.presenceState()
+      const now = Date.now();
       // Convert presence state to array of users and sort by most recent first
       connectedUsers.value = Object.keys(state)
         .flatMap(key => state[key])
@@ -350,12 +353,19 @@ onMounted(() => {
     .subscribe(async (status) => {
       connectionStatus.value = status
       if (status === 'SUBSCRIBED') {
-        // Track this user's presence
-        await myChannel.track({
-          user_id: generateId(),
-          user_type: 'controller',
-          online_at: new Date().toISOString()
-        })
+        const trackPresence = async () => {
+          await myChannel.track({
+            user_id: myUserId,
+            user_type: 'controller',
+            online_at: new Date().toISOString()
+          })
+        }
+
+        // Track initial presence
+        await trackPresence()
+
+        // Set up heartbeat
+        heartbeatInterval = setInterval(trackPresence, 30000)
       }
     })
 })
@@ -398,6 +408,7 @@ const getConnectionAge = (onlineAt) => {
 
 // Helper function to format connection age
 const formatConnectionAge = (onlineAt) => {
+  return ''
   const ageInSeconds = getConnectionAge(onlineAt)
   
   if (ageInSeconds < 10) return 'just now'
