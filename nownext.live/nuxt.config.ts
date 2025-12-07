@@ -5,7 +5,10 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       version: pkg.version,
-      enableBetaModal: true
+      enableBetaModal: true,
+      gtm: {
+        id: 'G-QSCLS15XJM'
+      }
     }
   },
   compatibilityDate: '2025-07-15',
@@ -27,7 +30,7 @@ export default defineNuxtConfig({
     }
   },
   gtag: {
-    id: 'G-QSCLS15XJM'
+    id: ''
   },
   supabase: {
     url: process.env.SUPABASE_URL,
