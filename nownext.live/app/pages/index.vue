@@ -222,6 +222,93 @@ const testimonials = [
       </UContainer>
     </section>
 
+
+
+
+
+
+    <section class="py-24 border-b border-gray-100 bg-white">
+      <UContainer>
+        <h2 class="text-4xl font-extrabold text-center mb-16">
+          Frequently Asked <span class="text-indigo-600">Questions</span>
+        </h2>
+        <div class="max-w-3xl mx-auto">
+          <UAccordion
+            multiple
+            :items="[
+              {
+                label: 'What is NowNext.live?',
+                content: `NowNext.live is a simple tool that lets you create live, auto-updating display boards for sports events, club days, tournaments, training sessions, and any schedule that needs to be shared clearly. Update once from a controller — every connected screen updates instantly.`
+              },
+              {
+                label: 'Do I need to install anything?',
+                content: `No. NowNext.live runs entirely in the browser. Open the controller on your laptop or phone, and open the display link on any screen, smart TV, tablet, projector, or device with a browser.`
+              },
+              {
+                label: 'How do I set up my first event?',
+                content: `Create a board → Add your spaces → Add your sessions → Share the display link. Whenever you update the controller, every connected display changes in real time.`
+              },
+              {
+                label: 'Can multiple people manage the board?',
+                content: `Yes. You can share the controller link with other organisers or coaches. Everyone sees changes instantly.`
+              },
+              {
+                label: 'What types of events is this useful for?',
+                content: `NowNext.live is perfect for sports tournaments, club nights, coaching sessions, livestreams, training days, corporate sessions, and community events — anywhere people need to see what’s happening now and next.`
+              },
+              {
+                label: 'Does it work on smart TVs?',
+                content: `Yes. Simply open the display link in the TV’s browser — it automatically scales to look like a modern digital screen.`
+              },
+              {
+                label: 'Do spectators or players need accounts?',
+                content: `No. Only the organiser needs controller access. Displays can be opened by anyone with the link — no login required.`
+              },
+              {
+                label: 'What happens if my internet connection drops?',
+                content: `Displays stay visible and reconnect automatically when the internet returns. Any updates sync instantly once reconnected.`
+              },
+              {
+                label: 'Can I customise the look of the display?',
+                content: `You can adjust layout, text size, and presentation style. More customisation options are coming soon.`
+              },
+              {
+                label: 'Is this free to use?',
+                content: `A free tier is available. Paid plans unlock more spaces, more sessions, and custom display features.`
+              },
+              {
+                label: 'Do I need an account?',
+                content: `You can start without one, but an account lets you save boards, manage displays, and upgrade your plan.`
+              },
+              {
+                label: 'Can this replace printed schedules?',
+                content: `Yes — that’s exactly what it’s built for. No more reprinting or rewriting boards. Update once, and all displays update instantly.`
+              }
+            ]"
+            :ui="{
+              wrapper: 'divide-y divide-gray-200',
+              item: {
+                base: 'py-2',
+                size: 'text-base',
+                color: 'text-gray-600',
+                padding: 'pt-2 pb-6'
+              },
+              default: {
+                class: 'text-left w-full py-4 text-lg font-bold text-gray-900 hover:text-indigo-600 transition-colors',
+                openIcon: 'i-lucide-minus',
+                closeIcon: 'i-lucide-plus'
+              }
+            }"
+          />
+        </div>
+      </UContainer>
+    </section>
+
+
+
+
+
+
     <UFooter
       class="py-12 border-t border-gray-200"
       :ui="{ wrapper: 'border-none' }"
