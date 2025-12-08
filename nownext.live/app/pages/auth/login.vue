@@ -68,8 +68,9 @@ const handleLogin = async () => {
                 size="lg"
                 :disabled="isLoading"
                 :ui="{
-                  base: 'rounded-none'
+                  base: 'rounded-none h-12'
                 }"
+                class="w-full block"
                 required
               />
             </div>
@@ -87,8 +88,9 @@ const handleLogin = async () => {
                 size="lg"
                 :disabled="isLoading"
                 :ui="{
-                  base: 'rounded-none'
+                  base: 'rounded-none h-12'
                 }"
+                class="w-full block"
                 required
               />
             </div>
@@ -113,7 +115,7 @@ const handleLogin = async () => {
               </div>
 
               <ULink
-                to="/forgot-password"
+                to="/auth/forgot-password"
                 class="text-sm font-semibold text-indigo-600 hover:text-indigo-500"
               >
                 Forgot password?
@@ -129,6 +131,7 @@ const handleLogin = async () => {
               size="xl"
               :loading="isLoading"
               :disabled="isLoading"
+              block
               class="w-full rounded-none font-bold shadow-xl shadow-primary-200/50 hover:shadow-2xl transition-shadow"
             />
           </form>
@@ -148,7 +151,7 @@ const handleLogin = async () => {
             <p class="text-sm text-gray-600">
               Don't have an account?
               <ULink
-                to="/signup"
+                to="/auth/signup"
                 class="font-semibold text-indigo-600 hover:text-indigo-500"
               >
                 Sign up for free

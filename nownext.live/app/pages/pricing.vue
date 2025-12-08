@@ -41,7 +41,7 @@ const subscriptionPlans = [
     ],
     button: {
       label: 'Get Club access now',
-      to: '/signup'
+      to: '/auth/signup'
     },
     highlight: true,
     badge: 'MOST POPULAR'
@@ -173,30 +173,31 @@ const faqs = [
 
         <!-- Billing Type Toggle -->
         <div class="flex justify-center mb-12">
-          <div class="bg-white p-2 rounded-full shadow-md inline-flex gap-2">
+          <div class="bg-white p-1 sm:p-2 rounded-full shadow-md inline-flex gap-1 sm:gap-2">
             <button
               @click="billingType = 'subscription'"
               :class="[
-                'px-8 py-3 rounded-full font-semibold text-base transition-all duration-200 cursor-pointer',
+                'px-4 py-2 sm:px-8 sm:py-3 rounded-full font-semibold text-sm sm:text-base transition-all duration-200 cursor-pointer',
                 billingType === 'subscription'
                   ? 'bg-gradient-to-r from-green-600 to-green-500 text-white shadow-lg'
                   : 'bg-transparent text-gray-700 hover:bg-gray-50'
               ]"
             >
-              <span>Monthly Subscription</span>
-              <span class="ml-2 text-sm opacity-90">~15% off</span>
+              <span class="block sm:inline">Monthly</span>
+              <span class="hidden sm:inline"> Subscription</span>
+              <span class="block sm:inline sm:ml-2 text-xs sm:text-sm opacity-90">~15% off</span>
             </button>
             <button
               @click="billingType = 'oneoff'"
               :class="[
-                'px-8 py-3 rounded-full font-semibold text-base transition-all duration-200 cursor-pointer',
+                'px-4 py-2 sm:px-8 sm:py-3 rounded-full font-semibold text-sm sm:text-base transition-all duration-200 cursor-pointer',
                 billingType === 'oneoff'
                   ? 'bg-gradient-to-r from-green-600 to-green-500 text-white shadow-lg'
                   : 'bg-transparent text-gray-700 hover:bg-gray-50'
               ]"
             >
-              Single Event
-              <span class="ml-2 text-xs opacity-90">One-off 30 day access</span>
+              <span class="block sm:inline">Single Event</span>
+              <span class="block sm:inline sm:ml-2 text-xs opacity-90">One-off 30 day access</span>
             </button>
           </div>
         </div>

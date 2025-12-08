@@ -41,7 +41,7 @@ const handleSignup = async () => {
     // Signup attempt
     
     // On success, redirect to login or dashboard
-    // navigateTo('/login')
+    // navigateTo('/auth/login')
   } catch (error) {
     errorMessage.value = 'Signup failed. Please try again.'
   } finally {
@@ -85,8 +85,9 @@ const handleSignup = async () => {
                 size="lg"
                 :disabled="isLoading"
                 :ui="{
-                  base: 'rounded-none'
+                  base: 'rounded-none h-12'
                 }"
+                class="w-full"
                 required
               />
             </div>
@@ -104,8 +105,9 @@ const handleSignup = async () => {
                 size="lg"
                 :disabled="isLoading"
                 :ui="{
-                  base: 'rounded-none'
+                  base: 'rounded-none h-12'
                 }"
+                class="w-full"
                 required
               />
             </div>
@@ -123,8 +125,9 @@ const handleSignup = async () => {
                 size="lg"
                 :disabled="isLoading"
                 :ui="{
-                  base: 'rounded-none'
+                  base: 'rounded-none h-12'
                 }"
+                class="w-full"
                 required
               />
               <p class="mt-1 text-xs text-gray-500">Must be at least 8 characters</p>
@@ -143,8 +146,9 @@ const handleSignup = async () => {
                 size="lg"
                 :disabled="isLoading"
                 :ui="{
-                  base: 'rounded-none'
+                  base: 'rounded-none h-12'
                 }"
+                class="w-full"
                 required
               />
             </div>
@@ -190,6 +194,7 @@ const handleSignup = async () => {
               size="xl"
               :loading="isLoading"
               :disabled="isLoading"
+              block
               class="w-full rounded-none font-bold shadow-xl shadow-primary-200/50 hover:shadow-2xl transition-shadow"
             />
           </form>
@@ -209,7 +214,7 @@ const handleSignup = async () => {
             <p class="text-sm text-gray-600">
               Already have an account?
               <ULink
-                to="/login"
+                to="/auth/login"
                 class="font-semibold text-indigo-600 hover:text-indigo-500"
               >
                 Sign in

@@ -12,12 +12,12 @@
 
         <!-- Name -->
         <UFormField label="Your Name" name="name">
-          <UInput v-model="form.name" placeholder="John Smith" class="w-full" required />
+          <UInput v-model="form.name" placeholder="John Smith" class="w-full h-12" required />
         </UFormField>
 
         <!-- Email -->
         <UFormField label="Email Address" name="email">
-          <UInput v-model="form.email" type="email" placeholder="you@example.com" class="w-full" required />
+          <UInput v-model="form.email" type="email" placeholder="you@example.com" class="w-full h-12" required />
         </UFormField>
 
         <!-- Message -->
@@ -26,7 +26,7 @@
             v-model="form.message"
             placeholder="How can we help?"
             rows="6"
-            class="w-full"
+            class="w-full h-12"
             required
           />
         </UFormField>
