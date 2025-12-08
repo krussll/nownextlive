@@ -1,32 +1,37 @@
 <script setup lang="ts">
 const email = ref('')
-const password = ref('')
 const isLoading = ref(false)
 const errorMessage = ref('')
+const successMessage = ref('')
 
-const handleLogin = async () => {
+useSeoMeta({
+  title: 'Forgot Password - NowNext',
+  description: 'Reset your NowNext account password'
+})
+
+const handleForgotPassword = async () => {
   errorMessage.value = ''
+  successMessage.value = ''
   
-  if (!email.value || !password.value) {
-    errorMessage.value = 'Please enter both email and password'
+  if (!email.value) {
+    errorMessage.value = 'Please enter your email address'
     return
   }
   
   isLoading.value = true
   
-  // TODO: Implement actual login logic
+  // TODO: Implement actual password reset logic
   // For now, this is a placeholder
   try {
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1000))
     
-    // Placeholder logic - replace with actual authentication
-    // Login attempt
+    // Placeholder logic - replace with actual password reset
+    // Send password reset email
     
-    // On success, redirect to home or dashboard
-    // navigateTo('/r/generate')
+    successMessage.value = 'If an account exists with this email, you will receive password reset instructions.'
   } catch (error) {
-    errorMessage.value = 'Login failed. Please try again.'
+    errorMessage.value = 'Failed to send reset email. Please try again.'
   } finally {
     isLoading.value = false
   }
@@ -42,10 +47,10 @@ const handleLogin = async () => {
           <h1 class="text-4xl font-extrabold tracking-tight">
             <SiteLogo class="text-4xl font-extrabold tracking-tight" />
           </h1>
-          <p class="mt-2 text-gray-600">Sign in to your account</p>
+          <p class="mt-2 text-gray-600">Reset your password</p>
         </div>
 
-        <!-- Login Card -->
+        <!-- Forgot Password Card -->
         <UCard
           :ui="{
             base: 'rounded-none',
@@ -54,7 +59,12 @@ const handleLogin = async () => {
           }"
           class="bg-white shadow-xl"
         >
-          <form @submit.prevent="handleLogin" class="space-y-6">
+          <form @submit.prevent="handleForgotPassword" class="space-y-6">
+            <!-- Instructions -->
+            <div class="text-sm text-gray-600">
+              <p>Enter your email address and we'll send you instructions to reset your password.</p>
+            </div>
+
             <!-- Email Input -->
             <div>
               <label for="email" class="block text-sm font-semibold text-gray-900 mb-2">
@@ -75,57 +85,20 @@ const handleLogin = async () => {
               />
             </div>
 
-            <!-- Password Input -->
-            <div>
-              <label for="password" class="block text-sm font-semibold text-gray-900 mb-2">
-                Password
-              </label>
-              <UInput
-                id="password"
-                v-model="password"
-                type="password"
-                placeholder="••••••••"
-                size="lg"
-                :disabled="isLoading"
-                :ui="{
-                  base: 'rounded-none h-12'
-                }"
-                class="w-full block"
-                required
-              />
-            </div>
-
             <!-- Error Message -->
             <div v-if="errorMessage" class="p-4 bg-red-50 border border-red-200 rounded-none">
               <p class="text-sm text-red-600">{{ errorMessage }}</p>
             </div>
 
-            <!-- Remember Me & Forgot Password -->
-            <div class="flex items-center justify-between">
-              <div class="flex items-center">
-                <input
-                  id="remember-me"
-                  type="checkbox"
-                  class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded-none"
-                  :disabled="isLoading"
-                />
-                <label for="remember-me" class="ml-2 block text-sm text-gray-700">
-                  Remember me
-                </label>
-              </div>
-
-              <ULink
-                to="/auth/forgot-password"
-                class="text-sm font-semibold text-indigo-600 hover:text-indigo-500"
-              >
-                Forgot password?
-              </ULink>
+            <!-- Success Message -->
+            <div v-if="successMessage" class="p-4 bg-green-50 border border-green-200 rounded-none">
+              <p class="text-sm text-green-600">{{ successMessage }}</p>
             </div>
 
             <!-- Submit Button -->
             <UButton
               type="submit"
-              label="Sign in"
+              label="Send reset instructions"
               color="primary"
               variant="solid"
               size="xl"
@@ -146,15 +119,15 @@ const handleLogin = async () => {
             </div>
           </div>
 
-          <!-- Sign Up Link -->
+          <!-- Back to Login Link -->
           <div class="text-center">
             <p class="text-sm text-gray-600">
-              Don't have an account?
+              Remember your password?
               <ULink
-                to="/auth/signup"
+                to="/auth/login"
                 class="font-semibold text-indigo-600 hover:text-indigo-500"
               >
-                Sign up for free
+                Sign in
               </ULink>
             </p>
           </div>
