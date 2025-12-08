@@ -166,24 +166,9 @@ const faqs = [
       <div class="max-w-7xl mx-auto py-12">
         <!-- Header -->
         <div class="mb-16 text-center">
-          <ULink
-            to="/"
-            class="text-sm text-gray-600 hover:text-indigo-600 inline-flex items-center gap-1 mb-6"
-          >
-            <UIcon name="i-lucide-arrow-left" class="w-4 h-4" />
-            Back to home
-          </ULink>
-          
           <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight mb-4">
-            Simple, 
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-cyan-500">
-              Transparent
-            </span> 
             Pricing
           </h1>
-          <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-            Choose the plan that's right for your club. All plans include real-time updates and unlimited displays.
-          </p>
         </div>
 
         <!-- Billing Type Toggle -->
@@ -251,31 +236,8 @@ const faqs = [
         </div>
 
         <!-- CTA Section -->
-        <div class="mt-24 text-center">
-          <UCard
-            :ui="{
-              base: 'rounded-none bg-gradient-to-br from-indigo-600 to-cyan-500',
-              ring: 'ring-0',
-              body: 'p-12'
-            }"
-          >
-            <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4">
-              Ready to get started?
-            </h2>
-            <p class="text-xl text-indigo-100 mb-8 max-w-2xl mx-auto">
-              Join clubs already using NowNext to streamline their event management.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-              <UButton
-                label="Try NowNextLive for free now"
-                to="/r/generate"
-                color="neutral"
-                variant="solid"
-                size="xl"
-                class="rounded-none font-bold shadow-xl"
-              />
-            </div>
-          </UCard>
+        <div class="mt-24">
+          <CtaSection />
         </div>
       </div>
     </UContainer>
