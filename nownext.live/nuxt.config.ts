@@ -6,7 +6,7 @@ export default defineNuxtConfig({
     public: {
       version: pkg.version,
       enableBetaModal: true,
-      gtm: {
+      gtag: {
         id: 'G-QSCLS15XJM'
       }
     }
