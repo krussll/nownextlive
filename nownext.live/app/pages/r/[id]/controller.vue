@@ -366,12 +366,6 @@ let heartbeatInterval
 // Update current time every 5 seconds for connection age display (client-side only)
 onMounted(() => {
 
-  window.SenjaCollectorConfig = {
-    url: "https://senja.io/p/now-next/r/siGhXa",
-    trigger: {"type":"none"}
-  }
-
-
   setInterval(() => {
     currentTime.value = new Date()
   }, 5000)
@@ -511,16 +505,6 @@ watch(data, (newData) => {
 const event = computed(() => localEvent.value)
 
 // Set page title with event title prefix
-useHead(() => ({
-  title: `${event.value?.title || 'Unnamed'} - Controller`,
-  script: [
-    {
-      src: 'https://widget.senja.io/js/collector.js',
-      async: true,
-      type: 'text/javascript'
-    }
-  ]
-}))
 
 const toast = useToast()
 
