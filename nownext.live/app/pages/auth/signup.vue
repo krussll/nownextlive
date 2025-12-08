@@ -194,6 +194,7 @@ const handleSignup = async () => {
               size="xl"
               :loading="isLoading"
               :disabled="isLoading"
+              block
               class="w-full rounded-none font-bold shadow-xl shadow-primary-200/50 hover:shadow-2xl transition-shadow"
             />
           </form>
