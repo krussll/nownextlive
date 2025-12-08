@@ -85,8 +85,9 @@ const handleSignup = async () => {
                 size="lg"
                 :disabled="isLoading"
                 :ui="{
-                  base: 'rounded-none'
+                  base: 'rounded-none h-12'
                 }"
+                class="w-full"
                 required
               />
             </div>
@@ -104,8 +105,9 @@ const handleSignup = async () => {
                 size="lg"
                 :disabled="isLoading"
                 :ui="{
-                  base: 'rounded-none'
+                  base: 'rounded-none h-12'
                 }"
+                class="w-full"
                 required
               />
             </div>
@@ -123,8 +125,9 @@ const handleSignup = async () => {
                 size="lg"
                 :disabled="isLoading"
                 :ui="{
-                  base: 'rounded-none'
+                  base: 'rounded-none h-12'
                 }"
+                class="w-full"
                 required
               />
               <p class="mt-1 text-xs text-gray-500">Must be at least 8 characters</p>
@@ -143,8 +146,9 @@ const handleSignup = async () => {
                 size="lg"
                 :disabled="isLoading"
                 :ui="{
-                  base: 'rounded-none'
+                  base: 'rounded-none h-12'
                 }"
+                class="w-full"
                 required
               />
             </div>

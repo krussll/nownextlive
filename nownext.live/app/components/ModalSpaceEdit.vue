@@ -13,7 +13,7 @@
       <div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
         <div class="sm:col-span-4">
           <UFormField label="Title" :error="error">
-            <UInput v-model="localData.title"  class="w-full"/>
+            <UInput v-model="localData.title" class="w-full h-12" />
           </UFormField>
         </div>
       </div>

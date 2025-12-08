@@ -31,6 +31,18 @@ This document serves as a reference for the design and styling standards of the 
   - Interactions: `hover:shadow-lg` is used to provide depth on interaction.
   - Sizes: `lg` is a common size for primary actions.
 
+- **Form Fields**:
+  - **Input Fields** (`UInput`):
+    - **REQUIRED**: All input fields must have `class="w-full h-12"` for consistent full-width and fixed height (48px).
+    - For inputs with `:ui` prop customization, include `h-12` in the `base` property: `:ui="{ base: 'rounded-none h-12' }"`.
+    - Always include `class="w-full"` alongside the `:ui` prop when both are used.
+  - **Textarea Fields** (`UTextarea`):
+    - **REQUIRED**: Must have `class="w-full h-12"` at minimum.
+    - The `h-12` provides a minimum height; use `rows` attribute for multi-line textareas as needed.
+  - **Time Inputs** (`UInputTime`):
+    - **REQUIRED**: Must have `class="w-full h-12"` for consistency with other form fields.
+  - **General Rule**: All form input components should maintain consistent sizing with `w-full` (100% width) and `h-12` (48px height) classes.
+
 ### Layout
 
 - **Structure**: The app is wrapped in `UApp`.
