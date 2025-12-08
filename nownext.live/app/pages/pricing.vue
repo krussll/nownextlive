@@ -4,11 +4,13 @@ useSeoMeta({
   description: 'Simple, transparent pricing for NowNext event management platform'
 })
 
-const plans = [
+const billingType = ref<'subscription' | 'oneoff'>('subscription')
+
+const subscriptionPlans = [
   {
-    name: 'Free',
+    title: 'Free',
     price: '£0',
-    period: 'forever',
+    billingCycle: 'forever',
     description: 'Perfect for trying out NowNextLive',
     features: [
       'Up to 3 active events',
@@ -18,14 +20,16 @@ const plans = [
       'Browser-based displays',
       'Community support'
     ],
-    cta: 'Get Started',
-    ctaLink: '/signup',
-    highlighted: false
+    button: {
+      label: 'Get Started',
+      to: '/signup'
+    },
+    highlight: false
   },
   {
-    name: 'Club',
+    title: 'Club',
     price: '£9',
-    period: 'per month',
+    billingCycle: 'per month',
     description: 'For clubs running regular events',
     features: [
       'Unlimited active events',
@@ -37,14 +41,17 @@ const plans = [
       'Custom branding',
       'Event templates'
     ],
-    cta: 'Start Free Trial',
-    ctaLink: '/signup',
-    highlighted: true
+    button: {
+      label: 'Start Free Trial',
+      to: '/signup'
+    },
+    highlight: true,
+    badge: 'MOST POPULAR'
   },
   {
-    name: 'Enterprise',
+    title: 'Enterprise',
     price: 'Custom',
-    period: 'contact us',
+    billingCycle: 'contact us',
     description: 'For large organizations',
     features: [
       'Everything in Club',
@@ -56,11 +63,82 @@ const plans = [
       'Training & onboarding',
       'Phone support'
     ],
-    cta: 'Contact Sales',
-    ctaLink: '/contact',
-    highlighted: false
+    button: {
+      label: 'Contact Sales',
+      to: '/contact'
+    },
+    highlight: false
   }
 ]
+
+const oneoffPlans = [
+  {
+    title: 'Free',
+    price: '£0',
+    billingCycle: 'forever',
+    description: 'Perfect for trying out NowNextLive',
+    features: [
+      'Up to 3 active events',
+      'Unlimited spaces per event',
+      'Unlimited sessions',
+      'Real-time updates',
+      'Browser-based displays',
+      'Community support'
+    ],
+    button: {
+      label: 'Get Started',
+      to: '/signup'
+    },
+    highlight: false
+  },
+  {
+    title: 'Club',
+    price: '£99',
+    billingCycle: 'one-time payment',
+    description: 'For clubs running regular events',
+    features: [
+      'Unlimited active events',
+      'Unlimited spaces per event',
+      'Unlimited sessions',
+      'Real-time updates',
+      'Browser-based displays',
+      'Priority email support',
+      'Custom branding',
+      'Event templates'
+    ],
+    button: {
+      label: 'Buy Now',
+      to: '/signup'
+    },
+    highlight: true,
+    badge: 'MOST POPULAR'
+  },
+  {
+    title: 'Enterprise',
+    price: 'Custom',
+    billingCycle: 'contact us',
+    description: 'For large organizations',
+    features: [
+      'Everything in Club',
+      'Dedicated account manager',
+      'Custom integrations',
+      'SLA guarantee',
+      'Advanced analytics',
+      'White-label options',
+      'Training & onboarding',
+      'Phone support'
+    ],
+    button: {
+      label: 'Contact Sales',
+      to: '/contact'
+    },
+    highlight: false
+  }
+]
+
+const plans = computed(() => {
+  return billingType.value === 'subscription' ? subscriptionPlans : oneoffPlans
+})
 
 const faqs = [
   {
@@ -112,70 +190,30 @@ const faqs = [
           </p>
         </div>
 
-        <!-- Pricing Cards -->
-        <div class="grid md:grid-cols-3 gap-8 mb-24">
-          <UCard
-            v-for="plan in plans"
-            :key="plan.name"
-            :ui="{
-              base: 'rounded-none relative',
-              ring: plan.highlighted 
-                ? 'ring-2 ring-indigo-500 shadow-2xl' 
-                : 'ring-1 ring-gray-200',
-              body: 'p-8'
-            }"
-            :class="plan.highlighted ? 'transform scale-105 bg-gradient-to-br from-white to-indigo-50/30' : 'bg-white'"
-          >
-            <!-- Popular Badge -->
-            <div
-              v-if="plan.highlighted"
-              class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-indigo-600 to-cyan-500 text-white px-4 py-1 text-sm font-bold rounded-none shadow-lg"
-            >
-              MOST POPULAR
-            </div>
-
-            <div class="text-center mb-6">
-              <h3 class="text-2xl font-bold text-gray-900 mb-2">
-                {{ plan.name }}
-              </h3>
-              <p class="text-gray-600 text-sm mb-4">
-                {{ plan.description }}
-              </p>
-              <div class="mb-2">
-                <span class="text-5xl font-extrabold text-gray-900">
-                  {{ plan.price }}
-                </span>
-              </div>
-              <p class="text-gray-500 text-sm">
-                {{ plan.period }}
-              </p>
-            </div>
-
+        <!-- Billing Type Toggle -->
+        <div class="flex justify-center mb-12">
+          <UButtonGroup size="lg" orientation="horizontal">
             <UButton
-              :label="plan.cta"
-              :to="plan.ctaLink"
-              :color="plan.highlighted ? 'primary' : 'neutral'"
-              :variant="plan.highlighted ? 'solid' : 'outline'"
-              size="lg"
-              class="w-full rounded-none font-semibold mb-6 hover:shadow-lg"
-              block
-            />
-
-            <ul class="space-y-3">
-              <li
-                v-for="feature in plan.features"
-                :key="feature"
-                class="flex items-start gap-3 text-gray-700"
-              >
-                <UIcon
-                  name="i-lucide-check"
-                  class="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5"
-                />
-                <span>{{ feature }}</span>
-              </li>
-            </ul>
-          </UCard>
+              :variant="billingType === 'subscription' ? 'solid' : 'outline'"
+              :color="billingType === 'subscription' ? 'primary' : 'neutral'"
+              @click="billingType = 'subscription'"
+              class="px-8"
+            >
+              Subscription
+            </UButton>
+            <UButton
+              :variant="billingType === 'oneoff' ? 'solid' : 'outline'"
+              :color="billingType === 'oneoff' ? 'primary' : 'neutral'"
+              @click="billingType = 'oneoff'"
+              class="px-8"
+            >
+              One-Off Payment
+            </UButton>
+          </UButtonGroup>
         </div>
+
+        <!-- Pricing Cards -->
+        <UPricingPlans :plans="plans" scale class="mb-24" />
 
         <!-- FAQ Section -->
         <div class="max-w-3xl mx-auto">
@@ -227,7 +265,7 @@ const faqs = [
               <UButton
                 label="Start Free Trial"
                 to="/signup"
-                color="white"
+                color="neutral"
                 variant="solid"
                 size="xl"
                 class="rounded-none font-bold shadow-xl"
@@ -235,7 +273,7 @@ const faqs = [
               <UButton
                 label="Contact Sales"
                 to="/contact"
-                color="white"
+                color="neutral"
                 variant="outline"
                 size="xl"
                 class="rounded-none font-bold"
