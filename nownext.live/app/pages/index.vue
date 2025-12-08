@@ -150,6 +150,48 @@ const testimonials = [
       </UContainer>
     </section>
 
+    <section class="py-24 bg-white border-b border-gray-100">
+      <UContainer>
+        <h2 class="text-4xl font-extrabold text-center mb-16">
+          See It In
+          <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-cyan-500"
+            >Action</span
+          >
+        </h2>
+
+        <div class="grid grid-cols-1 gap-12 max-w-4xl mx-auto">
+          <div class="border border-gray-200 rounded-none p-6 hover:shadow-xl transition-shadow">
+            <h3 class="text-2xl font-bold mb-6 text-gray-900">
+              Controller View
+            </h3>
+            <img
+              src="/imgs/demos/nownextlive-controller.png"
+              alt="NowNext.live Controller Interface"
+              class="w-full h-auto rounded-none shadow-lg"
+            />
+            <p class="mt-4 text-gray-600">
+              Simple control panel to manage all your spaces and sessions in real-time.
+            </p>
+          </div>
+
+          <div class="border border-gray-200 rounded-none p-6 hover:shadow-xl transition-shadow">
+            <h3 class="text-2xl font-bold mb-6 text-gray-900">
+              Display View
+            </h3>
+            <img
+              src="/imgs/demos/nownextlive-display.png"
+              alt="NowNext.live Display Screen"
+              class="w-full h-auto rounded-none shadow-lg"
+            />
+            <p class="mt-4 text-gray-600">
+              Clean, easy-to-read display that updates instantly across all screens.
+            </p>
+          </div>
+        </div>
+      </UContainer>
+    </section>
+
     <section id="features" class="py-24 bg-gray-50 border-b border-gray-100">
       <UContainer>
         <h2 class="text-4xl font-extrabold text-center mb-16">

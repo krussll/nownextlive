@@ -138,22 +138,20 @@
               <p class="text-sm text-slate-500">
                 Room: <span class="font-semibold text-slate-700">{{ eventId }}</span>
               </p>
+
+              <UButton
+                icon="i-heroicons-plus"
+                size="sm"
+                color="primary"
+                variant="soft"
+                label="Add Space"
+                :class="{ 'opacity-50': !canAddSpace }"
+                @click="handleAddSpace"
+              />
             </div>
           </div>
 
           <!-- Accordion List -->
-          <div class="flex justify-end mb-4">
-            <UButton
-              icon="i-heroicons-plus"
-              size="sm"
-              color="primary"
-              variant="soft"
-              label="Add Space"
-              :class="{ 'opacity-50': !canAddSpace }"
-              @click="handleAddSpace"
-            />
-          </div>
-
           <div class="space-y-6" ref="spacesContainer">
             <UCollapsible
               v-for="(item, index) in event.spaces"

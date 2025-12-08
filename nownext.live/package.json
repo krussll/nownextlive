@@ -1,6 +1,6 @@
 {
   "name": "nownext-live",
-  "version": "1.2.1-beta",
+  "version": "1.2.3-beta",
   "type": "module",
   "private": true,
   "scripts": {
