@@ -27,7 +27,7 @@ const subscriptionPlans = [
     title: 'Club',
     price: '£9',
     scale: true,
-    tagline:"For clubs running regular events",
+    description:"For clubs running regular events",
     billingCycle: 'per month',
     features: [
       'Unlimited active events',
@@ -74,24 +74,21 @@ const oneoffPlans = [
     title: 'Free',
     price: '£0',
     billingCycle: 'forever',
-    description: 'Perfect for trying out NowNextLive',
+    description: 'Use all basic features for free',
     features: [
-      'Up to 3 active events',
-      'Unlimited spaces per event',
-      'Unlimited sessions',
+      'No credit card or signup required',
       'Real-time updates',
-      'Browser-based displays',
-      'Community support'
+      '2 Browser-based displays'
     ],
     button: {
-      label: 'Get Started',
-      to: '/signup'
+      label: 'Create an Event Now',
+      to: '/r/generate'
     },
     highlight: false
   },
   {
     title: 'Club',
-    price: '£99',
+    price: '£25',
     billingCycle: 'one-time payment',
     description: 'For clubs running regular events',
     features: [
@@ -201,7 +198,7 @@ const faqs = [
                   : 'bg-transparent text-gray-700 hover:bg-gray-50'
               ]"
             >
-              <span>Yearly Subscription</span>
+              <span>Monthly Subscription</span>
               <span class="ml-2 text-sm opacity-90">~15% off</span>
             </button>
             <button
