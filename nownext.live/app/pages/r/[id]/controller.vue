@@ -138,22 +138,20 @@
               <p class="text-sm text-slate-500">
                 Room: <span class="font-semibold text-slate-700">{{ eventId }}</span>
               </p>
+
+              <UButton
+                icon="i-heroicons-plus"
+                size="sm"
+                color="primary"
+                variant="soft"
+                label="Add Space"
+                :class="{ 'opacity-50': !canAddSpace }"
+                @click="handleAddSpace"
+              />
             </div>
           </div>
 
           <!-- Accordion List -->
-          <div class="flex justify-end mb-4">
-            <UButton
-              icon="i-heroicons-plus"
-              size="sm"
-              color="primary"
-              variant="soft"
-              label="Add Space"
-              :class="{ 'opacity-50': !canAddSpace }"
-              @click="handleAddSpace"
-            />
-          </div>
-
           <div class="space-y-6" ref="spacesContainer">
             <UCollapsible
               v-for="(item, index) in event.spaces"
@@ -335,6 +333,7 @@
   </UContainer>
 </template>
 
+
 <script setup>
 import Modal from '~/components/ModalSessionEdit.vue'
 import ModalSpace from '~/components/ModalSpaceEdit.vue'
@@ -364,6 +363,7 @@ let heartbeatInterval
 
 // Update current time every 5 seconds for connection age display (client-side only)
 onMounted(() => {
+
   setInterval(() => {
     currentTime.value = new Date()
   }, 5000)
@@ -503,9 +503,6 @@ watch(data, (newData) => {
 const event = computed(() => localEvent.value)
 
 // Set page title with event title prefix
-useHead(() => ({
-  title: `${event.value?.title || 'Unnamed'} - Controller`
-}))
 
 const toast = useToast()
 
@@ -733,4 +730,5 @@ const setSessionContainerRef = (el, spaceId) => {
     }
   }
 }
+
 </script>
