@@ -41,7 +41,7 @@ const subscriptionPlans = [
     ],
     button: {
       label: 'Get Club access now',
-      to: '/signup'
+      to: '/auth/signup'
     },
     highlight: true,
     badge: 'MOST POPULAR'

@@ -70,6 +70,7 @@ const handleLogin = async () => {
                 :ui="{
                   base: 'rounded-none h-12'
                 }"
+                class="w-full block"
                 required
               />
             </div>
@@ -89,6 +90,7 @@ const handleLogin = async () => {
                 :ui="{
                   base: 'rounded-none h-12'
                 }"
+                class="w-full block"
                 required
               />
             </div>
@@ -129,7 +131,8 @@ const handleLogin = async () => {
               size="xl"
               :loading="isLoading"
               :disabled="isLoading"
-              class="rounded-none font-bold shadow-xl shadow-primary-200/50 hover:shadow-2xl transition-shadow"
+              block
+              class="w-full rounded-none font-bold shadow-xl shadow-primary-200/50 hover:shadow-2xl transition-shadow"
             />
           </form>
 
@@ -148,7 +151,7 @@ const handleLogin = async () => {
             <p class="text-sm text-gray-600">
               Don't have an account?
               <ULink
-                to="/signup"
+                to="/auth/signup"
                 class="font-semibold text-indigo-600 hover:text-indigo-500"
               >
                 Sign up for free

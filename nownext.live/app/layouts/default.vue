@@ -11,7 +11,7 @@
         icon="i-lucide-log-in"
         color="neutral"
         variant="ghost"
-        to="/login"
+        to="/auth/login"
         class="lg:hidden"
         size="lg"
       />
@@ -20,7 +20,7 @@
         label="Sign in"
         color="neutral"
         variant="outline"
-        to="/login"
+        to="/auth/login"
         size="lg"
         class="hidden lg:inline-flex rounded-none font-semibold hover:shadow-lg"
       />
@@ -31,7 +31,7 @@
         trailing-icon="i-lucide-arrow-right"
         size="lg"
         class="hidden lg:inline-flex rounded-none font-semibold hover:shadow-lg"
-        to="/signup"
+        to="/auth/signup"
       />
     </template>
 

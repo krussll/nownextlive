@@ -41,7 +41,7 @@ const handleSignup = async () => {
     // Signup attempt
     
     // On success, redirect to login or dashboard
-    // navigateTo('/login')
+    // navigateTo('/auth/login')
   } catch (error) {
     errorMessage.value = 'Signup failed. Please try again.'
   } finally {
@@ -209,7 +209,7 @@ const handleSignup = async () => {
             <p class="text-sm text-gray-600">
               Already have an account?
               <ULink
-                to="/login"
+                to="/auth/login"
                 class="font-semibold text-indigo-600 hover:text-indigo-500"
               >
                 Sign in
