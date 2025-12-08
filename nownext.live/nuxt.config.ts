@@ -13,7 +13,7 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['@nuxt/ui', 'nuxt-gtag', '@nuxt/eslint', '@nuxtjs/supabase', '@nuxtjs/google-fonts'],
+  modules: ['@nuxt/ui', 'nuxt-gtag', '@nuxt/eslint', '@nuxtjs/supabase', '@nuxtjs/google-fonts', '@nuxt/content'],
   googleFonts: {
     families: {
       Inter: [400, 500, 600, 700]
