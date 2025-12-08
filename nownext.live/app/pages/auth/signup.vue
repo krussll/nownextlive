@@ -1,10 +1,11 @@
 <script setup lang="ts">
-const name = ref('')
 const email = ref('')
 const password = ref('')
 const confirmPassword = ref('')
 const isLoading = ref(false)
 const errorMessage = ref('')
+
+const supabase = useSupabaseClient()
 
 useSeoMeta({
   title: 'Sign Up - NowNext',
@@ -13,8 +14,7 @@ useSeoMeta({
 
 const handleSignup = async () => {
   errorMessage.value = ''
-  
-  if (!name.value || !email.value || !password.value || !confirmPassword.value) {
+  if (!email.value || !password.value || !confirmPassword.value) {
     errorMessage.value = 'Please fill in all fields'
     return
   }
@@ -24,29 +24,14 @@ const handleSignup = async () => {
     return
   }
   
-  if (password.value.length < 8) {
-    errorMessage.value = 'Password must be at least 8 characters long'
-    return
-  }
-  
   isLoading.value = true
-  
-  // TODO: Implement actual signup logic
-  // For now, this is a placeholder
-  try {
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    
-    // Placeholder logic - replace with actual registration
-    // Signup attempt
-    
-    // On success, redirect to login or dashboard
-    // navigateTo('/auth/login')
-  } catch (error) {
-    errorMessage.value = 'Signup failed. Please try again.'
-  } finally {
-    isLoading.value = false
-  }
+  const { error } = await supabase.auth.signUp({
+    email: email.value,
+    password: password.value,
+  })
+  if (error) errorMessage.value = error.message
+
+  isLoading.value = false
 }
 </script>
 
@@ -72,26 +57,6 @@ const handleSignup = async () => {
           class="bg-white shadow-xl"
         >
           <form @submit.prevent="handleSignup" class="space-y-6">
-            <!-- Name Input -->
-            <div>
-              <label for="name" class="block text-sm font-semibold text-gray-900 mb-2">
-                Full name
-              </label>
-              <UInput
-                id="name"
-                v-model="name"
-                type="text"
-                placeholder="John Doe"
-                size="lg"
-                :disabled="isLoading"
-                :ui="{
-                  base: 'rounded-none h-12'
-                }"
-                class="w-full"
-                required
-              />
-            </div>
-
             <!-- Email Input -->
             <div>
               <label for="email" class="block text-sm font-semibold text-gray-900 mb-2">
