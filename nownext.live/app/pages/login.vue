@@ -68,7 +68,7 @@ const handleLogin = async () => {
                 size="lg"
                 :disabled="isLoading"
                 :ui="{
-                  base: 'rounded-none'
+                  base: 'rounded-none h-12'
                 }"
                 required
               />
@@ -87,7 +87,7 @@ const handleLogin = async () => {
                 size="lg"
                 :disabled="isLoading"
                 :ui="{
-                  base: 'rounded-none'
+                  base: 'rounded-none h-12'
                 }"
                 required
               />
@@ -129,7 +129,7 @@ const handleLogin = async () => {
               size="xl"
               :loading="isLoading"
               :disabled="isLoading"
-              class="w-full rounded-none font-bold shadow-xl shadow-primary-200/50 hover:shadow-2xl transition-shadow"
+              class="rounded-none font-bold shadow-xl shadow-primary-200/50 hover:shadow-2xl transition-shadow"
             />
           </form>
 

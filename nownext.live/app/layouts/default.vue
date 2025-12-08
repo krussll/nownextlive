@@ -34,6 +34,10 @@
         to="/signup"
       />
     </template>
+
+    <template #body>
+      <UNavigationMenu :items="items" orientation="vertical" class="-mx-2.5" />
+    </template>
   </UHeader>
   <UMain>
     <NuxtPage />
