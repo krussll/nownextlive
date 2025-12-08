@@ -4,32 +4,16 @@ const password = ref('')
 const isLoading = ref(false)
 const errorMessage = ref('')
 
-const handleLogin = async () => {
-  errorMessage.value = ''
+const supabase = useSupabaseClient()
+
+const signInWithOtp = async () => {
   
-  if (!email.value || !password.value) {
-    errorMessage.value = 'Please enter both email and password'
-    return
-  }
+  const { error } = await supabase.auth.signInWithPassword({
+    email: email.value,
+    password: password.value,
   
-  isLoading.value = true
-  
-  // TODO: Implement actual login logic
-  // For now, this is a placeholder
-  try {
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    
-    // Placeholder logic - replace with actual authentication
-    // Login attempt
-    
-    // On success, redirect to home or dashboard
-    // navigateTo('/r/generate')
-  } catch (error) {
-    errorMessage.value = 'Login failed. Please try again.'
-  } finally {
-    isLoading.value = false
-  }
+  })
+  if (error) errorMessage.value = error.message
 }
 </script>
 
@@ -54,7 +38,7 @@ const handleLogin = async () => {
           }"
           class="bg-white shadow-xl"
         >
-          <form @submit.prevent="handleLogin" class="space-y-6">
+          <form @submit.prevent="signInWithOtp" class="space-y-6">
             <!-- Email Input -->
             <div>
               <label for="email" class="block text-sm font-semibold text-gray-900 mb-2">
@@ -103,15 +87,7 @@ const handleLogin = async () => {
             <!-- Remember Me & Forgot Password -->
             <div class="flex items-center justify-between">
               <div class="flex items-center">
-                <input
-                  id="remember-me"
-                  type="checkbox"
-                  class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded-none"
-                  :disabled="isLoading"
-                />
-                <label for="remember-me" class="ml-2 block text-sm text-gray-700">
-                  Remember me
-                </label>
+                
               </div>
 
               <ULink
