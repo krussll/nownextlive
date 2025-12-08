@@ -11,26 +11,24 @@ const subscriptionPlans = [
     title: 'Free',
     price: '£0',
     billingCycle: 'forever',
-    description: 'Perfect for trying out NowNextLive',
+    description: 'Use all basic features for free',
     features: [
-      'Up to 3 active events',
-      'Unlimited spaces per event',
-      'Unlimited sessions',
+      'No credit card or signup required',
       'Real-time updates',
-      'Browser-based displays',
-      'Community support'
+      '2 Browser-based displays'
     ],
     button: {
-      label: 'Get Started',
-      to: '/signup'
+      label: 'Create an Event Now',
+      to: '/r/generate'
     },
     highlight: false
   },
   {
     title: 'Club',
     price: '£9',
+    scale: true,
+    tagline:"For clubs running regular events",
     billingCycle: 'per month',
-    description: 'For clubs running regular events',
     features: [
       'Unlimited active events',
       'Unlimited spaces per event',
@@ -42,7 +40,7 @@ const subscriptionPlans = [
       'Event templates'
     ],
     button: {
-      label: 'Start Free Trial',
+      label: 'Get Club access now',
       to: '/signup'
     },
     highlight: true,
@@ -111,7 +109,8 @@ const oneoffPlans = [
       to: '/signup'
     },
     highlight: true,
-    badge: 'MOST POPULAR'
+    badge: 'MOST POPULAR',
+    scale: true,
   },
   {
     title: 'Enterprise',
@@ -192,24 +191,32 @@ const faqs = [
 
         <!-- Billing Type Toggle -->
         <div class="flex justify-center mb-12">
-          <UButtonGroup size="lg" orientation="horizontal">
-            <UButton
-              :variant="billingType === 'subscription' ? 'solid' : 'outline'"
-              :color="billingType === 'subscription' ? 'primary' : 'neutral'"
+          <div class="bg-white p-2 rounded-full shadow-md inline-flex gap-2">
+            <button
               @click="billingType = 'subscription'"
-              class="px-8"
+              :class="[
+                'px-8 py-3 rounded-full font-semibold text-base transition-all duration-200 cursor-pointer',
+                billingType === 'subscription'
+                  ? 'bg-gradient-to-r from-green-600 to-green-500 text-white shadow-lg'
+                  : 'bg-transparent text-gray-700 hover:bg-gray-50'
+              ]"
             >
-              Subscription
-            </UButton>
-            <UButton
-              :variant="billingType === 'oneoff' ? 'solid' : 'outline'"
-              :color="billingType === 'oneoff' ? 'primary' : 'neutral'"
+              <span>Yearly Subscription</span>
+              <span class="ml-2 text-sm opacity-90">~15% off</span>
+            </button>
+            <button
               @click="billingType = 'oneoff'"
-              class="px-8"
+              :class="[
+                'px-8 py-3 rounded-full font-semibold text-base transition-all duration-200 cursor-pointer',
+                billingType === 'oneoff'
+                  ? 'bg-gradient-to-r from-green-600 to-green-500 text-white shadow-lg'
+                  : 'bg-transparent text-gray-700 hover:bg-gray-50'
+              ]"
             >
-              One-Off Payment
-            </UButton>
-          </UButtonGroup>
+              Single Event
+              <span class="ml-2 text-xs opacity-90">One-off 30 day access</span>
+            </button>
+          </div>
         </div>
 
         <!-- Pricing Cards -->
@@ -263,20 +270,12 @@ const faqs = [
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
               <UButton
-                label="Start Free Trial"
-                to="/signup"
+                label="Try NowNextLive for free now"
+                to="/r/generate"
                 color="neutral"
                 variant="solid"
                 size="xl"
                 class="rounded-none font-bold shadow-xl"
-              />
-              <UButton
-                label="Contact Sales"
-                to="/contact"
-                color="neutral"
-                variant="outline"
-                size="xl"
-                class="rounded-none font-bold"
               />
             </div>
           </UCard>
