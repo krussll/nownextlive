@@ -28,10 +28,14 @@ const handleSignup = async () => {
   const { error } = await supabase.auth.signUp({
     email: email.value,
     password: password.value,
-  })
-  if (error) errorMessage.value = error.message
+  }) 
+  if (error) { 
+    errorMessage.value = error.message
 
-  isLoading.value = false
+    isLoading.value = false
+  }
+
+  navigateTo('/account')
 }
 </script>
 
