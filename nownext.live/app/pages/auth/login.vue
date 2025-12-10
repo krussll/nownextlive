@@ -5,6 +5,7 @@ const isLoading = ref(false)
 const errorMessage = ref('')
 
 const supabase = useSupabaseClient()
+const router = useRouter()
 
 const signInWithOtp = async () => {
   
@@ -17,7 +18,7 @@ const signInWithOtp = async () => {
     errorMessage.value = error.message
     return
   }
-  navigateTo('/account')
+  router.push('/account')
 }
 </script>
 

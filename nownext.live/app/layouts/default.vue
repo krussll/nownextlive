@@ -7,7 +7,18 @@
     <UNavigationMenu :items="items" />
 
     <template #right>
-      <UButton
+      <div v-if="user">
+        <UButton
+          label="Sign out"
+          color="neutral"
+          variant="outline"
+          @click="signOut"
+          size="lg"
+          class="hidden lg:inline-flex rounded-none font-semibold hover:shadow-lg"
+        />
+      </div>
+      <div class="flex gap-1.5" v-else>
+        <UButton
         icon="i-lucide-log-in"
         color="neutral"
         variant="ghost"
@@ -33,6 +44,7 @@
         class="hidden lg:inline-flex rounded-none font-semibold hover:shadow-lg"
         to="/auth/signup"
       />
+      </div>
     </template>
 
     <template #body>
@@ -67,4 +79,16 @@ const items = computed<NavigationMenuItem[]>(() => [
     active: route.path.startsWith('/contact')
   }
 ])
+
+const user = useSupabaseUser()
+
+const router = useRouter()
+
+const supabase = useSupabaseClient()
+
+const signOut = async () => {
+  
+  await supabase.auth.signOut();
+  router.push('/')
+}
 </script>
