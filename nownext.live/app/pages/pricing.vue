@@ -205,6 +205,26 @@ const faqs = [
         <!-- Pricing Cards -->
         <UPricingPlans :plans="plans" scale class="mb-24" />
 
+
+        <div class="flex justify-center mb-12">
+          <UPricingPlan
+            title="Solo"
+            description="For bootstrappers and indie hackers."
+            price="$249"
+            :features="[
+              'One developer',
+              'Unlimited projects',
+              'Access to GitHub repository',
+              'Lifetime access'
+            ]"
+            :button="{
+              label: 'Buy now'
+            }"
+            orientation="horizontal"
+            variant="outline"
+          />
+        </div>
+
         <!-- FAQ Section -->
         <div class="max-w-3xl mx-auto">
           <h2 class="text-4xl font-extrabold text-center mb-12">
