@@ -1,20 +1,23 @@
 <script setup lang="ts">
-const email = ref('')
 const password = ref('')
 const confirmPassword = ref('')
 const isLoading = ref(false)
 const errorMessage = ref('')
+const successMessage = ref('')
+
+useSeoMeta({
+  title: 'Reset Password - NowNext',
+  description:
+   'Reset your NowNext account password'
+})
 
 const supabase = useSupabaseClient()
 
-useSeoMeta({
-  title: 'Sign Up - NowNext',
-  description: 'Create your NowNext account to start managing events'
-})
-
-const handleSignup = async () => {
+const handlePasswordReset = async () => {
   errorMessage.value = ''
-  if (!email.value || !password.value || !confirmPassword.value) {
+  successMessage.value = ''
+  
+  if (!password.value || !confirmPassword.value) {
     errorMessage.value = 'Please fill in all fields'
     return
   }
@@ -25,17 +28,22 @@ const handleSignup = async () => {
   }
   
   isLoading.value = true
-  const { error } = await supabase.auth.signUp({
-    email: email.value,
-    password: password.value,
-  }) 
-  if (error) { 
-    errorMessage.value = error.message
+  
+  try {
+    const { data, error } = await supabase.auth.updateUser({
+        password: password.value
+      })
 
+      if (error) { 
+        throw error
+      }
+    
+    successMessage.value = 'Your password has been updated.'
+  } catch (error) {
+    errorMessage.value = 'Failed to update password. Please try again.'
+  } finally {
     isLoading.value = false
   }
-
-  navigateTo('/account')
 }
 </script>
 
@@ -48,10 +56,10 @@ const handleSignup = async () => {
           <h1 class="text-4xl font-extrabold tracking-tight">
             <SiteLogo class="text-4xl font-extrabold tracking-tight" />
           </h1>
-          <p class="mt-2 text-gray-600">Create your account</p>
+          <p class="mt-2 text-gray-600">Reset your password</p>
         </div>
 
-        <!-- Signup Card -->
+        <!-- Forgot Password Card -->
         <UCard
           :ui="{
             base: 'rounded-none',
@@ -60,25 +68,10 @@ const handleSignup = async () => {
           }"
           class="bg-white shadow-xl"
         >
-          <form @submit.prevent="handleSignup" class="space-y-6">
-            <!-- Email Input -->
-            <div>
-              <label for="email" class="block text-sm font-semibold text-gray-900 mb-2">
-                Email address
-              </label>
-              <UInput
-                id="email"
-                v-model="email"
-                type="email"
-                placeholder="you@example.com"
-                size="lg"
-                :disabled="isLoading"
-                :ui="{
-                  base: 'rounded-none h-12'
-                }"
-                class="w-full"
-                required
-              />
+          <form @submit.prevent="handlePasswordReset" class="space-y-6">
+            <!-- Instructions -->
+            <div class="text-sm text-gray-600">
+              <p>Enter your new password to complete the reset process.</p>
             </div>
 
             <!-- Password Input -->
@@ -121,43 +114,20 @@ const handleSignup = async () => {
                 required
               />
             </div>
-
             <!-- Error Message -->
             <div v-if="errorMessage" class="p-4 bg-red-50 border border-red-200 rounded-none">
               <p class="text-sm text-red-600">{{ errorMessage }}</p>
             </div>
 
-            <!-- Terms Agreement -->
-            <div class="flex items-start">
-              <input
-                id="terms"
-                type="checkbox"
-                class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded-none mt-1"
-                :disabled="isLoading"
-                required
-              />
-              <label for="terms" class="ml-2 block text-sm text-gray-700">
-                I agree to the 
-                <ULink
-                  to="/terms"
-                  class="font-semibold text-indigo-600 hover:text-indigo-500"
-                >
-                  Terms of Service
-                </ULink>
-                and
-                <ULink
-                  to="/privacy"
-                  class="font-semibold text-indigo-600 hover:text-indigo-500"
-                >
-                  Privacy Policy
-                </ULink>
-              </label>
+            <!-- Success Message -->
+            <div v-if="successMessage" class="p-4 bg-green-50 border border-green-200 rounded-none">
+              <p class="text-sm text-green-600">{{ successMessage }}</p>
             </div>
 
             <!-- Submit Button -->
             <UButton
               type="submit"
-              label="Create account"
+              label="Send reset instructions"
               color="primary"
               variant="solid"
               size="xl"
@@ -178,10 +148,10 @@ const handleSignup = async () => {
             </div>
           </div>
 
-          <!-- Login Link -->
+          <!-- Back to Login Link -->
           <div class="text-center">
             <p class="text-sm text-gray-600">
-              Already have an account?
+              Remember your password?
               <ULink
                 to="/auth/login"
                 class="font-semibold text-indigo-600 hover:text-indigo-500"

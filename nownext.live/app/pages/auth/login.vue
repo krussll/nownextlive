@@ -13,7 +13,11 @@ const signInWithOtp = async () => {
     password: password.value,
   
   })
-  if (error) errorMessage.value = error.message
+  if (error) {
+    errorMessage.value = error.message
+    return
+  }
+  navigateTo('/account')
 }
 </script>
 

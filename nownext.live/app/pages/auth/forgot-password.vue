@@ -6,8 +6,11 @@ const successMessage = ref('')
 
 useSeoMeta({
   title: 'Forgot Password - NowNext',
-  description: 'Reset your NowNext account password'
+  description: 'Request a reset of your NowNext account password'
 })
+
+
+const supabase = useSupabaseClient()
 
 const handleForgotPassword = async () => {
   errorMessage.value = ''
@@ -17,17 +20,22 @@ const handleForgotPassword = async () => {
     errorMessage.value = 'Please enter your email address'
     return
   }
+
+  //redirectTo: 'https://example.com/update-password',
   
   isLoading.value = true
   
-  // TODO: Implement actual password reset logic
-  // For now, this is a placeholder
   try {
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1000))
     
-    // Placeholder logic - replace with actual password reset
-    // Send password reset email
+    const { data, error } = await supabase.auth.resetPasswordForEmail(email.value, {
+      redirectTo: 'https://nownext.live/auth/reset-password',
+    })
+
+    if (error) {
+        throw error;
+    }
     
     successMessage.value = 'If an account exists with this email, you will receive password reset instructions.'
   } catch (error) {

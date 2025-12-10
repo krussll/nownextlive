@@ -109,14 +109,14 @@
         <!-- Footer -->
         <div class="z-50 pointer-events-none">
           <UContainer>
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <div class="">
               <div class="lg:col-span-3 pb-6 pointer-events-auto flex items-center justify-between text-xs text-slate-400">
                 <div class="flex items-center gap-2">
                   <NuxtLink to="/" class="hover:text-slate-600 transition-colors underline decoration-dotted underline-offset-2">
                     nownext.live
                   </NuxtLink>
-                  <span>v{{ config.public.version }}</span>
                 </div>
+                  <span>v{{ config.public.version }}</span>
                 <UBadge :color="connectionStatusColor" variant="subtle" size="xs">
                   {{ connectionStatusLabel }}
                 </UBadge>
