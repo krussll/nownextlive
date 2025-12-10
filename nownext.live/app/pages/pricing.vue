@@ -8,7 +8,7 @@ const billingType = ref<'subscription' | 'oneoff'>('subscription')
 
 const subscriptionPlans = [
   {
-    title: 'Free',
+    title: 'Starter',
     price: '£0',
     billingCycle: 'forever',
     description: 'Use all basic features for free',
@@ -24,12 +24,13 @@ const subscriptionPlans = [
     highlight: false
   },
   {
-    title: 'Club',
+    title: 'Pro',
     price: '£9',
     scale: true,
     description:"For clubs running regular events",
     billingCycle: 'per month',
     features: [
+      'Everything in Starter',
       'Unlimited active events',
       'Unlimited spaces per event',
       'Unlimited sessions',
@@ -47,12 +48,12 @@ const subscriptionPlans = [
     badge: 'MOST POPULAR'
   },
   {
-    title: 'Enterprise',
-    price: 'Custom',
-    billingCycle: 'contact us',
+    title: 'Premium',
+    price: '£15',
+    billingCycle: 'per month',
     description: 'For large organizations',
     features: [
-      'Everything in Club',
+      'Everything in Pro',
       'Dedicated account manager',
       'Custom integrations',
       'SLA guarantee',
@@ -71,7 +72,7 @@ const subscriptionPlans = [
 
 const oneoffPlans = [
   {
-    title: 'Free',
+    title: 'Starter',
     price: '£0',
     billingCycle: 'forever',
     description: 'Use all basic features for free',
@@ -87,11 +88,12 @@ const oneoffPlans = [
     highlight: false
   },
   {
-    title: 'Club',
+    title: 'Pro',
     price: '£25',
     billingCycle: 'one-time payment',
     description: 'For clubs running regular events',
     features: [
+      'Everything in Starter',
       'Unlimited active events',
       'Unlimited spaces per event',
       'Unlimited sessions',
@@ -110,12 +112,12 @@ const oneoffPlans = [
     scale: true,
   },
   {
-    title: 'Enterprise',
-    price: 'Custom',
-    billingCycle: 'contact us',
+    title: 'Premium',
+    price: '£35',
+    billingCycle: 'one-time payment',
     description: 'For large organizations',
     features: [
-      'Everything in Club',
+      'Everything in Pro',
       'Dedicated account manager',
       'Custom integrations',
       'SLA guarantee',
@@ -208,17 +210,14 @@ const faqs = [
 
         <div class="flex justify-center mb-12">
           <UPricingPlan
-            title="Solo"
-            description="For bootstrappers and indie hackers."
-            price="$249"
+            title="Enterprise"
+            description="For custom-tailored needs of larger clubs and organisations"
+            price=""
             :features="[
-              'One developer',
-              'Unlimited projects',
-              'Access to GitHub repository',
-              'Lifetime access'
             ]"
             :button="{
-              label: 'Buy now'
+              label: 'Contact Us',
+              to: '/contact'
             }"
             orientation="horizontal"
             variant="outline"
