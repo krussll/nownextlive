@@ -5,9 +5,12 @@ console.log('Blog error:', error)
 </script>
 
 <template>
+  <UPageHero  
+  title="Blog"
+  description="Get to know the latest features, insights into development and tips to use NowNext.live to the fullest."
+  />
   <UContainer class="py-12">
-    <h1 class="text-3xl font-bold mb-8">Blog</h1>
-    <div v-if="list?.length" class="grid gap-6">
+    <div v-if="list?.length" class="grid gap-10 md:grid-cols-2 divide-neutral-100 my-4">
       <UCard v-for="article in list" :key="article.path" :to="article.path">
         <template #header>
           <h2 class="text-xl font-semibold">
@@ -16,7 +19,7 @@ console.log('Blog error:', error)
         </template>
         <p class="text-gray-600 dark:text-gray-300">{{ article.description }}</p>
         <template #footer>
-          <span class="text-sm text-gray-500">{{ new Date(article.date).toLocaleDateString() }}</span>
+          <span class="text-sm text-gray-500">{{ article.date }}</span>
         </template>
       </UCard>
     </div>
