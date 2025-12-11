@@ -1,7 +1,8 @@
-import { serverSupabaseClient } from '#supabase/server'
+import { serverSupabaseClient, serverSupabaseUser } from '#supabase/server'
 
 export default defineEventHandler(async (event) => {
   const client = await serverSupabaseClient(event)
+  const user = await serverSupabaseUser(event)
 
   // Call Supabase RPC
   const { data, error } = await client.rpc(
