@@ -4,8 +4,8 @@ const password = ref('')
 const isLoading = ref(false)
 const errorMessage = ref('')
 
+const user = useSupabaseUser()
 const supabase = useSupabaseClient()
-const router = useRouter()
 
 const signInWithOtp = async () => {
   
@@ -14,12 +14,22 @@ const signInWithOtp = async () => {
     password: password.value,
   
   })
-  if (error) {
+  if (error?.message) {
     errorMessage.value = error.message
     return
   }
-  router.push('/account')
+
+  errorMessage.value = ""
+
 }
+
+watch(user, (newUser) => {
+  if (newUser) {
+    navigateTo('/account')
+  }
+})
+
+
 </script>
 
 <template>

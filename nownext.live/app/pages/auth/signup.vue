@@ -5,6 +5,7 @@ const confirmPassword = ref('')
 const isLoading = ref(false)
 const errorMessage = ref('')
 
+const user = useSupabaseUser()
 const supabase = useSupabaseClient()
 
 useSeoMeta({
@@ -29,14 +30,22 @@ const handleSignup = async () => {
     email: email.value,
     password: password.value,
   }) 
-  if (error) { 
+  console.log(error)
+  if (error?.message) { 
     errorMessage.value = error.message
 
     isLoading.value = false
+    return
   }
 
-  navigateTo('/account')
+  errorMessage.value = ""
 }
+
+watch(user, (newUser) => {
+  if (newUser) {
+    navigateTo('/account')
+  }
+})
 </script>
 
 <template>

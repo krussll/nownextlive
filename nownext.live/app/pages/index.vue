@@ -351,30 +351,5 @@ const testimonials = [
 
 
 
-    <UFooter
-      class="py-12 border-t border-gray-200"
-      :ui="{ wrapper: 'border-none' }"
-    >
-      <template #left>
-        <SiteLogo />
-        <p class="text-sm text-gray-500">
-          Simple, live “Now & Next” boards for sports clubs.
-        </p>
-      </template>
-
-      <template #right>
-        <div class="flex space-x-6 text-sm">
-          <ULink to="/about" class="text-gray-600 hover:text-indigo-600"
-            >About</ULink
-          >
-          <ULink to="/contact" class="text-gray-600 hover:text-indigo-600"
-            >Contact</ULink
-          >
-          <ULink to="/privacy" class="text-gray-600 hover:text-indigo-600"
-            >Privacy</ULink
-          >
-        </div>
-      </template>
-    </UFooter>
   </div>
 </template>

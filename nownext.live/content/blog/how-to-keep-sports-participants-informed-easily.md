@@ -10,6 +10,7 @@ tags:
   - nownext
 image: "/images/blog/communication-hero.jpg"
 draft: false
+author: Reece Williams
 ---
 # How to Keep Sports Participants Informed
 
