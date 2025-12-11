@@ -116,7 +116,10 @@
                     nownext.live
                   </NuxtLink>
                 </div>
-                  <span>v{{ config.public.version }}</span>
+                <NuxtLink to="/docs" class="hover:text-slate-600 transition-colors underline decoration-dotted underline-offset-2">
+                  docs
+                </NuxtLink>
+                <span>v{{ config.public.version }}</span>
                 <UBadge :color="connectionStatusColor" variant="subtle" size="xs">
                   {{ connectionStatusLabel }}
                 </UBadge>
