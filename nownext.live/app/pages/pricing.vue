@@ -6,17 +6,50 @@ useSeoMeta({
 
 const billingType = ref<'subscription' | 'oneoff'>('subscription')
 
+const starterFeatures = [
+  'No credit card or signup required',
+  'Real-time updates',
+  '1 Browser-based display',
+  '3 spaces per event',
+  '6 sessions per space',
+  'Real-time updates'
+]
+
+const proFeatures = [
+  'Everything in Starter',
+  '3 browser-based display screens',
+  'Full schedule display screen',
+  '8 spaces per event',
+  'Unlimited sessions per space',
+  'Spreadsheet import'
+]
+
+const premiumFeatures = [
+  'Everything in Pro',
+  'Dedicated account manager',
+  'Custom integrations',
+  'SLA guarantee',
+  'Advanced analytics',
+  'White-label options',
+  'Training & onboarding',
+  'Phone support'
+]
+
+const enterpriseFeatures = [
+  'Everything in Premium',
+  'Customised designs',
+  'Local offline access',
+  'Custom integrations',
+  'White-label options'
+]
+
 const subscriptionPlans = [
   {
     title: 'Starter',
     price: '£0',
     billingCycle: 'forever',
     description: 'Use all basic features for free',
-    features: [
-      'No credit card or signup required',
-      'Real-time updates',
-      '2 Browser-based displays'
-    ],
+    features: starterFeatures,
     button: {
       label: 'Create an Event Now',
       to: '/r/generate'
@@ -29,19 +62,9 @@ const subscriptionPlans = [
     scale: true,
     description:"For clubs running regular events",
     billingCycle: 'per month',
-    features: [
-      'Everything in Starter',
-      'Unlimited active events',
-      'Unlimited spaces per event',
-      'Unlimited sessions',
-      'Real-time updates',
-      'Browser-based displays',
-      'Priority email support',
-      'Custom branding',
-      'Event templates'
-    ],
+    features: proFeatures,
     button: {
-      label: 'Get Club access now',
+      label: 'Get Pro access now',
       to: '/auth/signup'
     },
     highlight: true,
@@ -52,19 +75,10 @@ const subscriptionPlans = [
     price: '£15',
     billingCycle: 'per month',
     description: 'For large organizations',
-    features: [
-      'Everything in Pro',
-      'Dedicated account manager',
-      'Custom integrations',
-      'SLA guarantee',
-      'Advanced analytics',
-      'White-label options',
-      'Training & onboarding',
-      'Phone support'
-    ],
+    features: premiumFeatures,
     button: {
-      label: 'Contact Sales',
-      to: '/contact'
+      label: 'Coming soon',
+      to: '#'
     },
     highlight: false
   }
@@ -76,11 +90,7 @@ const oneoffPlans = [
     price: '£0',
     billingCycle: 'forever',
     description: 'Use all basic features for free',
-    features: [
-      'No credit card or signup required',
-      'Real-time updates',
-      '2 Browser-based displays'
-    ],
+    features: starterFeatures,
     button: {
       label: 'Create an Event Now',
       to: '/r/generate'
@@ -92,20 +102,10 @@ const oneoffPlans = [
     price: '£25',
     billingCycle: 'one-time payment',
     description: 'For clubs running regular events',
-    features: [
-      'Everything in Starter',
-      'Unlimited active events',
-      'Unlimited spaces per event',
-      'Unlimited sessions',
-      'Real-time updates',
-      'Browser-based displays',
-      'Priority email support',
-      'Custom branding',
-      'Event templates'
-    ],
+    features: proFeatures,
     button: {
-      label: 'Buy Now',
-      to: '/signup'
+      label: 'Get Pro access now',
+      to: '/auth/signup'
     },
     highlight: true,
     badge: 'MOST POPULAR',
@@ -116,19 +116,10 @@ const oneoffPlans = [
     price: '£35',
     billingCycle: 'one-time payment',
     description: 'For large organizations',
-    features: [
-      'Everything in Pro',
-      'Dedicated account manager',
-      'Custom integrations',
-      'SLA guarantee',
-      'Advanced analytics',
-      'White-label options',
-      'Training & onboarding',
-      'Phone support'
-    ],
+    features: premiumFeatures,
     button: {
-      label: 'Contact Sales',
-      to: '/contact'
+      label: 'Coming soon',
+      to: '#'
     },
     highlight: false
   }
@@ -213,8 +204,7 @@ const faqs = [
             title="Enterprise"
             description="For custom-tailored needs of larger clubs and organisations"
             price=""
-            :features="[
-            ]"
+            :features="enterpriseFeatures"
             :button="{
               label: 'Contact Us',
               to: '/contact'
