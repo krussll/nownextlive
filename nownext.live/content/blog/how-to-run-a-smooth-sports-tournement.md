@@ -10,6 +10,7 @@ tags:
   - nownext
 image: "/images/blog/tournament-schedule-hero.jpg"
 draft: false
+author: Reece Williams
 ---
 # How to Run a Smooth Sports Tournament Schedule (Without Paper or Chaos)
 

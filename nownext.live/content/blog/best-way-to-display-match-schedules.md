@@ -10,6 +10,7 @@ tags:
   - nownext
 image: "/images/blog/display-schedule-hero.jpg"
 draft: false
+author: Reece Williams
 ---
 # The Best Way to Display Match Schedules at Your Club or Event
 
