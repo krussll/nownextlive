@@ -56,6 +56,10 @@ Nownext.live solves this with broadcast websockets and a clean data model.
 - Static Nuxt site (Netlify/Vercel compatible)
 - Separate Node-based websocket server (Heroku/Railway/Render)
 
+**Payments & Subscriptions:**
+- Lemon Squeezy for subscription management
+- Webhook integration (to be configured)
+
 ## 4. Testing
 
 to run this project locally, run the following commands:
