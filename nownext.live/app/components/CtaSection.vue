@@ -47,31 +47,24 @@ const descriptionClasses = computed(() => {
 </script>
 
 <template>
-  <div class="text-center">
-    <UCard
-      :ui="{
-        base: `rounded-none ${backgroundClasses}`,
-        ring: 'ring-0',
-        body: 'p-12'
-      }"
-    >
-      <h2 :class="`text-3xl md:text-4xl font-extrabold mb-4 ${titleClasses}`">
-        {{ title }}
-      </h2>
-      <p :class="`text-xl mb-8 max-w-2xl mx-auto ${descriptionClasses}`">
-        {{ description }}
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <UButton
-          :label="buttonLabel"
-          :to="buttonTo"
-          color="neutral"
-          variant="solid"
-          size="xl"
-          trailing-icon="i-lucide-arrow-right"
-          class="rounded-none font-bold shadow-2xl hover:shadow-xl transition-all duration-300 hover:scale-105 bg-white text-gray-900 hover:bg-gray-100"
-        />
-      </div>
-    </UCard>
-  </div>
+  <section class="py-24 text-center space-y-8 bg-white">
+      <UContainer>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Ready to Run a Cleaner Event?</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Try NowNext.live and replace confusion with clarity.
+        </p>
+
+        <div class="mt-8">
+          <UButton
+            to="/r/generate"
+            label="Get Started"
+            trailing-icon="i-lucide-arrow-right"
+            color="primary"
+            variant="solid"
+            size="xl"
+            class="rounded-none font-bold shadow-xl shadow-primary-200/50"
+          />
+        </div>
+      </UContainer>
+    </section>
 </template>
