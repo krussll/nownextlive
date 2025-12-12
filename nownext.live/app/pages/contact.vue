@@ -12,12 +12,16 @@
 
         <!-- Name -->
         <UFormField label="Your Name" name="name">
-          <UInput v-model="form.name" placeholder="John Smith" class="w-full h-12" required />
+          <UInput v-model="form.name" placeholder="John Smith" :ui="{
+                  base: 'rounded-none h-12'
+                }" class="w-full" required />
         </UFormField>
 
         <!-- Email -->
         <UFormField label="Email Address" name="email">
-          <UInput v-model="form.email" type="email" placeholder="you@example.com" class="w-full h-12" required />
+          <UInput v-model="form.email" type="email" placeholder="you@example.com":ui="{
+                  base: 'rounded-none h-12'
+                }" class="w-full" required />
         </UFormField>
 
         <!-- Message -->
@@ -26,7 +30,10 @@
             v-model="form.message"
             placeholder="How can we help?"
             rows="6"
-            class="w-full h-12"
+            :ui="{
+                  base: 'rounded-none'
+                }"
+            class="w-full"
             required
           />
         </UFormField>
@@ -36,7 +43,7 @@
           type="submit"
           color="primary"
           :loading="loading"
-          
+          class="w-full h-12 block"
         >
           Send Message
         </UButton>
