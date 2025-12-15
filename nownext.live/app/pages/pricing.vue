@@ -72,7 +72,7 @@ const subscriptionPlans = [
   },
   {
     title: 'Premium',
-    price: '£15',
+    price: '£14.99',
     billingCycle: 'per month',
     description: 'For large organizations',
     features: premiumFeatures,
@@ -99,7 +99,7 @@ const oneoffPlans = [
   },
   {
     title: 'Pro',
-    price: '£25',
+    price: '£24.99',
     billingCycle: 'one-time payment',
     description: 'For clubs running regular events',
     features: proFeatures,
@@ -113,7 +113,7 @@ const oneoffPlans = [
   },
   {
     title: 'Premium',
-    price: '£35',
+    price: '£34.99',
     billingCycle: 'one-time payment',
     description: 'For large organizations',
     features: premiumFeatures,
