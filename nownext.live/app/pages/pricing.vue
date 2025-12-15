@@ -65,7 +65,7 @@ const subscriptionPlans = [
     features: proFeatures,
     button: {
       label: 'Get Pro access now',
-      to: '/auth/signup'
+      to: '/auth/signup?checkout=36ef925e-26a7-4faf-a90e-726a344f60f7'
     },
     highlight: true,
     badge: 'MOST POPULAR'
@@ -78,7 +78,7 @@ const subscriptionPlans = [
     features: premiumFeatures,
     button: {
       label: 'Coming soon',
-      to: '#'
+      to: '/auth/signup?checkout=26ca88ad-a529-457b-856c-34f2237a21d2'
     },
     highlight: false
   }
@@ -105,7 +105,7 @@ const oneoffPlans = [
     features: proFeatures,
     button: {
       label: 'Get Pro access now',
-      to: '/auth/signup'
+      to: '/auth/signup?checkout=26c1d26c-d095-4745-a18c-33cab09ef680'
     },
     highlight: true,
     badge: 'MOST POPULAR',
@@ -119,7 +119,7 @@ const oneoffPlans = [
     features: premiumFeatures,
     button: {
       label: 'Coming soon',
-      to: '#'
+      to: '/auth/signup?checkout=7715262d-44e2-403f-bacf-dc9f4b118730'
     },
     highlight: false
   }
