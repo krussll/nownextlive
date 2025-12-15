@@ -58,7 +58,7 @@ const subscriptionPlans = [
   },
   {
     title: 'Pro',
-    price: '£9',
+    price: '£8.99',
     scale: true,
     description:"For clubs running regular events",
     billingCycle: 'per month',
