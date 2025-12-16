@@ -30,10 +30,11 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 const route = useRoute()
+const user = useSupabaseUser()
 const loading = ref(true)
-const error = ref(null)
+const error = ref<string | null>(null)
 
 onMounted(async () => {
   const productId = route.query.id
@@ -44,8 +45,17 @@ onMounted(async () => {
     return
   }
 
+  if (!user.value) {
+    // Redirect to login if not authenticated, passing the checkout ID to redirect back
+    return navigateTo(`/auth/signup?checkout=${productId}`)
+  }
+
+  // Construct Lemon Squeezy URL with User ID
+  // Format: ?checkout[custom][user_id]=<user_id>
+  const checkoutUrl = `https://now-next-live.lemonsqueezy.com/buy/${productId}?checkout[custom][user_id]=${user.value.id}`
+
   // Redirect to Lemon Squeezy
-  await navigateTo(`https://now-next-live.lemonsqueezy.com/buy/${productId}`, {
+  await navigateTo(checkoutUrl, {
     external: true
   })
 })
