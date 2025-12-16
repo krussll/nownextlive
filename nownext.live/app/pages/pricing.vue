@@ -58,27 +58,27 @@ const subscriptionPlans = [
   },
   {
     title: 'Pro',
-    price: '£9',
+    price: '£8.99',
     scale: true,
     description:"For clubs running regular events",
     billingCycle: 'per month',
     features: proFeatures,
     button: {
       label: 'Get Pro access now',
-      to: '/auth/signup'
+      to: '/auth/signup?checkout=36ef925e-26a7-4faf-a90e-726a344f60f7'
     },
     highlight: true,
     badge: 'MOST POPULAR'
   },
   {
     title: 'Premium',
-    price: '£15',
+    price: '£14.99',
     billingCycle: 'per month',
     description: 'For large organizations',
     features: premiumFeatures,
     button: {
       label: 'Coming soon',
-      to: '#'
+      to: '/auth/signup?checkout=26ca88ad-a529-457b-856c-34f2237a21d2'
     },
     highlight: false
   }
@@ -99,13 +99,13 @@ const oneoffPlans = [
   },
   {
     title: 'Pro',
-    price: '£25',
+    price: '£24.99',
     billingCycle: 'one-time payment',
     description: 'For clubs running regular events',
     features: proFeatures,
     button: {
       label: 'Get Pro access now',
-      to: '/auth/signup'
+      to: '/auth/signup?checkout=26c1d26c-d095-4745-a18c-33cab09ef680'
     },
     highlight: true,
     badge: 'MOST POPULAR',
@@ -113,13 +113,13 @@ const oneoffPlans = [
   },
   {
     title: 'Premium',
-    price: '£35',
+    price: '£34.99',
     billingCycle: 'one-time payment',
     description: 'For large organizations',
     features: premiumFeatures,
     button: {
       label: 'Coming soon',
-      to: '#'
+      to: '/auth/signup?checkout=7715262d-44e2-403f-bacf-dc9f4b118730'
     },
     highlight: false
   }

@@ -41,16 +41,26 @@ const handleSignup = async () => {
   errorMessage.value = ""
 }
 
+const route = useRoute()
+const defaultRedirect = '/'
+
+const redirectPath = computed(() => {
+  if (route.query.checkout) {
+    return `/checkout?id=${route.query.checkout}`
+  }
+  return (route.query.redirect as string) || defaultRedirect
+})
+
 watch(user, (newUser) => {
   if (newUser) {
-    navigateTo('/account')
+    navigateTo(redirectPath.value)
   }
-})
+}, { immediate: true })
 </script>
 
 <template>
   <div class="bg-white text-gray-900 antialiased min-h-screen flex items-center justify-center">
-    <UContainer>
+    <UContainer v-if="!user">
       <div class="max-w-md mx-auto">
         <!-- Logo/Brand -->
         <div class="text-center mb-8">
@@ -213,5 +223,9 @@ watch(user, (newUser) => {
         </div>
       </div>
     </UContainer>
+    <div v-else class="flex flex-col items-center justify-center space-y-4">
+      <UIcon name="i-lucide-loader-2" class="w-12 h-12 animate-spin text-primary-500" />
+      <p class="text-gray-500 font-medium">Redirecting...</p>
+    </div>
   </div>
 </template>
