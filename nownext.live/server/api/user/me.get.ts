@@ -1,6 +1,34 @@
+import { serverSupabaseClient, serverSupabaseUser } from '#supabase/server'
+
 export default defineEventHandler(async (_event) => {
+    const supabase = await serverSupabaseClient(_event)
+    const user = await serverSupabaseUser(_event)
+
+    // Not logged in → return default
+    if (!user) {
+        const subLevel = 'free'
+        return {
+            subscription: subLevel,
+            capabilities: getCapabilities(subLevel)
+        }
+    }
+
+    // Fetch profile
+    const { data, error } = await supabase
+        .from('profiles')
+        .select('subscription_level')
+        .eq('user_id', user.id)
+        .maybeSingle()
+
+    if (error) {
+        console.error('Profile fetch error:', error)
+        throw createError({
+            statusCode: 500,
+            statusMessage: error.message
+        })
+    }
     // TEMPORARY: Hardcoded subscription level
-    const subscriptionLevel = 'free' // options: 'free', 'pro', 'enterprise'
+    const subscriptionLevel = data?.subscription_level ?? 'free' // options: 'free', 'pro', 'enterprise'
 
     // TEMPORARY: Hardcoded capabilities for now
     const capabilities = getCapabilities(subscriptionLevel)

@@ -40,6 +40,16 @@
           @save="updateEventTitle"
         />
       </div>
+      <div>
+        <UButton
+          label="SAVE"
+          color="primary"
+          size="lg"
+          icon="i-heroicons-bookmark"
+          :loading="claiming"
+          @click="handleClaim"
+        />
+      </div>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -330,6 +340,31 @@
           <UButton color="primary" @click="dismissBetaModal">
             I Understand
           </UButton>
+        </div>
+      </template>
+    </UModal>
+    <!-- Signup Modal -->
+    <UModal v-model:open="showSignupModal" title="Sign in to save">
+      <template #body>
+        <div class="p-4 text-center">
+          <UIcon name="i-heroicons-user-plus" class="w-12 h-12 text-primary-500 mb-4" />
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Sign in to save this event</h3>
+          <p class="text-gray-500 mb-6">
+            You need to be signed in to claim and save this event to your account.
+          </p>
+          <div class="flex justify-center gap-3">
+            <UButton
+              label="Cancel"
+              color="gray"
+              variant="ghost"
+              @click="showSignupModal = false"
+            />
+            <UButton
+              label="Sign In"
+              color="primary"
+              :to="`/auth/login?redirect=${encodeURIComponent(route.fullPath)}`"
+            />
+          </div>
         </div>
       </template>
     </UModal>
@@ -731,6 +766,34 @@ const setSessionContainerRef = (el, spaceId) => {
       instance.destroy()
       sessionSortableInstances.delete(spaceId)
     }
+  }
+}
+
+// Claim Functionality
+const user = useSupabaseUser()
+const claiming = ref(false)
+const showSignupModal = ref(false)
+
+const handleClaim = async () => {
+  if (!user.value) {
+    showSignupModal.value = true
+    return
+  }
+
+  claiming.value = true
+  try {
+    await $fetch(`/api/events/${eventId}/claim`, {
+      method: 'POST'
+    })
+    toast.add({ title: 'Event claimed successfully', color: 'green' })
+  } catch (e) {
+    if (e.response?.status === 409) {
+       toast.add({ title: 'Event already claimed', description: 'This event is already associated with an account.', color: 'amber' })
+    } else {
+       toast.add({ title: 'Error claiming event', description: e.message, color: 'red' })
+    }
+  } finally {
+    claiming.value = false
   }
 }
 

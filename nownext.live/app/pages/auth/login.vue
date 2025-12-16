@@ -23,11 +23,22 @@ const signInWithOtp = async () => {
 
 }
 
+const route = useRoute()
+const defaultRedirect = '/account'
+
+const redirectPath = computed(() => {
+  if (route.query.checkout) {
+    return `/checkout?id=${route.query.checkout}`
+  }
+  return (route.query.redirect as string) || defaultRedirect
+})
+
 watch(user, (newUser) => {
   if (newUser) {
-    navigateTo('/account')
+    navigateTo(redirectPath.value)
   }
-})
+}, { immediate: true })
+
 
 
 </script>
