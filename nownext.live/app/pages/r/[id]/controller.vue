@@ -42,6 +42,7 @@
       </div>
       <div>
         <UButton
+          v-if="!event.is_associated_with_user"
           label="SAVE"
           color="primary"
           size="lg"

@@ -8,7 +8,9 @@ export default defineNuxtConfig({
       enableBetaModal: true,
       gtag: {
         id: 'G-QSCLS15XJM'
-      }
+      },
+      supabaseUrl: process.env.SUPABASE_URL,
+      supabaseAnonKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
     }
   },
   compatibilityDate: '2025-07-15',

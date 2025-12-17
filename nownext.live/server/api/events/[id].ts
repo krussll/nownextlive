@@ -1,10 +1,16 @@
-import { serverSupabaseClient } from '#supabase/server'
+import { serverSupabaseClient, serverSupabaseUser } from '#supabase/server'
+
 
 export default defineEventHandler(async (event) => {
-  const client = await serverSupabaseClient(event)
+  const config = useRuntimeConfig()
   const id = event.context.params!.id
 
-  const { data, error } = await client.rpc(
+  // Anon client + forward cookies so auth works server-side
+  const supabase = await serverSupabaseClient(event)
+
+  const user = await serverSupabaseUser(event)
+
+  const { data, error } = await supabase.rpc(
     'get_event',
     { event_id: id } as any
   )
@@ -26,6 +32,21 @@ export default defineEventHandler(async (event) => {
     })
   }
 
+  const eventUserId = data?.user_id
+
+  console.log(eventUserId, user?.sub)
+
+  if (eventUserId && (!user || user.sub !== eventUserId)) {
+    throw createError({
+      statusCode: 404,
+      statusMessage: 'Event not found'
+    })
+  }
+
   // All good → return event JSON
-  return data
+  const { user_id, ...sanitizedData } = data as any
+  return {
+    ...sanitizedData,
+    is_associated_with_user: !!user_id
+  }
 })
