@@ -43,7 +43,7 @@
 
       <!-- Clock -->
       <div
-        class="px-4 py-2 bg-white shadow rounded-md text-slate-700 font-mono text-lg"
+        class="px-4 py-2 bg-white text-slate-700 font-mono text-lg"
       >
         {{ time }}
       </div>
@@ -74,7 +74,7 @@
   <!-- Subscription Level Sticky Div -->
   <div 
     v-if="subscriptionData && showSubscription"
-    class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md border-t border-slate-200 py-3 px-4 flex justify-center items-center z-40 shadow-lg"
+    class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md border-t border-slate-200 py-3 px-4 flex justify-center items-center z-40"
   >
     <div class="flex items-center gap-2">
       <UIcon name="i-heroicons-star" class="w-5 h-5 text-amber-500" v-if="subscriptionData.subscriptionLevel !== 'free'" />

@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="905" height="803" viewBox="0 0 905 803" role="img" aria-labelledby="title desc">
-  <title id="title">Now Next Live logo</title>
-  <desc id="desc">Stacked lowercase words reading now. next. live. in bold black text on a white background.</desc>
-  <g fill="#000000" font-family="'Helvetica Neue', Arial, sans-serif" font-size="200" font-weight="700" letter-spacing="0.5">
-    <text x="40" y="210">now.</text>
-    <text x="40" y="410">next.</text>
-    <text x="40" y="610">live.</text>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <g font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif"
+     font-weight="800" letter-spacing="0">
+    <text x="120" y="310" font-size="300" fill="#0B1623">Now</text>
+    <text x="120" y="640" font-size="300" fill="#0B1623">Next</text>
+    <text x="120" y="930" font-size="320" fill="#5A46FF">Live</text>
   </g>
 </svg>
