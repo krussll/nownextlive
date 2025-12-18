@@ -38,7 +38,7 @@ export default defineEventHandler(async (event) => {
 
   if (eventUserId && (!user || user.sub !== eventUserId)) {
     throw createError({
-      statusCode: 404,
+      statusCode: 403,
       statusMessage: 'Event not found'
     })
   }
