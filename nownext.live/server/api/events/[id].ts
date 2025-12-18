@@ -32,9 +32,7 @@ export default defineEventHandler(async (event) => {
     })
   }
 
-  const eventUserId = data?.user_id
-
-  console.log(eventUserId, user?.sub)
+  const eventUserId = data?.user_id as string
 
   if (eventUserId && (!user || user.sub !== eventUserId)) {
     throw createError({
