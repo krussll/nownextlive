@@ -26,12 +26,11 @@
         />
 
         <UButton
-          label="Account"
-          color="neutral"
-          variant="outline"
           to="/account"
-          size="lg"
-          class="hidden lg:inline-flex rounded-none font-semibold hover:shadow-lg"
+          label="Account"
+          variant="ghost"
+          color="gray"
+          icon="i-heroicons-user-circle"
         />
         <UButton
           label="Sign out"

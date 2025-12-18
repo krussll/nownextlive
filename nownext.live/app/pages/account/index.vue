@@ -8,7 +8,12 @@ const { data: events, pending, error } = await useFetch('/api/events')
 
 <template>
   <UContainer class="py-12">
-    <h1 class="text-3xl font-bold mb-8">Account</h1>
+    <div class="flex justify-between items-center mb-8">
+      <h1 class="text-3xl font-bold">Account</h1>
+      <UButton to="/r/generate" color="primary" variant="solid" icon="i-heroicons-plus">
+        Generate New Event
+      </UButton>
+    </div>
     
     <div v-if="pending" class="text-gray-500">Loading events...</div>
     <div v-else-if="error" class="text-red-500">Error loading events</div>

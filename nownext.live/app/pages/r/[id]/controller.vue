@@ -48,7 +48,15 @@
           @save="updateEventTitle"
         />
       </div>
-      <div>
+      <div class="flex items-center gap-2">
+        <UButton
+          v-if="userSession"
+          to="/account"
+          label="Account"
+          variant="ghost"
+          color="gray"
+          icon="i-heroicons-user-circle"
+        />
         <UButton
           v-if="!event.is_associated_with_user"
           label="SAVE"
