@@ -109,7 +109,7 @@ const showSubscription = ref(true)
 
 const route = useRoute()
 const { data, status, error, refresh } = await useFetch(
-  `/api/events/${route.params.id}`,
+  `/api/events/${route.params.id}/display`,
   {
   query: { q: searchQuery },
     lazy: true
