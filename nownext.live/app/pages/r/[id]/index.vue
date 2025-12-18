@@ -70,6 +70,22 @@
     </div>
     </div>
   </UContainer>
+
+  <!-- Subscription Level Sticky Div -->
+  <div 
+    v-if="subscriptionData && showSubscription"
+    class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md border-t border-slate-200 py-3 px-4 flex justify-center items-center z-40 shadow-lg"
+  >
+    <div class="flex items-center gap-2">
+      <UIcon name="i-heroicons-star" class="w-5 h-5 text-amber-500" v-if="subscriptionData.subscriptionLevel !== 'free'" />
+      <p class="text-sm font-medium text-slate-600">
+        Event Subscription: 
+        <span class="text-slate-900 font-bold uppercase tracking-wider ml-1">
+          {{ subscriptionData.subscriptionLevel }}
+        </span>
+      </p>
+    </div>
+  </div>
 </template>
 
 <script setup>
@@ -89,6 +105,7 @@ definePageMeta({
 const showloading = ref(true)
 const clockReady = ref(false)
 const searchQuery = ref(0)
+const showSubscription = ref(false)
 
 const route = useRoute()
 const { data, status, error, refresh } = await useFetch(
@@ -97,6 +114,10 @@ const { data, status, error, refresh } = await useFetch(
   query: { q: searchQuery },
     lazy: true
   }
+)
+
+const { data: subscriptionData } = await useFetch(
+  `/api/events/${route.params.id}/subscription`
 )
 
 const myChannel = supabase.channel(`events/${route.params.id}`)

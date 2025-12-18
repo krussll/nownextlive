@@ -28,20 +28,37 @@
     <!-- Header -->
     <div class="flex items-center justify-between mb-10">
       <div>
-        <h1 
-          class="text-4xl font-semibold text-slate-600 cursor-pointer hover:underline hover:decoration-dashed"
+        <div 
+          class="flex items-center gap-2 cursor-pointer group"
           @click="isEditingEvent = true"
         >
-          {{ event.title || 'Unnamed' }}
-        </h1>
+          <h1 
+            class="text-4xl font-semibold text-slate-600 group-hover:underline group-hover:decoration-dashed"
+          >
+            {{ event.title || 'Unnamed' }}
+          </h1>
+          <UIcon
+            name="i-heroicons-pencil-20-solid"
+            class="w-5 h-5 text-slate-400 group-hover:text-slate-600 transition-colors"
+          />
+        </div>
         <ModalEventEdit
           v-model="isEditingEvent"
           :title="event.title || 'Unnamed'"
           @save="updateEventTitle"
         />
       </div>
-      <div>
+      <div class="flex items-center gap-2">
         <UButton
+          v-if="userSession"
+          to="/account"
+          label="Account"
+          variant="ghost"
+          color="gray"
+          icon="i-heroicons-user-circle"
+        />
+        <UButton
+          v-if="!event.is_associated_with_user"
           label="SAVE"
           color="primary"
           size="lg"
@@ -152,15 +169,26 @@
                 Room: <span class="font-semibold text-slate-700">{{ eventId }}</span>
               </p>
 
-              <UButton
-                icon="i-heroicons-plus"
-                size="sm"
-                color="primary"
-                variant="soft"
-                label="Add Space"
-                :class="{ 'opacity-50': !canAddSpace }"
-                @click="handleAddSpace"
-              />
+              <div class="flex gap-2">
+                <UButton
+                  icon="i-heroicons-play"
+                  size="sm"
+                  color="green"
+                  variant="soft"
+                  label="Next Session (All)"
+                  class="cursor-pointer"
+                  @click="setNextSessionAll"
+                />
+                <UButton
+                  icon="i-heroicons-plus"
+                  size="sm"
+                  color="primary"
+                  variant="soft"
+                  label="Add Space"
+                  :class="{ 'opacity-50': !canAddSpace }"
+                  @click="handleAddSpace"
+                />
+              </div>
             </div>
           </div>
 
@@ -635,6 +663,20 @@ const setNextSession = (space) => {
   } else if (currentIndex < space.sessions.length - 1) {
     space.now = space.sessions[currentIndex + 1].id
   }
+  saveEvent()
+}
+
+const setNextSessionAll = () => {
+  localEvent.value.spaces.forEach((space) => {
+    const currentIndex = space.sessions.findIndex((s) => s.id === space.now)
+    if (currentIndex === -1) {
+      if (space.sessions.length > 0) {
+        space.now = space.sessions[0].id
+      }
+    } else if (currentIndex < space.sessions.length - 1) {
+      space.now = space.sessions[currentIndex + 1].id
+    }
+  })
   saveEvent()
 }
 

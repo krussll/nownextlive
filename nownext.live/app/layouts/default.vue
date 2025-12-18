@@ -7,7 +7,31 @@
     <UNavigationMenu :items="items" />
 
     <template #right>
-      <div v-if="user">
+      <div v-if="user" class="flex gap-1.5">
+        <UButton
+          icon="i-lucide-user"
+          color="neutral"
+          variant="ghost"
+          to="/account"
+          class="lg:hidden"
+          size="lg"
+        />
+        <UButton
+          icon="i-lucide-log-out"
+          color="neutral"
+          variant="ghost"
+          @click="signOut"
+          class="lg:hidden"
+          size="lg"
+        />
+
+        <UButton
+          to="/account"
+          label="Account"
+          variant="ghost"
+          color="gray"
+          icon="i-heroicons-user-circle"
+        />
         <UButton
           label="Sign out"
           color="neutral"

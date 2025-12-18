@@ -3,8 +3,7 @@ import { serverSupabaseClient } from '#supabase/server'
 export default defineEventHandler(async (_event) => {
     const supabase = await serverSupabaseClient(_event)
 
-    const session = await supabase.auth.getSession()
-    const user = session.data.session?.user
+    const { data: { user } } = await supabase.auth.getUser()
 
     // Not logged in → return default
     if (!user) {
