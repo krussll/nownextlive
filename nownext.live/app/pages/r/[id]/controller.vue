@@ -193,6 +193,13 @@
           </div>
 
           <!-- Accordion List -->
+          <div v-if="hasReachedSpaceLimit" class="mb-6 p-4 bg-amber-50 border border-amber-200 flex items-center gap-3">
+            <UIcon name="i-heroicons-information-circle" class="w-5 h-5 text-amber-500" />
+            <p class="text-sm text-amber-700">
+              Need more spaces? <NuxtLink to="/pricing" class="font-semibold underline">Subscribe to get more</NuxtLink>
+            </p>
+          </div>
+
           <div class="space-y-6" ref="spacesContainer">
             <UCollapsible
               v-for="(item, index) in event.spaces"
@@ -603,6 +610,11 @@ watch(error, (newError) => {
 const canAddSpace = computed(() => {
   if (!userSession.value?.restrictions) return false
   return event.value.spaces.length < userSession.value.restrictions.max_spaces
+})
+
+const hasReachedSpaceLimit = computed(() => {
+  if (!userSession.value?.restrictions) return false
+  return event.value.spaces.length >= userSession.value.restrictions.max_spaces
 })
 
 const handleAddSpace = () => {
