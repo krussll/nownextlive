@@ -105,7 +105,7 @@ definePageMeta({
 const showloading = ref(true)
 const clockReady = ref(false)
 const searchQuery = ref(0)
-const showSubscription = ref(false)
+const showSubscription = ref(true)
 
 const route = useRoute()
 const { data, status, error, refresh } = await useFetch(
