@@ -601,15 +601,15 @@ watch(error, (newError) => {
 }, { immediate: true })
 
 const canAddSpace = computed(() => {
-  if (!userSession.value?.capabilities) return false
-  return event.value.spaces.length < userSession.value.capabilities.max_spaces
+  if (!userSession.value?.restrictions) return false
+  return event.value.spaces.length < userSession.value.restrictions.max_spaces
 })
 
 const handleAddSpace = () => {
   if (!canAddSpace.value) {
     toast.add({
       title: 'Upgrade Required',
-      description: `You have reached the maximum number of spaces (${userSession.value.capabilities.max_spaces}) for your plan.`,
+      description: `You have reached the maximum number of spaces (${userSession.value.restrictions.max_spaces}) for your plan.`,
       color: 'amber'
     })
     return
@@ -628,15 +628,15 @@ const addSpace = () => {
 }
 
 const canAddSession = (space) => {
-  if (!userSession.value?.capabilities) return false
-  return space.sessions.length < userSession.value.capabilities.max_sessions
+  if (!userSession.value?.restrictions) return false
+  return space.sessions.length < userSession.value.restrictions.max_sessions
 }
 
 const handleAddSession = (space) => {
   if (!canAddSession(space)) {
     toast.add({
       title: 'Upgrade Required',
-      description: `You have reached the maximum number of sessions (${userSession.value.capabilities.max_sessions}) for this space.`,
+      description: `You have reached the maximum number of sessions (${userSession.value.restrictions.max_sessions}) for this space.`,
       color: 'amber'
     })
     return

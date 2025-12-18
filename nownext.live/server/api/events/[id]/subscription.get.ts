@@ -1,4 +1,5 @@
 import { serverSupabaseClient } from '#supabase/server'
+import { getSubscriptionRestrictions } from '../../../utils/subscriptions'
 
 export default defineEventHandler(async (event) => {
     const supabase = await serverSupabaseClient(event)
@@ -21,8 +22,10 @@ export default defineEventHandler(async (event) => {
         .single()
 
     if (eventError || !eventRow) {
+        const subLevel = "free"
         return {
-            subscriptionLevel: "free"
+            subscriptionLevel: subLevel,
+            restrictions: getSubscriptionRestrictions(subLevel)
         }
     }
 
@@ -36,12 +39,16 @@ export default defineEventHandler(async (event) => {
         .single()
 
     if (profileError || !profile) {
+        const subLevel = "free"
         return {
-            subscriptionLevel: "free"
+            subscriptionLevel: subLevel,
+            restrictions: getSubscriptionRestrictions(subLevel)
         }
     }
 
+    const subscriptionLevel = profile.subscription_level
     return {
-        subscriptionLevel: profile.subscription_level
+        subscriptionLevel,
+        restrictions: getSubscriptionRestrictions(subscriptionLevel)
     }
 })
