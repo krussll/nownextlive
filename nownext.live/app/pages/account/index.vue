@@ -4,6 +4,7 @@ definePageMeta({
 })
 
 const { data: events, pending, error } = await useFetch('/api/events')
+const { data: userData } = await useFetch('/api/user/me')
 </script>
 
 <template>
@@ -11,6 +12,17 @@ const { data: events, pending, error } = await useFetch('/api/events')
     <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
       <!-- Sidebar -->
       <aside class="md:col-span-1">
+        <div v-if="userData" class="mb-6 p-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-gray-200 dark:border-gray-700">
+          <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Subscription</div>
+          <UBadge 
+            :color="userData.subscription === 'free' ? 'neutral' : 'primary'" 
+            variant="soft"
+            class="capitalize"
+          >
+            {{ userData.subscription }}
+          </UBadge>
+        </div>
+
         <nav class="space-y-2">
           <ULink
             to="/account"
