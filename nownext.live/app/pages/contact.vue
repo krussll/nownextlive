@@ -31,7 +31,7 @@
             placeholder="How can we help?"
             rows="6"
             :ui="{
-                  base: 'rounded-none'
+                  base: 'rounded-none h-12'
                 }"
             class="w-full"
             required
