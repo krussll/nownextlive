@@ -189,7 +189,17 @@ onMounted(() => {
     )
     .on('presence', { event: 'sync' }, () => {
       const state = myChannel.presenceState()
+      const now = Date.now()
+      const STALE_MS = 2 * 60 * 1000 // 2 minutes
+
       const users = Object.keys(state)
+        .flatMap(key => state[key])
+        .filter(user => {
+          const isDisplay = user.user_type === 'viewer'
+          const isActive = (now - new Date(user.online_at).getTime()) < STALE_MS
+          return isDisplay && isActive
+        })
+
       activeConnections.value = users.length
       
       if (subscriptionData.value?.restrictions?.concurrent_displays) {
