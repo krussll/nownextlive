@@ -69,11 +69,19 @@
     </div>
     </div>
   </UContainer>
+  <EventFooter
+    :subscriptionData="subscriptionData"
+    :showSubscription="showSubscription"
+    :myUserId="myUserId"
+    :connectionStatus="connectionStatus"
+  />
 </template>
 
 <script setup>
 import { ref, onMounted, watch, computed, onUnmounted } from 'vue'
+
 import FullScheduleCard from '~/components/FullScheduleCard.vue'
+import EventFooter from '~/components/EventFooter.vue'
 import { createClient } from '@supabase/supabase-js'
 
 const SUPABASE_URL = 'https://xsijzyhfivzknrpxmtfk.supabase.co'
@@ -88,6 +96,8 @@ definePageMeta({
 const showloading = ref(true)
 const clockReady = ref(false)
 const searchQuery = ref(0)
+const showSubscription = ref(true)
+const connectionStatus = ref('Connecting')
 
 const route = useRoute()
 const { data, status, error, refresh } = await useFetch(
@@ -96,6 +106,10 @@ const { data, status, error, refresh } = await useFetch(
   query: { q: searchQuery },
     lazy: true
   }
+)
+
+const { data: subscriptionData } = await useFetch(
+  `/api/events/${route.params.id}/subscription`
 )
 
 const myChannel = supabase.channel(`events/${route.params.id}`)
@@ -159,6 +173,7 @@ onMounted(() => {
     })
     .subscribe(async (status) => {
       if (status === 'SUBSCRIBED') {
+        connectionStatus.value = 'Connected'
         const trackPresence = async () => {
           await myChannel.track({
             user_id: myUserId,
@@ -172,6 +187,10 @@ onMounted(() => {
 
         // Set up heartbeat
         heartbeatInterval = setInterval(trackPresence, 30000)
+      } else if (status === 'TIMED_OUT' || status === 'CLOSED') {
+        connectionStatus.value = 'Disconnected'
+      } else if (status === 'CHANNEL_ERROR') {
+        connectionStatus.value = 'Error'
       }
     })
 

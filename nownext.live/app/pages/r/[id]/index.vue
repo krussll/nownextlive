@@ -72,20 +72,13 @@
   </UContainer>
 
   <!-- Subscription Level Sticky Div -->
-  <div 
-    v-if="subscriptionData && showSubscription"
-    class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md border-t border-slate-200 py-3 px-4 flex justify-center items-center z-40"
-  >
-    <div class="flex items-center gap-2">
-      <UIcon name="i-heroicons-star" class="w-5 h-5 text-amber-500" v-if="subscriptionData.subscriptionLevel !== 'free'" />
-      <p class="text-sm font-medium text-slate-600">
-        Event Subscription: 
-        <span class="text-slate-900 font-bold uppercase tracking-wider ml-1">
-          {{ subscriptionData.subscriptionLevel }}
-        </span>
-      </p>
-    </div>
-  </div>
+  <!-- Subscription Level Sticky Div -->
+  <EventFooter
+    :subscriptionData="subscriptionData"
+    :showSubscription="showSubscription"
+    :myUserId="myUserId"
+    :connectionStatus="connectionStatus"
+  />
 </template>
 
 <script setup>
@@ -106,6 +99,7 @@ const showloading = ref(true)
 const clockReady = ref(false)
 const searchQuery = ref(0)
 const showSubscription = ref(true)
+const connectionStatus = ref('Connecting')
 
 const route = useRoute()
 const { data, status, error, refresh } = await useFetch(
@@ -194,6 +188,7 @@ onMounted(() => {
     })
     .subscribe(async (status) => {
       if (status === 'SUBSCRIBED') {
+        connectionStatus.value = 'Connected'
         if (route.query.nopresence === 'true') return
 
         const trackPresence = async () => {
@@ -209,6 +204,10 @@ onMounted(() => {
 
         // Set up heartbeat
         heartbeatInterval = setInterval(trackPresence, 30000)
+      } else if (status === 'TIMED_OUT' || status === 'CLOSED') {
+        connectionStatus.value = 'Disconnected'
+      } else if (status === 'CHANNEL_ERROR') {
+        connectionStatus.value = 'Error'
       }
     })
 
