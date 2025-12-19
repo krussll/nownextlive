@@ -4,4 +4,10 @@
   </UMain>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+useHead({
+  bodyAttrs: {
+    class: 'bg-gray-100'
+  }
+})
+</script>
