@@ -25,6 +25,14 @@
     </div>
 
     <div v-else>
+      <!-- Limit Exceeded Banner -->
+      <div
+        v-if="limitExceeded"
+        class="bg-red-500 text-white px-4 py-2 text-center font-bold mb-4 rounded-md"
+      >
+        This display is not updating as too many displays are active for the given event
+      </div>
+
     <!-- Header -->
     <div class="flex items-center justify-between mb-10">
       <div>
@@ -82,7 +90,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted, watch, computed, onUnmounted } from 'vue'
 import ScheduleCard from '~/components/ScheduleCard.vue'
 import { createClient } from '@supabase/supabase-js'
 
@@ -100,6 +108,8 @@ const clockReady = ref(false)
 const searchQuery = ref(0)
 const showSubscription = ref(true)
 const connectionStatus = ref('Connecting')
+const activeConnections = ref(0)
+const limitExceeded = ref(false)
 
 const route = useRoute()
 const { data, status, error, refresh } = await useFetch(
@@ -117,6 +127,7 @@ const { data: subscriptionData } = await useFetch(
 const myChannel = supabase.channel(`events/${route.params.id}`)
 // Simple function to log any messages we receive
 async function messageReceived(payload) {
+  if (limitExceeded.value) return
   searchQuery.value++
 }
 
@@ -178,7 +189,22 @@ onMounted(() => {
     )
     .on('presence', { event: 'sync' }, () => {
       const state = myChannel.presenceState()
-      // Presence synced
+      const now = Date.now()
+      const STALE_MS = 2 * 60 * 1000 // 2 minutes
+
+      const users = Object.keys(state)
+        .flatMap(key => state[key])
+        .filter(user => {
+          const isDisplay = user.user_type === 'viewer'
+          const isActive = (now - new Date(user.online_at).getTime()) < STALE_MS
+          return isDisplay && isActive
+        })
+
+      activeConnections.value = users.length
+      
+      if (subscriptionData.value?.restrictions?.concurrent_displays) {
+        limitExceeded.value = activeConnections.value > subscriptionData.value.restrictions.concurrent_displays
+      }
     })
     .on('presence', { event: 'join' }, ({ newPresences }) => {
       // User joined

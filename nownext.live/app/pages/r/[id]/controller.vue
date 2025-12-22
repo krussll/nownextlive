@@ -537,7 +537,8 @@ const formatConnectionAge = (onlineAt) => {
 
 
 definePageMeta({
-  layout: 'app'
+  layout: 'app',
+  middleware: ['event-auth']
 })
 
 const showloading = ref(true)
