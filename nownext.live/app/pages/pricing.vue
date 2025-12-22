@@ -20,19 +20,17 @@ const proFeatures = [
   '3 browser-based display screens',
   'Full schedule display screen',
   '8 spaces per event',
-  'Unlimited sessions per space',
+  '10 sessions per space',
   'Spreadsheet import'
 ]
 
 const premiumFeatures = [
   'Everything in Pro',
-  'Dedicated account manager',
-  'Custom integrations',
-  'SLA guarantee',
-  'Advanced analytics',
-  'White-label options',
-  'Training & onboarding',
-  'Phone support'
+  '50 browser-based display screens',
+  'Full schedule display screen',
+  'Unlimited spaces per event',
+  'Unlimited sessions per space',
+  'Customisation options on displays'
 ]
 
 const enterpriseFeatures = [
@@ -40,7 +38,7 @@ const enterpriseFeatures = [
   'Customised designs',
   'Local offline access',
   'Custom integrations',
-  'White-label options'
+  'Bespoke functionality'
 ]
 
 const subscriptionPlans = [
