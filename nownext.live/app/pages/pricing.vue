@@ -149,6 +149,28 @@ const faqs = [
     answer: 'Absolutely. Cancel anytime with no questions asked. Your data remains accessible for 30 days after cancellation.'
   }
 ]
+
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: computed(() => JSON.stringify({
+        '@context': 'https://schema.org',
+        '@graph': plans.value.map(plan => ({
+          '@type': 'Product',
+          name: `NowNext ${plan.title} Plan`,
+          description: plan.description,
+          offers: {
+            '@type': 'Offer',
+            price: plan.price.replace('£', ''),
+            priceCurrency: 'GBP',
+            availability: 'https://schema.org/InStock'
+          }
+        }))
+      }))
+    }
+  ]
+})
 </script>
 
 <template>

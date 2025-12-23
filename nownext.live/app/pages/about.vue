@@ -31,6 +31,21 @@ const principles = [
     description: 'Changes appear on every screen instantly—no refresh required.'
   }
 ]
+
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'AboutPage',
+        name: 'About Now. Next. Live.',
+        description: 'A simple, reliable way to keep players, teams, volunteers and spectators informed.',
+        url: 'https://nownext.live/about'
+      })
+    }
+  ]
+})
 </script>
 
 <template>

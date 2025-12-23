@@ -63,6 +63,21 @@
 <script setup>
 import { ref } from 'vue'
 
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'ContactPage',
+        name: 'Contact Now. Next. Live.',
+        description: 'Contact us for questions about NowNext.live.',
+        url: 'https://nownext.live/contact'
+      })
+    }
+  ]
+})
+
 const form = ref({
   name: '',
   email: '',
