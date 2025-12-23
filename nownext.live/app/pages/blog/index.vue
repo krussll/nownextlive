@@ -2,6 +2,27 @@
 const { data: list, error } = await useAsyncData('blog', () => queryCollection('blog').all())
 console.log('Blog list:', list.value)
 console.log('Blog error:', error)
+
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: computed(() => JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Blog',
+        name: 'Now. Next. Live. Blog',
+        url: 'https://nownext.live/blog',
+        blogPost: list.value?.map(article => ({
+          '@type': 'BlogPosting',
+          headline: article.title,
+          description: article.description,
+          datePublished: article.date,
+          url: `https://nownext.live${article.path}`
+        }))
+      }))
+    }
+  ]
+})
 </script>
 
 <template>

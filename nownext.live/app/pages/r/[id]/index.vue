@@ -173,7 +173,32 @@ const roomName = computed(() => data.value?.title || 'North District Sports')
 
 // Set page title with event title prefix
 useHead(() => ({
-  title: `${data.value?.title || 'North District Sports'} - Live Schedule`
+  title: `${data.value?.title || 'North District Sports'} - Live Schedule`,
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Event',
+        name: data.value?.title || 'Event',
+        startDate: new Date().toISOString(),
+        location: {
+          '@type': 'Place',
+          name: 'Virtual Event',
+          address: {
+            '@type': 'PostalAddress',
+            addressCountry: 'UK'
+          }
+        },
+        description: `Live schedule for ${data.value?.title || 'event'}`,
+        organizer: {
+          '@type': 'Organization',
+          name: 'Now. Next. Live.',
+          url: 'https://nownext.live'
+        }
+      })
+    }
+  ]
 }))
 
 const myUserId = generateId()

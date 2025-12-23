@@ -72,6 +72,21 @@ const testimonials = [
     author: 'Volunteer'
   }
 ]
+
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: 'Now. Next. Live. - Live Event Schedules',
+        description: 'Effortlessly display live schedules and updates across any screen.',
+        url: 'https://nownext.live'
+      })
+    }
+  ]
+})
 </script>
 
 <template>
