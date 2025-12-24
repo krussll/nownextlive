@@ -40,6 +40,14 @@
           size="lg"
           class="hidden lg:inline-flex rounded-none font-semibold hover:shadow-lg"
         />
+        <UButton
+          label="Start new"
+          to="/r/generate"
+          color="primary"
+          variant="solid"
+          size="lg"
+          class="hidden lg:inline-flex rounded-none font-semibold hover:shadow-lg ml-2"
+        />
       </div>
       <div class="flex gap-1.5" v-else>
         <UButton
@@ -59,14 +67,14 @@
         size="lg"
         class="hidden lg:inline-flex rounded-none font-semibold hover:shadow-lg"
       />
-
+ 
       <UButton
-        label="Sign up"
-        color="neutral"
-        trailing-icon="i-lucide-arrow-right"
+        label="Try for free"
+        to="/r/generate"
+        color="primary"
+        variant="solid"
         size="lg"
-        class="hidden lg:inline-flex rounded-none font-semibold hover:shadow-lg"
-        to="/auth/signup"
+        class="hidden lg:inline-flex rounded-none font-semibold hover:shadow-lg ml-2"
       />
       </div>
     </template>

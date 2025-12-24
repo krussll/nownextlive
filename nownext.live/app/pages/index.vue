@@ -57,6 +57,24 @@ const steps = [
   }
 ]
 
+const herolinks = ref([
+  {
+    label: 'Try for free now',
+    to: '/r/generate',
+    trailingIcon: 'i-lucide-arrow-right',
+    variant: 'solid',
+    size: 'xl',
+    class: 'rounded-none font-bold shadow-xl shadow-primary-200/50'
+  },
+  {
+    label: 'See how it works',
+    to: '#how-it-works',
+    color: 'neutral',
+    variant: 'ghost',
+    class: 'rounded-none font-bold shadow-xl shadow-neutral-200/50'
+  }
+])
+
 const testimonials = [
   {
     quote:
@@ -91,51 +109,28 @@ useHead({
 
 <template>
   <div class="bg-white text-gray-900 antialiased min-h-screen">
-    <section class="py-24 md:py-24 border-b border-gray-100">
-      <UContainer class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <div>
-          <h1
-            class="text-6xl md:text-6xl font-extrabold tracking-tighter leading-tight"
-          >
-            Ditch the paper.
-            <div
-              class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 via-purple-600 to-cyan-500"
+    <UPageHero
+      description="Effortlessly display live schedules and updates across any screen. Change it once, and every device updates automatically."
+      :links="herolinks"
+    >
+    <template #title>
+      <h1
+              class="text-6xl md:text-6xl font-extrabold tracking-tighter leading-tight"
             >
-              Your schedule. Updating everywhere. Instantly.
-            </div>
-          </h1>
-          <p class="mt-6 text-xl text-gray-600 max-w-lg">
-            Effortlessly display live schedules and updates across any screen. Change it once, and every device updates automatically.
-          </p>
-
-          <div class="mt-10 flex flex-col sm:flex-row gap-4">
-            <UButton
-              to="/r/generate"
-              label="Try for free now"
-              trailing-icon="i-lucide-arrow-right"
-              color="primary"
-              variant="solid"
-              size="xl"
-              class="rounded-none font-bold shadow-xl shadow-primary-200/50"
-            />
-          </div>
-        </div>
-
-        <div class="relative flex justify-center lg:justify-end">
-          <div class="p-4 rounded-none">
-            <img
-              src="/imgs/neon-hero.png"
-              alt="Diagram of NowNext live updating system"
-              class="w-full h-auto max-w-xl rounded-none"
-            />
-          </div>
-        </div>
-      </UContainer>
-    </section>
+              Ditch the paper.
+              <div
+                class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 via-purple-600 to-cyan-500"
+              >
+                Your schedule. Updating everywhere. Instantly.
+              </div>
+            </h1>
+    </template>
+    </UPageHero>
+    
 
     
 
-    <section class="py-24 border-b border-gray-100">
+    <section id="how-it-works" class="py-24 border-b border-gray-100">
       <UContainer>
         <h2 class="text-4xl font-extrabold text-center mb-16">
           How It
@@ -235,45 +230,6 @@ useHead({
               {{ feature.title }}
             </h3>
             <p class="text-gray-600">{{ feature.description }}</p>
-          </UCard>
-        </div>
-      </UContainer>
-    </section>
-    <section class="py-24 bg-gray-50 border-b border-gray-100">
-      <UContainer>
-        <h2 class="text-4xl font-extrabold text-center mb-16">
-          What Clubs <span class="text-indigo-600">Say</span>
-        </h2>
-
-        <div class="grid md:grid-cols-3 gap-8">
-          <UCard
-            v-for="(testimonial, index) in testimonials"
-            :key="index"
-            :ui="{
-              base: 'rounded-none', // Enforce sharp corners
-              ring: 'ring-1 ring-gray-200',
-              body: 'italic text-gray-700',
-              header: 'pt-6 pb-2', // Use header for the quote mark styling
-              footer: 'pt-2 pb-6'
-            }"
-            class="bg-white"
-          >
-            <template #header>
-              <UIcon
-                name="i-lucide-quote"
-                class="w-8 h-8 text-indigo-400 mb-2"
-              />
-            </template>
-
-            <blockquote class="text-lg leading-relaxed">
-              {{ testimonial.quote }}
-            </blockquote>
-
-            <template #footer>
-              <p class="mt-4 text-sm font-semibold text-indigo-600 not-italic">
-                — {{ testimonial.author }}
-              </p>
-            </template>
           </UCard>
         </div>
       </UContainer>
