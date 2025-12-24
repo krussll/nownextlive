@@ -70,7 +70,7 @@ const herolinks = ref([
     label: 'See how it works',
     to: '#how-it-works',
     color: 'neutral',
-    variant: 'ghost',
+    variant: 'subtle',
     class: 'rounded-none font-bold shadow-xl shadow-neutral-200/50'
   }
 ])
@@ -125,6 +125,14 @@ useHead({
               </div>
             </h1>
     </template>
+    <div class="flex justify-center">
+    <img
+      src="/imgs/demos/nownextlive-display.png"
+      alt="App screenshot"
+      class="max-w-2xl rounded-lg shadow-2xl ring ring-default"
+    />
+
+    </div>
     </UPageHero>
     
 
