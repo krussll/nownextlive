@@ -110,6 +110,7 @@ useHead({
 <template>
   <div class="bg-white text-gray-900 antialiased min-h-screen">
     <UPageHero
+    orientation="horizontal"
       description="Effortlessly display live schedules and updates across any screen. Change it once, and every device updates automatically."
       :links="herolinks"
     >
@@ -117,11 +118,11 @@ useHead({
       <h1
               class="text-6xl md:text-6xl font-extrabold tracking-tighter leading-tight"
             >
-              Ditch the paper.
+              Ditch The Paper.
               <div
                 class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 via-purple-600 to-cyan-500"
               >
-                Your schedule. Updating everywhere. Instantly.
+                Your Event Schedule. Updating Everywhere. Instantly.
               </div>
             </h1>
     </template>
@@ -129,7 +130,7 @@ useHead({
     <img
       src="/imgs/demos/nownextlive-display.png"
       alt="App screenshot"
-      class="max-w-2xl rounded-lg shadow-2xl ring ring-default"
+      class="max-w-xl rounded-lg shadow-2xl ring ring-default"
     />
 
     </div>

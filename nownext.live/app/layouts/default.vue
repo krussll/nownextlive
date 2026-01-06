@@ -109,7 +109,7 @@
             <div class="flex flex-col gap-4">
               <h3 class="font-semibold text-gray-900">Product</h3>
               <div class="flex flex-col gap-2 text-sm text-gray-600">
-                <ULink to="/pricing" class="hover:text-indigo-600">Pricing</ULink>
+                <!--<ULink to="/pricing" class="hover:text-indigo-600">Pricing</ULink>-->
                 <ULink to="https://trello.com/b/LTEVR37i" target="_blank" class="hover:text-indigo-600">Public Roadmap</ULink>
                 <ULink to="#" class="hover:text-indigo-600 collapse">Features</ULink>
               </div>
