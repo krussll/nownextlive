@@ -12,7 +12,6 @@ image: "/images/blog/tournament-schedule-hero.jpg"
 draft: false
 author: Reece Williams
 ---
-# How to Run a Smooth Sports Tournament Schedule (Without Paper or Chaos)
 
 Running a sports tournament should feel exciting, not stressful. Yet most organisers experience the same issues every single time. Paper schedules become outdated almost immediately, updates are slow and unclear, and volunteers spend the entire day answering the same questions. Players crowd around the organiser's desk looking for clarity, and the event quickly feels disorganised.
 

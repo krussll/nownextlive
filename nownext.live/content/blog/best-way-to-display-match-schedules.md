@@ -13,8 +13,6 @@ draft: false
 author: Reece Williams
 ---
 
-# The Best Way to Display Match Schedules at Your Club or Event
-
 Picture this: it's tournament day at your club. Players are huddled around a whiteboard covered in crossed-out names and scribbled changes. Someone asks "Am I on next?" for the third time in ten minutes. Your volunteer coordinator is frantically rewriting court assignments with a marker that's running out of ink. Sound familiar?
 
 Many clubs still rely on printed sheets or handwritten whiteboards to show who is playing next. These methods become inaccurate the moment the first match runs late, creating avoidable confusion and frustration. Players crowd around noticeboards looking for updates, and volunteers spend most of the day rewriting information instead of actually running the event.
