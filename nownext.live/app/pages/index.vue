@@ -114,7 +114,7 @@ useSeoMeta({
 
 useHead({
   link: [
-    { rel: 'canonical', href: 'https://nownext.live/' }
+    { rel: 'canonical', key: 'canonical', href: 'https://nownext.live/' }
   ],
   script: [
     {

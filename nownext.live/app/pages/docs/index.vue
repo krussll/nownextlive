@@ -14,7 +14,7 @@ useSeoMeta({
 
 useHead({
   link: [
-    { rel: 'canonical', href: 'https://nownext.live/docs' }
+    { rel: 'canonical', key: 'canonical', href: 'https://nownext.live/docs' }
   ],
   script: [
     {
@@ -54,9 +54,12 @@ useHead({
 
 <template>
   <UPageHero  
-    title="Docs"
     description="Get to know the latest features, setup instructions, and tips to use NowNext.live to the fullest."
-  />
+  >
+    <template #title>
+      <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">Documentation & User Guides</h1>
+    </template>
+  </UPageHero>
   <UContainer class="py-12">
     <div v-if="list?.length" class="grid gap-10 md:grid-cols-2 divide-neutral-100 my-4">
       <UCard v-for="article in list" :key="article.path" :to="article.path">

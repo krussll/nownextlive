@@ -1,7 +1,7 @@
 <template>
   <UHeader>
     <template #title>
-      <img src="/imgs/logo.png" style="height: 35px" />
+      <img src="/imgs/logo.png" alt="NowNext.live Logo" style="height: 35px" />
     </template>
 
     <UNavigationMenu
@@ -138,6 +138,7 @@
               <h3 class="font-semibold text-gray-900">Resources</h3>
               <div class="flex flex-col gap-2 text-sm text-gray-600">
                 <ULink to="/blog" class="hover:text-indigo-600">Blog & Articles</ULink>
+                <ULink to="/docs" class="hover:text-indigo-600">Documentation & Guides</ULink>
                 <ULink to="/contact" class="hover:text-indigo-600">Contact Support</ULink>
                 <ULink to="/pricing" class="hover:text-indigo-600">Plans & Pricing</ULink>
                 <ULink to="/about" class="hover:text-indigo-600">Why NowNext.live</ULink>
@@ -153,8 +154,12 @@
             <div>
               Version {{ config.public.version }}
             </div>
-            <div class="flex items-center gap-2">
-              Made in England
+            <div class="flex items-center gap-4">
+              <ULink to="/privacy" class="hover:text-gray-600">Privacy Policy</ULink>
+              <span>&bull;</span>
+              <ULink to="/terms" class="hover:text-gray-600">Terms & Conditions</ULink>
+              <span>&bull;</span>
+              <span>Made in England</span>
             </div>
           </div>
         </UContainer>

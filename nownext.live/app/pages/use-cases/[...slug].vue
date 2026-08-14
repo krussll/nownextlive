@@ -18,7 +18,7 @@ useSeoMeta({
 
 useHead({
   link: [
-    { rel: 'canonical', href: computed(() => `https://nownext.live${route.path}`) }
+    { rel: 'canonical', key: 'canonical', href: computed(() => `https://nownext.live${route.path}`) }
   ],
   script: [
     {

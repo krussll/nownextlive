@@ -78,7 +78,7 @@ useSeoMeta({
 
 useHead({
   link: [
-    { rel: 'canonical', href: 'https://nownext.live/contact' }
+    { rel: 'canonical', key: 'canonical', href: 'https://nownext.live/contact' }
   ],
   script: [
     {

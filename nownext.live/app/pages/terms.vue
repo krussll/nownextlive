@@ -12,7 +12,7 @@ useSeoMeta({
 
 useHead({
   link: [
-    { rel: 'canonical', href: 'https://nownext.live/terms' }
+    { rel: 'canonical', key: 'canonical', href: 'https://nownext.live/terms' }
   ],
   script: [
     {
@@ -159,7 +159,3 @@ useHead({
     </p>
   </UContainer>
 </template>
-
-<script setup>
-// purely static content
-</script>

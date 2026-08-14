@@ -16,7 +16,7 @@ useSeoMeta({
 
 useHead({
   link: [
-    { rel: 'canonical', href: 'https://nownext.live/blog' }
+    { rel: 'canonical', key: 'canonical', href: 'https://nownext.live/blog' }
   ],
   script: [
     {
@@ -62,9 +62,12 @@ useHead({
 
 <template>
   <UPageHero  
-  title="Blog"
-  description="Get to know the latest features, insights into development and tips to use NowNext.live to the fullest."
-  />
+    description="Get to know the latest features, insights into development and tips to use NowNext.live to the fullest."
+  >
+    <template #title>
+      <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">NowNext.live Blog</h1>
+    </template>
+  </UPageHero>
   <UContainer class="pt-2 pb-12">
     <div v-if="list?.length" class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto mt-0 mb-4">
       <NuxtLink v-for="article in list" :key="article.path" :to="article.path" class="rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition block">

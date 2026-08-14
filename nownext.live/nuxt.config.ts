@@ -44,7 +44,12 @@ export default defineNuxtConfig({
     name: 'NowNext.live'
   },
   sitemap: {
-    exclude: ['/r/**'],
+    exclude: [
+      '/r/**',
+      '/account',
+      '/checkout',
+      '/auth/**'
+    ],
     sources: [
       '/api/__sitemap__/urls'
     ]

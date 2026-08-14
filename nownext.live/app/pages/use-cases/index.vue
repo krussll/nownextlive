@@ -16,7 +16,7 @@ useSeoMeta({
 
 useHead({
   link: [
-    { rel: 'canonical', href: 'https://nownext.live/use-cases' }
+    { rel: 'canonical', key: 'canonical', href: 'https://nownext.live/use-cases' }
   ],
   script: [
     {

@@ -47,7 +47,7 @@ const principles = [
 
 useHead({
   link: [
-    { rel: 'canonical', href: 'https://nownext.live/about' }
+    { rel: 'canonical', key: 'canonical', href: 'https://nownext.live/about' }
   ],
   script: [
     {

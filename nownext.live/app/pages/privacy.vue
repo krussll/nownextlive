@@ -12,7 +12,7 @@ useSeoMeta({
 
 useHead({
   link: [
-    { rel: 'canonical', href: 'https://nownext.live/privacy' }
+    { rel: 'canonical', key: 'canonical', href: 'https://nownext.live/privacy' }
   ],
   script: [
     {
