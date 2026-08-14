@@ -99,24 +99,59 @@ const herolinks = ref([
   }
 ])
 
-useHead({
+useSeoMeta({
   title: 'NowNext.live - Real-Time Multi-Screen Event & Sports Schedule Display',
-  meta: [
-    {
-      name: 'description',
-      content:
-        'Show a live-updating schedule on every court, stage, or pitch while managing everything effortlessly from one phone or laptop. Runs in any browser.'
-    }
+  description: 'Show a live-updating schedule on every court, stage, or pitch while managing everything effortlessly from one phone or laptop. Runs in any browser with zero setup.',
+  ogTitle: 'NowNext.live - Real-Time Multi-Screen Event & Sports Schedule Display',
+  ogDescription: 'Show a live-updating schedule on every court, stage, or pitch while managing everything effortlessly from one phone or laptop.',
+  ogImage: 'https://nownext.live/imgs/logo.png',
+  ogUrl: 'https://nownext.live/',
+  ogType: 'website',
+  twitterCard: 'summary_large_image',
+  twitterTitle: 'NowNext.live - Real-Time Multi-Screen Event & Sports Schedule Display',
+  twitterDescription: 'Show a live-updating schedule on every court, stage, or pitch while managing everything effortlessly from one phone or laptop.'
+})
+
+useHead({
+  link: [
+    { rel: 'canonical', href: 'https://nownext.live/' }
   ],
   script: [
     {
       type: 'application/ld+json',
       innerHTML: JSON.stringify({
         '@context': 'https://schema.org',
-        '@type': 'WebPage',
-        name: 'NowNext.live - Real-Time Multi-Screen Event & Sports Schedule Display',
-        description: 'Effortlessly display live schedules and updates across any screen.',
-        url: 'https://nownext.live'
+        '@graph': [
+          {
+            '@type': 'WebSite',
+            '@id': 'https://nownext.live/#website',
+            url: 'https://nownext.live',
+            name: 'NowNext.live',
+            description: 'Real-Time Multi-Screen Event & Sports Schedule Display Platform'
+          },
+          {
+            '@type': 'Organization',
+            '@id': 'https://nownext.live/#organization',
+            name: 'NowNext.live',
+            url: 'https://nownext.live',
+            logo: 'https://nownext.live/imgs/logo.png'
+          },
+          {
+            '@type': 'WebApplication',
+            '@id': 'https://nownext.live/#webapp',
+            name: 'NowNext.live',
+            url: 'https://nownext.live',
+            applicationCategory: 'BusinessApplication',
+            operatingSystem: 'All',
+            browserRequirements: 'Requires HTML5 compatible browser',
+            offers: {
+              '@type': 'Offer',
+              price: '0',
+              priceCurrency: 'USD'
+            },
+            description: 'Effortlessly display live schedules and updates across Smart TVs, tablets, and phones.'
+          }
+        ]
       })
     }
   ]

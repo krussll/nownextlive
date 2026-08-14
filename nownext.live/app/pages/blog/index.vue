@@ -1,24 +1,59 @@
 <script setup lang="ts">
-const { data: list, error } = await useAsyncData('blog', () => queryCollection('blog').all())
-console.log('Blog list:', list.value)
-console.log('Blog error:', error)
+const { data: list } = await useAsyncData('blog', () => queryCollection('blog').all())
+
+useSeoMeta({
+  title: 'Blog - Features, Guides & Event Scheduling Insights | NowNext.live',
+  description: 'Discover the latest features, event management tips, sports club guides, and technical insights from the NowNext.live team.',
+  ogTitle: 'NowNext.live Blog - Real-Time Schedule Signage Guides & News',
+  ogDescription: 'Guides and insights on eliminating paper schedule chaos across sports tournaments, conferences, and broadcast studios.',
+  ogImage: 'https://nownext.live/imgs/logo.png',
+  ogUrl: 'https://nownext.live/blog',
+  ogType: 'website',
+  twitterCard: 'summary_large_image',
+  twitterTitle: 'NowNext.live Blog',
+  twitterDescription: 'Guides and insights on eliminating paper schedule chaos across sports tournaments, conferences, and broadcast studios.'
+})
 
 useHead({
+  link: [
+    { rel: 'canonical', href: 'https://nownext.live/blog' }
+  ],
   script: [
     {
       type: 'application/ld+json',
       innerHTML: computed(() => JSON.stringify({
         '@context': 'https://schema.org',
-        '@type': 'Blog',
-        name: 'Now. Next. Live. Blog',
-        url: 'https://nownext.live/blog',
-        blogPost: list.value?.map(article => ({
-          '@type': 'BlogPosting',
-          headline: article.title,
-          description: article.description,
-          datePublished: article.date,
-          url: `https://nownext.live${article.path}`
-        }))
+        '@graph': [
+          {
+            '@type': 'Blog',
+            name: 'NowNext.live Blog',
+            url: 'https://nownext.live/blog',
+            blogPost: list.value?.map(article => ({
+              '@type': 'BlogPosting',
+              headline: article.title,
+              description: article.description,
+              datePublished: article.date,
+              url: `https://nownext.live${article.path}`
+            }))
+          },
+          {
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://nownext.live'
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Blog',
+                item: 'https://nownext.live/blog'
+              }
+            ]
+          }
+        ]
       }))
     }
   ]

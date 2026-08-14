@@ -1,7 +1,59 @@
 <script setup lang="ts">
 useSeoMeta({
-  title: 'Pricing - NowNext',
-  description: 'Simple, transparent pricing for NowNext event management platform'
+  title: 'Pricing & Plans | NowNext.live',
+  description: 'Simple, transparent pricing for NowNext.live real-time event & sports schedule display signage. Choose monthly subscription plans or 30-day single event access.',
+  ogTitle: 'NowNext.live Pricing & Plans - Real-Time Schedule Signage',
+  ogDescription: 'Flexible subscription and single event access for sports tournaments, conferences, and venue scheduling.',
+  ogImage: 'https://nownext.live/imgs/logo.png',
+  ogUrl: 'https://nownext.live/pricing',
+  ogType: 'website',
+  twitterCard: 'summary_large_image',
+  twitterTitle: 'NowNext.live Pricing & Plans',
+  twitterDescription: 'Flexible subscription and single event access for sports tournaments and conferences.'
+})
+
+useHead({
+  link: [
+    { rel: 'canonical', href: 'https://nownext.live/pricing' }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: computed(() => JSON.stringify({
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'FAQPage',
+            mainEntity: faqs.map(faq => ({
+              '@type': 'Question',
+              name: faq.question,
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: faq.answer
+              }
+            }))
+          },
+          {
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://nownext.live'
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Pricing',
+                item: 'https://nownext.live/pricing'
+              }
+            ]
+          }
+        ]
+      }))
+    }
+  ]
 })
 
 const billingType = ref<'subscription' | 'oneoff'>('subscription')

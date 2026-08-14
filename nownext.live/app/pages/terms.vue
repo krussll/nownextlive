@@ -1,3 +1,33 @@
+<script setup lang="ts">
+useSeoMeta({
+  title: 'Terms & Conditions | NowNext.live',
+  description: 'Terms and conditions for using NowNext.live real-time multi-screen event and sports schedule display platform.',
+  ogTitle: 'Terms & Conditions - NowNext.live',
+  ogDescription: 'Terms and conditions for using the NowNext.live platform.',
+  ogImage: 'https://nownext.live/imgs/logo.png',
+  ogUrl: 'https://nownext.live/terms',
+  ogType: 'website',
+  twitterCard: 'summary_large_image'
+})
+
+useHead({
+  link: [
+    { rel: 'canonical', href: 'https://nownext.live/terms' }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: 'Terms & Conditions - NowNext.live',
+        url: 'https://nownext.live/terms'
+      })
+    }
+  ]
+})
+</script>
+
 <template>
   <UContainer class="py-16 prose prose-slate max-w-4xl">
     <h1 class="text-4xl font-bold mb-8">Terms & Conditions</h1>

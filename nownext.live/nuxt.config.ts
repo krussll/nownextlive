@@ -39,6 +39,10 @@ export default defineNuxtConfig({
     key: process.env.SUPABASE_PUBLISHABLE_KEY,
     redirect: false,
   },
+  site: {
+    url: 'https://nownext.live',
+    name: 'NowNext.live'
+  },
   sitemap: {
     exclude: ['/r/**'],
     sources: [

@@ -5,8 +5,9 @@ const errorMessage = ref('')
 const successMessage = ref('')
 
 useSeoMeta({
-  title: 'Forgot Password - NowNext',
-  description: 'Request a reset of your NowNext account password'
+  title: 'Forgot Password | NowNext.live',
+  description: 'Reset your NowNext.live account password.',
+  robots: 'noindex, follow'
 })
 
 

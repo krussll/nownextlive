@@ -1,7 +1,30 @@
 <script setup lang="ts">
 useSeoMeta({
-  title: 'Privacy Policy - NowNext',
-  description: 'Privacy policy for NowNext event management platform'
+  title: 'Privacy Policy | NowNext.live',
+  description: 'Privacy policy and data handling commitment for NowNext.live real-time event & sports schedule display platform.',
+  ogTitle: 'Privacy Policy - NowNext.live',
+  ogDescription: 'Learn how NowNext.live protects user data and privacy.',
+  ogImage: 'https://nownext.live/imgs/logo.png',
+  ogUrl: 'https://nownext.live/privacy',
+  ogType: 'website',
+  twitterCard: 'summary_large_image'
+})
+
+useHead({
+  link: [
+    { rel: 'canonical', href: 'https://nownext.live/privacy' }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: 'Privacy Policy - NowNext.live',
+        url: 'https://nownext.live/privacy'
+      })
+    }
+  ]
 })
 </script>
 
