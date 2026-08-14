@@ -28,11 +28,15 @@ export default defineContentConfig({
             type: 'page',
             source: 'docs/**/*.md',
             schema: z.object({
-                date: z.string(),
-                image: z.string(),
-                author: z.string(),
-                tags: z.array(z.string()),
-                draft: z.boolean()
+                title: z.string().optional(),
+                description: z.string().optional(),
+                date: z.string().optional(),
+                image: z.string().optional(),
+                author: z.string().optional(),
+                tags: z.array(z.string()).optional(),
+                category: z.string().optional(),
+                order: z.number().optional(),
+                draft: z.boolean().optional()
             })
         })
     }
