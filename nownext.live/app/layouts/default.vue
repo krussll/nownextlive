@@ -88,8 +88,8 @@
   </UMain>
   
     <UFooter
-      class="py-12 border-t border-gray-200"
-      :ui="{ wrapper: 'border-none' }"
+      class="py-8 border-t border-gray-200"
+      :ui="{ wrapper: 'border-none', top: 'py-4', bottom: 'py-2' }"
     >
       <template #top>
         <UContainer>
@@ -100,9 +100,6 @@
               <p class="text-sm text-gray-500">
                 A real-time event and sports scheduling platform that shows what is happening now and what is coming next across multiple screens. Any internet connected device can use it.
               </p>
-              <div class="text-xs text-gray-400 mt-2">
-                Version {{ config.public.version }}
-              </div>
             </div>
 
             <!-- Column 2: Product -->
@@ -144,7 +141,8 @@
               <h3 class="font-semibold text-gray-900">Resources</h3>
               <div class="flex flex-col gap-2 text-sm text-gray-600">
                 <ULink to="#" class="hover:text-indigo-600">Documentation</ULink>
-                <ULink to="#" class="hover:text-indigo-600">Blog</ULink>
+                <ULink to="/blog" class="hover:text-indigo-600">Blog</ULink>
+                <ULink to="/contact" class="hover:text-indigo-600">Contact</ULink>
                 <ULink to="#" class="hover:text-indigo-600 collapse">FAQ</ULink>
                 <ULink to="#" class="hover:text-indigo-600 collapse">What experts say</ULink>
                 <ULink to="#" class="hover:text-indigo-600 collapse">Testimonials</ULink>
@@ -156,17 +154,12 @@
 
       <template #bottom>
         <UContainer>
-          <div class="flex flex-col md:flex-row justify-center items-center gap-4 text-sm text-gray-500 mt-8 pt-8 border-t border-gray-100">
-            <div class="flex gap-6">
-              <ULink to="/contact" class="hover:text-indigo-600">Contact</ULink>
-              <ULink to="#" class="hover:text-indigo-600 collapse collapse">Imprint</ULink>
-              <ULink to="#" class="hover:text-indigo-600 collapse collapse">Terms of Service</ULink>
-              <ULink to="/privacy" class="hover:text-indigo-600 collapse">Privacy Policy</ULink>
-              <ULink to="#" class="hover:text-indigo-600 collapse">Cookie Policy</ULink>
-              <ULink to="#" class="hover:text-indigo-600 collapse">Security & Compliance</ULink>
+          <div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-400 pt-4 border-t border-gray-100">
+            <div>
+              Version {{ config.public.version }}
             </div>
             <div class="flex items-center gap-2">
-               Made in England
+              Made in England
             </div>
           </div>
         </UContainer>

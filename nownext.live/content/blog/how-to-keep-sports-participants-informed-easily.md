@@ -13,8 +13,6 @@ draft: false
 author: Reece Williams
 ---
 
-# How to Keep Sports Participants Informed
-
 You've seen it happen: a player arrives at the wrong court. Another misses their match entirely because they didn't know it had been moved forward. Someone interrupts you mid-conversation to ask "Am I on next?" for the fourth time. Meanwhile, you're trying to run an event, not operate a human information desk.
 
 Clear communication is one of the biggest challenges in community and amateur sports. When players don't know when they're playing or where they should be, delays increase, stress builds, and volunteers become overwhelmed. Most communication failures occur because information is scattered across sheets, messages, and verbal updates—none of which stay synchronized when things inevitably change.
