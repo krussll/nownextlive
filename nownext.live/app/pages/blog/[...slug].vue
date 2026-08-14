@@ -52,6 +52,18 @@ useHead({
                 <span class="text-gray-700 dark:text-gray-300 font-normal">{{ doc.author }}</span>
               </div>
             </template>
+            <template v-if="doc.tags?.length">
+              <span>&middot;</span>
+              <div class="flex flex-wrap gap-1">
+                <span
+                  v-for="tag in doc.tags"
+                  :key="tag"
+                  class="px-2 py-0.5 text-xs font-medium bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 rounded"
+                >
+                  {{ tag }}
+                </span>
+              </div>
+            </template>
           </div>
         </header>
         <!-- Article Body -->
