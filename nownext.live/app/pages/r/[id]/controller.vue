@@ -408,6 +408,10 @@
 
 
 <script setup>
+useSeoMeta({
+  title: 'Event Controller Dashboard | NowNext.live',
+  robots: 'noindex, nofollow'
+})
 import Modal from '~/components/ModalSessionEdit.vue'
 import ModalSpace from '~/components/ModalSpaceEdit.vue'
 import ModalEventEdit from '~/components/ModalEventEdit.vue'

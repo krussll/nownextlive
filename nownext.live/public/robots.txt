@@ -1,2 +1,10 @@
-User-Agent: *
-Disallow:
+User-agent: *
+Disallow: /r/
+Disallow: /account
+Disallow: /account/
+Disallow: /auth/
+Disallow: /checkout
+Disallow: /checkout/
+Disallow: /api/
+
+Sitemap: https://nownext.live/sitemap.xml

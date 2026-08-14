@@ -6,9 +6,9 @@ const errorMessage = ref('')
 const successMessage = ref('')
 
 useSeoMeta({
-  title: 'Reset Password - NowNext',
-  description:
-   'Reset your NowNext account password'
+  title: 'Reset Password | NowNext.live',
+  description: 'Enter a new password for your NowNext.live account.',
+  robots: 'noindex, follow'
 })
 
 const supabase = useSupabaseClient()

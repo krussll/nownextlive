@@ -2,29 +2,72 @@
 const route = useRoute()
 const { data: doc } = await useAsyncData(route.path, () => queryCollection('usecases').path(route.path).first())
 
+useSeoMeta({
+  title: () => doc.value?.title ? `${doc.value.title} | NowNext.live Use Cases` : 'Use Case - NowNext.live',
+  description: () => doc.value?.description || '',
+  ogTitle: () => doc.value?.title,
+  ogDescription: () => doc.value?.description,
+  ogImage: () => doc.value?.image || 'https://nownext.live/imgs/logo.png',
+  ogUrl: () => `https://nownext.live${route.path}`,
+  ogType: 'article',
+  twitterCard: 'summary_large_image',
+  twitterTitle: () => doc.value?.title,
+  twitterDescription: () => doc.value?.description,
+  twitterImage: () => doc.value?.image || 'https://nownext.live/imgs/logo.png'
+})
+
 useHead({
-  title: computed(() => doc.value?.title ? `${doc.value.title} - Use Cases | NowNext.live` : 'Use Case - NowNext.live'),
+  link: [
+    { rel: 'canonical', key: 'canonical', href: computed(() => `https://nownext.live${route.path}`) }
+  ],
   script: [
     {
       type: 'application/ld+json',
       innerHTML: computed(() => JSON.stringify({
         '@context': 'https://schema.org',
-        '@type': 'Article',
-        headline: doc.value?.title,
-        description: doc.value?.description,
-        datePublished: doc.value?.date,
-        author: {
-          '@type': 'Organization',
-          name: 'NowNext.live'
-        },
-        publisher: {
-          '@type': 'Organization',
-          name: 'NowNext.live',
-          logo: {
-            '@type': 'ImageObject',
-            url: 'https://nownext.live/imgs/logo.png'
+        '@graph': [
+          {
+            '@type': 'Article',
+            headline: doc.value?.title,
+            description: doc.value?.description,
+            datePublished: doc.value?.date,
+            author: {
+              '@type': 'Organization',
+              name: 'NowNext.live'
+            },
+            publisher: {
+              '@type': 'Organization',
+              name: 'NowNext.live',
+              logo: {
+                '@type': 'ImageObject',
+                url: 'https://nownext.live/imgs/logo.png'
+              }
+            }
+          },
+          {
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://nownext.live'
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Use Cases',
+                item: 'https://nownext.live/use-cases'
+              },
+              {
+                '@type': 'ListItem',
+                position: 3,
+                name: doc.value?.title || 'Use Case',
+                item: `https://nownext.live${route.path}`
+              }
+            ]
           }
-        }
+        ]
       }))
     }
   ]

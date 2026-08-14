@@ -1,4 +1,17 @@
 <script setup lang="ts">
+useSeoMeta({
+  title: 'About NowNext.live - Instant Real-Time Event & Court Scheduling Platform',
+  description: 'Learn why NowNext.live was built: to replace paper schedules and whiteboard chaos with instant, synchronized live display boards on any screen.',
+  ogTitle: 'About NowNext.live - Real-Time Multi-Screen Event Display Platform',
+  ogDescription: 'Zero-friction schedule signage engineered for sports clubs, tournament directors, conference managers, and broadcast studios.',
+  ogImage: 'https://nownext.live/imgs/logo.png',
+  ogUrl: 'https://nownext.live/about',
+  ogType: 'website',
+  twitterCard: 'summary_large_image',
+  twitterTitle: 'About NowNext.live',
+  twitterDescription: 'Zero-friction schedule signage engineered for sports clubs, tournament directors, conference managers, and broadcast studios.'
+})
+
 const features = [
   {
     icon: 'i-lucide-layout-dashboard',
@@ -33,15 +46,39 @@ const principles = [
 ]
 
 useHead({
+  link: [
+    { rel: 'canonical', key: 'canonical', href: 'https://nownext.live/about' }
+  ],
   script: [
     {
       type: 'application/ld+json',
       innerHTML: JSON.stringify({
         '@context': 'https://schema.org',
-        '@type': 'AboutPage',
-        name: 'About Now. Next. Live.',
-        description: 'A simple, reliable way to keep players, teams, volunteers and spectators informed.',
-        url: 'https://nownext.live/about'
+        '@graph': [
+          {
+            '@type': 'AboutPage',
+            name: 'About NowNext.live',
+            description: 'A simple, reliable way to keep players, teams, volunteers and spectators informed in real-time.',
+            url: 'https://nownext.live/about'
+          },
+          {
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://nownext.live'
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'About',
+                item: 'https://nownext.live/about'
+              }
+            ]
+          }
+        ]
       })
     }
   ]

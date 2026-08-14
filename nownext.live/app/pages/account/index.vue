@@ -3,6 +3,11 @@ definePageMeta({
   middleware: 'auth'
 })
 
+useSeoMeta({
+  title: 'My Account | NowNext.live',
+  robots: 'noindex, nofollow'
+})
+
 const { data: events, pending, error } = await useFetch('/api/events')
 const { data: userData } = await useFetch('/api/user/me')
 </script>

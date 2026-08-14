@@ -1,12 +1,54 @@
 <script setup lang="ts">
 const { data: list } = await useAsyncData('usecases', () => queryCollection('usecases').all())
 
+useSeoMeta({
+  title: 'Real-Time Schedule Display Use Cases | NowNext.live',
+  description: 'Explore how sports clubs, tournaments, multi-track conferences, broadcast studios, and corporate events use NowNext.live for live-updating schedule signage.',
+  ogTitle: 'NowNext.live Use Cases - Multi-Screen Real-Time Event Display Solutions',
+  ogDescription: 'Eliminate paper schedule chaos across sports courts, conference stages, stream rundowns, and corporate breakout rooms.',
+  ogImage: 'https://nownext.live/imgs/logo.png',
+  ogUrl: 'https://nownext.live/use-cases',
+  ogType: 'website',
+  twitterCard: 'summary_large_image',
+  twitterTitle: 'NowNext.live Use Cases',
+  twitterDescription: 'Eliminate paper schedule chaos across sports courts, conference stages, stream rundowns, and corporate breakout rooms.'
+})
+
 useHead({
-  title: 'Use Cases - NowNext.live',
-  meta: [
+  link: [
+    { rel: 'canonical', key: 'canonical', href: 'https://nownext.live/use-cases' }
+  ],
+  script: [
     {
-      name: 'description',
-      content: 'Explore how sports clubs, tournaments, conferences, broadcast studios, and corporate events use NowNext.live for real-time schedule displays.'
+      type: 'application/ld+json',
+      innerHTML: computed(() => JSON.stringify({
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'CollectionPage',
+            name: 'NowNext.live Use Cases',
+            url: 'https://nownext.live/use-cases',
+            description: 'Real-time schedule display solutions for sports tournaments, conferences, streams, and corporate meetings.'
+          },
+          {
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://nownext.live'
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Use Cases',
+                item: 'https://nownext.live/use-cases'
+              }
+            ]
+          }
+        ]
+      }))
     }
   ]
 })

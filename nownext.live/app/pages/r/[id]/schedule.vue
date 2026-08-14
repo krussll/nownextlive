@@ -28,7 +28,7 @@
     <!-- Header -->
     <div class="flex items-center justify-between mb-10">
       <div>
-        <img src="/imgs/now-next-live-logo.svg" style="height: 55px" />
+        <img src="/imgs/now-next-live-logo.svg" alt="NowNext.live Logo" style="height: 55px" />
       </div>
       <div class="text-center">
         <p
@@ -91,6 +91,11 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
 
 definePageMeta({
   layout: 'app'
+})
+
+useSeoMeta({
+  title: 'Full Event Schedule | NowNext.live',
+  robots: 'noindex, nofollow'
 })
 
 const showloading = ref(true)
