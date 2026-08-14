@@ -74,8 +74,19 @@
       <aside class="lg:col-span-3 space-y-6 order-2 lg:order-1">
         <!-- Displays -->
         <UCard class="rounded-none">
-          
-         <div class="relative w-full h-48 overflow-hidden">
+          <div class="mb-3">
+            <UButton
+              label="Output Links"
+              icon="i-heroicons-tv"
+              color="primary"
+              variant="soft"
+              size="sm"
+              class="w-full justify-center cursor-pointer"
+              @click="showOutputLinksModal = true"
+            />
+          </div>
+
+          <div class="relative w-full h-48 overflow-hidden">
           <iframe
   id="inlineFrameExample"
   title="Inline Frame Example"
@@ -403,6 +414,12 @@
         </div>
       </template>
     </UModal>
+
+    <!-- Output Links Modal -->
+    <ModalOutputLinks
+      v-model:open="showOutputLinksModal"
+      :event-id="eventId"
+    />
   </UContainer>
 </template>
 
@@ -416,8 +433,11 @@ import Modal from '~/components/ModalSessionEdit.vue'
 import ModalSpace from '~/components/ModalSpaceEdit.vue'
 import ModalEventEdit from '~/components/ModalEventEdit.vue'
 import ModalConfirm from '~/components/ModalConfirm.vue'
+import ModalOutputLinks from '~/components/ModalOutputLinks.vue'
 import { createClient } from '@supabase/supabase-js'
 import Sortable from 'sortablejs'
+
+const showOutputLinksModal = ref(false)
 
 const SUPABASE_URL = 'https://xsijzyhfivzknrpxmtfk.supabase.co'
 const SUPABASE_KEY = 'sb_publishable_f7LEykuQEqIaa30-x718nQ_jVoJ-txz'
