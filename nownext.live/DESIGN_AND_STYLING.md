@@ -48,15 +48,19 @@ This document serves as a reference for the design and styling standards of the 
 - **Structure**: The app is wrapped in `UApp`.
 - **Standard Layout**: Uses `UHeader`, `UMain`, and `UFooter` for a consistent structure.
 - **Responsive Design**: Tailwind utility classes (e.g., `lg:hidden`, `lg:inline-flex`) are used to handle responsiveness.
+- **Footer Structure**:
+  - Main links divided across 4 columns (`Product`, `Compare`, `Use Cases`, `Resources`).
+  - `Contact` link sits under the `Resources` column.
+  - Tighter vertical slot padding (`:ui="{ wrapper: 'border-none', top: 'py-4', bottom: 'py-2' }"`).
+  - Bottom bar aligns `Version X.X.X` on the left and `Made in England` on the right across a clean top border.
+- **Blog & Content Layout**:
+  - Inspired by Stagetimer.io's clean, cardless design.
+  - Index view: Responsive 2-column grid (`grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto`) with outline-free links (`hover:bg-gray-50 dark:hover:bg-gray-800`), explicit author avatars, and formatted dates.
+  - Post view: Max-width content container (`max-w-3xl mx-auto`), metadata bar (`← Back`, date, author avatar), and article footer navigation.
 
 ## Code Standards
 
 - **Utility Classes**: Use Tailwind utility classes directly in the `class` attribute for layout and spacing.
 - **Components**: Prefer using Nuxt UI components (`<UButton>`, `<UInput>`, etc.) over building custom HTML elements to ensure consistency.
 - **Icons**: Use the `i-` prefix with Lucide icons (e.g., `i-lucide-home`).
-
-## Future Additions
-
-- [ ] Define specific font families.
-- [ ] Add color codes for custom branding if introduced.
-- [ ] Document specific spacing scales if they deviate from Tailwind defaults.
+- **Project Context**: For detailed application overview and marketing context, see [.agents/PROJECT_CONTEXT.md](file:///home/reecewilliams8/dev%20work/nownext.live/nuxt/nownextlive/nownext.live/.agents/PROJECT_CONTEXT.md).
