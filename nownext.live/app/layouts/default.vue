@@ -4,7 +4,14 @@
       <img src="/imgs/logo.png" style="height: 35px" />
     </template>
 
-    <UNavigationMenu :items="items" />
+    <UNavigationMenu
+      :items="items"
+      :ui="{
+        content: 'w-auto max-w-none',
+        childList: 'grid-cols-1 min-w-[260px]',
+        childItemLabel: 'whitespace-nowrap'
+      }"
+    />
 
     <template #right>
       <div v-if="user" class="flex gap-1.5">
@@ -183,6 +190,37 @@ const items = computed<NavigationMenuItem[]>(() => [
     label: 'Pricing',
     to: '/pricing',
     active: route.path.startsWith('/pricing')
+  },
+  {
+    label: 'Use Cases',
+    to: '/use-cases',
+    active: route.path.startsWith('/use-cases'),
+    children: [
+      {
+        label: 'Overview & All Use Cases',
+        to: '/use-cases'
+      },
+      {
+        label: 'Sports Clubs & Tournaments',
+        to: '/use-cases/sports-tournaments-and-clubs'
+      },
+      {
+        label: 'Conferences & Seminars',
+        to: '/use-cases/conferences-and-seminars'
+      },
+      {
+        label: 'Broadcasts & Livestreams',
+        to: '/use-cases/broadcasts-and-livestreams'
+      },
+      {
+        label: 'Corporate Meetings & Workshops',
+        to: '/use-cases/corporate-meetings-and-workshops'
+      },
+      {
+        label: 'School & Educational Events',
+        to: '/use-cases/educational-and-school-events'
+      }
+    ]
   },
   {
     label: 'Contact',
