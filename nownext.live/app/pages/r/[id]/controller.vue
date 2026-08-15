@@ -305,7 +305,7 @@
                           @apply-to-all="applyTimerToAllSessions(item, $event)"
                         >
                           <button type="button" class="text-slate-700 hover:text-indigo-600 font-mono font-medium underline decoration-dotted cursor-pointer">
-                            {{ session.time || 'Add time' }}
+                            {{ session.time || 'Add start time' }}
                           </button>
                         </PopoverTimerEdit>
                       </div>
