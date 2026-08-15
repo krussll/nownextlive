@@ -76,3 +76,13 @@ Traditional events and sports clubs rely on printed sheets, whiteboards, or manu
 - **No App Downloads Required**: Players and spectators scan a QR code or open a URL.
 - **Ultra-Fast Setup**: Event setup completed in minutes.
 - **Multi-Screen Support**: Control dozens of court/room screens from one master phone or laptop.
+
+---
+
+## 6. Feature Branching & Implementation Plan Workflow
+
+- **Feature Branch Requirement**: Every new feature that requires an implementation plan MUST be developed on a newly created feature branch.
+- **First Action Item**: Creating and checking out the new Git feature branch MUST always be the first step in the implementation plan.
+- **Single Feature Scope**: Each implementation plan MUST focus on exactly ONE feature/item at a time.
+- **Pushing Back on Multi-Item Requests**: If a prompt or request contains multiple feature additions or changes at once, push back to confirm with the user which specific feature to address first in the new plan.
+- **Pull Request Target**: For each new feature request, create a Pull Request (PR) from the feature branch to `release-staging`.
