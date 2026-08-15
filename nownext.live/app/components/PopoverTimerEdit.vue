@@ -16,8 +16,6 @@
             class="w-full h-10 px-3 bg-gray-50 border border-gray-300 text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 rounded-none cursor-pointer"
           >
             <option value="duration">Duration</option>
-            <option value="tod">Time of Day</option>
-            <option value="countup">Count Up</option>
           </select>
         </div>
 
@@ -71,28 +69,6 @@
               <span class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold block mt-0.5">SS</span>
             </div>
           </div>
-        </div>
-
-        <!-- Appearance Field -->
-        <div class="space-y-1.5">
-          <div class="flex items-center justify-between">
-            <label class="text-sm font-medium text-slate-700">Appearance</label>
-            <button
-              type="button"
-              class="text-xs text-indigo-600 hover:text-indigo-800 font-medium cursor-pointer underline decoration-dotted transition-colors"
-              @click="handleApplyToAll"
-            >
-              Apply to all
-            </button>
-          </div>
-          <select
-            v-model="localAppearance"
-            class="w-full h-10 px-3 bg-gray-50 border border-gray-300 text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 rounded-none cursor-pointer"
-          >
-            <option value="countdown">Countdown</option>
-            <option value="countup">Countup</option>
-            <option value="tod">Time of day</option>
-          </select>
         </div>
 
         <!-- Dynamic Summary Preview -->
@@ -218,9 +194,6 @@ const formattedDuration = computed(() => {
 })
 
 const summaryText = computed(() => {
-  if (localType.value === 'tod' || localAppearance.value === 'tod') {
-    return 'Displaying current time of day.'
-  }
   if (totalSeconds.value === 0) {
     return 'No duration set.'
   }
@@ -236,9 +209,6 @@ const summaryText = computed(() => {
 
   const timeDesc = parts.join(' ') || `${totalSeconds.value} secs`
 
-  if (localAppearance.value === 'countup') {
-    return `Counting up to ${timeDesc}.`
-  }
   return `Counting down from ${timeDesc}.`
 })
 

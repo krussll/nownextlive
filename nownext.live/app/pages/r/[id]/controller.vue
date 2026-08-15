@@ -295,21 +295,7 @@
                         name="i-heroicons-bars-3"
                         class="w-4 h-4 text-gray-300 session-drag-handle cursor-move hover:text-gray-500 flex-shrink-0"
                       />
-
-                      <!-- Start Time Trigger -->
-                      <div class="text-xs flex items-center">
-                        <span class="text-slate-400 font-medium mr-1">Start</span>
-                        <PopoverTimerEdit
-                          :session="session"
-                          @update:session="updateSession(item, session, $event)"
-                          @apply-to-all="applyTimerToAllSessions(item, $event)"
-                        >
-                          <button type="button" class="text-slate-700 hover:text-indigo-600 font-mono font-medium underline decoration-dotted cursor-pointer">
-                            {{ session.time || 'Add start time' }}
-                          </button>
-                        </PopoverTimerEdit>
-                      </div>
-
+                      
                       <span class="text-slate-300 text-xs hidden sm:inline">|</span>
 
                       <!-- Duration Trigger with Popover -->
