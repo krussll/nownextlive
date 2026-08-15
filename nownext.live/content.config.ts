@@ -15,10 +15,10 @@ export default defineContentConfig({
         }),
         usecases: defineCollection({
             type: 'page',
-            source: 'usecases/**/*.md',
+            source: 'use-cases/**/*.md',
             schema: z.object({
                 date: z.string(),
-                image: z.string(),
+                image: z.string().optional(),
                 author: z.string(),
                 tags: z.array(z.string()),
                 draft: z.boolean()

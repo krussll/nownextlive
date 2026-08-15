@@ -5,6 +5,7 @@ useHead({
   link: [
     {
       rel: 'canonical',
+      key: 'canonical',
       href: () => `https://nownext.live${route.path}`
     }
   ],

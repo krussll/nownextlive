@@ -1,4 +1,9 @@
 <script setup lang="ts">
+useSeoMeta({
+  title: 'Sign Up | NowNext.live',
+  robots: 'noindex, follow'
+})
+
 const email = ref('')
 const password = ref('')
 const confirmPassword = ref('')

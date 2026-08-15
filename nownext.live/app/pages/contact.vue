@@ -60,19 +60,56 @@
   </UContainer>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
 
+useSeoMeta({
+  title: 'Contact Us - Get Support & Feature Enquiries | NowNext.live',
+  description: 'Have a question about NowNext.live or need help setting up live schedule displays for your event? Get in touch with our team.',
+  ogTitle: 'Contact NowNext.live Support & Enquiries',
+  ogDescription: 'Get in touch with the team behind NowNext.live real-time schedule signage platform.',
+  ogImage: 'https://nownext.live/imgs/logo.png',
+  ogUrl: 'https://nownext.live/contact',
+  ogType: 'website',
+  twitterCard: 'summary_large_image',
+  twitterTitle: 'Contact NowNext.live',
+  twitterDescription: 'Get in touch with the team behind NowNext.live real-time schedule signage platform.'
+})
+
 useHead({
+  link: [
+    { rel: 'canonical', key: 'canonical', href: 'https://nownext.live/contact' }
+  ],
   script: [
     {
       type: 'application/ld+json',
       innerHTML: JSON.stringify({
         '@context': 'https://schema.org',
-        '@type': 'ContactPage',
-        name: 'Contact Now. Next. Live.',
-        description: 'Contact us for questions about NowNext.live.',
-        url: 'https://nownext.live/contact'
+        '@graph': [
+          {
+            '@type': 'ContactPage',
+            name: 'Contact NowNext.live',
+            description: 'Contact us for questions about NowNext.live real-time schedule signage platform.',
+            url: 'https://nownext.live/contact'
+          },
+          {
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://nownext.live'
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Contact',
+                item: 'https://nownext.live/contact'
+              }
+            ]
+          }
+        ]
       })
     }
   ]

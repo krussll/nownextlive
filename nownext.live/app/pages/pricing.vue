@@ -1,7 +1,93 @@
 <script setup lang="ts">
 useSeoMeta({
-  title: 'Pricing - NowNext',
-  description: 'Simple, transparent pricing for NowNext event management platform'
+  title: 'Pricing & Plans | NowNext.live',
+  description: 'Simple, transparent pricing for NowNext.live real-time event & sports schedule display signage. Choose monthly subscription plans or 30-day single event access.',
+  ogTitle: 'NowNext.live Pricing & Plans - Real-Time Schedule Signage',
+  ogDescription: 'Flexible subscription and single event access for sports tournaments, conferences, and venue scheduling.',
+  ogImage: 'https://nownext.live/imgs/logo.png',
+  ogUrl: 'https://nownext.live/pricing',
+  ogType: 'website',
+  twitterCard: 'summary_large_image',
+  twitterTitle: 'NowNext.live Pricing & Plans',
+  twitterDescription: 'Flexible subscription and single event access for sports tournaments and conferences.'
+})
+
+const faqs = [
+  {
+    question: 'Can I change plans later?',
+    answer: 'Yes! You can upgrade or downgrade your plan at any time. Changes take effect immediately.'
+  },
+  {
+    question: 'Is there a free trial?',
+    answer: 'Yes, the Club plan comes with a 14-day free trial. No credit card required to start.'
+  },
+  {
+    question: 'What happens if I exceed my event limit?',
+    answer: 'On the Free plan, you\'ll need to archive old events before creating new ones, or upgrade to Club for unlimited events.'
+  },
+  {
+    question: 'Do you offer discounts for annual billing?',
+    answer: 'Yes! Pay annually and get 2 months free. Contact us for details.'
+  },
+  {
+    question: 'Can I cancel anytime?',
+    answer: 'Absolutely. Cancel anytime with no questions asked. Your data remains accessible for 30 days after cancellation.'
+  }
+]
+
+useHead({
+  link: [
+    { rel: 'canonical', key: 'canonical', href: 'https://nownext.live/pricing' }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: computed(() => JSON.stringify({
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'FAQPage',
+            mainEntity: faqs.map(faq => ({
+              '@type': 'Question',
+              name: faq.question,
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: faq.answer
+              }
+            }))
+          },
+          ...plans.value.map(plan => ({
+            '@type': 'Product',
+            name: `NowNext ${plan.title} Plan`,
+            description: plan.description,
+            offers: {
+              '@type': 'Offer',
+              price: plan.price.replace('£', ''),
+              priceCurrency: 'GBP',
+              availability: 'https://schema.org/InStock'
+            }
+          })),
+          {
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://nownext.live'
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Pricing',
+                item: 'https://nownext.live/pricing'
+              }
+            ]
+          }
+        ]
+      }))
+    }
+  ]
 })
 
 const billingType = ref<'subscription' | 'oneoff'>('subscription')
@@ -127,50 +213,6 @@ const plans = computed(() => {
   return billingType.value === 'subscription' ? subscriptionPlans : oneoffPlans
 })
 
-const faqs = [
-  {
-    question: 'Can I change plans later?',
-    answer: 'Yes! You can upgrade or downgrade your plan at any time. Changes take effect immediately.'
-  },
-  {
-    question: 'Is there a free trial?',
-    answer: 'Yes, the Club plan comes with a 14-day free trial. No credit card required to start.'
-  },
-  {
-    question: 'What happens if I exceed my event limit?',
-    answer: 'On the Free plan, you\'ll need to archive old events before creating new ones, or upgrade to Club for unlimited events.'
-  },
-  {
-    question: 'Do you offer discounts for annual billing?',
-    answer: 'Yes! Pay annually and get 2 months free. Contact us for details.'
-  },
-  {
-    question: 'Can I cancel anytime?',
-    answer: 'Absolutely. Cancel anytime with no questions asked. Your data remains accessible for 30 days after cancellation.'
-  }
-]
-
-useHead({
-  script: [
-    {
-      type: 'application/ld+json',
-      innerHTML: computed(() => JSON.stringify({
-        '@context': 'https://schema.org',
-        '@graph': plans.value.map(plan => ({
-          '@type': 'Product',
-          name: `NowNext ${plan.title} Plan`,
-          description: plan.description,
-          offers: {
-            '@type': 'Offer',
-            price: plan.price.replace('£', ''),
-            priceCurrency: 'GBP',
-            availability: 'https://schema.org/InStock'
-          }
-        }))
-      }))
-    }
-  ]
-})
 </script>
 
 <template>

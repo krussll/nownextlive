@@ -2,28 +2,72 @@
 const route = useRoute()
 const { data: doc } = await useAsyncData(route.path, () => queryCollection('blog').path(route.path).first())
 
+useSeoMeta({
+  title: () => doc.value?.title ? `${doc.value.title} - NowNext.live Blog` : 'Blog - NowNext.live',
+  description: () => doc.value?.description || '',
+  ogTitle: () => doc.value?.title,
+  ogDescription: () => doc.value?.description,
+  ogImage: () => doc.value?.image || 'https://nownext.live/imgs/logo.png',
+  ogUrl: () => `https://nownext.live${route.path}`,
+  ogType: 'article',
+  twitterCard: 'summary_large_image',
+  twitterTitle: () => doc.value?.title,
+  twitterDescription: () => doc.value?.description,
+  twitterImage: () => doc.value?.image || 'https://nownext.live/imgs/logo.png'
+})
+
 useHead({
+  link: [
+    { rel: 'canonical', key: 'canonical', href: computed(() => `https://nownext.live${route.path}`) }
+  ],
   script: [
     {
       type: 'application/ld+json',
       innerHTML: computed(() => JSON.stringify({
         '@context': 'https://schema.org',
-        '@type': 'BlogPosting',
-        headline: doc.value?.title,
-        description: doc.value?.description,
-        datePublished: doc.value?.date,
-        author: {
-          '@type': 'Organization',
-          name: 'Now. Next. Live.'
-        },
-        publisher: {
-          '@type': 'Organization',
-          name: 'Now. Next. Live.',
-          logo: {
-            '@type': 'ImageObject',
-            url: 'https://nownext.live/imgs/logo.png'
+        '@graph': [
+          {
+            '@type': 'BlogPosting',
+            headline: doc.value?.title,
+            description: doc.value?.description,
+            datePublished: doc.value?.date,
+            author: {
+              '@type': 'Organization',
+              name: 'Now. Next. Live.'
+            },
+            publisher: {
+              '@type': 'Organization',
+              name: 'Now. Next. Live.',
+              logo: {
+                '@type': 'ImageObject',
+                url: 'https://nownext.live/imgs/logo.png'
+              }
+            }
+          },
+          {
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://nownext.live'
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Blog',
+                item: 'https://nownext.live/blog'
+              },
+              {
+                '@type': 'ListItem',
+                position: 3,
+                name: doc.value?.title || 'Article',
+                item: `https://nownext.live${route.path}`
+              }
+            ]
           }
-        }
+        ]
       }))
     }
   ]
@@ -50,6 +94,18 @@ useHead({
               <div class="flex items-center gap-1.5">
                 <UAvatar :alt="doc.author" size="2xs" />
                 <span class="text-gray-700 dark:text-gray-300 font-normal">{{ doc.author }}</span>
+              </div>
+            </template>
+            <template v-if="doc.tags?.length">
+              <span>&middot;</span>
+              <div class="flex flex-wrap gap-1">
+                <span
+                  v-for="tag in doc.tags"
+                  :key="tag"
+                  class="px-2 py-0.5 text-xs font-medium bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 rounded"
+                >
+                  {{ tag }}
+                </span>
               </div>
             </template>
           </div>

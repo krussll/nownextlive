@@ -9,6 +9,11 @@ definePageMeta({
   layout: 'app'
 })
 
+useSeoMeta({
+  title: 'Generating Event... | NowNext.live',
+  robots: 'noindex, nofollow'
+})
+
 const router = useRouter()
 
 onMounted(async () => {

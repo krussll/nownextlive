@@ -1,10 +1,17 @@
 <template>
   <UHeader>
     <template #title>
-      <img src="/imgs/logo.png" style="height: 35px" />
+      <img src="/imgs/logo.png" alt="NowNext.live Logo" style="height: 35px" />
     </template>
 
-    <UNavigationMenu :items="items" />
+    <UNavigationMenu
+      :items="items"
+      :ui="{
+        content: 'w-auto max-w-none',
+        childList: 'grid-cols-1 min-w-[260px]',
+        childItemLabel: 'whitespace-nowrap'
+      }"
+    />
 
     <template #right>
       <div v-if="user" class="flex gap-1.5">
@@ -106,33 +113,23 @@
             <div class="flex flex-col gap-4">
               <h3 class="font-semibold text-gray-900">Product</h3>
               <div class="flex flex-col gap-2 text-sm text-gray-600">
-                <!--<ULink to="/pricing" class="hover:text-indigo-600">Pricing</ULink>-->
+                <ULink to="/pricing" class="hover:text-indigo-600">Pricing</ULink>
+                <ULink to="/about" class="hover:text-indigo-600">About Us</ULink>
+                <ULink to="/r/generate" class="hover:text-indigo-600">Create Event Board</ULink>
                 <ULink to="https://trello.com/b/LTEVR37i" target="_blank" class="hover:text-indigo-600">Public Roadmap</ULink>
-                <ULink to="#" class="hover:text-indigo-600 collapse">Features</ULink>
-              </div>
-              
-              <h3 class="font-semibold text-gray-900 mt-4 collapse">Compare</h3>
-              <div class="flex flex-col gap-2 text-sm text-gray-600">
-                <ULink to="#" class="hover:text-indigo-600 collapse">Why Now Next Live?</ULink>
-                <ULink to="#" class="hover:text-indigo-600 collapse">Shoflo Alternative</ULink>
-                <ULink to="#" class="hover:text-indigo-600 collapse">ProPresenter Alternative</ULink>
-                <ULink to="#" class="hover:text-indigo-600 collapse">Cuez Alternative</ULink>
               </div>
             </div>
 
             <!-- Column 3: Use Cases -->
-            <div class="flex flex-col gap-4 collapse">
+            <div class="flex flex-col gap-4">
               <h3 class="font-semibold text-gray-900">Use Cases</h3>
               <div class="flex flex-col gap-2 text-sm text-gray-600">
-                <ULink to="#" class="hover:text-indigo-600">Presentations</ULink>
-                <ULink to="#" class="hover:text-indigo-600">Meetings</ULink>
-                <ULink to="#" class="hover:text-indigo-600">Livestreams</ULink>
-                <ULink to="#" class="hover:text-indigo-600">Video Productions</ULink>
-                <ULink to="#" class="hover:text-indigo-600">Events</ULink>
-                <ULink to="#" class="hover:text-indigo-600">Conferences</ULink>
-                <ULink to="#" class="hover:text-indigo-600">Broadcasting</ULink>
-                <ULink to="#" class="hover:text-indigo-600">Education</ULink>
-                <ULink to="#" class="hover:text-indigo-600">More...</ULink>
+                <ULink to="/use-cases/sports-tournaments-and-clubs" class="hover:text-indigo-600">Sports & Tournaments</ULink>
+                <ULink to="/use-cases/conferences-and-seminars" class="hover:text-indigo-600">Conferences & Seminars</ULink>
+                <ULink to="/use-cases/broadcasts-and-livestreams" class="hover:text-indigo-600">Broadcasts & Livestreams</ULink>
+                <ULink to="/use-cases/corporate-meetings-and-workshops" class="hover:text-indigo-600">Corporate & Workshops</ULink>
+                <ULink to="/use-cases/educational-and-school-events" class="hover:text-indigo-600">School & Education</ULink>
+                <ULink to="/use-cases" class="hover:text-indigo-600 font-medium text-indigo-600">View All Use Cases &rarr;</ULink>
               </div>
             </div>
 
@@ -140,12 +137,11 @@
             <div class="flex flex-col gap-4">
               <h3 class="font-semibold text-gray-900">Resources</h3>
               <div class="flex flex-col gap-2 text-sm text-gray-600">
-                <ULink to="#" class="hover:text-indigo-600">Documentation</ULink>
-                <ULink to="/blog" class="hover:text-indigo-600">Blog</ULink>
-                <ULink to="/contact" class="hover:text-indigo-600">Contact</ULink>
-                <ULink to="#" class="hover:text-indigo-600 collapse">FAQ</ULink>
-                <ULink to="#" class="hover:text-indigo-600 collapse">What experts say</ULink>
-                <ULink to="#" class="hover:text-indigo-600 collapse">Testimonials</ULink>
+                <ULink to="/blog" class="hover:text-indigo-600">Blog & Articles</ULink>
+                <ULink to="/docs" class="hover:text-indigo-600">Documentation & Guides</ULink>
+                <ULink to="/contact" class="hover:text-indigo-600">Contact Support</ULink>
+                <ULink to="/pricing" class="hover:text-indigo-600">Plans & Pricing</ULink>
+                <ULink to="/about" class="hover:text-indigo-600">Why NowNext.live</ULink>
               </div>
             </div>
           </div>
@@ -158,8 +154,12 @@
             <div>
               Version {{ config.public.version }}
             </div>
-            <div class="flex items-center gap-2">
-              Made in England
+            <div class="flex items-center gap-4">
+              <ULink to="/privacy" class="hover:text-gray-600">Privacy Policy</ULink>
+              <span>&bull;</span>
+              <ULink to="/terms" class="hover:text-gray-600">Terms & Conditions</ULink>
+              <span>&bull;</span>
+              <span>Made in England</span>
             </div>
           </div>
         </UContainer>
@@ -183,6 +183,37 @@ const items = computed<NavigationMenuItem[]>(() => [
     label: 'Pricing',
     to: '/pricing',
     active: route.path.startsWith('/pricing')
+  },
+  {
+    label: 'Use Cases',
+    to: '/use-cases',
+    active: route.path.startsWith('/use-cases'),
+    children: [
+      {
+        label: 'Overview & All Use Cases',
+        to: '/use-cases'
+      },
+      {
+        label: 'Sports Clubs & Tournaments',
+        to: '/use-cases/sports-tournaments-and-clubs'
+      },
+      {
+        label: 'Conferences & Seminars',
+        to: '/use-cases/conferences-and-seminars'
+      },
+      {
+        label: 'Broadcasts & Livestreams',
+        to: '/use-cases/broadcasts-and-livestreams'
+      },
+      {
+        label: 'Corporate Meetings & Workshops',
+        to: '/use-cases/corporate-meetings-and-workshops'
+      },
+      {
+        label: 'School & Educational Events',
+        to: '/use-cases/educational-and-school-events'
+      }
+    ]
   },
   {
     label: 'Contact',

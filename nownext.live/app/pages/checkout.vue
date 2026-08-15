@@ -31,6 +31,11 @@
 </template>
 
 <script setup lang="ts">
+useSeoMeta({
+  title: 'Checkout | NowNext.live',
+  robots: 'noindex, nofollow'
+})
+
 const route = useRoute()
 const user = useSupabaseUser()
 const loading = ref(true)
