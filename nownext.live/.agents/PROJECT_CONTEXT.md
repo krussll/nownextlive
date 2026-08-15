@@ -85,3 +85,4 @@ Traditional events and sports clubs rely on printed sheets, whiteboards, or manu
 - **First Action Item**: Creating and checking out the new Git feature branch MUST always be the first step in the implementation plan.
 - **Single Feature Scope**: Each implementation plan MUST focus on exactly ONE feature/item at a time.
 - **Pushing Back on Multi-Item Requests**: If a prompt or request contains multiple feature additions or changes at once, push back to confirm with the user which specific feature to address first in the new plan.
+- **Pull Request Target**: For each new feature request, create a Pull Request (PR) from the feature branch to `release-staging`.
