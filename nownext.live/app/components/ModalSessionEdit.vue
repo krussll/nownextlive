@@ -25,7 +25,7 @@
         </div>
         <div class="sm:col-span-4">
           <UFormField label="Time" hint="Optional">
-            <UInputTime v-model="localData.time" class="w-full h-12" />
+            <UInputTime v-model="parsedTime" class="w-full h-12" />
           </UFormField>
         </div>
       </div>
@@ -44,6 +44,9 @@
 </template>
 
 <script setup>
+import { ref, watch } from 'vue'
+import { Time } from '@internationalized/date'
+
 const open = ref(false)
 
 const props = defineProps(['title', 'data'])
@@ -51,47 +54,67 @@ const emit = defineEmits(['update:session'])
 
 const error = ref('')
 const localData = ref({ title: '', subtitle: '', time: '', duration: '', timerType: 'duration', appearance: 'countdown' })
+const parsedTime = ref(undefined)
 
 watch(open, (newValue) => {
   if (newValue) {
     // Create a deep copy of the data when modal opens
-    localData.value = JSON.parse(JSON.stringify(props.data))
+    localData.value = JSON.parse(JSON.stringify(props.data || {}))
+    parsedTime.value = parseToTimeInstance(localData.value.time)
     error.value = ''
   }
 })
 
-function formatTimeToHHMM(timeVal) {
-  if (!timeVal) return ''
-  let obj = timeVal
-  if (typeof timeVal === 'string') {
-    const trimmed = timeVal.trim()
+function parseToTimeInstance(val) {
+  if (!val) return undefined
+  if (val instanceof Time) return val
+  if (typeof val === 'string') {
+    const trimmed = val.trim()
     if (trimmed.startsWith('{') && trimmed.endsWith('}')) {
       try {
-        obj = JSON.parse(trimmed)
+        const parsed = JSON.parse(trimmed)
+        if (parsed && typeof parsed.hour === 'number' && typeof parsed.minute === 'number') {
+          return new Time(parsed.hour, parsed.minute, parsed.second || 0)
+        }
       } catch (e) {
-        obj = timeVal
+        // fallback to regex / split
       }
-    } else {
-      const parts = trimmed.split(':')
-      if (parts.length >= 2) {
-        const h = String(parseInt(parts[0], 10) || 0).padStart(2, '0')
-        const m = String(parseInt(parts[1], 10) || 0).padStart(2, '0')
-        return `${h}:${m}`
+    }
+    const parts = trimmed.split(':')
+    if (parts.length >= 2) {
+      const h = parseInt(parts[0], 10)
+      const m = parseInt(parts[1], 10)
+      const s = parts.length >= 3 ? parseInt(parts[2], 10) : 0
+      if (!isNaN(h) && !isNaN(m)) {
+        return new Time(
+          Math.max(0, Math.min(23, h)),
+          Math.max(0, Math.min(59, m)),
+          Math.max(0, Math.min(59, isNaN(s) ? 0 : s))
+        )
       }
-      return trimmed
+    }
+  } else if (typeof val === 'object' && val !== null) {
+    const h = val.hour ?? val.hours ?? val.h
+    const m = val.minute ?? val.minutes ?? val.m
+    const s = val.second ?? val.seconds ?? val.s ?? 0
+    if (typeof h === 'number' && typeof m === 'number') {
+      return new Time(
+        Math.max(0, Math.min(23, h)),
+        Math.max(0, Math.min(59, m)),
+        Math.max(0, Math.min(59, s))
+      )
     }
   }
+  return undefined
+}
 
-  if (typeof obj === 'object' && obj !== null) {
-    const hourVal = obj.hour ?? obj.hours ?? obj.h
-    const minVal = obj.minute ?? obj.minutes ?? obj.m
-    if (hourVal !== undefined || minVal !== undefined) {
-      const h = String(parseInt(hourVal, 10) || 0).padStart(2, '0')
-      const m = String(parseInt(minVal, 10) || 0).padStart(2, '0')
-      return `${h}:${m}`
-    }
+function timeInstanceToHHMM(timeVal) {
+  if (!timeVal) return ''
+  if (typeof timeVal === 'object' && 'hour' in timeVal && 'minute' in timeVal) {
+    const h = String(timeVal.hour).padStart(2, '0')
+    const m = String(timeVal.minute).padStart(2, '0')
+    return `${h}:${m}`
   }
-
   return String(timeVal)
 }
 
@@ -101,9 +124,7 @@ function submit() {
     return
   }
   error.value = ''
-  if (localData.value.time) {
-    localData.value.time = formatTimeToHHMM(localData.value.time)
-  }
+  localData.value.time = timeInstanceToHHMM(parsedTime.value)
   emit('update:session', localData.value)
   open.value = false
 }
