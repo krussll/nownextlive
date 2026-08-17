@@ -15,7 +15,7 @@
         v-for="session in sessions"
         :key="session.id"
         :class="[
-          'px-4 py-4 border-b last:border-b-0 flex gap-4',
+          'px-4 py-4 border-b last:border-b-0 flex gap-4 relative overflow-hidden',
           session.id === nowSessionId ? 'bg-slate-900 text-white' : 'bg-white text-slate-900'
         ]"
       >
@@ -38,6 +38,18 @@
             {{ session.subtitle }}
           </p>
         </div>
+
+        <!-- Duration Progress Bar for Active NOW Session -->
+        <div
+          v-if="session.id === nowSessionId && getSessionDurationSeconds(session.duration) > 0"
+          class="absolute bottom-0 left-0 right-0 h-1.5 bg-slate-800 overflow-hidden"
+        >
+          <div
+            class="h-full bg-emerald-500 rounded-r shadow-[0_0_8px_rgba(16,185,129,0.6)]"
+            :style="{ animation: `progressLinear ${getSessionDurationSeconds(session.duration)}s linear forwards` }"
+            :key="`fsc-progress-${session.id}-${session.duration}`"
+          />
+        </div>
       </div>
       
       <!-- Empty State if no sessions -->
@@ -57,4 +69,35 @@ defineProps({
   },
   nowSessionId: String
 })
+
+function getSessionDurationSeconds(durationStr) {
+  if (!durationStr || typeof durationStr !== 'string') return 0
+  const parts = durationStr.trim().split(':')
+  if (parts.length === 3) {
+    const h = parseInt(parts[0], 10) || 0
+    const m = parseInt(parts[1], 10) || 0
+    const s = parseInt(parts[2], 10) || 0
+    return h * 3600 + m * 60 + s
+  } else if (parts.length === 2) {
+    const m = parseInt(parts[0], 10) || 0
+    const s = parseInt(parts[1], 10) || 0
+    return m * 60 + s
+  } else if (parts.length === 1) {
+    const val = parseInt(parts[0], 10) || 0
+    return val * 60
+  }
+  return 0
+}
 </script>
+
+<style scoped>
+@keyframes progressLinear {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+</style>
+

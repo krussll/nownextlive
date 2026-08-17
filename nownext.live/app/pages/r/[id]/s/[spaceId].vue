@@ -98,7 +98,7 @@
             <!-- NOW Section -->
             <div
               v-if="spaceDisplay.now"
-              class="bg-slate-900 text-white px-8 py-10 flex flex-col md:flex-row gap-6 md:items-center justify-between"
+              class="bg-slate-900 text-white px-8 py-10 flex flex-col md:flex-row gap-6 md:items-center justify-between relative overflow-hidden"
             >
               <div>
                 <span class="inline-block px-3 py-1 text-xs uppercase tracking-widest font-bold bg-emerald-500 text-slate-950 mb-3">
@@ -113,6 +113,18 @@
                 <p v-if="spaceDisplay.group" class="text-lg text-slate-300 mt-2 font-medium">
                   {{ spaceDisplay.group }}
                 </p>
+              </div>
+
+              <!-- Duration Progress Bar -->
+              <div
+                v-if="nowDurationSeconds > 0"
+                class="absolute bottom-0 left-0 right-0 h-2 bg-slate-800 overflow-hidden"
+              >
+                <div
+                  class="h-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.6)]"
+                  :style="{ animation: `progressLinear ${nowDurationSeconds}s linear forwards` }"
+                  :key="`space-progress-${spaceDisplay.now}-${spaceDisplay.nowDuration}`"
+                />
               </div>
             </div>
 
@@ -246,10 +258,31 @@ const spaceDisplay = computed(() => {
     now: nowSession ? nowSession.title : '',
     group: nowSession ? nowSession.subtitle : '',
     nowTime: nowSession ? (nowSession.time || (nowSession.duration ? `${nowSession.duration} min` : '')) : '',
+    nowDuration: nowSession ? nowSession.duration : null,
     next: nextSession ? nextSession.title : '',
     nextGroup: nextSession ? nextSession.subtitle : '',
     nextTime: nextSession ? (nextSession.time || (nextSession.duration ? `${nextSession.duration} min` : '')) : ''
   }
+})
+
+const nowDurationSeconds = computed(() => {
+  const durationStr = spaceDisplay.value.nowDuration
+  if (!durationStr || typeof durationStr !== 'string') return 0
+  const parts = durationStr.trim().split(':')
+  if (parts.length === 3) {
+    const h = parseInt(parts[0], 10) || 0
+    const m = parseInt(parts[1], 10) || 0
+    const s = parseInt(parts[2], 10) || 0
+    return h * 3600 + m * 60 + s
+  } else if (parts.length === 2) {
+    const m = parseInt(parts[0], 10) || 0
+    const s = parseInt(parts[1], 10) || 0
+    return m * 60 + s
+  } else if (parts.length === 1) {
+    const val = parseInt(parts[0], 10) || 0
+    return val * 60
+  }
+  return 0
 })
 
 useHead(() => ({
@@ -321,3 +354,14 @@ onUnmounted(() => {
   myChannel.untrack()
 })
 </script>
+
+<style scoped>
+@keyframes progressLinear {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+</style>

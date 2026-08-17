@@ -14,7 +14,7 @@
       <!-- NOW -->
       <div
         v-if="now"
-        class="bg-slate-900 text-white px-4 py-6 flex gap-4 flex-1"
+        class="bg-slate-900 text-white px-4 py-6 flex gap-4 flex-1 relative overflow-hidden"
       >
         <div>
           <p
@@ -29,6 +29,18 @@
           <p v-if="nowGroup" class="text-sm text-slate-300 mt-1">
             {{ nowGroup }}
           </p>
+        </div>
+
+        <!-- Duration Progress Bar -->
+        <div
+          v-if="durationSeconds > 0"
+          class="absolute bottom-0 left-0 right-0 h-1.5 bg-slate-800 overflow-hidden"
+        >
+          <div
+            class="h-full bg-emerald-500 rounded-r shadow-[0_0_8px_rgba(16,185,129,0.6)]"
+            :style="{ animation: `progressLinear ${durationSeconds}s linear forwards` }"
+            :key="`sc-progress-${now}-${nowDuration}`"
+          />
         </div>
       </div>
 
@@ -65,13 +77,47 @@
 </template>
 
 <script setup>
-defineProps({
+import { computed } from 'vue'
+
+const props = defineProps({
   title: String,
   now: String,
   nowGroup: String,
   nowTime: String,
+  nowDuration: String,
   next: String,
   nextGroup: String,
   nextTime: String
 })
+
+const durationSeconds = computed(() => {
+  if (!props.nowDuration || typeof props.nowDuration !== 'string') return 0
+  const parts = props.nowDuration.trim().split(':')
+  if (parts.length === 3) {
+    const h = parseInt(parts[0], 10) || 0
+    const m = parseInt(parts[1], 10) || 0
+    const s = parseInt(parts[2], 10) || 0
+    return h * 3600 + m * 60 + s
+  } else if (parts.length === 2) {
+    const m = parseInt(parts[0], 10) || 0
+    const s = parseInt(parts[1], 10) || 0
+    return m * 60 + s
+  } else if (parts.length === 1) {
+    const val = parseInt(parts[0], 10) || 0
+    return val * 60
+  }
+  return 0
+})
 </script>
+
+<style scoped>
+@keyframes progressLinear {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+</style>
+

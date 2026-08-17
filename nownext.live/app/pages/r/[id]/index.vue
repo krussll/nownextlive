@@ -72,6 +72,7 @@
         :title="space.title"
         :now="space.now"
         :nowGroup="space.group"
+        :nowDuration="space.nowDuration"
         :next="space.next"
         :class="spaces.length < 3 ? 'w-full max-w-md' : 'w-full'"
       />
@@ -167,6 +168,7 @@ const spaces = computed(() => {
       title: space.title,
       now: nowSession ? nowSession.title : '',
       group: nowSession ? nowSession.subtitle : '',
+      nowDuration: nowSession ? nowSession.duration : null,
       next: nextSession ? nextSession.title : ''
     }
   })
