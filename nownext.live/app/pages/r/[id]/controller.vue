@@ -300,14 +300,23 @@
 
                       <!-- Duration Trigger with Popover -->
                       <div class="text-xs flex items-center">
-                        <span class="text-slate-400 font-medium mr-1">Duration</span>
                         <PopoverTimerEdit
                           :session="session"
                           @update:session="updateSession(item, session, $event)"
                           @apply-to-all="applyTimerToAllSessions(item, $event)"
                         >
-                          <button type="button" class="text-slate-700 hover:text-indigo-600 font-mono font-semibold underline decoration-dotted cursor-pointer">
-                            {{ formatSessionDuration(session) }}
+                          <button
+                            type="button"
+                            class="group/duration flex flex-col items-start cursor-pointer focus:outline-none py-0.5"
+                          >
+                            <span
+                              class="text-[10px] font-semibold uppercase tracking-wider text-slate-400 opacity-0 group-hover/duration:opacity-100 transition-opacity duration-150 select-none leading-none mb-0.5"
+                            >
+                              Duration
+                            </span>
+                            <span class="text-slate-700 group-hover/duration:text-indigo-600 font-mono font-semibold underline decoration-dotted leading-none">
+                              {{ formatSessionDuration(session) }}
+                            </span>
                           </button>
                         </PopoverTimerEdit>
                       </div>

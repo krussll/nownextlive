@@ -79,23 +79,32 @@
         </div>
 
         <!-- Actions Footer -->
-        <div class="flex items-center justify-end gap-2 pt-2 border-t border-gray-100">
-          <UButton
-            label="Cancel"
-            color="neutral"
-            variant="outline"
-            size="sm"
-            class="cursor-pointer"
-            @click="closePopover"
-          />
-          <UButton
-            label="Save"
-            color="primary"
-            variant="outline"
-            size="sm"
-            class="cursor-pointer font-semibold text-emerald-600 border-emerald-500 hover:bg-emerald-50"
-            @click="saveTimer"
-          />
+        <div class="flex items-center justify-between pt-2 border-t border-gray-100">
+          <button
+            type="button"
+            class="text-xs text-indigo-600 hover:text-indigo-800 font-medium cursor-pointer underline decoration-dotted transition-colors"
+            @click="handleApplyToAll"
+          >
+            Apply to all
+          </button>
+          <div class="flex items-center gap-2">
+            <UButton
+              label="Cancel"
+              color="neutral"
+              variant="outline"
+              size="sm"
+              class="cursor-pointer"
+              @click="closePopover"
+            />
+            <UButton
+              label="Save"
+              color="primary"
+              variant="outline"
+              size="sm"
+              class="cursor-pointer font-semibold text-emerald-600 border-emerald-500 hover:bg-emerald-50"
+              @click="saveTimer"
+            />
+          </div>
         </div>
       </div>
     </template>
