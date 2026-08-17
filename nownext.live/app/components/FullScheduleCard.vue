@@ -20,15 +20,10 @@
         ]"
       >
         <!-- Time Column -->
-        <div class="w-16 flex-shrink-0">
-             <!-- We might want to add time here if available in the future, 
-                  but based on ScheduleCard, time seems to be separate or computed.
-                  For now, I'll stick to the structure of the data I have. 
-                  If 'time' is needed, I'd need to know where it comes from.
-                  ScheduleCard has 'nowTime' prop. 
-                  I will assume for now we just list title and subtitle.
-             -->
-             <span v-if="session.id === nowSessionId" class="text-xs uppercase tracking-widest font-semibold text-slate-300">Now</span>
+        <div class="w-20 flex-shrink-0">
+          <span v-if="session.id === nowSessionId" class="text-xs uppercase tracking-widest font-semibold text-slate-300 block">Now</span>
+          <span v-if="session.time" class="font-mono text-xs block" :class="session.id === nowSessionId ? 'text-slate-300' : 'text-slate-500'">{{ session.time }}</span>
+          <span v-if="session.duration" class="font-mono text-xs block font-medium" :class="session.id === nowSessionId ? 'text-slate-300' : 'text-slate-400'">{{ session.duration }}</span>
         </div>
 
         <!-- Content Column -->

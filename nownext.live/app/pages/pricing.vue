@@ -60,6 +60,7 @@ useHead({
             '@type': 'Product',
             name: `NowNext ${plan.title} Plan`,
             description: plan.description,
+            image: 'https://nownext.live/imgs/logo.png',
             offers: {
               '@type': 'Offer',
               price: plan.price.replace('£', ''),

@@ -83,6 +83,7 @@ export type Database = {
       sessions: {
         Row: {
           created_at: string | null
+          duration: string | null
           id: string
           order_index: number | null
           space_id: string
@@ -92,6 +93,7 @@ export type Database = {
         }
         Insert: {
           created_at?: string | null
+          duration?: string | null
           id: string
           order_index?: number | null
           space_id: string
@@ -101,6 +103,7 @@ export type Database = {
         }
         Update: {
           created_at?: string | null
+          duration?: string | null
           id?: string
           order_index?: number | null
           space_id?: string

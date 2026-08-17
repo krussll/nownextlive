@@ -276,7 +276,7 @@
                   <div
                     v-for="session in item.sessions"
                     :key="session.id"
-                    class="flex justify-between items-center border rounded-none bg-gradient-to-br from-slate-50 to-slate-100 relative overflow-hidden group"
+                    class="flex justify-between items-center border rounded-none bg-gradient-to-br from-slate-50 to-slate-100 relative overflow-hidden group py-1"
                   >
                     <!-- Left Colour Bar -->
                     <div
@@ -288,29 +288,61 @@
                       "
                     ></div>
 
-                    <!-- Drag Handle -->
-                    <div class="pl-4 py-5 flex items-center">
-                       <UIcon
+                    <!-- Session Info & Timer Edit Trigger Row -->
+                    <div class="flex items-center space-x-3 pl-4 py-2 flex-wrap sm:flex-nowrap gap-y-1">
+                      <!-- Drag Handle -->
+                      <UIcon
                         name="i-heroicons-bars-3"
-                        class="w-4 h-4 text-gray-300 session-drag-handle cursor-move hover:text-gray-500"
+                        class="w-4 h-4 text-gray-300 session-drag-handle cursor-move hover:text-gray-500 flex-shrink-0"
                       />
-                    </div>
+                      
+                      <span class="text-slate-300 text-xs hidden sm:inline">|</span>
 
-                    <!-- Session Number -->
-                    <div class="pl-2 py-5">
-                      <p class="font-semibold text-slate-700">
-                        {{ session.title }}
-                      </p>
-                      <p
-                        v-if="session.subtitle"
-                        class="text-xs text-slate-500 mt-0.5"
-                      >
-                        {{ session.subtitle }}
-                      </p>
+                      <!-- Duration Trigger with Popover -->
+                      <div class="text-xs flex items-center">
+                        <PopoverTimerEdit
+                          :session="session"
+                          @update:session="updateSession(item, session, $event)"
+                          @apply-to-all="applyTimerToAllSessions(item, $event)"
+                        >
+                          <button
+                            type="button"
+                            class="group/duration flex flex-col items-start cursor-pointer focus:outline-none py-0.5"
+                          >
+                            <span
+                              class="text-[10px] font-semibold uppercase tracking-wider text-slate-400 opacity-0 group-hover/duration:opacity-100 transition-opacity duration-150 select-none leading-none mb-0.5"
+                            >
+                              Duration
+                            </span>
+                            <span class="text-slate-700 group-hover/duration:text-indigo-600 font-mono font-semibold underline decoration-dotted leading-none">
+                              {{ formatSessionDuration(session) }}
+                            </span>
+                          </button>
+                        </PopoverTimerEdit>
+                      </div>
+
+                      <span class="text-slate-300 text-xs hidden sm:inline">|</span>
+
+                      <!-- Title + Edit Icon Trigger -->
+                      <div class="flex items-center gap-1.5">
+                        <PopoverTimerEdit
+                          :session="session"
+                          @update:session="updateSession(item, session, $event)"
+                          @apply-to-all="applyTimerToAllSessions(item, $event)"
+                        >
+                          <button type="button" class="font-semibold text-slate-700 hover:text-indigo-600 cursor-pointer flex items-center gap-1">
+                            <span>{{ session.title }}</span>
+                            <UIcon name="i-heroicons-pencil-20-solid" class="w-3.5 h-3.5 text-slate-400 hover:text-slate-600" />
+                          </button>
+                        </PopoverTimerEdit>
+                        <span v-if="session.subtitle" class="text-xs text-slate-400 font-normal">
+                          ({{ session.subtitle }})
+                        </span>
+                      </div>
                     </div>
 
                     <!-- Controls -->
-                    <div class="flex items-center space-x-2 pr-4">
+                    <div class="flex items-center space-x-2 pr-4 flex-shrink-0">
                       <Modal
                         :title="`Editing session ${session.title}`"
                         :data="session"
@@ -434,6 +466,7 @@ import ModalSpace from '~/components/ModalSpaceEdit.vue'
 import ModalEventEdit from '~/components/ModalEventEdit.vue'
 import ModalConfirm from '~/components/ModalConfirm.vue'
 import ModalOutputLinks from '~/components/ModalOutputLinks.vue'
+import PopoverTimerEdit from '~/components/PopoverTimerEdit.vue'
 import { createClient } from '@supabase/supabase-js'
 import Sortable from 'sortablejs'
 
@@ -686,7 +719,8 @@ const addSession = (space) => {
     id: generateId(),
     title: 'New Session',
     subtitle: '',
-    time: ''
+    time: '',
+    duration: ''
   })
   saveEvent()
 }
@@ -774,6 +808,33 @@ const updateSession = (space, session, newSession) => {
     space.sessions[index] = newSession
     saveEvent()
   }
+}
+
+const formatSessionDuration = (session) => {
+  if (!session.duration) return 'Add time'
+  const parts = session.duration.split(':')
+  if (parts.length === 3) {
+    if (parts[0] === '00') {
+      return `${parts[1]}:${parts[2]}`
+    }
+    return session.duration
+  }
+  return session.duration
+}
+
+const applyTimerToAllSessions = (space, settings) => {
+  if (!space.sessions || space.sessions.length === 0) return
+  space.sessions.forEach((s) => {
+    s.duration = settings.duration
+    s.timerType = settings.timerType
+    s.appearance = settings.appearance
+  })
+  saveEvent()
+  toast.add({
+    title: 'Applied to space',
+    description: `Timer settings applied to all sessions in ${space.title}`,
+    color: 'emerald'
+  })
 }
 
 const setLive = (space, sessionId) => {

@@ -42,13 +42,13 @@
 </template>
 
 <script setup>
-let open = ref(false)
+const open = ref(false)
 
 const props = defineProps(['title', 'data'])
 const emit = defineEmits(['update:session'])
 
 const error = ref('')
-const localData = ref({ title: '', subtitle: '', time: '' })
+const localData = ref({ title: '', subtitle: '', time: '', duration: '', timerType: 'duration', appearance: 'countdown' })
 
 watch(open, (newValue) => {
   if (newValue) {
@@ -58,7 +58,7 @@ watch(open, (newValue) => {
   }
 })
 
-function submit(e) {
+function submit() {
   if (!localData.value.title || localData.value.title.trim() === '') {
     error.value = 'Title is required'
     return
