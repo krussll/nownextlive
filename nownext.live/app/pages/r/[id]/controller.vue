@@ -300,14 +300,23 @@
 
                       <!-- Duration Trigger with Popover -->
                       <div class="text-xs flex items-center">
-                        <span class="text-slate-400 font-medium mr-1">Duration</span>
                         <PopoverTimerEdit
                           :session="session"
                           @update:session="updateSession(item, session, $event)"
                           @apply-to-all="applyTimerToAllSessions(item, $event)"
                         >
-                          <button type="button" class="text-slate-700 hover:text-indigo-600 font-mono font-semibold underline decoration-dotted cursor-pointer">
-                            {{ formatSessionDuration(session) }}
+                          <button
+                            type="button"
+                            class="group/duration flex flex-col items-start cursor-pointer focus:outline-none py-0.5"
+                          >
+                            <span
+                              class="text-[10px] font-semibold uppercase tracking-wider text-slate-400 opacity-0 group-hover/duration:opacity-100 transition-opacity duration-150 select-none leading-none mb-0.5"
+                            >
+                              Duration
+                            </span>
+                            <span class="text-slate-700 group-hover/duration:text-indigo-600 font-mono font-semibold underline decoration-dotted leading-none">
+                              {{ formatSessionDuration(session) }}
+                            </span>
                           </button>
                         </PopoverTimerEdit>
                       </div>
@@ -316,16 +325,16 @@
 
                       <!-- Title + Edit Icon Trigger -->
                       <div class="flex items-center gap-1.5">
-                        <PopoverTimerEdit
-                          :session="session"
+                        <Modal
+                          :title="`Editing session ${session.title}`"
+                          :data="session"
                           @update:session="updateSession(item, session, $event)"
-                          @apply-to-all="applyTimerToAllSessions(item, $event)"
                         >
                           <button type="button" class="font-semibold text-slate-700 hover:text-indigo-600 cursor-pointer flex items-center gap-1">
                             <span>{{ session.title }}</span>
                             <UIcon name="i-heroicons-pencil-20-solid" class="w-3.5 h-3.5 text-slate-400 hover:text-slate-600" />
                           </button>
-                        </PopoverTimerEdit>
+                        </Modal>
                         <span v-if="session.subtitle" class="text-xs text-slate-400 font-normal">
                           ({{ session.subtitle }})
                         </span>
@@ -710,7 +719,8 @@ const addSession = (space) => {
     id: generateId(),
     title: 'New Session',
     subtitle: '',
-    time: ''
+    time: '',
+    duration: ''
   })
   saveEvent()
 }

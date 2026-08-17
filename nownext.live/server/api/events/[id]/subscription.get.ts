@@ -21,7 +21,7 @@ export default defineEventHandler(async (event) => {
         .eq('id', eventId)
         .single()
 
-    if (eventError || !eventRow) {
+    if (eventError || !eventRow || !eventRow.user_id) {
         const subLevel = "free"
         return {
             subscriptionLevel: subLevel,
