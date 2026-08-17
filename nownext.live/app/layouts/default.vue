@@ -109,6 +109,17 @@
               <p class="text-sm text-gray-500">
                 A real-time event and sports scheduling platform that shows what is happening now and what is coming next across multiple screens. Any internet connected device can use it.
               </p>
+              <div class="flex items-center gap-3">
+                <ULink
+                  to="https://www.youtube.com/@nownextlive"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="YouTube Channel"
+                  class="text-gray-400 hover:text-red-600 transition-colors flex items-center justify-center"
+                >
+                  <UIcon name="i-lucide-youtube" class="w-5 h-5" />
+                </ULink>
+              </div>
             </div>
 
             <!-- Column 2: Product -->
@@ -163,6 +174,16 @@
               <ULink to="/privacy" class="hover:text-gray-600">Privacy Policy</ULink>
               <span>&bull;</span>
               <ULink to="/terms" class="hover:text-gray-600">Terms & Conditions</ULink>
+              <span>&bull;</span>
+              <ULink
+                to="https://www.youtube.com/@nownextlive"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="YouTube Channel"
+                class="hover:text-red-600 transition-colors inline-flex items-center"
+              >
+                <UIcon name="i-lucide-youtube" class="w-4 h-4" />
+              </ULink>
               <span>&bull;</span>
               <span>Made in England</span>
             </div>
