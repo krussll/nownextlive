@@ -22,7 +22,7 @@
           >
             Now
           </p>
-          <span v-if="nowTime" class="font-mono">{{ nowTime }}</span>
+          <span v-if="formattedNowTime" class="font-mono">{{ formattedNowTime }}</span>
         </div>
         <div class="flex-auto">
           <p class="text-xl font-semibold leading-tight">{{ now }}</p>
@@ -55,8 +55,8 @@
           >
             Next
           </p>
-          <span v-if="nextTime" class="font-mono text-slate-600">{{
-            nextTime
+          <span v-if="formattedNextTime" class="font-mono text-slate-600">{{
+            formattedNextTime
           }}</span>
         </div>
         <div class="flex-auto">
@@ -83,12 +83,50 @@ const props = defineProps({
   title: String,
   now: String,
   nowGroup: String,
-  nowTime: String,
+  nowTime: [String, Object],
   nowDuration: String,
   next: String,
   nextGroup: String,
-  nextTime: String
+  nextTime: [String, Object]
 })
+
+function formatDisplayTime(timeVal) {
+  if (!timeVal) return ''
+  let obj = timeVal
+  if (typeof timeVal === 'string') {
+    const trimmed = timeVal.trim()
+    if (trimmed.startsWith('{') && trimmed.endsWith('}')) {
+      try {
+        obj = JSON.parse(trimmed)
+      } catch (e) {
+        obj = timeVal
+      }
+    } else {
+      const parts = trimmed.split(':')
+      if (parts.length >= 2) {
+        const h = String(parseInt(parts[0], 10) || 0).padStart(2, '0')
+        const m = String(parseInt(parts[1], 10) || 0).padStart(2, '0')
+        return `${h}:${m}`
+      }
+      return trimmed
+    }
+  }
+
+  if (typeof obj === 'object' && obj !== null) {
+    const hourVal = obj.hour ?? obj.hours ?? obj.h
+    const minVal = obj.minute ?? obj.minutes ?? obj.m
+    if (hourVal !== undefined || minVal !== undefined) {
+      const h = String(parseInt(hourVal, 10) || 0).padStart(2, '0')
+      const m = String(parseInt(minVal, 10) || 0).padStart(2, '0')
+      return `${h}:${m}`
+    }
+  }
+
+  return String(timeVal)
+}
+
+const formattedNowTime = computed(() => formatDisplayTime(props.nowTime))
+const formattedNextTime = computed(() => formatDisplayTime(props.nextTime))
 
 const durationSeconds = computed(() => {
   if (!props.nowDuration || typeof props.nowDuration !== 'string') return 0

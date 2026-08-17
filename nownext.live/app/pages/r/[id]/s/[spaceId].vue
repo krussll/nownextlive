@@ -104,8 +104,8 @@
                 <span class="inline-block px-3 py-1 text-xs uppercase tracking-widest font-bold bg-emerald-500 text-slate-950 mb-3">
                   NOW
                 </span>
-                <p v-if="spaceDisplay.nowTime" class="font-mono text-slate-300 text-sm mb-1">
-                  {{ spaceDisplay.nowTime }}
+                <p v-if="formattedNowTime" class="font-mono text-slate-300 text-sm mb-1">
+                  {{ formattedNowTime }}
                 </p>
                 <h3 class="text-3xl md:text-4xl font-bold leading-tight">
                   {{ spaceDisplay.now }}
@@ -137,8 +137,8 @@
                 <span class="inline-block px-3 py-1 text-xs uppercase tracking-widest font-bold bg-slate-300 text-slate-800 mb-2">
                   NEXT
                 </span>
-                <p v-if="spaceDisplay.nextTime" class="font-mono text-slate-500 text-sm mb-1">
-                  {{ spaceDisplay.nextTime }}
+                <p v-if="formattedNextTime" class="font-mono text-slate-500 text-sm mb-1">
+                  {{ formattedNextTime }}
                 </p>
                 <h4 class="text-2xl md:text-3xl font-semibold text-slate-800 leading-tight">
                   {{ spaceDisplay.next }}
@@ -264,6 +264,44 @@ const spaceDisplay = computed(() => {
     nextTime: nextSession ? (nextSession.time) : ''
   }
 })
+
+function formatDisplayTime(timeVal) {
+  if (!timeVal) return ''
+  let obj = timeVal
+  if (typeof timeVal === 'string') {
+    const trimmed = timeVal.trim()
+    if (trimmed.startsWith('{') && trimmed.endsWith('}')) {
+      try {
+        obj = JSON.parse(trimmed)
+      } catch (e) {
+        obj = timeVal
+      }
+    } else {
+      const parts = trimmed.split(':')
+      if (parts.length >= 2) {
+        const h = String(parseInt(parts[0], 10) || 0).padStart(2, '0')
+        const m = String(parseInt(parts[1], 10) || 0).padStart(2, '0')
+        return `${h}:${m}`
+      }
+      return trimmed
+    }
+  }
+
+  if (typeof obj === 'object' && obj !== null) {
+    const hourVal = obj.hour ?? obj.hours ?? obj.h
+    const minVal = obj.minute ?? obj.minutes ?? obj.m
+    if (hourVal !== undefined || minVal !== undefined) {
+      const h = String(parseInt(hourVal, 10) || 0).padStart(2, '0')
+      const m = String(parseInt(minVal, 10) || 0).padStart(2, '0')
+      return `${h}:${m}`
+    }
+  }
+
+  return String(timeVal)
+}
+
+const formattedNowTime = computed(() => formatDisplayTime(spaceDisplay.value.nowTime))
+const formattedNextTime = computed(() => formatDisplayTime(spaceDisplay.value.nextTime))
 
 const nowDurationSeconds = computed(() => {
   const durationStr = spaceDisplay.value.nowDuration

@@ -60,12 +60,50 @@ watch(open, (newValue) => {
   }
 })
 
+function formatTimeToHHMM(timeVal) {
+  if (!timeVal) return ''
+  let obj = timeVal
+  if (typeof timeVal === 'string') {
+    const trimmed = timeVal.trim()
+    if (trimmed.startsWith('{') && trimmed.endsWith('}')) {
+      try {
+        obj = JSON.parse(trimmed)
+      } catch (e) {
+        obj = timeVal
+      }
+    } else {
+      const parts = trimmed.split(':')
+      if (parts.length >= 2) {
+        const h = String(parseInt(parts[0], 10) || 0).padStart(2, '0')
+        const m = String(parseInt(parts[1], 10) || 0).padStart(2, '0')
+        return `${h}:${m}`
+      }
+      return trimmed
+    }
+  }
+
+  if (typeof obj === 'object' && obj !== null) {
+    const hourVal = obj.hour ?? obj.hours ?? obj.h
+    const minVal = obj.minute ?? obj.minutes ?? obj.m
+    if (hourVal !== undefined || minVal !== undefined) {
+      const h = String(parseInt(hourVal, 10) || 0).padStart(2, '0')
+      const m = String(parseInt(minVal, 10) || 0).padStart(2, '0')
+      return `${h}:${m}`
+    }
+  }
+
+  return String(timeVal)
+}
+
 function submit() {
   if (!localData.value.title || localData.value.title.trim() === '') {
     error.value = 'Title is required'
     return
   }
   error.value = ''
+  if (localData.value.time) {
+    localData.value.time = formatTimeToHHMM(localData.value.time)
+  }
   emit('update:session', localData.value)
   open.value = false
 }

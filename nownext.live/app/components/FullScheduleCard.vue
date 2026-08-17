@@ -22,7 +22,7 @@
         <!-- Time Column -->
         <div class="w-20 flex-shrink-0">
           <span v-if="session.id === nowSessionId" class="text-xs uppercase tracking-widest font-semibold text-slate-300 block">Now</span>
-          <span v-if="session.time" class="font-mono text-xs block" :class="session.id === nowSessionId ? 'text-slate-300' : 'text-slate-500'">{{ session.time }}</span>
+          <span v-if="session.time" class="font-mono text-xs block" :class="session.id === nowSessionId ? 'text-slate-300' : 'text-slate-500'">{{ formatDisplayTime(session.time) }}</span>
         </div>
 
         <!-- Content Column -->
@@ -68,6 +68,41 @@ defineProps({
   },
   nowSessionId: String
 })
+
+function formatDisplayTime(timeVal) {
+  if (!timeVal) return ''
+  let obj = timeVal
+  if (typeof timeVal === 'string') {
+    const trimmed = timeVal.trim()
+    if (trimmed.startsWith('{') && trimmed.endsWith('}')) {
+      try {
+        obj = JSON.parse(trimmed)
+      } catch (e) {
+        obj = timeVal
+      }
+    } else {
+      const parts = trimmed.split(':')
+      if (parts.length >= 2) {
+        const h = String(parseInt(parts[0], 10) || 0).padStart(2, '0')
+        const m = String(parseInt(parts[1], 10) || 0).padStart(2, '0')
+        return `${h}:${m}`
+      }
+      return trimmed
+    }
+  }
+
+  if (typeof obj === 'object' && obj !== null) {
+    const hourVal = obj.hour ?? obj.hours ?? obj.h
+    const minVal = obj.minute ?? obj.minutes ?? obj.m
+    if (hourVal !== undefined || minVal !== undefined) {
+      const h = String(parseInt(hourVal, 10) || 0).padStart(2, '0')
+      const m = String(parseInt(minVal, 10) || 0).padStart(2, '0')
+      return `${h}:${m}`
+    }
+  }
+
+  return String(timeVal)
+}
 
 function getSessionDurationSeconds(durationStr) {
   if (!durationStr || typeof durationStr !== 'string') return 0
