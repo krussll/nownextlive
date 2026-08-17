@@ -1,10 +1,37 @@
--- Migration: Add duration column to sessions table and update RPC functions get_event and update_full_event
+-- Migration: Fix column types, FK constraints, add duration column, and update RPC functions
 
 -- 1. Add duration column to public.sessions table
 ALTER TABLE public.sessions 
 ADD COLUMN IF NOT EXISTS duration text;
 
--- 2. Update get_event RPC stored procedure to include duration field in session objects
+-- 2. Ensure all primary and foreign key ID columns are of type text to support custom string IDs
+-- Drop existing foreign key constraints first to allow type changes if needed
+ALTER TABLE public.spaces DROP CONSTRAINT IF EXISTS spaces_now_session_id_fkey;
+ALTER TABLE public.spaces DROP CONSTRAINT IF EXISTS spaces_event_id_fkey;
+ALTER TABLE public.sessions DROP CONSTRAINT IF EXISTS sessions_space_id_fkey;
+
+-- Convert ID columns to text type
+ALTER TABLE public.events ALTER COLUMN id TYPE text USING id::text;
+ALTER TABLE public.spaces ALTER COLUMN id TYPE text USING id::text;
+ALTER TABLE public.spaces ALTER COLUMN event_id TYPE text USING event_id::text;
+ALTER TABLE public.spaces ALTER COLUMN now_session_id TYPE text USING now_session_id::text;
+ALTER TABLE public.sessions ALTER COLUMN id TYPE text USING id::text;
+ALTER TABLE public.sessions ALTER COLUMN space_id TYPE text USING space_id::text;
+
+-- Re-create foreign key constraints
+ALTER TABLE public.spaces 
+  ADD CONSTRAINT spaces_event_id_fkey 
+  FOREIGN KEY (event_id) REFERENCES public.events(id) ON DELETE CASCADE;
+
+ALTER TABLE public.spaces 
+  ADD CONSTRAINT spaces_now_session_id_fkey 
+  FOREIGN KEY (now_session_id) REFERENCES public.sessions(id) ON DELETE SET NULL;
+
+ALTER TABLE public.sessions 
+  ADD CONSTRAINT sessions_space_id_fkey 
+  FOREIGN KEY (space_id) REFERENCES public.spaces(id) ON DELETE CASCADE;
+
+-- 3. Update get_event RPC stored procedure to include duration field in session objects
 CREATE OR REPLACE FUNCTION public.get_event(event_id text)
 RETURNS json
 LANGUAGE plpgsql
@@ -58,7 +85,7 @@ BEGIN
 END;
 $$;
 
--- 3. Update update_full_event RPC stored procedure to save duration to public.sessions
+-- 4. Update update_full_event RPC stored procedure to safely upsert event, spaces, and sessions
 CREATE OR REPLACE FUNCTION public.update_full_event(payload json)
 RETURNS text
 LANGUAGE plpgsql
@@ -92,20 +119,19 @@ BEGIN
         ELSE v_space.value->>'now'
       END;
 
-      INSERT INTO public.spaces (id, event_id, title, now_session_id, order_index)
+      -- Step A: Insert/update space without setting now_session_id first (to avoid FK race conditions)
+      INSERT INTO public.spaces (id, event_id, title, order_index)
       VALUES (
         v_space.value->>'id',
         v_event_id,
         v_space.value->>'title',
-        v_now_session_id,
         v_space_order
       )
       ON CONFLICT (id) DO UPDATE SET
         title = EXCLUDED.title,
-        now_session_id = EXCLUDED.now_session_id,
         order_index = EXCLUDED.order_index;
 
-      -- Upsert sessions for this space
+      -- Step B: Upsert sessions for this space
       v_session_order := 0;
       IF v_space.value->'sessions' IS NOT NULL THEN
         FOR v_session IN SELECT * FROM json_array_elements(v_space.value->'sessions')
@@ -131,6 +157,12 @@ BEGIN
             space_id = EXCLUDED.space_id;
         END LOOP;
       END IF;
+
+      -- Step C: Update now_session_id after sessions exist
+      UPDATE public.spaces
+      SET now_session_id = v_now_session_id
+      WHERE id = v_space.value->>'id';
+
     END LOOP;
   END IF;
 
