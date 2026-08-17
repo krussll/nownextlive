@@ -451,6 +451,7 @@
     <ModalOutputLinks
       v-model:open="showOutputLinksModal"
       :event-id="eventId"
+      :spaces="event?.spaces || []"
     />
   </UContainer>
 </template>
