@@ -1,37 +1,16 @@
--- Migration: Fix column types, FK constraints, add duration column, and update RPC functions
+-- Migration: Add duration column to sessions table and update RPC functions get_event and update_full_event
 
 -- 1. Add duration column to public.sessions table
 ALTER TABLE public.sessions 
 ADD COLUMN IF NOT EXISTS duration text;
 
--- 2. Ensure all primary and foreign key ID columns are of type text to support custom string IDs
--- Drop existing foreign key constraints first to allow type changes if needed
-ALTER TABLE public.spaces DROP CONSTRAINT IF EXISTS spaces_now_session_id_fkey;
-ALTER TABLE public.spaces DROP CONSTRAINT IF EXISTS spaces_event_id_fkey;
-ALTER TABLE public.sessions DROP CONSTRAINT IF EXISTS sessions_space_id_fkey;
+-- 2. Drop any existing overloaded stored procedures to eliminate ambiguity
+DROP FUNCTION IF EXISTS public.get_event(text);
+DROP FUNCTION IF EXISTS public.get_event(json);
+DROP FUNCTION IF EXISTS public.update_full_event(json);
+DROP FUNCTION IF EXISTS public.update_full_event(jsonb);
 
--- Convert ID columns to text type
-ALTER TABLE public.events ALTER COLUMN id TYPE text USING id::text;
-ALTER TABLE public.spaces ALTER COLUMN id TYPE text USING id::text;
-ALTER TABLE public.spaces ALTER COLUMN event_id TYPE text USING event_id::text;
-ALTER TABLE public.spaces ALTER COLUMN now_session_id TYPE text USING now_session_id::text;
-ALTER TABLE public.sessions ALTER COLUMN id TYPE text USING id::text;
-ALTER TABLE public.sessions ALTER COLUMN space_id TYPE text USING space_id::text;
-
--- Re-create foreign key constraints
-ALTER TABLE public.spaces 
-  ADD CONSTRAINT spaces_event_id_fkey 
-  FOREIGN KEY (event_id) REFERENCES public.events(id) ON DELETE CASCADE;
-
-ALTER TABLE public.spaces 
-  ADD CONSTRAINT spaces_now_session_id_fkey 
-  FOREIGN KEY (now_session_id) REFERENCES public.sessions(id) ON DELETE SET NULL;
-
-ALTER TABLE public.sessions 
-  ADD CONSTRAINT sessions_space_id_fkey 
-  FOREIGN KEY (space_id) REFERENCES public.spaces(id) ON DELETE CASCADE;
-
--- 3. Update get_event RPC stored procedure to include duration field in session objects
+-- 3. Re-create get_event RPC stored procedure to include duration field in session objects
 CREATE OR REPLACE FUNCTION public.get_event(event_id text)
 RETURNS json
 LANGUAGE plpgsql
@@ -85,7 +64,7 @@ BEGIN
 END;
 $$;
 
--- 4. Update update_full_event RPC stored procedure to safely upsert event, spaces, and sessions
+-- 4. Re-create update_full_event RPC stored procedure to save duration to public.sessions
 CREATE OR REPLACE FUNCTION public.update_full_event(payload json)
 RETURNS text
 LANGUAGE plpgsql
@@ -97,7 +76,6 @@ DECLARE
   v_session record;
   v_space_order int := 0;
   v_session_order int := 0;
-  v_now_session_id text;
 BEGIN
   v_event_id := payload->>'id';
 
@@ -112,26 +90,20 @@ BEGIN
     LOOP
       v_space_order := v_space_order + 1;
       
-      -- Safely sanitize now_session_id (convert '', 'null', 'undefined', or NULL to SQL NULL)
-      v_now_session_id := CASE 
-        WHEN v_space.value->>'now' IS NULL THEN NULL
-        WHEN v_space.value->>'now' IN ('', 'null', 'undefined', 'NULL') THEN NULL
-        ELSE v_space.value->>'now'
-      END;
-
-      -- Step A: Insert/update space without setting now_session_id first (to avoid FK race conditions)
-      INSERT INTO public.spaces (id, event_id, title, order_index)
+      INSERT INTO public.spaces (id, event_id, title, now_session_id, order_index)
       VALUES (
         v_space.value->>'id',
         v_event_id,
         v_space.value->>'title',
+        NULLIF(v_space.value->>'now', ''),
         v_space_order
       )
       ON CONFLICT (id) DO UPDATE SET
         title = EXCLUDED.title,
+        now_session_id = EXCLUDED.now_session_id,
         order_index = EXCLUDED.order_index;
 
-      -- Step B: Upsert sessions for this space
+      -- Upsert sessions for this space
       v_session_order := 0;
       IF v_space.value->'sessions' IS NOT NULL THEN
         FOR v_session IN SELECT * FROM json_array_elements(v_space.value->'sessions')
@@ -143,9 +115,9 @@ BEGIN
             v_session.value->>'id',
             v_space.value->>'id',
             v_session.value->>'title',
-            NULLIF(NULLIF(NULLIF(v_session.value->>'subtitle', ''), 'null'), 'undefined'),
-            NULLIF(NULLIF(NULLIF(v_session.value->>'time', ''), 'null'), 'undefined'),
-            NULLIF(NULLIF(NULLIF(v_session.value->>'duration', ''), 'null'), 'undefined'),
+            v_session.value->>'subtitle',
+            v_session.value->>'time',
+            v_session.value->>'duration',
             v_session_order
           )
           ON CONFLICT (id) DO UPDATE SET
@@ -157,12 +129,6 @@ BEGIN
             space_id = EXCLUDED.space_id;
         END LOOP;
       END IF;
-
-      -- Step C: Update now_session_id after sessions exist
-      UPDATE public.spaces
-      SET now_session_id = v_now_session_id
-      WHERE id = v_space.value->>'id';
-
     END LOOP;
   END IF;
 
