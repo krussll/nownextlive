@@ -70,6 +70,7 @@ DECLARE
   v_session record;
   v_space_order int := 0;
   v_session_order int := 0;
+  v_now_session_id text;
 BEGIN
   v_event_id := payload->>'id';
 
@@ -84,12 +85,19 @@ BEGIN
     LOOP
       v_space_order := v_space_order + 1;
       
+      -- Safely sanitize now_session_id (convert '', 'null', 'undefined', or NULL to SQL NULL)
+      v_now_session_id := CASE 
+        WHEN v_space.value->>'now' IS NULL THEN NULL
+        WHEN v_space.value->>'now' IN ('', 'null', 'undefined', 'NULL') THEN NULL
+        ELSE v_space.value->>'now'
+      END;
+
       INSERT INTO public.spaces (id, event_id, title, now_session_id, order_index)
       VALUES (
         v_space.value->>'id',
         v_event_id,
         v_space.value->>'title',
-        NULLIF(v_space.value->>'now', ''),
+        v_now_session_id,
         v_space_order
       )
       ON CONFLICT (id) DO UPDATE SET
@@ -109,9 +117,9 @@ BEGIN
             v_session.value->>'id',
             v_space.value->>'id',
             v_session.value->>'title',
-            v_session.value->>'subtitle',
-            v_session.value->>'time',
-            v_session.value->>'duration',
+            NULLIF(NULLIF(NULLIF(v_session.value->>'subtitle', ''), 'null'), 'undefined'),
+            NULLIF(NULLIF(NULLIF(v_session.value->>'time', ''), 'null'), 'undefined'),
+            NULLIF(NULLIF(NULLIF(v_session.value->>'duration', ''), 'null'), 'undefined'),
             v_session_order
           )
           ON CONFLICT (id) DO UPDATE SET
