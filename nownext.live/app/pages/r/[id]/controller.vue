@@ -719,7 +719,8 @@ const addSession = (space) => {
     id: generateId(),
     title: 'New Session',
     subtitle: '',
-    time: ''
+    time: '',
+    duration: ''
   })
   saveEvent()
 }
