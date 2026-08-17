@@ -7,7 +7,7 @@ export default defineEventHandler(async (_event) => {
     const { data: { user } } = await supabase.auth.getUser()
 
     // Not logged in → return default
-    if (!user) {
+    if (!user || !user.id) {
         const subLevel = 'free'
         return {
             subscription: subLevel,
