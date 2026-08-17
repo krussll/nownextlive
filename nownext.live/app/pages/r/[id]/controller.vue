@@ -325,16 +325,16 @@
 
                       <!-- Title + Edit Icon Trigger -->
                       <div class="flex items-center gap-1.5">
-                        <PopoverTimerEdit
-                          :session="session"
+                        <Modal
+                          :title="`Editing session ${session.title}`"
+                          :data="session"
                           @update:session="updateSession(item, session, $event)"
-                          @apply-to-all="applyTimerToAllSessions(item, $event)"
                         >
                           <button type="button" class="font-semibold text-slate-700 hover:text-indigo-600 cursor-pointer flex items-center gap-1">
                             <span>{{ session.title }}</span>
                             <UIcon name="i-heroicons-pencil-20-solid" class="w-3.5 h-3.5 text-slate-400 hover:text-slate-600" />
                           </button>
-                        </PopoverTimerEdit>
+                        </Modal>
                         <span v-if="session.subtitle" class="text-xs text-slate-400 font-normal">
                           ({{ session.subtitle }})
                         </span>
@@ -451,6 +451,7 @@
     <ModalOutputLinks
       v-model:open="showOutputLinksModal"
       :event-id="eventId"
+      :spaces="event?.spaces || []"
     />
   </UContainer>
 </template>
