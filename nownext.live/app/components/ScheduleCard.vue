@@ -37,8 +37,8 @@
           class="absolute bottom-0 left-0 right-0 h-1.5 bg-slate-800 overflow-hidden"
         >
           <div
-            class="h-full bg-emerald-500 rounded-r shadow-[0_0_8px_rgba(16,185,129,0.6)]"
-            :style="{ animation: `progressLinear ${durationSeconds}s linear forwards` }"
+            class="h-full bg-emerald-500 rounded-r shadow-[0_0_8px_rgba(16,185,129,0.6)] progress-bar-fill"
+            :style="{ animationDuration: `${durationSeconds}s` }"
             :key="`sc-progress-${now}-${nowDuration}`"
           />
         </div>
@@ -112,12 +112,19 @@ const durationSeconds = computed(() => {
 
 <style scoped>
 @keyframes progressLinear {
-  from {
+  0% {
     width: 0%;
   }
-  to {
+  100% {
     width: 100%;
   }
+}
+
+.progress-bar-fill {
+  width: 0%;
+  animation-name: progressLinear;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
 }
 </style>
 

@@ -121,8 +121,8 @@
                 class="absolute bottom-0 left-0 right-0 h-2 bg-slate-800 overflow-hidden"
               >
                 <div
-                  class="h-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.6)]"
-                  :style="{ animation: `progressLinear ${nowDurationSeconds}s linear forwards` }"
+                  class="h-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.6)] progress-bar-fill"
+                  :style="{ animationDuration: `${nowDurationSeconds}s` }"
                   :key="`space-progress-${spaceDisplay.now}-${spaceDisplay.nowDuration}`"
                 />
               </div>
@@ -257,11 +257,11 @@ const spaceDisplay = computed(() => {
   return {
     now: nowSession ? nowSession.title : '',
     group: nowSession ? nowSession.subtitle : '',
-    nowTime: nowSession ? (nowSession.time || (nowSession.duration ? `${nowSession.duration} min` : '')) : '',
+    nowTime: nowSession ? (nowSession.time) : '',
     nowDuration: nowSession ? nowSession.duration : null,
     next: nextSession ? nextSession.title : '',
     nextGroup: nextSession ? nextSession.subtitle : '',
-    nextTime: nextSession ? (nextSession.time || (nextSession.duration ? `${nextSession.duration} min` : '')) : ''
+    nextTime: nextSession ? (nextSession.time) : ''
   }
 })
 
@@ -357,11 +357,18 @@ onUnmounted(() => {
 
 <style scoped>
 @keyframes progressLinear {
-  from {
+  0% {
     width: 0%;
   }
-  to {
+  100% {
     width: 100%;
   }
+}
+
+.progress-bar-fill {
+  width: 0%;
+  animation-name: progressLinear;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
 }
 </style>

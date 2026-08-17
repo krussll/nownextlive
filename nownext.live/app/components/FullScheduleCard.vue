@@ -23,7 +23,6 @@
         <div class="w-20 flex-shrink-0">
           <span v-if="session.id === nowSessionId" class="text-xs uppercase tracking-widest font-semibold text-slate-300 block">Now</span>
           <span v-if="session.time" class="font-mono text-xs block" :class="session.id === nowSessionId ? 'text-slate-300' : 'text-slate-500'">{{ session.time }}</span>
-          <span v-if="session.duration" class="font-mono text-xs block font-medium" :class="session.id === nowSessionId ? 'text-slate-300' : 'text-slate-400'">{{ session.duration }}</span>
         </div>
 
         <!-- Content Column -->
@@ -45,8 +44,8 @@
           class="absolute bottom-0 left-0 right-0 h-1.5 bg-slate-800 overflow-hidden"
         >
           <div
-            class="h-full bg-emerald-500 rounded-r shadow-[0_0_8px_rgba(16,185,129,0.6)]"
-            :style="{ animation: `progressLinear ${getSessionDurationSeconds(session.duration)}s linear forwards` }"
+            class="h-full bg-emerald-500 rounded-r shadow-[0_0_8px_rgba(16,185,129,0.6)] progress-bar-fill"
+            :style="{ animationDuration: `${getSessionDurationSeconds(session.duration)}s` }"
             :key="`fsc-progress-${session.id}-${session.duration}`"
           />
         </div>
@@ -92,12 +91,19 @@ function getSessionDurationSeconds(durationStr) {
 
 <style scoped>
 @keyframes progressLinear {
-  from {
+  0% {
     width: 0%;
   }
-  to {
+  100% {
     width: 100%;
   }
+}
+
+.progress-bar-fill {
+  width: 0%;
+  animation-name: progressLinear;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
 }
 </style>
 
