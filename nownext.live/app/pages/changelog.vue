@@ -16,9 +16,51 @@ interface Release {
 
 const releases: Release[] = [
   {
+    version: 'Version 1.6.4-beta',
+    date: '2026-08-18',
+    isLatest: true,
+    features: [
+      {
+        title: 'Product Alternative Comparison Pages',
+        description: 'Launched `/compare` hub and dedicated comparison guides for Stagetimer, Tournify, YoDeck, and Google Slides alternatives with structured metadata.'
+      },
+      {
+        title: 'Visual Session Duration Progress Bar',
+        description: 'Added live animated progress bars on public display cards and screens showing elapsed session duration.'
+      },
+      {
+        title: 'YouTube Channel Link in Footer Navigation',
+        description: 'Added YouTube channel icon button link to the global site footer bar.'
+      },
+      {
+        title: 'Dedicated Changelog & Release Notes Page',
+        description: 'Created interactive `/changelog` route detailing full version history and feature updates.'
+      }
+    ],
+    improvements: [
+      {
+        title: 'Standardized HH:MM Time Formatting',
+        description: 'Formatted session time strings consistently in HH:MM format across display templates, controller, and session edit modal.'
+      },
+      {
+        title: 'Compare Navigation Column',
+        description: 'Added Compare section to website footer navigation for instant access to product comparison guides.'
+      }
+    ],
+    fixes: [
+      {
+        title: 'Duration Progress Bar Keyframe Animation',
+        description: 'Resolved CSS keyframe animation scoping issues for smooth progress bar rendering.'
+      },
+      {
+        title: 'Session Edit Time Object Handling',
+        description: 'Fixed UInputTime value passing in ModalSessionEdit to ensure valid Time instance handling.'
+      }
+    ]
+  },
+  {
     version: 'Version 1.6.3-beta',
     date: '2026-08-17',
-    isLatest: true,
     features: [
       {
         title: 'Single-Space Output Display Route',
@@ -186,7 +228,7 @@ useHead({
             Changelog
           </h1>
           <span class="px-3 py-1 text-xs font-semibold uppercase tracking-wider text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950 border border-indigo-200 dark:border-indigo-800">
-            Latest: v1.6.3-beta
+            Latest: v1.6.4-beta
           </span>
         </div>
         <p class="text-gray-600 dark:text-gray-300 text-base leading-relaxed border-b border-gray-100 dark:border-gray-800 pb-4">

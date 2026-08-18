@@ -102,7 +102,7 @@
     >
       <template #top>
         <UContainer>
-          <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
             <!-- Column 1: Logo & Description -->
             <div class="flex flex-col gap-4">
               <SiteLogo />
@@ -133,7 +133,19 @@
               </div>
             </div>
 
-            <!-- Column 3: Use Cases -->
+            <!-- Column 3: Compare -->
+            <div class="flex flex-col gap-4">
+              <h3 class="font-semibold text-gray-900">Compare</h3>
+              <div class="flex flex-col gap-2 text-sm text-gray-600">
+                <ULink to="/compare/stagetimer-alternative" class="hover:text-indigo-600">Stagetimer Alternative</ULink>
+                <ULink to="/compare/yodeck-alternative" class="hover:text-indigo-600">Yodeck Alternative</ULink>
+                <ULink to="/compare/tournify-alternative" class="hover:text-indigo-600">Tournify Alternative</ULink>
+                <ULink to="/compare/google-slides-alternative" class="hover:text-indigo-600">Google Slides Alternative</ULink>
+                <ULink to="/compare" class="hover:text-indigo-600 font-medium text-indigo-600">View All Comparisons &rarr;</ULink>
+              </div>
+            </div>
+
+            <!-- Column 4: Use Cases -->
             <div class="flex flex-col gap-4">
               <h3 class="font-semibold text-gray-900">Use Cases</h3>
               <div class="flex flex-col gap-2 text-sm text-gray-600">
@@ -146,7 +158,7 @@
               </div>
             </div>
 
-            <!-- Column 4: Resources -->
+            <!-- Column 5: Resources -->
             <div class="flex flex-col gap-4">
               <h3 class="font-semibold text-gray-900">Resources</h3>
               <div class="flex flex-col gap-2 text-sm text-gray-600">
