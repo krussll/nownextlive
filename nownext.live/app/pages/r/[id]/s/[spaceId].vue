@@ -98,14 +98,14 @@
             <!-- NOW Section -->
             <div
               v-if="spaceDisplay.now"
-              class="bg-slate-900 text-white px-8 py-10 flex flex-col md:flex-row gap-6 md:items-center justify-between"
+              class="bg-slate-900 text-white px-8 py-10 flex flex-col md:flex-row gap-6 md:items-center justify-between relative overflow-hidden"
             >
               <div>
                 <span class="inline-block px-3 py-1 text-xs uppercase tracking-widest font-bold bg-emerald-500 text-slate-950 mb-3">
                   NOW
                 </span>
-                <p v-if="spaceDisplay.nowTime" class="font-mono text-slate-300 text-sm mb-1">
-                  {{ spaceDisplay.nowTime }}
+                <p v-if="formattedNowTime" class="font-mono text-slate-300 text-sm mb-1">
+                  {{ formattedNowTime }}
                 </p>
                 <h3 class="text-3xl md:text-4xl font-bold leading-tight">
                   {{ spaceDisplay.now }}
@@ -113,6 +113,18 @@
                 <p v-if="spaceDisplay.group" class="text-lg text-slate-300 mt-2 font-medium">
                   {{ spaceDisplay.group }}
                 </p>
+              </div>
+
+              <!-- Duration Progress Bar -->
+              <div
+                v-if="nowDurationSeconds > 0"
+                class="absolute bottom-0 left-0 right-0 h-2 bg-slate-800 overflow-hidden"
+              >
+                <div
+                  class="h-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.6)] progress-bar-fill"
+                  :style="{ animationDuration: `${nowDurationSeconds}s` }"
+                  :key="`space-progress-${spaceDisplay.now}-${spaceDisplay.nowDuration}`"
+                />
               </div>
             </div>
 
@@ -125,8 +137,8 @@
                 <span class="inline-block px-3 py-1 text-xs uppercase tracking-widest font-bold bg-slate-300 text-slate-800 mb-2">
                   NEXT
                 </span>
-                <p v-if="spaceDisplay.nextTime" class="font-mono text-slate-500 text-sm mb-1">
-                  {{ spaceDisplay.nextTime }}
+                <p v-if="formattedNextTime" class="font-mono text-slate-500 text-sm mb-1">
+                  {{ formattedNextTime }}
                 </p>
                 <h4 class="text-2xl md:text-3xl font-semibold text-slate-800 leading-tight">
                   {{ spaceDisplay.next }}
@@ -245,11 +257,70 @@ const spaceDisplay = computed(() => {
   return {
     now: nowSession ? nowSession.title : '',
     group: nowSession ? nowSession.subtitle : '',
-    nowTime: nowSession ? (nowSession.time || (nowSession.duration ? `${nowSession.duration} min` : '')) : '',
+    nowTime: nowSession ? (nowSession.time) : '',
+    nowDuration: nowSession ? nowSession.duration : null,
     next: nextSession ? nextSession.title : '',
     nextGroup: nextSession ? nextSession.subtitle : '',
-    nextTime: nextSession ? (nextSession.time || (nextSession.duration ? `${nextSession.duration} min` : '')) : ''
+    nextTime: nextSession ? (nextSession.time) : ''
   }
+})
+
+function formatDisplayTime(timeVal) {
+  if (!timeVal) return ''
+  let obj = timeVal
+  if (typeof timeVal === 'string') {
+    const trimmed = timeVal.trim()
+    if (trimmed.startsWith('{') && trimmed.endsWith('}')) {
+      try {
+        obj = JSON.parse(trimmed)
+      } catch (e) {
+        obj = timeVal
+      }
+    } else {
+      const parts = trimmed.split(':')
+      if (parts.length >= 2) {
+        const h = String(parseInt(parts[0], 10) || 0).padStart(2, '0')
+        const m = String(parseInt(parts[1], 10) || 0).padStart(2, '0')
+        return `${h}:${m}`
+      }
+      return trimmed
+    }
+  }
+
+  if (typeof obj === 'object' && obj !== null) {
+    const hourVal = obj.hour ?? obj.hours ?? obj.h
+    const minVal = obj.minute ?? obj.minutes ?? obj.m
+    if (hourVal !== undefined || minVal !== undefined) {
+      const h = String(parseInt(hourVal, 10) || 0).padStart(2, '0')
+      const m = String(parseInt(minVal, 10) || 0).padStart(2, '0')
+      return `${h}:${m}`
+    }
+  }
+
+  return String(timeVal)
+}
+
+const formattedNowTime = computed(() => formatDisplayTime(spaceDisplay.value.nowTime))
+const formattedNextTime = computed(() => formatDisplayTime(spaceDisplay.value.nextTime))
+
+const nowDurationSeconds = computed(() => {
+  const durationStr = spaceDisplay.value.nowDuration
+  if (!durationStr || typeof durationStr !== 'string') return 0
+  const parts = durationStr.trim().split(':')
+  if (parts.length === 3) {
+    const h = parseInt(parts[0], 10) || 0
+    const m = parseInt(parts[1], 10) || 0
+    const s = parseInt(parts[2], 10) || 0
+    return h * 3600 + m * 60 + s
+  } else if (parts.length === 2) {
+    const m = parseInt(parts[0], 10) || 0
+    const s = parseInt(parts[1], 10) || 0
+    return m * 60 + s
+  } else if (parts.length === 1) {
+    const val = parseInt(parts[0], 10) || 0
+    return val * 60
+  }
+  return 0
 })
 
 useHead(() => ({
@@ -321,3 +392,21 @@ onUnmounted(() => {
   myChannel.untrack()
 })
 </script>
+
+<style scoped>
+@keyframes progressLinear {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.progress-bar-fill {
+  width: 0%;
+  animation-name: progressLinear;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+</style>
