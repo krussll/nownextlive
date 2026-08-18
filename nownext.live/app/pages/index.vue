@@ -40,19 +40,30 @@ const features = [
 
 const steps = [
   {
-    number: '01',
-    title: 'Create Your Event',
-    description: 'Set up your courts, rooms, or stages in under 2 minutes. Add initial match or session schedules effortlessly.'
+    number: '1.',
+    title: 'Create an event',
+    description:
+      'Create an event with multiple court or space schedules and match sessions. When logged-in, your event saves all your settings even if you close your browser.',
+    image: '/imgs/demos/step-create-event.png',
+    actionText: 'Create Event',
+    actionIcon: 'i-lucide-arrow-right',
+    reverse: false
   },
   {
-    number: '02',
-    title: 'Launch Display Links',
-    description: 'Open the read-only display link on Smart TVs, iPads, monitors, or share a QR code for participant phones.'
+    number: '2.',
+    title: 'Share the link',
+    description:
+      'Simply share your unique "Viewer" link via Email, WhatsApp, or QR-Code with participants and spectators. You can see all connected devices with connection status.',
+    image: '/imgs/demos/step-share-links.png',
+    reverse: true
   },
   {
-    number: '03',
-    title: 'Update Live & Relax',
-    description: 'Advance match statuses or adjust times from your phone. Every screen across the venue updates in real time.'
+    number: '3.',
+    title: 'Update live & control screens',
+    description:
+      'Advance sessions or adjust match times from your controller device. Every screen across the venue updates instantly with zero latency.',
+    image: '/imgs/demos/step-update-live.png',
+    reverse: false
   }
 ]
 
@@ -196,22 +207,9 @@ useHead({
             </p>
           </div>
 
-          <!-- Hero Right Column (Live Display Interactive Preview) -->
+          <!-- Hero Right Column (Workflow Diagram: Controller -> Cloud -> Output) -->
           <div class="lg:col-span-6 relative">
-            <div class="relative mx-auto max-w-xl bg-gray-950 p-2 sm:p-3 shadow-2xl border border-gray-800">
-              <div class="flex items-center justify-between px-3 py-2 bg-gray-900 border-b border-gray-800 text-xs text-gray-400 font-mono">
-                <div class="flex items-center gap-2">
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-                  <span>LIVE COURT DISPLAY BOARD</span>
-                </div>
-                <span>nownext.live/r/demo</span>
-              </div>
-              <img
-                src="/imgs/demos/nownextlive-display.png"
-                alt="NowNext.live Real-Time Display Screen"
-                class="w-full h-auto object-cover"
-              />
-            </div>
+            <HeroWorkflowDiagram />
           </div>
         </div>
       </UContainer>
@@ -226,36 +224,133 @@ useHead({
       </UContainer>
     </section>
 
-    <!-- How It Works (3-Step Guide) -->
-    <section id="how-it-works" class="py-20 md:py-28 border-b border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900">
+    <!-- Browser Showcase Section -->
+    <section class="py-20 md:py-28 border-b border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900">
       <UContainer class="max-w-6xl mx-auto px-4 md:px-8 space-y-16">
-        <div class="text-center space-y-4 max-w-2xl mx-auto">
-          <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
-            SIMPLE SETUP
-          </span>
-          <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">
-            How NowNext.live Works in 3 Steps
+        <div class="text-center space-y-4 max-w-3xl mx-auto">
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+            It runs in the browser
           </h2>
-          <p class="text-gray-600 dark:text-gray-300">
-            Up and running across your entire venue in less than 10 minutes.
+          <p class="text-base md:text-lg text-gray-600 dark:text-gray-300 font-normal leading-relaxed">
+            NowNext.live is a real-time event and sports schedule display system that runs directly in the browser. Any internet-connected device can use it. It works on all screen sizes, even tablets and phones.
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-end pt-4">
+          <!-- Left Column: Laptop Mockup (Controller View) -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="relative mx-auto max-w-2xl group">
+              <!-- Laptop Screen Frame -->
+              <div class="relative bg-gray-950 rounded-t-2xl border-[10px] border-gray-800 dark:border-gray-700 shadow-2xl overflow-hidden">
+                <!-- Camera dot bar -->
+                <div class="h-4 bg-gray-900 flex items-center justify-center border-b border-gray-800">
+                  <div class="w-2 h-2 rounded-full bg-gray-700"></div>
+                </div>
+                <img
+                  src="/imgs/demos/nownextlive-controller.png"
+                  alt="What the controller sees on NowNext.live"
+                  class="w-full h-auto object-cover"
+                />
+              </div>
+              <!-- Laptop Keyboard Base -->
+              <div class="relative h-4 bg-gradient-to-r from-gray-300 via-gray-200 to-gray-300 dark:from-gray-700 dark:via-gray-600 dark:to-gray-700 rounded-b-xl border-t border-gray-400 dark:border-gray-600 shadow-lg mx-auto w-[104%] -ml-[2%] flex justify-center items-center">
+                <div class="w-16 h-1 bg-gray-400 dark:bg-gray-500 rounded-full"></div>
+              </div>
+              <!-- Shadow -->
+              <div class="h-4 bg-black/10 dark:bg-black/40 blur-md rounded-full max-w-[90%] mx-auto mt-1"></div>
+            </div>
+
+            <div class="text-center space-y-2 pt-2">
+              <UIcon name="i-lucide-arrow-up" class="w-5 h-5 mx-auto text-gray-400 dark:text-gray-500" />
+              <p class="text-base font-bold text-gray-900 dark:text-white">
+                What the controller sees
+              </p>
+            </div>
+          </div>
+
+          <!-- Right Column: Tablet Mockup (Audience / Speaker Display View) -->
+          <div class="lg:col-span-5 space-y-6">
+            <div class="relative mx-auto max-w-md group">
+              <!-- Tablet Device Frame -->
+              <div class="relative bg-gray-950 rounded-3xl border-[12px] border-gray-800 dark:border-gray-700 shadow-2xl p-1 overflow-hidden">
+                <!-- Tablet Camera Dot -->
+                <div class="absolute top-3 left-1/2 -translate-x-1/2 z-10 w-2.5 h-2.5 rounded-full bg-gray-800 border border-gray-700"></div>
+                <div class="rounded-2xl overflow-hidden">
+                  <img
+                    src="/imgs/demos/nownextlive-display.png"
+                    alt="What the audience sees on NowNext.live"
+                    class="w-full h-auto object-cover"
+                  />
+                </div>
+              </div>
+              <!-- Tablet Shadow -->
+              <div class="h-4 bg-black/15 dark:bg-black/50 blur-lg rounded-full max-w-[80%] mx-auto mt-2"></div>
+            </div>
+
+            <div class="text-center space-y-2 pt-2">
+              <UIcon name="i-lucide-arrow-up" class="w-5 h-5 mx-auto text-gray-400 dark:text-gray-500" />
+              <p class="text-base font-bold text-gray-900 dark:text-white">
+                What the audience sees
+              </p>
+            </div>
+          </div>
+        </div>
+      </UContainer>
+    </section>
+
+    <!-- How It Works (3-Step Guide) -->
+    <section id="how-it-works" class="py-20 md:py-28 border-b border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900">
+      <UContainer class="max-w-6xl mx-auto px-4 md:px-8 space-y-20">
+        <div class="text-center space-y-4 max-w-3xl mx-auto">
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+            Get started <br class="sm:hidden" />
+            in three easy steps
+          </h2>
+        </div>
+
+        <div class="space-y-20 lg:space-y-28">
           <div
             v-for="step in steps"
-            :key="step.number"
-            class="p-8 border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 space-y-4 relative group hover:border-indigo-500 transition-colors"
+            :key="step.title"
+            class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center"
           >
-            <div class="text-5xl font-black text-indigo-600 dark:text-indigo-400 font-mono">
-              {{ step.number }}
+            <!-- Content Column -->
+            <div
+              :class="[
+                'lg:col-span-6 space-y-4',
+                step.reverse ? 'lg:order-2' : 'lg:order-1'
+              ]"
+            >
+              <h3 class="text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white leading-tight">
+                {{ step.number }} {{ step.title }}
+              </h3>
+              <p class="text-base md:text-lg text-gray-600 dark:text-gray-300 font-normal leading-relaxed">
+                {{ step.description }}
+              </p>
             </div>
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white">
-              {{ step.title }}
-            </h3>
-            <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
-              {{ step.description }}
-            </p>
+
+            <!-- UI Preview Column -->
+            <div
+              :class="[
+                'lg:col-span-6 relative',
+                step.reverse ? 'lg:order-1' : 'lg:order-2'
+              ]"
+            >
+              <div class="relative group mx-auto max-w-xl">
+                <!-- Action button overlay for step 1 matching reference style -->
+                <div v-if="step.actionText" class="absolute -left-4 top-1/2 -translate-y-1/2 z-20 hidden sm:flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm px-4 py-2.5 rounded-lg shadow-xl border border-emerald-400/30 transition-transform group-hover:scale-105">
+                  <span>{{ step.actionText }}</span>
+                  <UIcon :name="step.actionIcon" class="w-4 h-4" />
+                </div>
+                <div class="p-2 sm:p-3 bg-gray-950 rounded-2xl border border-gray-800 shadow-2xl overflow-hidden">
+                  <img
+                    :src="step.image"
+                    :alt="step.title"
+                    class="w-full h-auto object-cover rounded-xl"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </UContainer>
