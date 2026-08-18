@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// HeroWorkflowDiagram.vue - Visualizing Controller -> Cloud -> Output workflow using real project screenshots
+// HeroWorkflowDiagram.vue - Controller -> Cloud -> Output workflow with inline Cloud Sync node
 </script>
 
 <template>
@@ -14,11 +14,11 @@
       <!-- Relative Container for Workflow Diagram -->
       <div class="relative z-10 min-h-[460px] sm:min-h-[500px] flex flex-col justify-between">
 
-        <!-- Top Right: Cloud Node -->
-        <div class="flex justify-end pr-4 sm:pr-8 relative pt-1 z-20">
+        <!-- Inline Cloud Sync Node (Positioned inline with the flow line junction) -->
+        <div class="absolute top-[12%] right-[10%] sm:right-[14%] z-20">
           <div class="relative flex flex-col items-center group">
-            <div class="relative p-3.5 bg-white/90 dark:bg-neutral-800/90 backdrop-blur-md rounded-2xl border border-stone-200/90 dark:border-neutral-700 shadow-lg transition-transform hover:scale-105">
-              <svg class="w-10 h-10 sm:w-12 sm:h-12 text-stone-700 dark:text-stone-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <div class="relative p-3.5 bg-white/95 dark:bg-neutral-800/95 backdrop-blur-md rounded-2xl border border-stone-200/90 dark:border-neutral-700 shadow-xl transition-transform hover:scale-105">
+              <svg class="w-9 h-9 sm:w-11 sm:h-11 text-stone-700 dark:text-stone-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
               </svg>
             </div>
@@ -30,7 +30,7 @@
         <svg class="absolute inset-0 w-full h-full pointer-events-none z-0" viewBox="0 0 600 500" fill="none">
           <!-- Cloud -> Controller -->
           <path
-            d="M 470 80 C 370 80, 260 110, 240 150"
+            d="M 450 115 C 370 115, 270 135, 240 160"
             stroke="#525252"
             stroke-width="2.5"
             stroke-dasharray="5 5"
@@ -39,7 +39,7 @@
           />
           <!-- Cloud -> Display Board -->
           <path
-            d="M 490 95 C 495 180, 420 270, 410 320"
+            d="M 480 155 C 480 230, 420 310, 400 350"
             stroke="#525252"
             stroke-width="2.5"
             stroke-dasharray="5 5"
@@ -48,7 +48,7 @@
           />
           <!-- Cloud -> Branch right to edge -->
           <path
-            d="M 525 80 C 555 90, 580 105, 600 120"
+            d="M 525 110 C 555 115, 580 130, 600 145"
             stroke="#525252"
             stroke-width="2.5"
             stroke-dasharray="5 5"
@@ -57,7 +57,7 @@
           />
           <!-- Controller -> Display Board -->
           <path
-            d="M 330 270 L 330 320"
+            d="M 330 280 L 330 350"
             stroke="#525252"
             stroke-width="2.5"
             stroke-dasharray="5 5"
@@ -67,7 +67,7 @@
         </svg>
 
         <!-- Middle Left: Controller Screenshot Mockup -->
-        <div class="relative z-20 max-w-[320px] sm:max-w-[370px] ml-0 sm:ml-2 -mt-2 mb-4">
+        <div class="relative z-20 max-w-[310px] sm:max-w-[360px] ml-0 sm:ml-2 mt-4 sm:mt-6 mb-4">
           <div class="bg-gray-950 rounded-xl p-2 shadow-2xl border border-gray-800 transition-transform hover:-translate-y-0.5">
             <!-- Window Header -->
             <div class="flex items-center justify-between px-3 py-1.5 bg-gray-900 border-b border-gray-800 text-[10px] text-gray-400 font-mono">
@@ -95,7 +95,7 @@
 
         <!-- Bottom Right: Live Output Display Screenshot Mockup -->
         <div class="relative z-20 flex justify-end pr-0 sm:pr-2 mt-auto">
-          <div class="relative w-full max-w-[340px] sm:max-w-[400px] bg-gray-950 rounded-xl p-2 shadow-2xl border border-gray-800 transition-transform hover:-translate-y-0.5">
+          <div class="relative w-full max-w-[330px] sm:max-w-[390px] bg-gray-950 rounded-xl p-2 shadow-2xl border border-gray-800 transition-transform hover:-translate-y-0.5">
             <!-- Window Header -->
             <div class="flex items-center justify-between px-3 py-1.5 bg-gray-900 border-b border-gray-800 text-[10px] text-gray-400 font-mono">
               <div class="flex items-center gap-2">
