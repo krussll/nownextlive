@@ -226,6 +226,80 @@ useHead({
       </UContainer>
     </section>
 
+    <!-- Browser Showcase Section -->
+    <section class="py-20 md:py-28 border-b border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900">
+      <UContainer class="max-w-6xl mx-auto px-4 md:px-8 space-y-16">
+        <div class="text-center space-y-4 max-w-3xl mx-auto">
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+            It runs in the browser
+          </h2>
+          <p class="text-base md:text-lg text-gray-600 dark:text-gray-300 font-normal leading-relaxed">
+            NowNext.live is a real-time event and sports schedule display system that runs directly in the browser. Any internet-connected device can use it. It works on all screen sizes, even tablets and phones.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-end pt-4">
+          <!-- Left Column: Laptop Mockup (Controller View) -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="relative mx-auto max-w-2xl group">
+              <!-- Laptop Screen Frame -->
+              <div class="relative bg-gray-950 rounded-t-2xl border-[10px] border-gray-800 dark:border-gray-700 shadow-2xl overflow-hidden">
+                <!-- Camera dot bar -->
+                <div class="h-4 bg-gray-900 flex items-center justify-center border-b border-gray-800">
+                  <div class="w-2 h-2 rounded-full bg-gray-700"></div>
+                </div>
+                <img
+                  src="/imgs/demos/nownextlive-controller.png"
+                  alt="What the controller sees on NowNext.live"
+                  class="w-full h-auto object-cover"
+                />
+              </div>
+              <!-- Laptop Keyboard Base -->
+              <div class="relative h-4 bg-gradient-to-r from-gray-300 via-gray-200 to-gray-300 dark:from-gray-700 dark:via-gray-600 dark:to-gray-700 rounded-b-xl border-t border-gray-400 dark:border-gray-600 shadow-lg mx-auto w-[104%] -ml-[2%] flex justify-center items-center">
+                <div class="w-16 h-1 bg-gray-400 dark:bg-gray-500 rounded-full"></div>
+              </div>
+              <!-- Shadow -->
+              <div class="h-4 bg-black/10 dark:bg-black/40 blur-md rounded-full max-w-[90%] mx-auto mt-1"></div>
+            </div>
+
+            <div class="text-center space-y-2 pt-2">
+              <UIcon name="i-lucide-arrow-up" class="w-5 h-5 mx-auto text-gray-400 dark:text-gray-500" />
+              <p class="text-base font-bold text-gray-900 dark:text-white">
+                What the controller sees
+              </p>
+            </div>
+          </div>
+
+          <!-- Right Column: Tablet Mockup (Audience / Speaker Display View) -->
+          <div class="lg:col-span-5 space-y-6">
+            <div class="relative mx-auto max-w-md group">
+              <!-- Tablet Device Frame -->
+              <div class="relative bg-gray-950 rounded-3xl border-[12px] border-gray-800 dark:border-gray-700 shadow-2xl p-1 overflow-hidden">
+                <!-- Tablet Camera Dot -->
+                <div class="absolute top-3 left-1/2 -translate-x-1/2 z-10 w-2.5 h-2.5 rounded-full bg-gray-800 border border-gray-700"></div>
+                <div class="rounded-2xl overflow-hidden">
+                  <img
+                    src="/imgs/demos/nownextlive-display.png"
+                    alt="What the audience sees on NowNext.live"
+                    class="w-full h-auto object-cover"
+                  />
+                </div>
+              </div>
+              <!-- Tablet Shadow -->
+              <div class="h-4 bg-black/15 dark:bg-black/50 blur-lg rounded-full max-w-[80%] mx-auto mt-2"></div>
+            </div>
+
+            <div class="text-center space-y-2 pt-2">
+              <UIcon name="i-lucide-arrow-up" class="w-5 h-5 mx-auto text-gray-400 dark:text-gray-500" />
+              <p class="text-base font-bold text-gray-900 dark:text-white">
+                What the audience sees
+              </p>
+            </div>
+          </div>
+        </div>
+      </UContainer>
+    </section>
+
     <!-- How It Works (3-Step Guide) -->
     <section id="how-it-works" class="py-20 md:py-28 border-b border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900">
       <UContainer class="max-w-6xl mx-auto px-4 md:px-8 space-y-16">
