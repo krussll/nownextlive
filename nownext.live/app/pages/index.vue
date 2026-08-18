@@ -40,19 +40,30 @@ const features = [
 
 const steps = [
   {
-    number: '01',
-    title: 'Create Your Event',
-    description: 'Set up your courts, rooms, or stages in under 2 minutes. Add initial match or session schedules effortlessly.'
+    number: '1.',
+    title: 'Create an event',
+    description:
+      'Create an event with multiple court or space schedules and match sessions. When logged-in, your event saves all your settings even if you close your browser.',
+    image: '/imgs/demos/step-create-event.png',
+    actionText: 'Create Event',
+    actionIcon: 'i-lucide-arrow-right',
+    reverse: false
   },
   {
-    number: '02',
-    title: 'Launch Display Links',
-    description: 'Open the read-only display link on Smart TVs, iPads, monitors, or share a QR code for participant phones.'
+    number: '2.',
+    title: 'Share the link',
+    description:
+      'Simply share your unique "Viewer" link via Email, WhatsApp, or QR-Code with participants and spectators. You can see all connected devices with connection status.',
+    image: '/imgs/demos/step-share-links.png',
+    reverse: true
   },
   {
-    number: '03',
-    title: 'Update Live & Relax',
-    description: 'Advance match statuses or adjust times from your phone. Every screen across the venue updates in real time.'
+    number: '3.',
+    title: 'Update live & control screens',
+    description:
+      'Advance sessions or adjust match times from your controller device. Every screen across the venue updates instantly with zero latency.',
+    image: '/imgs/demos/step-update-live.png',
+    reverse: false
   }
 ]
 
@@ -302,34 +313,57 @@ useHead({
 
     <!-- How It Works (3-Step Guide) -->
     <section id="how-it-works" class="py-20 md:py-28 border-b border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900">
-      <UContainer class="max-w-6xl mx-auto px-4 md:px-8 space-y-16">
-        <div class="text-center space-y-4 max-w-2xl mx-auto">
-          <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
-            SIMPLE SETUP
-          </span>
-          <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">
-            How NowNext.live Works in 3 Steps
+      <UContainer class="max-w-6xl mx-auto px-4 md:px-8 space-y-20">
+        <div class="text-center space-y-4 max-w-3xl mx-auto">
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+            Get started <br class="sm:hidden" />
+            in three easy steps
           </h2>
-          <p class="text-gray-600 dark:text-gray-300">
-            Up and running across your entire venue in less than 10 minutes.
-          </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="space-y-20 lg:space-y-28">
           <div
             v-for="step in steps"
-            :key="step.number"
-            class="p-8 border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 space-y-4 relative group hover:border-indigo-500 transition-colors"
+            :key="step.title"
+            class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center"
           >
-            <div class="text-5xl font-black text-indigo-600 dark:text-indigo-400 font-mono">
-              {{ step.number }}
+            <!-- Content Column -->
+            <div
+              :class="[
+                'lg:col-span-6 space-y-4',
+                step.reverse ? 'lg:order-2' : 'lg:order-1'
+              ]"
+            >
+              <h3 class="text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white leading-tight">
+                {{ step.number }} {{ step.title }}
+              </h3>
+              <p class="text-base md:text-lg text-gray-600 dark:text-gray-300 font-normal leading-relaxed">
+                {{ step.description }}
+              </p>
             </div>
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white">
-              {{ step.title }}
-            </h3>
-            <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
-              {{ step.description }}
-            </p>
+
+            <!-- UI Preview Column -->
+            <div
+              :class="[
+                'lg:col-span-6 relative',
+                step.reverse ? 'lg:order-1' : 'lg:order-2'
+              ]"
+            >
+              <div class="relative group mx-auto max-w-xl">
+                <!-- Action button overlay for step 1 matching reference style -->
+                <div v-if="step.actionText" class="absolute -left-4 top-1/2 -translate-y-1/2 z-20 hidden sm:flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm px-4 py-2.5 rounded-lg shadow-xl border border-emerald-400/30 transition-transform group-hover:scale-105">
+                  <span>{{ step.actionText }}</span>
+                  <UIcon :name="step.actionIcon" class="w-4 h-4" />
+                </div>
+                <div class="p-2 sm:p-3 bg-gray-950 rounded-2xl border border-gray-800 shadow-2xl overflow-hidden">
+                  <img
+                    :src="step.image"
+                    :alt="step.title"
+                    class="w-full h-auto object-cover rounded-xl"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </UContainer>
