@@ -100,16 +100,16 @@ const herolinks = ref([
 ])
 
 useSeoMeta({
-  title: 'NowNext.live - Real-Time Multi-Screen Event & Sports Schedule Display',
-  description: 'Show a live-updating schedule on every court, stage, or pitch while managing everything effortlessly from one phone or laptop. Runs in any browser with zero setup.',
-  ogTitle: 'NowNext.live - Real-Time Multi-Screen Event & Sports Schedule Display',
-  ogDescription: 'Show a live-updating schedule on every court, stage, or pitch while managing everything effortlessly from one phone or laptop.',
+  title: 'NowNext.live - Free Real-Time Digital Schedule & Now/Next Display Board',
+  description: 'Free real-time digital schedule & now/next display board for any event. Broadcast live-updating agendas, match schedules, and room boards across Smart TVs, tablets, and phones.',
+  ogTitle: 'NowNext.live - Free Real-Time Digital Schedule & Now/Next Display Board',
+  ogDescription: 'Free real-time digital schedule & now/next display board for any event. Show live-updating schedules across screens with zero setup.',
   ogImage: 'https://nownext.live/imgs/logo.png',
   ogUrl: 'https://nownext.live/',
   ogType: 'website',
   twitterCard: 'summary_large_image',
-  twitterTitle: 'NowNext.live - Real-Time Multi-Screen Event & Sports Schedule Display',
-  twitterDescription: 'Show a live-updating schedule on every court, stage, or pitch while managing everything effortlessly from one phone or laptop.'
+  twitterTitle: 'NowNext.live - Free Real-Time Digital Schedule & Now/Next Display Board',
+  twitterDescription: 'Free real-time digital schedule & now/next display board for any event. Show live-updating schedules across screens with zero setup.'
 })
 
 useHead({
