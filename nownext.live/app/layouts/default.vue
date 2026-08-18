@@ -1,112 +1,125 @@
 <template>
-  <UHeader>
-    <template #title>
-      <img src="/imgs/logo.png" alt="NowNext.live Logo" style="height: 35px" />
-    </template>
+  <div>
+    <UHeader>
+      <template #title>
+        <img src="/imgs/logo.png" alt="NowNext.live Logo" style="height: 35px" />
+      </template>
 
-    <UNavigationMenu
-      :items="items"
-      :ui="{
-        content: 'w-auto max-w-none',
-        childList: 'grid-cols-1 min-w-[260px]',
-        childItemLabel: 'whitespace-nowrap'
-      }"
-    />
-
-    <template #right>
-      <div v-if="user" class="flex gap-1.5">
-        <UButton
-          icon="i-lucide-user"
-          color="neutral"
-          variant="ghost"
-          to="/account"
-          class="lg:hidden"
-          size="lg"
-        />
-        <UButton
-          icon="i-lucide-log-out"
-          color="neutral"
-          variant="ghost"
-          @click="signOut"
-          class="lg:hidden"
-          size="lg"
-        />
-
-        <UButton
-          to="/account"
-          label="Account"
-          variant="ghost"
-          color="gray"
-          icon="i-heroicons-user-circle"
-        />
-        <UButton
-          label="Sign out"
-          color="neutral"
-          variant="outline"
-          @click="signOut"
-          size="lg"
-          class="hidden lg:inline-flex rounded-none font-semibold hover:shadow-lg"
-        />
-        <UButton
-          label="Start new"
-          to="/r/generate"
-          color="primary"
-          variant="solid"
-          size="lg"
-          class="hidden lg:inline-flex rounded-none font-semibold hover:shadow-lg ml-2"
-        />
-      </div>
-      <div class="flex gap-1.5" v-else>
-        <UButton
-        icon="i-lucide-log-in"
-        color="neutral"
-        variant="ghost"
-        to="/auth/login"
-        class="lg:hidden"
-        size="lg"
+      <UNavigationMenu
+        :items="items"
+        :ui="{
+          content: 'w-auto max-w-none',
+          childList: 'grid-cols-1 min-w-[260px]',
+          childItemLabel: 'whitespace-nowrap'
+        }"
       />
 
-      <UButton
-        label="Sign in"
-        color="neutral"
-        variant="outline"
-        to="/auth/login"
-        size="lg"
-        class="hidden lg:inline-flex rounded-none font-semibold hover:shadow-lg"
-      />
- 
-      <UButton
-        label="Try for free"
-        to="/r/generate"
-        color="primary"
-        variant="solid"
-        size="lg"
-        class="hidden lg:inline-flex rounded-none font-semibold hover:shadow-lg ml-2"
-      />
-      </div>
-    </template>
+      <template #right>
+        <div v-if="user" class="flex gap-1.5">
+          <UButton
+            icon="i-lucide-user"
+            color="neutral"
+            variant="ghost"
+            to="/account"
+            class="lg:hidden"
+            size="lg"
+          />
+          <UButton
+            icon="i-lucide-log-out"
+            color="neutral"
+            variant="ghost"
+            class="lg:hidden"
+            size="lg"
+            @click="signOut"
+          />
 
-    <template #body>
-      <UNavigationMenu :items="items" orientation="vertical" class="-mx-2.5" />
-    </template>
-  </UHeader>
-  <UMain>
-    <NuxtPage />
-  </UMain>
-  
+          <UButton
+            to="/account"
+            label="Account"
+            variant="ghost"
+            color="gray"
+            icon="i-heroicons-user-circle"
+          />
+          <UButton
+            label="Sign out"
+            color="neutral"
+            variant="outline"
+            size="lg"
+            class="hidden lg:inline-flex rounded-none font-semibold hover:shadow-lg"
+            @click="signOut"
+          />
+          <UButton
+            to="/r/generate"
+            label="Start new"
+            color="primary"
+            variant="solid"
+            size="lg"
+            class="hidden lg:inline-flex rounded-none font-semibold hover:shadow-lg ml-2"
+          />
+        </div>
+        <div v-else class="flex gap-1.5">
+          <UButton
+            icon="i-lucide-log-in"
+            color="neutral"
+            variant="ghost"
+            to="/auth/login"
+            class="lg:hidden"
+            size="lg"
+          />
+
+          <UButton
+            to="/auth/login"
+            label="Sign in"
+            color="neutral"
+            variant="outline"
+            size="lg"
+            class="hidden lg:inline-flex rounded-none font-semibold hover:shadow-lg"
+          />
+
+          <UButton
+            to="/r/generate"
+            label="Try for free"
+            color="primary"
+            variant="solid"
+            size="lg"
+            class="hidden lg:inline-flex rounded-none font-semibold hover:shadow-lg ml-2"
+          />
+        </div>
+      </template>
+
+      <template #body>
+        <UNavigationMenu :items="items" orientation="vertical" class="-mx-2.5" />
+      </template>
+    </UHeader>
+
+    <UMain>
+      <NuxtPage />
+    </UMain>
+
     <UFooter
       class="py-8 border-t border-gray-200"
       :ui="{ wrapper: 'border-none', top: 'py-4', bottom: 'py-2' }"
     >
       <template #top>
         <UContainer>
-          <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
             <!-- Column 1: Logo & Description -->
             <div class="flex flex-col gap-4">
               <SiteLogo />
               <p class="text-sm text-gray-500">
                 A real-time event and sports scheduling platform that shows what is happening now and what is coming next across multiple screens. Any internet connected device can use it.
               </p>
+              <div class="flex items-center gap-3">
+                <ULink
+                  to="https://www.youtube.com/@nownextlive"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="YouTube Channel"
+                  class="text-gray-400 hover:text-red-600 transition-colors flex items-center justify-center"
+                >
+                  <UIcon name="i-lucide-youtube" class="w-5 h-5" />
+                </ULink>
+              </div>
             </div>
 
             <!-- Column 2: Product -->
@@ -120,7 +133,19 @@
               </div>
             </div>
 
-            <!-- Column 3: Use Cases -->
+            <!-- Column 3: Compare -->
+            <div class="flex flex-col gap-4">
+              <h3 class="font-semibold text-gray-900">Compare</h3>
+              <div class="flex flex-col gap-2 text-sm text-gray-600">
+                <ULink to="/compare/stagetimer-alternative" class="hover:text-indigo-600">Stagetimer Alternative</ULink>
+                <ULink to="/compare/yodeck-alternative" class="hover:text-indigo-600">Yodeck Alternative</ULink>
+                <ULink to="/compare/tournify-alternative" class="hover:text-indigo-600">Tournify Alternative</ULink>
+                <ULink to="/compare/google-slides-alternative" class="hover:text-indigo-600">Google Slides Alternative</ULink>
+                <ULink to="/compare" class="hover:text-indigo-600 font-medium text-indigo-600">View All Comparisons &rarr;</ULink>
+              </div>
+            </div>
+
+            <!-- Column 4: Use Cases -->
             <div class="flex flex-col gap-4">
               <h3 class="font-semibold text-gray-900">Use Cases</h3>
               <div class="flex flex-col gap-2 text-sm text-gray-600">
@@ -133,12 +158,13 @@
               </div>
             </div>
 
-            <!-- Column 4: Resources -->
+            <!-- Column 5: Resources -->
             <div class="flex flex-col gap-4">
               <h3 class="font-semibold text-gray-900">Resources</h3>
               <div class="flex flex-col gap-2 text-sm text-gray-600">
                 <ULink to="/blog" class="hover:text-indigo-600">Blog & Articles</ULink>
                 <ULink to="/docs" class="hover:text-indigo-600">Documentation & Guides</ULink>
+                <ULink to="/changelog" class="hover:text-indigo-600">Changelog & Release Notes</ULink>
                 <ULink to="/contact" class="hover:text-indigo-600">Contact Support</ULink>
                 <ULink to="/pricing" class="hover:text-indigo-600">Plans & Pricing</ULink>
                 <ULink to="/about" class="hover:text-indigo-600">Why NowNext.live</ULink>
@@ -152,12 +178,24 @@
         <UContainer>
           <div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-400 pt-4 border-t border-gray-100">
             <div>
-              Version {{ config.public.version }}
+              <ULink to="/changelog" class="hover:text-gray-600">Version {{ config.public.version }}</ULink>
             </div>
             <div class="flex items-center gap-4">
+              <ULink to="/changelog" class="hover:text-gray-600">Changelog</ULink>
+              <span>&bull;</span>
               <ULink to="/privacy" class="hover:text-gray-600">Privacy Policy</ULink>
               <span>&bull;</span>
               <ULink to="/terms" class="hover:text-gray-600">Terms & Conditions</ULink>
+              <span>&bull;</span>
+              <ULink
+                to="https://www.youtube.com/@nownextlive"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="YouTube Channel"
+                class="hover:text-red-600 transition-colors inline-flex items-center"
+              >
+                <UIcon name="i-lucide-youtube" class="w-4 h-4" />
+              </ULink>
               <span>&bull;</span>
               <span>Made in England</span>
             </div>
@@ -165,6 +203,7 @@
         </UContainer>
       </template>
     </UFooter>
+  </div>
 </template>
 
 <script setup lang="ts">

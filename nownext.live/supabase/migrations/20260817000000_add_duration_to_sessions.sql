@@ -4,7 +4,13 @@
 ALTER TABLE public.sessions 
 ADD COLUMN IF NOT EXISTS duration text;
 
--- 2. Update get_event RPC stored procedure to include duration field in session objects
+-- 2. Drop any existing overloaded stored procedures to eliminate ambiguity
+DROP FUNCTION IF EXISTS public.get_event(text);
+DROP FUNCTION IF EXISTS public.get_event(json);
+DROP FUNCTION IF EXISTS public.update_full_event(json);
+DROP FUNCTION IF EXISTS public.update_full_event(jsonb);
+
+-- 3. Re-create get_event RPC stored procedure to include duration field in session objects
 CREATE OR REPLACE FUNCTION public.get_event(event_id text)
 RETURNS json
 LANGUAGE plpgsql
@@ -58,7 +64,7 @@ BEGIN
 END;
 $$;
 
--- 3. Update update_full_event RPC stored procedure to save duration to public.sessions
+-- 4. Re-create update_full_event RPC stored procedure to save duration to public.sessions
 CREATE OR REPLACE FUNCTION public.update_full_event(payload json)
 RETURNS text
 LANGUAGE plpgsql

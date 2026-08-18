@@ -38,6 +38,19 @@ export default defineContentConfig({
                 order: z.number().optional(),
                 draft: z.boolean().optional()
             })
+        }),
+        compare: defineCollection({
+            type: 'page',
+            source: 'compare/**/*.md',
+            schema: z.object({
+                date: z.string(),
+                image: z.string().optional(),
+                author: z.string().optional(),
+                tags: z.array(z.string()).optional(),
+                competitorName: z.string().optional(),
+                subtitle: z.string().optional(),
+                draft: z.boolean().optional()
+            })
         })
     }
 })
