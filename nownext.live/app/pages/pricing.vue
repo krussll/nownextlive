@@ -1,15 +1,15 @@
 <script setup lang="ts">
 useSeoMeta({
   title: 'Pricing & Plans | NowNext.live',
-  description: 'Simple, transparent pricing for NowNext.live real-time event & sports schedule display signage. Choose monthly subscription plans or 30-day single event access.',
-  ogTitle: 'NowNext.live Pricing & Plans - Real-Time Schedule Signage',
-  ogDescription: 'Flexible subscription and single event access for sports tournaments, conferences, and venue scheduling.',
+  description: 'Free real-time digital schedule & now/next display board plans. Simple, transparent pricing for single events, recurring venue schedules, and multi-screen display setups.',
+  ogTitle: 'NowNext.live Pricing & Plans - Free Real-Time Digital Schedule Board',
+  ogDescription: 'Flexible subscription and single event access for event organizers, venue directors, sports clubs, and conference producers.',
   ogImage: 'https://nownext.live/imgs/logo.png',
   ogUrl: 'https://nownext.live/pricing',
   ogType: 'website',
   twitterCard: 'summary_large_image',
   twitterTitle: 'NowNext.live Pricing & Plans',
-  twitterDescription: 'Flexible subscription and single event access for sports tournaments and conferences.'
+  twitterDescription: 'Flexible subscription and single event access for event organizers, venue directors, sports clubs, and conference producers.'
 })
 
 const faqs = [

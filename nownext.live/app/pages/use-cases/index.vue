@@ -2,16 +2,16 @@
 const { data: list } = await useAsyncData('usecases', () => queryCollection('usecases').all())
 
 useSeoMeta({
-  title: 'Real-Time Schedule Display Use Cases | NowNext.live',
-  description: 'Explore how sports clubs, tournaments, multi-track conferences, broadcast studios, and corporate events use NowNext.live for live-updating schedule signage.',
-  ogTitle: 'NowNext.live Use Cases - Multi-Screen Real-Time Event Display Solutions',
-  ogDescription: 'Eliminate paper schedule chaos across sports courts, conference stages, stream rundowns, and corporate breakout rooms.',
+  title: 'Real-Time Digital Schedule Display Use Cases | NowNext.live',
+  description: 'Explore how conferences, sports tournaments, corporate venues, broadcast studios, and workshops use NowNext.live for free real-time digital schedule & now/next display boards.',
+  ogTitle: 'NowNext.live Use Cases - Multi-Screen Real-Time Schedule Displays',
+  ogDescription: 'Eliminate paper schedule chaos across multi-room conferences, sports courts, event stages, stream rundowns, and venue breakout spaces.',
   ogImage: 'https://nownext.live/imgs/logo.png',
   ogUrl: 'https://nownext.live/use-cases',
   ogType: 'website',
   twitterCard: 'summary_large_image',
   twitterTitle: 'NowNext.live Use Cases',
-  twitterDescription: 'Eliminate paper schedule chaos across sports courts, conference stages, stream rundowns, and corporate breakout rooms.'
+  twitterDescription: 'Eliminate paper schedule chaos across multi-room conferences, sports courts, event stages, stream rundowns, and venue breakout spaces.'
 })
 
 useHead({
