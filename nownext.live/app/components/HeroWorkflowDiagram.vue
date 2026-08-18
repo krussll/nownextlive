@@ -15,7 +15,7 @@
       <div class="relative z-10 min-h-[460px] sm:min-h-[500px] flex flex-col justify-between">
 
         <!-- Inline Cloud Sync Node (Positioned inline with the flow line junction) -->
-        <div class="absolute top-[12%] right-[10%] sm:right-[14%] z-20">
+        <div class="absolute top-[16%] right-[10%] sm:right-[13%] z-20">
           <div class="relative flex flex-col items-center group">
             <div class="relative p-3.5 bg-white/95 dark:bg-neutral-800/95 backdrop-blur-md rounded-2xl border border-stone-200/90 dark:border-neutral-700 shadow-xl transition-transform hover:scale-105">
               <svg class="w-9 h-9 sm:w-11 sm:h-11 text-stone-700 dark:text-stone-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
