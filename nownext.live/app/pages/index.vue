@@ -196,22 +196,9 @@ useHead({
             </p>
           </div>
 
-          <!-- Hero Right Column (Live Display Interactive Preview) -->
+          <!-- Hero Right Column (Workflow Diagram: Controller -> Cloud -> Output) -->
           <div class="lg:col-span-6 relative">
-            <div class="relative mx-auto max-w-xl bg-gray-950 p-2 sm:p-3 shadow-2xl border border-gray-800">
-              <div class="flex items-center justify-between px-3 py-2 bg-gray-900 border-b border-gray-800 text-xs text-gray-400 font-mono">
-                <div class="flex items-center gap-2">
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-                  <span>LIVE COURT DISPLAY BOARD</span>
-                </div>
-                <span>nownext.live/r/demo</span>
-              </div>
-              <img
-                src="/imgs/demos/nownextlive-display.png"
-                alt="NowNext.live Real-Time Display Screen"
-                class="w-full h-auto object-cover"
-              />
-            </div>
+            <HeroWorkflowDiagram />
           </div>
         </div>
       </UContainer>
