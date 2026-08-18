@@ -4,15 +4,8 @@
 
 <template>
   <div class="relative w-full max-w-2xl mx-auto">
-    <!-- Main Card Backdrop with Warm Studio Gradient -->
-    <div class="relative overflow-hidden rounded-3xl border border-stone-200/80 dark:border-neutral-800 bg-gradient-to-br from-[#fcfaf7] via-[#f7f3ee] to-[#fbece7] dark:from-neutral-900 dark:via-neutral-900/90 dark:to-stone-900/80 p-5 sm:p-8 shadow-2xl transition-all duration-300">
-      
-      <!-- Ambient Studio Glow Effects -->
-      <div class="absolute top-0 right-0 w-80 h-80 bg-gradient-to-br from-rose-200/40 via-amber-200/30 to-transparent dark:from-rose-900/20 dark:via-orange-900/10 rounded-full blur-3xl pointer-events-none" />
-      <div class="absolute bottom-0 left-0 w-72 h-72 bg-gradient-to-tr from-amber-200/40 to-transparent dark:from-amber-900/20 rounded-full blur-2xl pointer-events-none" />
-
-      <!-- Relative Container for Workflow Diagram -->
-      <div class="relative z-10 min-h-[460px] sm:min-h-[500px] flex flex-col justify-between">
+    <!-- Relative Container for Workflow Diagram -->
+    <div class="relative z-10 min-h-[460px] sm:min-h-[500px] flex flex-col justify-between">
 
         <!-- Inline Cloud Sync Node (Positioned inline with the flow line junction) -->
         <div class="absolute top-[16%] right-[10%] sm:right-[13%] z-20">
@@ -116,6 +109,5 @@
         </div>
 
       </div>
-    </div>
   </div>
 </template>
