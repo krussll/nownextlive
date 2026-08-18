@@ -7,7 +7,7 @@ const successMessage = ref('')
 useSeoMeta({
   title: 'Forgot Password | NowNext.live',
   description: 'Reset your NowNext.live account password.',
-  robots: 'noindex, follow'
+  robots: 'noindex, nofollow'
 })
 
 
