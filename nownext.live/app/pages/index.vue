@@ -6,7 +6,7 @@ const features = [
     description:
       'Forget manual whiteboard updates or reprinting paper schedules. When a match ends or a session shifts, update it once on your controller device and watch every connected screen across your venue update instantly.',
     icon: 'i-lucide-zap',
-    image: '/imgs/demos/nownextlive-controller.png',
+    image: '/imgs/demos/nownextlive-controller.webp',
     reverse: false
   },
   {
@@ -15,7 +15,7 @@ const features = [
     description:
       'Turn any Smart TV, iPad, tablet, or laptop into a dedicated high-visibility display board. Simply open a URL or scan a QR code. Participants can even track live schedules directly on their phones.',
     icon: 'i-lucide-globe',
-    image: '/imgs/demos/nownextlive-display.png',
+    image: '/imgs/demos/nownextlive-display.webp',
     reverse: true
   },
   {
@@ -24,7 +24,7 @@ const features = [
     description:
       'Designed for busy event directors and non-technical volunteers. Create your courts or spaces, enter initial match times, and go live immediately with zero technical training or software installation.',
     icon: 'i-lucide-clock',
-    image: '/imgs/demos/nownextlive-controller.png',
+    image: '/imgs/demos/nownextlive-controller.webp',
     reverse: false
   },
   {
@@ -33,7 +33,7 @@ const features = [
     description:
       'Switch effortlessly between dedicated single-court views or a master venue schedule. Keep full editing control on your phone while sharing clean, distraction-free read-only links with participants.',
     icon: 'i-lucide-shield-check',
-    image: '/imgs/demos/nownextlive-display.png',
+    image: '/imgs/demos/nownextlive-display.webp',
     reverse: true
   }
 ]
@@ -44,7 +44,7 @@ const steps = [
     title: 'Create an event',
     description:
       'Create an event with multiple court or space schedules and match sessions. When logged-in, your event saves all your settings even if you close your browser.',
-    image: '/imgs/demos/step-create-event.png',
+    image: '/imgs/demos/step-create-event.webp',
     actionText: 'Create Event',
     actionIcon: 'i-lucide-arrow-right',
     reverse: false
@@ -54,7 +54,7 @@ const steps = [
     title: 'Share the link',
     description:
       'Simply share your unique "Viewer" link via Email, WhatsApp, or QR-Code with participants and spectators. You can see all connected devices with connection status.',
-    image: '/imgs/demos/step-share-links.png',
+    image: '/imgs/demos/step-share-links.webp',
     reverse: true
   },
   {
@@ -62,7 +62,7 @@ const steps = [
     title: 'Update live & control screens',
     description:
       'Advance sessions or adjust match times from your controller device. Every screen across the venue updates instantly with zero latency.',
-    image: '/imgs/demos/step-update-live.png',
+    image: '/imgs/demos/step-update-live.webp',
     reverse: false
   }
 ]
@@ -247,8 +247,12 @@ useHead({
                   <div class="w-2 h-2 rounded-full bg-gray-700"></div>
                 </div>
                 <img
-                  src="/imgs/demos/nownextlive-controller.png"
+                  src="/imgs/demos/nownextlive-controller.webp"
                   alt="What the controller sees on NowNext.live"
+                  width="600"
+                  height="375"
+                  loading="lazy"
+                  decoding="async"
                   class="w-full h-auto object-cover"
                 />
               </div>
@@ -277,8 +281,12 @@ useHead({
                 <div class="absolute top-3 left-1/2 -translate-x-1/2 z-10 w-2.5 h-2.5 rounded-full bg-gray-800 border border-gray-700"></div>
                 <div class="rounded-2xl overflow-hidden">
                   <img
-                    src="/imgs/demos/nownextlive-display.png"
+                    src="/imgs/demos/nownextlive-display.webp"
                     alt="What the audience sees on NowNext.live"
+                    width="440"
+                    height="330"
+                    loading="lazy"
+                    decoding="async"
                     class="w-full h-auto object-cover"
                   />
                 </div>
@@ -346,6 +354,10 @@ useHead({
                   <img
                     :src="step.image"
                     :alt="step.title"
+                    width="560"
+                    height="350"
+                    loading="lazy"
+                    decoding="async"
                     class="w-full h-auto object-cover rounded-xl"
                   />
                 </div>
@@ -407,6 +419,10 @@ useHead({
                 <img
                   :src="feature.image"
                   :alt="feature.title"
+                  width="560"
+                  height="350"
+                  loading="lazy"
+                  decoding="async"
                   class="w-full h-auto object-cover"
                 />
               </div>
