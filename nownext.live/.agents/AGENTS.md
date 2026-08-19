@@ -1,6 +1,8 @@
 # Project Rules & Guidelines
 
-- **Testing & Building**: When testing or building the solution, use `npm run dev`.
+- **Testing & Building**:
+  - When testing or building the solution, use `npm run dev`.
+  - **Change Validation & Visual Review**: Use the headless Chrome / Puppeteer browser runner to test user workflows, verify UI rendering, take screenshots, and validate changes before completing tasks.
 - **Feature Branching & Implementation Plans**:
   - Every new feature requiring an implementation plan MUST go into a new feature branch.
   - Creating and checking out the feature branch MUST be the very first action in the Implementation Plan.
