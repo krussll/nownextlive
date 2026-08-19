@@ -162,12 +162,11 @@
             <div class="flex flex-col gap-4">
               <h3 class="font-semibold text-gray-900">Resources</h3>
               <div class="flex flex-col gap-2 text-sm text-gray-600">
-                <ULink to="/blog" class="hover:text-indigo-600">Blog & Articles</ULink>
-                <ULink to="/docs" class="hover:text-indigo-600">Documentation & Guides</ULink>
-                <ULink to="/changelog" class="hover:text-indigo-600">Changelog & Release Notes</ULink>
-                <ULink to="/contact" class="hover:text-indigo-600">Contact Support</ULink>
-                <ULink to="/pricing" class="hover:text-indigo-600">Plans & Pricing</ULink>
-                <ULink to="/about" class="hover:text-indigo-600">Why NowNext.live</ULink>
+                <ULink to="/blog" class="hover:text-indigo-600">Blog</ULink>
+                <ULink to="/docs" class="hover:text-indigo-600">Documentation</ULink>
+                <ULink to="/changelog" class="hover:text-indigo-600">Changelog</ULink>
+                <ULink to="/contact" class="hover:text-indigo-600">Contact</ULink>
+                <ULink to="/about" class="hover:text-indigo-600">About NowNext.live</ULink>
               </div>
             </div>
           </div>
