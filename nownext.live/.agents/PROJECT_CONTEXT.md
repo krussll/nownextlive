@@ -86,3 +86,20 @@ Traditional events and sports clubs rely on printed sheets, whiteboards, or manu
 - **Single Feature Scope**: Each implementation plan MUST focus on exactly ONE feature/item at a time.
 - **Pushing Back on Multi-Item Requests**: If a prompt or request contains multiple feature additions or changes at once, push back to confirm with the user which specific feature to address first in the new plan.
 - **Pull Request Target**: For each new feature request, create a Pull Request (PR) from the feature branch to `release-staging`.
+
+---
+
+## 7. Testing, Validation & Visual Review Guidelines
+
+- **Headless Chrome Runner**: Use the headless Chrome (`Google Chrome for Testing` with Puppeteer) runner to test and validate changes.
+- **Automated Workflow Verification**:
+  - Launch headless Chrome (`--no-sandbox`, `--disable-setuid-sandbox`).
+  - Navigate to the local dev server (`http://localhost:3000`) or target environment.
+  - Automate user interactions (clicks, form inputs, route navigation, modal triggers).
+- **Visual Review & Screenshots**:
+  - Capture high-resolution viewport or full-page screenshots at key milestones in the workflow.
+  - Review the screenshots to confirm layout, typography, responsive behavior, and visual hierarchy match design specifications.
+  - Embed screenshots in Walkthrough artifacts to verify changes visually.
+- **Console & Error Auditing**:
+  - Listen for page errors (`page.on('pageerror', ...)` and `page.on('console', ...)` ) to detect any unhandled runtime exceptions or warnings.
+
