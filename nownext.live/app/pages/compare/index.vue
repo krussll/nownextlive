@@ -3,15 +3,15 @@ const { data: list } = await useAsyncData('compare-list', () => queryCollection(
 
 useSeoMeta({
   title: 'Product Alternatives & Comparisons | NowNext.live',
-  description: 'Compare NowNext.live against Stagetimer.io, Yodeck, Tournify, and Google Slides. Discover why event hosts, sports clubs, and venue directors choose NowNext.live for real-time schedule displays.',
+  description: 'Compare NowNext.live against Stagetimer.io, Yodeck, Tournify, and Google Slides. Discover why organizers choose our free real-time digital schedule & now/next display board.',
   ogTitle: 'NowNext.live Product Comparisons & Alternatives',
-  ogDescription: 'See how NowNext.live compares to event timers, enterprise digital signage, tournament bracket managers, and static presentation slides.',
+  ogDescription: 'Compare NowNext.live against stage timers, enterprise digital signage, tournament bracket managers, and static presentation slides.',
   ogImage: 'https://nownext.live/imgs/logo.png',
   ogUrl: 'https://nownext.live/compare',
   ogType: 'website',
   twitterCard: 'summary_large_image',
   twitterTitle: 'NowNext.live Product Comparisons & Alternatives',
-  twitterDescription: 'Compare NowNext.live against Stagetimer.io, Yodeck, Tournify, and Google Slides for real-time venue schedule broadcasting.'
+  twitterDescription: 'Compare NowNext.live against stage timers, enterprise digital signage, tournament bracket managers, and static presentation slides.'
 })
 
 useHead({

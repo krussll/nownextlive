@@ -1,7 +1,7 @@
 <script setup lang="ts">
 useSeoMeta({
   title: 'Sign In | NowNext.live',
-  robots: 'noindex, follow'
+  robots: 'noindex, nofollow'
 })
 
 const email = ref('')

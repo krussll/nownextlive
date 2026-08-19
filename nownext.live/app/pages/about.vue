@@ -1,15 +1,15 @@
 <script setup lang="ts">
 useSeoMeta({
-  title: 'About NowNext.live - Instant Real-Time Event & Court Scheduling Platform',
-  description: 'Learn why NowNext.live was built: to replace paper schedules and whiteboard chaos with instant, synchronized live display boards on any screen.',
-  ogTitle: 'About NowNext.live - Real-Time Multi-Screen Event Display Platform',
-  ogDescription: 'Zero-friction schedule signage engineered for sports clubs, tournament directors, conference managers, and broadcast studios.',
+  title: 'About NowNext.live - Free Real-Time Digital Schedule & Display Board',
+  description: 'Learn why NowNext.live was built: to replace paper schedules and whiteboard chaos with a free real-time digital schedule & now/next display board on any screen.',
+  ogTitle: 'About NowNext.live - Free Real-Time Digital Schedule Board',
+  ogDescription: 'Zero-friction digital schedule signage engineered for conferences, sports tournaments, venue spaces, workshops, and broadcast studios.',
   ogImage: 'https://nownext.live/imgs/logo.png',
   ogUrl: 'https://nownext.live/about',
   ogType: 'website',
   twitterCard: 'summary_large_image',
-  twitterTitle: 'About NowNext.live',
-  twitterDescription: 'Zero-friction schedule signage engineered for sports clubs, tournament directors, conference managers, and broadcast studios.'
+  twitterTitle: 'About NowNext.live - Free Real-Time Digital Schedule Board',
+  twitterDescription: 'Zero-friction digital schedule signage engineered for conferences, sports tournaments, venue spaces, workshops, and broadcast studios.'
 })
 
 const features = [
