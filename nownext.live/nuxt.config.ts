@@ -47,7 +47,9 @@ export default defineNuxtConfig({
     exclude: [
       '/r/**',
       '/account',
+      '/account/**',
       '/checkout',
+      '/checkout/**',
       '/auth/**'
     ],
     sources: [

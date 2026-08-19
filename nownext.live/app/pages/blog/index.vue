@@ -3,15 +3,15 @@ const { data: list } = await useAsyncData('blog', () => queryCollection('blog').
 
 useSeoMeta({
   title: 'Blog - Features, Guides & Event Scheduling Insights | NowNext.live',
-  description: 'Discover the latest features, event management tips, sports club guides, and technical insights from the NowNext.live team.',
-  ogTitle: 'NowNext.live Blog - Real-Time Schedule Signage Guides & News',
-  ogDescription: 'Guides and insights on eliminating paper schedule chaos across sports tournaments, conferences, and broadcast studios.',
+  description: 'Discover event management tips, guides, and updates on running free real-time digital schedule & now/next display boards at any event.',
+  ogTitle: 'NowNext.live Blog - Real-Time Digital Schedule Guides & News',
+  ogDescription: 'Guides and insights on eliminating paper schedule chaos across all types of events, conferences, sports tournaments, and broadcast studios.',
   ogImage: 'https://nownext.live/imgs/logo.png',
   ogUrl: 'https://nownext.live/blog',
   ogType: 'website',
   twitterCard: 'summary_large_image',
   twitterTitle: 'NowNext.live Blog',
-  twitterDescription: 'Guides and insights on eliminating paper schedule chaos across sports tournaments, conferences, and broadcast studios.'
+  twitterDescription: 'Guides and insights on eliminating paper schedule chaos across all types of events, conferences, sports tournaments, and broadcast studios.'
 })
 
 useHead({
