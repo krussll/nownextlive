@@ -2,7 +2,7 @@
   <div>
     <UHeader>
       <template #title>
-        <img src="/imgs/logo.png" alt="NowNext.live Logo" style="height: 35px" />
+        <img src="/imgs/logo.webp" alt="NowNext.live Logo" width="168" height="35" class="h-[35px] w-auto" />
       </template>
 
       <UNavigationMenu
