@@ -1,6 +1,6 @@
 ---
 title: "How to Run a Smooth Sports Tournament Schedule"
-description: "Learn how to run a stress-free sports tournament with live schedule displays and a step-by-step setup guide using NowNext.live."
+description: "Paper schedules, frantic whiteboard updates, volunteers fielding the same questions all day — it doesn't have to be this way. Here's how to run a smooth, professional tournament."
 date: 2025-02-10
 tags:
   - sports scheduling
@@ -13,269 +13,205 @@ draft: false
 author: Reece Williams
 ---
 
-Running a sports tournament should feel exciting, not stressful. Yet most organisers experience the same issues every single time. Paper schedules become outdated almost immediately, updates are slow and unclear, and volunteers spend the entire day answering the same questions. Players crowd around the organiser's desk looking for clarity, and the event quickly feels disorganised.
+Running a sports tournament should be exciting — for the players *and* for you. But for most organisers, tournament day means paper schedules that are wrong before the first match starts, volunteers rewriting the same board all afternoon, and a queue of players outside your desk asking the same question on repeat.
 
-The good news is that most of this frustration comes from a single root problem. The schedule is not centralised, visible, or easy to update. Once you fix this, everything else becomes smoother. This guide will show you the common reasons tournaments break down and how to run a calm, professional and efficient event using NowNext.live.
+It doesn't have to be this way. Most tournament chaos traces back to a single problem: there's no central, real-time place for everyone to see what's happening. Fix that, and everything else falls into place.
+
+This guide covers why tournament scheduling breaks down, what a well-run event actually needs, and how to set up a live schedule display using NowNext.live — in under 15 minutes.
 
 ## Why Tournament Scheduling Breaks Down
 
-Let's be honest about what typically goes wrong at tournaments:
+The problems are almost always the same, regardless of the sport or venue. Here's what's really happening:
 
-### Last-minute changes disrupt everything
+### Last-minute changes are inevitable — the question is whether you can handle them
 
-Matches run longer than expected, weather forces delays, or players withdraw at the last minute. When your schedule is written on paper or a whiteboard, even a small adjustment can cause major confusion. 
+Matches overrun. A player pulls out. Weather forces you to shuffle court assignments. These things happen at every tournament. The issue isn't the changes themselves — it's that paper and whiteboards can't adapt fast enough.
 
-That semi-final that was supposed to finish at 2:00 PM? It's now 2:30 PM and still going. Suddenly your entire afternoon schedule is thrown off, and if you're relying on printed sheets, you're stuck either reprinting everything or making endless announcements that half the players will miss.
+That semi-final that was supposed to wrap up at 2:00 PM? It's now 2:30 PM and still going. With printed schedules, your entire afternoon is now wrong. You're either reprinting everything or making verbal announcements that half the venue won't catch. One delayed match ripples through every session that follows, and without a flexible system you're permanently on the back foot.
 
-The ripple effect is real. One delayed match can throw off the timing for the rest of the day, and without a flexible system, you're constantly playing catch-up instead of staying ahead.
+### Paper and whiteboards become unreadable under pressure
 
-### Paper and whiteboards become inaccurate quickly
+A printed schedule is accurate for exactly as long as nothing changes — which is usually about twenty minutes. Whiteboards help, but they have their own problems.
 
-A printed schedule becomes outdated the moment the first game runs differently than planned. Whiteboards help a little, but rewriting information all day still leads to mistakes and miscommunication.
+By mid-afternoon, that clean morning board is a mess of crossed-out names, arrows pointing in three directions, and margin notes only the person who wrote them can decipher. Players squint at it trying to decide if that says "Court 3" or "Court 8". Different volunteers have different handwriting. Someone erases too much. The marker dies mid-update. What started as a communication tool has become the main source of confusion.
 
-By mid-afternoon, your pristine morning schedule is covered in crossed-out names, arrows pointing everywhere, and notes that only make sense to the person who wrote them. Players squint at the board trying to decipher whether that says "Court 3" or "Court 8", and whether the crossed-out name means they're playing or not playing.
+### When no one knows what's happening, everyone asks you
 
-Different volunteers have different handwriting. Someone erases a bit too much. The marker runs out halfway through an update. What started as a clear communication tool becomes a source of confusion.
+When players can't see a reliable schedule, they do what's natural: they ask.
 
-### Players constantly ask "Who is on next?"
+*"What court am I on?" "Did the time change?" "Am I in the next round?" "Has anything moved?"*
 
-When players cannot clearly see the schedule, they rely on organisers for updates. This slows down everyone and disrupts the flow of the event.
+Each question takes time to answer. While you're answering one, three more have queued up. And here's the trap: the more time volunteers spend answering questions, the less time they have to update the schedule — which makes it more out of date — which generates even more questions. It's a loop, and it drains everyone.
 
-You'll hear the same questions over and over: "What court am I on?", "When do I play?", "Has the schedule changed?", "Am I in the next round?" Each question takes time to answer, and while you're answering one person, three more are queuing up behind them.
+### Volunteers end up doing the wrong job all day
 
-This creates a frustrating cycle: volunteers are too busy answering questions to update the schedule, which means the schedule gets more out of date, which generates even more questions. It's exhausting for everyone involved.
+Your volunteers came to help run a great event. Instead, they spend the day rewriting boards and repeating themselves.
 
-### Volunteers end up overwhelmed
+Do the maths: a volunteer who spends 15 minutes every hour on whiteboard admin during an 8-hour tournament loses 2 full hours to manual updates. Multiply that across multiple volunteers and a full season, and you're looking at hundreds of wasted hours per year. Hours that could be spent welcoming players, managing logistics, handling the things that actually require human judgment — or just enjoying the event.
 
-Instead of running the event efficiently, volunteers spend the day rewriting boards and repeating information. They didn't sign up to be human information desks—they wanted to help create a great tournament experience.
+## What a Well-Run Tournament Actually Needs
 
-Calculate the time cost: if a volunteer spends 15 minutes every hour updating a whiteboard during an 8-hour tournament, that's 2 full hours of manual updates. Time that could be spent greeting players, managing logistics, handling emergencies, or actually enjoying the event they're helping to run.
+Strip back the noise, and a smooth tournament needs four things:
 
-Multiply that across multiple volunteers and multiple tournaments, and you're looking at hundreds of wasted hours per year. There has to be a better way.
+### Clear visibility for everyone
 
-## The Essentials of a Smooth Tournament
+Players should never have to wonder where they need to be or when they're playing. A central live schedule removes that uncertainty entirely.
 
-So what does a well-run tournament actually need? Here are the core requirements:
+When players can glance at a screen and immediately see their next match, their court, and the approximate timing, they can plan their day. They know when to warm up, when to grab a coffee, and when to be ready courtside. Clear visibility means players check the display instead of asking you.
 
-### Everyone needs clear visibility
+### Updates that appear the moment you make them
 
-Players should never wonder where they need to be or when they're playing. A central live schedule removes uncertainty and keeps everyone informed.
+If a match finishes early or a court reassignment is needed, everyone should see that change within seconds — not after an announcement that some players missed.
 
-When players can glance at a screen and immediately see their next match, their court assignment, and the approximate timing, they can plan accordingly. They know when to warm up, when to grab a drink, and when to be ready. This reduces stress for players and organisers alike.
+Real-time updates mean you can run the tournament as it actually unfolds, not as you planned it at 8am. A court frees up? Pull the next match forward. A match overruns? Push the following session back. The display reflects reality the instant you update the controller.
 
-Clear visibility also means players can check from anywhere—whether they're in the clubhouse, at the practice courts, or grabbing lunch nearby. They don't need to crowd around a single noticeboard.
+### One schedule that controls everything
 
-### Updates must be instant
+Multiple boards, printed sheets, and group chat messages always produce discrepancies. Discrepancies produce confusion. The fix is one source of truth, visible everywhere.
 
-If a round changes or a game finishes early, players should see that update instantly. This improves flow and reduces delays between matches.
+With a single live display, the TV in the clubhouse, the tablet at the desk, and every player's phone all show identical, real-time information. No conflicting versions. No "but the board said..." The schedule on every screen matches, and everyone knows it's current.
 
-Real-time updates mean you can adapt to reality as it happens. A match finishes 15 minutes early? Great—bring forward the next match and keep the tournament moving. A court becomes unavailable? Reassign matches to other courts and everyone sees the change immediately.
+### Volunteers who can actually run the event
 
-Instant updates also mean instant trust. When players know the schedule is always current, they stop second-guessing the information and start trusting the system.
+When the schedule is clear, accurate, and trustworthy, players stop interrupting. They find the information themselves. Your volunteers are free to do what they actually signed up for: manage logistics, welcome players, handle disputes, and make the day feel well-organised.
 
-### A single source of truth is essential
+A good system handles the routine communication automatically so your team can focus on the things that require genuine human attention.
 
-One schedule must control every display. Multiple boards or sheets always introduce discrepancies, and discrepancies create confusion.
+## Step by Step: Running Your Tournament with NowNext.live
 
-With a single source of truth, there's no ambiguity. The schedule on the TV in the clubhouse matches the schedule on the tablet at the desk, which matches what players see on their phones. Everyone is looking at the same information, updated in real-time.
-
-This eliminates the classic tournament problem where the board in the main hall says one thing, the printed sheet says another, and the announcer says something completely different. One source, one truth, zero confusion.
-
-### Organisers should not be interrupted constantly
-
-A well-designed system reduces the volume of questions and gives volunteers time to focus on running the event, not just answering the same questions repeatedly.
-
-When the schedule is clear, visible, and trustworthy, players stop asking questions. They can find the information themselves. This frees up your volunteers to handle the things that actually require human attention: welcoming players, managing equipment, handling disputes, and creating a great atmosphere.
-
-Your volunteers' time is valuable. A good system respects that by automating the routine communication tasks.
-
-## Step by Step: How to Run Your Tournament Using NowNext.live
-
-Ready to run your smoothest tournament yet? Here's exactly how to set up and manage your event using NowNext.live. The entire process takes about 10 minutes, even if you've never used the system before.
+Ready to set up your smoothest tournament yet? The whole process takes about 10–15 minutes, even if you've never used the system before.
 
 ### Step 1: Create a New Event
 
 ![NowNext.live Controller](/imgs/demos/nownextlive-controller.png)
 
-Getting started is straightforward:
+Head to [nownext.live](https://nownext.live) and log in (or create a free account). Select **Create Event** and give it a clear, recognisable name — "Spring Tennis Tournament 2025" or "Junior Badminton Championships" works well.
 
-1. **Log in to NowNext.live** at [nownext.live](https://nownext.live)
-2. **Select "Create Event"** from your dashboard
-3. **Enter your event name**—something clear like "Spring Tennis Tournament 2025" or "Junior Badminton Championships"
-4. **Your event is created immediately** with one default space and session ready to customize
+The system generates a unique URL for your event. This URL powers both the **controller** (where you manage everything) and the **display** (what players see). Keep it handy — it's the key to your whole setup.
 
-The system generates a unique URL for your event that you'll use for both controlling the schedule and displaying it on screens. This URL is the key to everything—keep it handy.
+Give your event a descriptive name you'll recognise later, especially if you run multiple tournaments throughout the year. Past events can be duplicated as templates, so good naming now saves time later.
 
-Give your event a descriptive name that you'll recognize later, especially if you're running multiple tournaments throughout the year. Good names make it easy to find past events when you want to use them as templates.
-
-### Step 2: Set Up Spaces
+### Step 2: Set Up Your Spaces
 
 ![Add spaces for courts](/imgs/demos/nownextlive-controller.png)
 
-Now let's add your playing areas. In NowNext.live, these are called "Spaces"—they represent courts, rinks, lanes, pitches, or any area where matches happen:
+NowNext.live calls your playing areas **Spaces** — courts, rinks, lanes, pitches, or any area where matches happen.
 
-1. **Open the Spaces section** in your event controller
-2. **Select "Add Space"** for each playing area you have
-3. **Name each space clearly**—use the exact same names as your venue uses ("Court 1", "Court 2", "Main Rink", "Field A", etc.)
-4. **Drag to reorder them** if you want them to appear in a specific sequence on the display
+Open the Spaces section and add each one by name, using the exact same labels as your venue — if the court signs say "Court A", use "Court A", not "Court 1". The fewer translation steps in a player's head, the better. Drag to reorder them so they appear in the right sequence on the display.
 
-Pro tip: consistency is key. If your courts are labeled "A", "B", "C" in real life, use those exact labels in the system. This prevents the confusion of players looking for "Court 1" when the physical sign says "Court A".
+Add as many or as few as your event needs. The display adapts automatically.
 
-You can add as many spaces as you need. Running a large tournament with 10 courts? Add all 10. Just using 3 pitches for a small event? Add those 3. The display adapts automatically to show whatever you've configured.
+### Step 3: Add Sessions and Rounds
 
-### Step 3: Add Sessions or Rounds
+Now for the actual schedule. Open the Sessions section and add each round, time block, or phase of play. Each session can include:
 
-Now for the actual schedule—the sessions or rounds of play:
+- **Round names** — "Round 1", "Quarter Finals", "10:00 AM Block"
+- **Match information** — player names, team names, or match numbers
+- **Timing details** — start times or estimated durations
+- **Space assignments** — which court or pitch each match is on
+- **Notes** — "Winner plays at 3 PM", "Weather permitting"
 
-1. **Open the Sessions section** in your event controller
-2. **Select "Add Session"** for each round, time block, or phase of play
-3. **Add match details for each space**—include player names, team names, match numbers, or whatever information is relevant
-4. **Drag to reorder sessions** to match your actual schedule flow
+Don't stress about getting everything locked in upfront. You can add, edit, and reorder sessions at any point — even mid-event. Most organisers create a rough outline before the day and refine it in real time as matches progress.
 
-Each session can contain:
-- **Round names** like "Round 1", "Quarter Finals", "10:00 AM Block"
-- **Match information** such as player names, team names, or match numbers
-- **Timing details** like start times or estimated durations
-- **Space assignments** showing which court or pitch each match uses
-- **Notes or special information** like "Winner plays at 3 PM" or "Weather permitting"
+### Step 4: Update on the Fly
 
-Don't worry about getting everything perfect immediately. You can edit, add, or remove sessions at any time—even during the event. That's the beauty of a digital system: it's always flexible.
+This is where NowNext.live earns its place. During the event, make changes from your phone or laptop and they appear on every connected screen instantly:
 
-Many organisers create a rough schedule before the event, then refine it on the day as they see how matches are actually progressing.
-
-### Step 4: Update During Play
-
-This is where NowNext.live really shines. During the event, you have complete flexibility to adapt to reality:
-
-**You can:**
-- **Update scores or results** as matches finish
+- **Update results** as matches finish
 - **Adjust match pairings** if players withdraw or brackets change
 - **Reorder sessions** if matches finish early or run late
 - **Add or remove rounds** as the tournament structure evolves
-- **Change court assignments** if a court becomes unavailable
-- **Update timing** to reflect actual progress
+- **Reassign courts** if a space becomes unavailable
+- **Update timings** to reflect actual progress
 
-**All changes appear instantly on every connected display.** Update something in the controller, and within seconds it's visible on the TV in the clubhouse, the tablet at the registration desk, and every player's phone.
+Every change propagates to every connected display within seconds. No announcements. No reprinting. No running across the venue.
 
-Real-world example: A quarter-final finishes 20 minutes early. You immediately bring forward the next match, update the timing, and send a quick message to the players. They see the update on their phones, head to the court, and the tournament keeps flowing smoothly. No delays, no confusion, no wasted time.
+**Real scenario:** A quarter-final wraps up 20 minutes early. You pull the next match forward in the controller, update the timing, and it's done. Players see it on their phones, head to the court, and the tournament keeps moving without a pause.
 
-### Step 5: Share the Display Link
+### Step 5: Get It on Screens
 
 ![NowNext.live Display](/imgs/demos/nownextlive-display.png)
 
-Now let's get your schedule onto screens where everyone can see it:
+Select **Open Display** from your event controller. You'll see your schedule in its full, screen-optimised format — large text, high contrast, clean layout built for visibility across a busy venue.
 
-1. **Select "Open Display"** from your event controller
-2. **Copy the display URL** that appears
-3. **Open it on screens, laptops, or tablets** around your venue
+Open this URL on every screen you can:
 
-The display view is optimized for large screens and distance viewing. It uses clear typography, high contrast, and a clean layout that highlights what's happening now and what's coming next.
-
-**You can display this on:**
 - **Smart TVs** in the clubhouse or main hall
 - **Laptops** at the registration desk
-- **Tablets** that you can move around as needed
-- **Any device with a browser**—if it can show a web page, it can show your schedule
+- **Tablets** that can be moved around as needed
+- **Any device with a browser** — if it loads a web page, it can show your schedule
 
-**Setup tips:**
-- Put displays in full-screen mode (usually F11 on computers) to hide browser toolbars
-- Adjust brightness so it's readable in your venue's lighting conditions
-- If using a TV, adjust power settings so it won't go to sleep mid-tournament
-- Consider setting the display URL as the browser's homepage for automatic loading
+Tips to make it work well:
+- Use **full-screen mode** (F11 on most computers) to remove browser chrome
+- Adjust brightness for your venue's lighting
+- Disable sleep mode on any screen that needs to run all day
+- Set the display URL as the browser's homepage so it auto-loads when screens are turned on
 
-Participants don't need logins or apps. They simply look at the display. You can also share the URL with players so they can check the schedule on their personal phones—it's completely optional, but many players appreciate having direct access.
+Open it on as many screens as you want — no limits, all updating in perfect sync.
 
-### Step 6: Run Your Event Smoothly
+Players don't need logins or apps. They can look at venue screens or open the URL on their own phones. The display is read-only, so nothing can be accidentally changed.
 
-With the display active and your schedule set up, you're ready to run a professional, stress-free tournament:
+### Step 6: Run the Day
 
-**Players always know where to be**—they can see their next match, their court assignment, and the approximate timing at a glance. No more crowding around noticeboards or interrupting organisers.
+With everything set up, this is what your tournament actually feels like:
 
-**Volunteers answer fewer questions**—when the information is clear and visible, players find answers themselves. Your volunteers can focus on running the event, not repeating the same information all day.
+**Players always know where to be.** They glance at the screen — court assignment, match time, what's coming next. No crowding around the organiser's desk.
 
-**Matches start on time**—players know when they're up, courts don't sit empty, and the tournament flows smoothly from start to finish.
+**Volunteers answer far fewer questions.** When the information is visible and trustworthy, players find answers themselves. Your team can focus on actually running the event.
 
-**The tournament feels more professional**—a clean digital display gives your event a polished, organised appearance that impresses players, sponsors, and visitors.
+**Matches start on time.** Players know when they're up. Courts don't sit empty. The tournament flows from start to finish.
 
-You'll notice the difference immediately. The atmosphere is calmer, the flow is smoother, and you'll actually have time to enjoy running the event instead of constantly firefighting schedule issues.
+**The whole thing looks professional.** A clean digital display signals to players, visitors, and sponsors that this is a well-organised event. That impression matters.
 
-## FAQ
+You'll notice the difference almost immediately. The atmosphere is calmer. The day flows. You'll actually have time to enjoy the tournament you've spent weeks planning.
+
+## Common Questions
 
 ### Do I need special hardware?
 
-No. Any screen that can open a web browser will work perfectly.
-
-This includes:
-- Regular computers or laptops
-- Tablets (iPads, Android tablets, etc.)
-- Smart TVs with built-in browsers
-- Regular TVs connected to a laptop or streaming device
-- Old monitors connected to a Raspberry Pi or similar device
-
-If you can open a web page on it, you can display your tournament schedule on it. You don't need to buy any special equipment—use whatever screens you already have available.
+No. Any screen that can open a web browser works perfectly — laptops, tablets, smart TVs, regular monitors connected to a laptop or Raspberry Pi. If it can load a web page, it can display your tournament schedule. No special equipment to buy; use what you already have.
 
 ### Can multiple organisers update the schedule?
 
-Yes! Multiple co-organisers can log in and update the same event simultaneously.
-
-This is particularly useful for larger tournaments where you might have:
-- One person managing court assignments
-- Another person updating match results
-- A third person handling timing adjustments
-
-Everyone can work together in real-time, and all changes sync instantly across all displays. Just make sure your co-organisers have the controller URL and appropriate login credentials.
+Yes. Multiple co-organisers can log in and update the same event simultaneously — useful for larger tournaments where one person manages court assignments, another updates match results, and a third handles timing. All changes sync instantly across every display.
 
 ### What happens if Wi-Fi drops?
 
-Displays hold the last known information and resynchronise once the connection returns.
+Displays hold the last known schedule and re-sync automatically the moment the connection returns. The system is designed to handle brief interruptions gracefully.
 
-The system is designed to be resilient. If your internet connection drops briefly, the displays continue showing the current schedule. When the connection returns, they automatically sync any changes that were made while offline.
-
-For venues with unreliable internet, consider:
-- Using a mobile hotspot as a backup connection
-- Setting up a dedicated Wi-Fi network just for the displays
-- Pre-loading the schedule before the event starts
-
-Most tournaments run without any connectivity issues, but it's good to know the system handles brief interruptions gracefully.
+For venues with unreliable internet: a mobile hotspot as a backup, or a dedicated Wi-Fi connection just for display screens, both work well. Pre-loading the display before the event starts also helps in case early connectivity is better.
 
 ### How long does setup take?
 
-Most organisers create a working schedule within 10 minutes, even on their first try.
+Most organisers create a working schedule within 10 minutes, even on their first try:
 
-Breakdown:
-- **Event creation:** 1 minute
-- **Adding courts/spaces:** 1-2 minutes
-- **Adding sessions:** 5-10 minutes (depending on tournament complexity)
-- **Setting up displays:** 2-3 minutes
+- **Event creation:** ~1 minute
+- **Adding courts/spaces:** ~1–2 minutes
+- **Adding sessions:** ~5–10 minutes depending on complexity
+- **Setting up displays:** ~2–3 minutes
 
-**Total: 10-15 minutes** for your first event. Once you're familiar with the system, you can set up a new tournament in under 5 minutes.
+**Total: 10–15 minutes for your first event.** Once you know the system, under 5 minutes for repeat events.
 
-Many organisers create their event days or weeks in advance, setting up the structure and refining details as the tournament date approaches. On event day, everything is ready to go—just open the displays and start updating results.
+Many organisers build the full structure days or weeks in advance, then just open the displays and start updating results on tournament day.
 
-### Can I reuse schedules for recurring tournaments?
+### Can I reuse a schedule for recurring tournaments?
 
-Yes! If you run the same tournament format regularly, you can use a previous event as a template.
-
-Simply duplicate a past event, update the date and any specific details, and you're ready to go. This is perfect for weekly club tournaments, monthly competitions, or annual championships that follow the same structure each time.
+Yes. If you run the same format regularly, duplicate a previous event to use as a template. Update the date and any specifics, and you're ready. Perfect for weekly club nights, monthly competitions, or annual championships that follow the same structure each time.
 
 ### Do players need to download an app?
 
-No. The display works in any web browser—no downloads, no installations, no accounts required for players.
+No. The display works in any web browser — nothing to download, nothing to install, no accounts required for players. Share the display URL and they can check the schedule on their phone at any time. The URL is read-only, so nothing can be accidentally changed.
 
-If you want to share the schedule with players, just give them the display URL. They can open it on their phone's browser and check the schedule anytime. It's completely optional—some organisers prefer to only show the schedule on venue screens, while others love giving players direct access.
+## Run Your Best Tournament Yet
 
-The display URL is read-only, so players can view the schedule but can't accidentally change anything.
+Running a smooth tournament doesn't require expensive equipment, technical know-how, or hours of prep. It just requires the right system — one that's flexible, clear, and built for real-world tournament conditions where things change constantly.
 
-## Conclusion: Run Your Best Tournament Yet
+NowNext.live gives you instant updates, clear displays, and a controller simple enough that anyone on your team can use it. Volunteers spend less time managing schedules and more time creating a great day. Players always know where to be. And you run an event that actually feels professional.
 
-Running a smooth tournament doesn't require expensive equipment, technical expertise, or hours of preparation. It just requires the right system—one that's flexible, clear, and designed for real-world tournament conditions.
-
-NowNext.live gives you everything you need: instant updates, clear displays, and a simple interface that anyone can use. Your volunteers will spend less time managing schedules and more time creating a great experience. Your players will always know where to be and when. And you'll run a professional, stress-free event that people actually enjoy.
-
-**Ready to try it?** Head over to [NowNext.live](https://nownext.live) and create your first tournament. It's free to start, takes less than 15 minutes to set up, and you'll wonder how you ever managed with paper schedules and whiteboards.
+**Ready to try it?** Head to [NowNext.live](https://nownext.live) and create your first tournament for free. You'll be set up in under 15 minutes — and you'll wonder how you ever managed with paper schedules and whiteboards.
 
 Your next tournament can be your smoothest one yet.
 
 ---
 
-*Questions about running tournaments with NowNext.live? We're here to help—reach out at [hello@nownext.live](mailto:hello@nownext.live).*
+*Questions? We’re here to help. Reach out at [hello@nownext.live](mailto:hello@nownext.live).*
