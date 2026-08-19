@@ -127,7 +127,7 @@
               <h3 class="font-semibold text-gray-900">Product</h3>
               <div class="flex flex-col gap-2 text-sm text-gray-600">
                 <ULink to="/pricing" class="hover:text-indigo-600">Pricing</ULink>
-                <ULink to="/about" class="hover:text-indigo-600">About Us</ULink>
+                <ULink to="/about" class="hover:text-indigo-600">About NowNext.live</ULink>
                 <ULink to="/r/generate" class="hover:text-indigo-600">Create Event Board</ULink>
                 <ULink to="https://trello.com/b/LTEVR37i" target="_blank" class="hover:text-indigo-600">Public Roadmap</ULink>
               </div>
@@ -166,7 +166,6 @@
                 <ULink to="/docs" class="hover:text-indigo-600">Documentation</ULink>
                 <ULink to="/changelog" class="hover:text-indigo-600">Changelog</ULink>
                 <ULink to="/contact" class="hover:text-indigo-600">Contact</ULink>
-                <ULink to="/about" class="hover:text-indigo-600">About NowNext.live</ULink>
               </div>
             </div>
           </div>
