@@ -1,15 +1,15 @@
 <script setup lang="ts">
 useSeoMeta({
   title: 'Pricing & Plans | NowNext.live',
-  description: 'Free real-time digital schedule & now/next display board plans. Simple, transparent pricing for single events, recurring venue schedules, and multi-screen display setups.',
+  description: 'Free real-time digital schedule & now/next display board plans. Simple, transparent pricing for event organizers, recurring venue schedules, and multi-screen display setups.',
   ogTitle: 'NowNext.live Pricing & Plans - Free Real-Time Digital Schedule Board',
-  ogDescription: 'Flexible subscription and single event access for event organizers, venue directors, sports clubs, and conference producers.',
+  ogDescription: 'Simple, transparent subscription pricing for event organizers, venue directors, sports clubs, and conference producers.',
   ogImage: 'https://nownext.live/imgs/logo.png',
   ogUrl: 'https://nownext.live/pricing',
   ogType: 'website',
   twitterCard: 'summary_large_image',
   twitterTitle: 'NowNext.live Pricing & Plans',
-  twitterDescription: 'Flexible subscription and single event access for event organizers, venue directors, sports clubs, and conference producers.'
+  twitterDescription: 'Simple, transparent subscription pricing for event organizers, venue directors, sports clubs, and conference producers.'
 })
 
 const faqs = [
@@ -56,7 +56,7 @@ useHead({
               }
             }))
           },
-          ...plans.value.map(plan => ({
+          ...plans.map(plan => ({
             '@type': 'Product',
             name: `NowNext ${plan.title} Plan`,
             description: plan.description,
@@ -90,8 +90,6 @@ useHead({
     }
   ]
 })
-
-const billingType = ref<'subscription' | 'oneoff'>('subscription')
 
 const starterFeatures = [
   'No credit card or signup required',
@@ -128,7 +126,7 @@ const enterpriseFeatures = [
   'Bespoke functionality'
 ]
 
-const subscriptionPlans = [
+const plans = [
   {
     title: 'Starter',
     price: '£0',
@@ -143,9 +141,9 @@ const subscriptionPlans = [
   },
   {
     title: 'Pro',
-    price: '£8.99',
+    price: '£25',
     scale: true,
-    description:"For clubs running regular events",
+    description: "For clubs running regular events",
     billingCycle: 'per month',
     features: proFeatures,
     button: {
@@ -157,7 +155,7 @@ const subscriptionPlans = [
   },
   {
     title: 'Premium',
-    price: '£14.99',
+    price: '£50',
     billingCycle: 'per month',
     description: 'For large organizations',
     features: premiumFeatures,
@@ -168,51 +166,6 @@ const subscriptionPlans = [
     highlight: false
   }
 ]
-
-const oneoffPlans = [
-  {
-    title: 'Starter',
-    price: '£0',
-    billingCycle: 'forever',
-    description: 'Use all basic features for free',
-    features: starterFeatures,
-    button: {
-      label: 'Create an Event Now',
-      to: '/r/generate'
-    },
-    highlight: false
-  },
-  {
-    title: 'Pro',
-    price: '£24.99',
-    billingCycle: 'one-time payment',
-    description: 'For clubs running regular events',
-    features: proFeatures,
-    button: {
-      label: 'Get Pro access now',
-      to: '/auth/signup?checkout=26c1d26c-d095-4745-a18c-33cab09ef680'
-    },
-    highlight: true,
-    badge: 'MOST POPULAR',
-    scale: true,
-  },
-  {
-    title: 'Premium',
-    price: '£34.99',
-    billingCycle: 'one-time payment',
-    description: 'For large organizations',
-    features: premiumFeatures,
-    button: {
-      label: 'Coming soon',
-      to: '/auth/signup?checkout=7715262d-44e2-403f-bacf-dc9f4b118730'
-    },
-    highlight: false
-  }
-]
-
-const plans = computed(() => {
-  return billingType.value === 'subscription' ? subscriptionPlans : oneoffPlans
-})
 
 </script>
 
@@ -225,37 +178,6 @@ const plans = computed(() => {
           <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight mb-4">
             Pricing
           </h1>
-        </div>
-
-        <!-- Billing Type Toggle -->
-        <div class="flex justify-center mb-12">
-          <div class="bg-white p-1 sm:p-2 rounded-full shadow-md inline-flex gap-1 sm:gap-2">
-            <button
-              @click="billingType = 'subscription'"
-              :class="[
-                'px-4 py-2 sm:px-8 sm:py-3 rounded-full font-semibold text-sm sm:text-base transition-all duration-200 cursor-pointer',
-                billingType === 'subscription'
-                  ? 'bg-gradient-to-r from-green-600 to-green-500 text-white shadow-lg'
-                  : 'bg-transparent text-gray-700 hover:bg-gray-50'
-              ]"
-            >
-              <span class="block sm:inline">Monthly</span>
-              <span class="hidden sm:inline"> Subscription</span>
-              <span class="block sm:inline sm:ml-2 text-xs sm:text-sm opacity-90">~15% off</span>
-            </button>
-            <button
-              @click="billingType = 'oneoff'"
-              :class="[
-                'px-4 py-2 sm:px-8 sm:py-3 rounded-full font-semibold text-sm sm:text-base transition-all duration-200 cursor-pointer',
-                billingType === 'oneoff'
-                  ? 'bg-gradient-to-r from-green-600 to-green-500 text-white shadow-lg'
-                  : 'bg-transparent text-gray-700 hover:bg-gray-50'
-              ]"
-            >
-              <span class="block sm:inline">Single Event</span>
-              <span class="block sm:inline sm:ml-2 text-xs opacity-90">One-off 30 day access</span>
-            </button>
-          </div>
         </div>
 
         <!-- Pricing Cards -->
