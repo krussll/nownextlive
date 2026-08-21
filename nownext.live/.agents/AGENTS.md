@@ -9,4 +9,6 @@
   - Each feature plan MUST contain only ONE new item/feature.
   - If multiple things are requested at once, push back and confirm with the user which single action should be taken for the new plan.
   - For each feature request, create a Pull Request (PR) from the new feature branch to `release-staging`.
-- **Project Documentation**: Refer to [.agents/PROJECT_CONTEXT.md](file:///home/reecewilliams8/dev%20work/nownext.live/nuxt/nownextlive/nownext.live/.agents/PROJECT_CONTEXT.md) for full context on application purpose, architecture, UI design standards, and marketing positioning.
+- **Project Documentation & Guidelines**:
+  - Refer to [.agents/PROJECT_CONTEXT.md](file:///home/reecewilliams8/dev%20work/nownext.live/nuxt/nownextlive/nownext.live/.agents/PROJECT_CONTEXT.md) for full context on application purpose, architecture, and UI design standards.
+  - Refer to [.agents/MARKETING_GUIDELINES.md](file:///home/reecewilliams8/dev%20work/nownext.live/nuxt/nownextlive/nownext.live/.agents/MARKETING_GUIDELINES.md) for strategic marketing context, audience personas, tone of voice, and copywriting rules for all pages, blogs, and articles.

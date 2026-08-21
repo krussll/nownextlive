@@ -64,8 +64,17 @@ Traditional events and sports clubs rely on printed sheets, whiteboards, or manu
 
 ## 5. Marketing Context & Positioning
 
+> Refer to [.agents/MARKETING_GUIDELINES.md](file:///home/reecewilliams8/dev%20work/nownext.live/nuxt/nownextlive/nownext.live/.agents/MARKETING_GUIDELINES.md) for full marketing strategy, copy rules, tone of voice, and checklist for home page, blogs, and landing pages.
+
 ### Value Proposition
 "Replace paper schedules and tournament chaos with live-updating match displays in under 10 minutes."
+
+### Core Marketing Principles (The 5 Strategic Questions)
+1. **Who we reach**: Stressed weekend tournament directors, sports club volunteers, and live event coordinators who need fast, zero-fuss scheduling without enterprise bloat.
+2. **Problem-solving over promotion**: Every article and page must deliver real operational value and actionable event management advice, positioning NowNext as the natural solution.
+3. **5-Second Clarity**: Visitors must immediately understand what it is (live Now/Next schedule screen), how it works (phone controller + any TV/browser display), and that it requires no apps or hardware.
+4. **Giving reasons to follow**: We provide practical tournament playbooks, scheduling formulas, and templates that establish NowNext as the essential toolkit for smart organizers.
+5. **Communicating like a human**: Grounded, plain-English tone of an experienced tournament director. No corporate jargon or buzzwords.
 
 ### Primary Target Audiences
 1. **Sports Clubs & Tournament Directors**: Badminton, tennis, squash, martial arts, football, padel, eSports.
@@ -74,7 +83,7 @@ Traditional events and sports clubs rely on printed sheets, whiteboards, or manu
 
 ### Key Differentiators
 - **No App Downloads Required**: Players and spectators scan a QR code or open a URL.
-- **Ultra-Fast Setup**: Event setup completed in minutes.
+- **Ultra-Fast Setup**: Event setup completed in minutes with zero hardware purchases.
 - **Multi-Screen Support**: Control dozens of court/room screens from one master phone or laptop.
 
 ---
