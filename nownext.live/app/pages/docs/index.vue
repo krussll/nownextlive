@@ -25,12 +25,13 @@ useSeoMeta({
   description: 'Official user guides and step-by-step instructions for setting up free real-time digital schedules & now/next display boards with NowNext.live.',
   ogTitle: 'NowNext.live Documentation & Guides',
   ogDescription: 'Learn how to set up multi-screen displays, real-time controllers, Smart TV signage, and livestream overlays for any event.',
-  ogImage: 'https://nownext.live/imgs/logo.png',
+  ogImage: 'https://nownext.live/imgs/og-image.png',
   ogUrl: 'https://nownext.live/docs',
   ogType: 'website',
   twitterCard: 'summary_large_image',
   twitterTitle: 'NowNext.live Documentation & Guides',
-  twitterDescription: 'Learn how to set up multi-screen displays, real-time controllers, Smart TV signage, and livestream overlays for any event.'
+  twitterDescription: 'Learn how to set up multi-screen displays, real-time controllers, Smart TV signage, and livestream overlays for any event.',
+  twitterImage: 'https://nownext.live/imgs/og-image.png'
 })
 
 useHead({
