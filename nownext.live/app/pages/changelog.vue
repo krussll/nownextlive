@@ -167,12 +167,13 @@ useSeoMeta({
   description: 'Track the latest features, improvements, and bug fixes added to NowNext.live real-time schedule displays.',
   ogTitle: 'NowNext.live Changelog & Release Notes',
   ogDescription: 'Track recent updates, new features, performance improvements, and bug fixes for NowNext.live.',
-  ogImage: 'https://nownext.live/imgs/logo.png',
+  ogImage: 'https://nownext.live/imgs/og-image.png',
   ogUrl: 'https://nownext.live/changelog',
   ogType: 'website',
   twitterCard: 'summary_large_image',
   twitterTitle: 'NowNext.live Changelog',
-  twitterDescription: 'Track recent updates, new features, and bug fixes on NowNext.live.'
+  twitterDescription: 'Track recent updates, new features, and bug fixes on NowNext.live.',
+  twitterImage: 'https://nownext.live/imgs/og-image.png'
 })
 
 useHead({

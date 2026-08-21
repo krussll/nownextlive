@@ -6,12 +6,13 @@ useSeoMeta({
   description: 'Discover event management tips, guides, and updates on running free real-time digital schedule & now/next display boards at any event.',
   ogTitle: 'NowNext.live Blog - Real-Time Digital Schedule Guides & News',
   ogDescription: 'Guides and insights on eliminating paper schedule chaos across all types of events, conferences, sports tournaments, and broadcast studios.',
-  ogImage: 'https://nownext.live/imgs/logo.png',
+  ogImage: 'https://nownext.live/imgs/og-image.png',
   ogUrl: 'https://nownext.live/blog',
   ogType: 'website',
   twitterCard: 'summary_large_image',
   twitterTitle: 'NowNext.live Blog',
-  twitterDescription: 'Guides and insights on eliminating paper schedule chaos across all types of events, conferences, sports tournaments, and broadcast studios.'
+  twitterDescription: 'Guides and insights on eliminating paper schedule chaos across all types of events, conferences, sports tournaments, and broadcast studios.',
+  twitterImage: 'https://nownext.live/imgs/og-image.png'
 })
 
 useHead({

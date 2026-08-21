@@ -1,6 +1,12 @@
 <script setup lang="ts">
 const route = useRoute()
 
+useSeoMeta({
+  ogImage: 'https://nownext.live/imgs/og-image.png',
+  twitterImage: 'https://nownext.live/imgs/og-image.png',
+  twitterCard: 'summary_large_image'
+})
+
 useHead({
   link: [
     {

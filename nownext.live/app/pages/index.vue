@@ -115,12 +115,13 @@ useSeoMeta({
   description: 'Free real-time digital schedule & now/next display board for any event. Broadcast live-updating agendas, match schedules, and room boards across Smart TVs, tablets, and phones.',
   ogTitle: 'NowNext.live - Free Real-Time Digital Schedule & Now/Next Display Board',
   ogDescription: 'Free real-time digital schedule & now/next display board for any event. Show live-updating schedules across screens with zero setup.',
-  ogImage: 'https://nownext.live/imgs/logo.png',
+  ogImage: 'https://nownext.live/imgs/og-image.png',
   ogUrl: 'https://nownext.live/',
   ogType: 'website',
   twitterCard: 'summary_large_image',
   twitterTitle: 'NowNext.live - Free Real-Time Digital Schedule & Now/Next Display Board',
-  twitterDescription: 'Free real-time digital schedule & now/next display board for any event. Show live-updating schedules across screens with zero setup.'
+  twitterDescription: 'Free real-time digital schedule & now/next display board for any event. Show live-updating schedules across screens with zero setup.',
+  twitterImage: 'https://nownext.live/imgs/og-image.png'
 })
 
 useHead({

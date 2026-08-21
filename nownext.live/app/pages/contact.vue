@@ -68,12 +68,13 @@ useSeoMeta({
   description: 'Have a question about NowNext.live or need help setting up live schedule displays for your event? Get in touch with our team.',
   ogTitle: 'Contact NowNext.live Support & Enquiries',
   ogDescription: 'Get in touch with the team behind NowNext.live real-time schedule signage platform.',
-  ogImage: 'https://nownext.live/imgs/logo.png',
+  ogImage: 'https://nownext.live/imgs/og-image.png',
   ogUrl: 'https://nownext.live/contact',
   ogType: 'website',
   twitterCard: 'summary_large_image',
   twitterTitle: 'Contact NowNext.live',
-  twitterDescription: 'Get in touch with the team behind NowNext.live real-time schedule signage platform.'
+  twitterDescription: 'Get in touch with the team behind NowNext.live real-time schedule signage platform.',
+  twitterImage: 'https://nownext.live/imgs/og-image.png'
 })
 
 useHead({

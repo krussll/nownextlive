@@ -4,10 +4,11 @@ useSeoMeta({
   description: 'Terms and conditions for using NowNext.live real-time multi-screen event and sports schedule display platform.',
   ogTitle: 'Terms & Conditions - NowNext.live',
   ogDescription: 'Terms and conditions for using the NowNext.live platform.',
-  ogImage: 'https://nownext.live/imgs/logo.png',
+  ogImage: 'https://nownext.live/imgs/og-image.png',
   ogUrl: 'https://nownext.live/terms',
   ogType: 'website',
-  twitterCard: 'summary_large_image'
+  twitterCard: 'summary_large_image',
+  twitterImage: 'https://nownext.live/imgs/og-image.png'
 })
 
 useHead({
