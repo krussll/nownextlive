@@ -6,12 +6,13 @@ useSeoMeta({
   description: 'Compare NowNext.live against Stagetimer.io, Yodeck, Tournify, and Google Slides. Discover why organizers choose our free real-time digital schedule & now/next display board.',
   ogTitle: 'NowNext.live Product Comparisons & Alternatives',
   ogDescription: 'Compare NowNext.live against stage timers, enterprise digital signage, tournament bracket managers, and static presentation slides.',
-  ogImage: 'https://nownext.live/imgs/logo.png',
+  ogImage: 'https://nownext.live/imgs/og-image.png',
   ogUrl: 'https://nownext.live/compare',
   ogType: 'website',
   twitterCard: 'summary_large_image',
   twitterTitle: 'NowNext.live Product Comparisons & Alternatives',
-  twitterDescription: 'Compare NowNext.live against stage timers, enterprise digital signage, tournament bracket managers, and static presentation slides.'
+  twitterDescription: 'Compare NowNext.live against stage timers, enterprise digital signage, tournament bracket managers, and static presentation slides.',
+  twitterImage: 'https://nownext.live/imgs/og-image.png'
 })
 
 useHead({

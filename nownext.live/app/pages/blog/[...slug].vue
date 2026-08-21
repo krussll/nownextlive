@@ -7,13 +7,13 @@ useSeoMeta({
   description: () => doc.value?.description || '',
   ogTitle: () => doc.value?.title,
   ogDescription: () => doc.value?.description,
-  ogImage: () => doc.value?.image || 'https://nownext.live/imgs/logo.png',
+  ogImage: () => doc.value?.image || 'https://nownext.live/imgs/og-image.png',
   ogUrl: () => `https://nownext.live${route.path}`,
   ogType: 'article',
   twitterCard: 'summary_large_image',
   twitterTitle: () => doc.value?.title,
   twitterDescription: () => doc.value?.description,
-  twitterImage: () => doc.value?.image || 'https://nownext.live/imgs/logo.png'
+  twitterImage: () => doc.value?.image || 'https://nownext.live/imgs/og-image.png'
 })
 
 useHead({

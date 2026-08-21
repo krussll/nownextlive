@@ -4,12 +4,13 @@ useSeoMeta({
   description: 'Learn why NowNext.live was built: to replace paper schedules and whiteboard chaos with a free real-time digital schedule & now/next display board on any screen.',
   ogTitle: 'About NowNext.live - Free Real-Time Digital Schedule Board',
   ogDescription: 'Zero-friction digital schedule signage engineered for conferences, sports tournaments, venue spaces, workshops, and broadcast studios.',
-  ogImage: 'https://nownext.live/imgs/logo.png',
+  ogImage: 'https://nownext.live/imgs/og-image.png',
   ogUrl: 'https://nownext.live/about',
   ogType: 'website',
   twitterCard: 'summary_large_image',
   twitterTitle: 'About NowNext.live - Free Real-Time Digital Schedule Board',
-  twitterDescription: 'Zero-friction digital schedule signage engineered for conferences, sports tournaments, venue spaces, workshops, and broadcast studios.'
+  twitterDescription: 'Zero-friction digital schedule signage engineered for conferences, sports tournaments, venue spaces, workshops, and broadcast studios.',
+  twitterImage: 'https://nownext.live/imgs/og-image.png'
 })
 
 const features = [

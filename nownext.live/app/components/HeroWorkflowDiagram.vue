@@ -78,8 +78,12 @@
             <!-- Controller Real Project Screenshot -->
             <div class="overflow-hidden rounded-b-lg border-t border-gray-800 bg-gray-900">
               <img
-                src="/imgs/demos/nownextlive-controller.png"
+                src="/imgs/demos/nownextlive-controller.webp"
                 alt="NowNext.live Controller Dashboard Screenshot"
+                width="360"
+                height="225"
+                fetchpriority="high"
+                decoding="async"
                 class="w-full h-auto object-cover max-h-[190px] sm:max-h-[220px] object-top"
               />
             </div>
@@ -100,8 +104,12 @@
             <!-- Display Real Project Screenshot -->
             <div class="overflow-hidden rounded-b-lg border-t border-gray-800 bg-gray-900">
               <img
-                src="/imgs/demos/nownextlive-display.png"
+                src="/imgs/demos/nownextlive-display.webp"
                 alt="NowNext.live Live Display Screen Screenshot"
+                width="390"
+                height="225"
+                fetchpriority="high"
+                decoding="async"
                 class="w-full h-auto object-cover max-h-[190px] sm:max-h-[220px] object-top"
               />
             </div>

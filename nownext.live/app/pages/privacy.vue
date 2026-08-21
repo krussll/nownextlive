@@ -4,10 +4,11 @@ useSeoMeta({
   description: 'Privacy policy and data handling commitment for NowNext.live real-time event & sports schedule display platform.',
   ogTitle: 'Privacy Policy - NowNext.live',
   ogDescription: 'Learn how NowNext.live protects user data and privacy.',
-  ogImage: 'https://nownext.live/imgs/logo.png',
+  ogImage: 'https://nownext.live/imgs/og-image.png',
   ogUrl: 'https://nownext.live/privacy',
   ogType: 'website',
-  twitterCard: 'summary_large_image'
+  twitterCard: 'summary_large_image',
+  twitterImage: 'https://nownext.live/imgs/og-image.png'
 })
 
 useHead({

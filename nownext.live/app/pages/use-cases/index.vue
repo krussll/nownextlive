@@ -6,12 +6,13 @@ useSeoMeta({
   description: 'Explore how conferences, sports tournaments, corporate venues, broadcast studios, and workshops use NowNext.live for free real-time digital schedule & now/next display boards.',
   ogTitle: 'NowNext.live Use Cases - Multi-Screen Real-Time Schedule Displays',
   ogDescription: 'Eliminate paper schedule chaos across multi-room conferences, sports courts, event stages, stream rundowns, and venue breakout spaces.',
-  ogImage: 'https://nownext.live/imgs/logo.png',
+  ogImage: 'https://nownext.live/imgs/og-image.png',
   ogUrl: 'https://nownext.live/use-cases',
   ogType: 'website',
   twitterCard: 'summary_large_image',
   twitterTitle: 'NowNext.live Use Cases',
-  twitterDescription: 'Eliminate paper schedule chaos across multi-room conferences, sports courts, event stages, stream rundowns, and venue breakout spaces.'
+  twitterDescription: 'Eliminate paper schedule chaos across multi-room conferences, sports courts, event stages, stream rundowns, and venue breakout spaces.',
+  twitterImage: 'https://nownext.live/imgs/og-image.png'
 })
 
 useHead({
