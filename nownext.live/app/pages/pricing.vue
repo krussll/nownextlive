@@ -4,12 +4,13 @@ useSeoMeta({
   description: 'Free real-time digital schedule & now/next display board plans. Simple, transparent pricing for event organizers, recurring venue schedules, and multi-screen display setups.',
   ogTitle: 'NowNext.live Pricing & Plans - Free Real-Time Digital Schedule Board',
   ogDescription: 'Simple, transparent subscription pricing for event organizers, venue directors, sports clubs, and conference producers.',
-  ogImage: 'https://nownext.live/imgs/logo.png',
+  ogImage: 'https://nownext.live/imgs/og-image.png',
   ogUrl: 'https://nownext.live/pricing',
   ogType: 'website',
   twitterCard: 'summary_large_image',
   twitterTitle: 'NowNext.live Pricing & Plans',
-  twitterDescription: 'Simple, transparent subscription pricing for event organizers, venue directors, sports clubs, and conference producers.'
+  twitterDescription: 'Simple, transparent subscription pricing for event organizers, venue directors, sports clubs, and conference producers.',
+  twitterImage: 'https://nownext.live/imgs/og-image.png'
 })
 
 const faqs = [
