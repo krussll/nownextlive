@@ -25,207 +25,247 @@
     </div>
 
     <div v-else>
-    <!-- Header -->
-    <div class="flex items-center justify-between mb-10">
-      <div>
-        <div 
-          class="flex items-center gap-2 cursor-pointer group"
-          @click="isEditingEvent = true"
-        >
-          <h1 
-            class="text-4xl font-semibold text-slate-600 group-hover:underline group-hover:decoration-dashed"
+      <!-- Header -->
+      <div class="flex items-center justify-between mb-10">
+        <div>
+          <div
+            id="tour-event-title"
+            class="flex items-center gap-2 cursor-pointer group"
+            @click="isEditingEvent = true"
           >
-            {{ event.title || 'Unnamed' }}
-          </h1>
-          <UIcon
-            name="i-heroicons-pencil-20-solid"
-            class="w-5 h-5 text-slate-400 group-hover:text-slate-600 transition-colors"
-          />
-        </div>
-        <ModalEventEdit
-          v-model="isEditingEvent"
-          :title="event.title || 'Unnamed'"
-          @save="updateEventTitle"
-        />
-      </div>
-      <div class="flex items-center gap-2">
-        <UButton
-          v-if="userSession"
-          to="/account"
-          label="Account"
-          variant="ghost"
-          color="gray"
-          icon="i-heroicons-user-circle"
-        />
-        <UButton
-          v-if="!event.is_associated_with_user"
-          label="SAVE"
-          color="primary"
-          size="lg"
-          icon="i-heroicons-bookmark"
-          :loading="claiming"
-          @click="handleClaim"
-        />
-      </div>
-    </div>
-
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-      <!-- SIDEBAR -->
-      <aside class="lg:col-span-3 space-y-6 order-2 lg:order-1">
-        <!-- Displays -->
-        <UCard class="rounded-none">
-          <div class="mb-3">
-            <UButton
-              label="Output Links"
-              icon="i-heroicons-tv"
-              color="primary"
-              variant="soft"
-              size="sm"
-              class="w-full justify-center cursor-pointer"
-              @click="showOutputLinksModal = true"
+            <h1
+              class="text-4xl font-semibold text-slate-600 group-hover:underline group-hover:decoration-dashed"
+            >
+              {{ event.title || 'Unnamed' }}
+            </h1>
+            <UIcon
+              name="i-heroicons-pencil-20-solid"
+              class="w-5 h-5 text-slate-400 group-hover:text-slate-600 transition-colors"
             />
           </div>
-
-          <div class="relative w-full h-48 overflow-hidden">
-          <iframe
-  id="inlineFrameExample"
-  title="Inline Frame Example"
-  height="200"
-  class="origin-top-left absolute top-0 left-0 w-[1920px] h-[1080px] scale-[0.14] pointer-events-none"
-  :src="`https://www.nownext.live/r/${eventId}?nopresence=true`" />
-          <UButton
-            color="white"
-            variant="solid"
-            class="absolute top-2 right-2"
-            icon="i-heroicons-arrow-top-right-on-square"
-            :to="`/r/${eventId}`"
-            target="_blank"
-          >
-          </UButton>
-
-         </div>
-
-        </UCard>
-
-    
-
-        <!-- Connected Users -->
-        <UCard class="rounded-none">
-          <p
-            class="text-xs uppercase font-semibold tracking-wider text-slate-500 mb-3"
-          >
-            Connected Users
-          </p>
-
-          <div v-if="connectedUsers.length === 0">
-            <p class="text-slate-400 text-sm">No connected users yet</p>
-          </div>
-          
-          <div v-else class="space-y-2">
-            <div
-              v-for="user in connectedUsers"
-              :key="user.user_id"
-              class="flex items-center gap-2 text-sm transition-opacity"
-              :class="getConnectionAge(user.online_at) > 60 ? 'opacity-50' : 'opacity-100'"
-            >
-              <UBadge 
-                :color="user.user_type === 'controller' ? 'blue' : 'green'" 
-                variant="subtle"
-              >
-                {{ user.user_type }}
-              </UBadge>
-              <span class="text-slate-600 font-mono text-xs">
-                {{ user.user_id.substring(0, 8) }}
-              </span>
-              <span class="text-slate-400 text-xs ml-auto">
-                {{ formatConnectionAge(user.online_at) }}
-              </span>
-            </div>
-          </div>
-        </UCard>
-
-        <!-- Footer -->
-        <div class="z-50 pointer-events-none">
-          <UContainer>
-            <div class="">
-              <div class="lg:col-span-3 pb-6 pointer-events-auto flex items-center justify-between text-xs text-slate-400">
-                <div class="flex items-center gap-2">
-                  <NuxtLink to="/" class="hover:text-slate-600 transition-colors underline decoration-dotted underline-offset-2">
-                    nownext.live
-                  </NuxtLink>
-                </div>
-                <NuxtLink to="/docs" class="hover:text-slate-600 transition-colors underline decoration-dotted underline-offset-2">
-                  docs
-                </NuxtLink>
-                <span>v{{ config.public.version }}</span>
-                <UBadge :color="connectionStatusColor" variant="subtle" size="xs">
-                  {{ connectionStatusLabel }}
-                </UBadge>
-              </div>
-            </div>
-          </UContainer>
+          <ModalEventEdit
+            v-model="isEditingEvent"
+            :title="event.title || 'Unnamed'"
+            @save="updateEventTitle"
+          />
         </div>
-      </aside>
+        <div class="flex items-center gap-2">
+          <UButton
+            id="tour-help-trigger"
+            label="Tour"
+            variant="ghost"
+            color="gray"
+            icon="i-heroicons-question-mark-circle"
+            class="cursor-pointer"
+            @click="startTour(0)"
+          />
+          <UButton
+            v-if="userSession"
+            to="/account"
+            label="Account"
+            variant="ghost"
+            color="gray"
+            icon="i-heroicons-user-circle"
+          />
+          <UButton
+            v-if="!event.is_associated_with_user"
+            label="SAVE"
+            color="primary"
+            size="lg"
+            icon="i-heroicons-bookmark"
+            :loading="claiming"
+            @click="handleClaim"
+          />
+        </div>
+      </div>
 
-      <!-- MAIN CONTENT -->
-      <main class="lg:col-span-9 order-1 lg:order-2">
-        <div
-          class="px-6 py-6 rounded-none overflow-hidden bg-default ring ring-default"
-        >
-          <!-- Top Header -->
-          <div class="mb-8">
-            <!-- Status + Room -->
-            <div class="flex justify-between items-center mt-6">
-              <p class="text-sm text-slate-500">
-                Room: <span class="font-semibold text-slate-700">{{ eventId }}</span>
-              </p>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- SIDEBAR -->
+        <aside class="lg:col-span-3 space-y-6 order-2 lg:order-1">
+          <!-- Displays -->
+          <UCard id="tour-output-links" class="rounded-none">
+            <div class="mb-3">
+              <UButton
+                label="Output Links"
+                icon="i-heroicons-tv"
+                color="primary"
+                variant="soft"
+                size="sm"
+                class="w-full justify-center cursor-pointer"
+                @click="showOutputLinksModal = true"
+              />
+            </div>
 
-              <div class="flex gap-2">
-                <UButton
-                  icon="i-heroicons-play"
-                  size="sm"
-                  color="green"
-                  variant="soft"
-                  label="Next Session (All)"
-                  class="cursor-pointer"
-                  @click="setNextSessionAll"
-                />
-                <UButton
-                  icon="i-heroicons-plus"
-                  size="sm"
-                  color="primary"
-                  variant="soft"
-                  label="Add Space"
-                  :class="{ 'opacity-50': !canAddSpace }"
-                  @click="handleAddSpace"
-                />
+            <div class="relative w-full h-48 overflow-hidden">
+              <iframe
+                id="inlineFrameExample"
+                title="Inline Frame Example"
+                height="200"
+                class="origin-top-left absolute top-0 left-0 w-[1920px] h-[1080px] scale-[0.14] pointer-events-none"
+                :src="`https://www.nownext.live/r/${eventId}?nopresence=true`"
+              />
+              <UButton
+                color="white"
+                variant="solid"
+                class="absolute top-2 right-2"
+                icon="i-heroicons-arrow-top-right-on-square"
+                :to="`/r/${eventId}`"
+                target="_blank"
+              >
+              </UButton>
+            </div>
+          </UCard>
+
+          <!-- Connected Users -->
+          <UCard id="tour-connected-users" class="rounded-none">
+            <p
+              class="text-xs uppercase font-semibold tracking-wider text-slate-500 mb-3"
+            >
+              Connected Users
+            </p>
+
+            <div v-if="connectedUsers.length === 0">
+              <p class="text-slate-400 text-sm">No connected users yet</p>
+            </div>
+
+            <div v-else class="space-y-2">
+              <div
+                v-for="user in connectedUsers"
+                :key="user.user_id"
+                class="flex items-center gap-2 text-sm transition-opacity"
+                :class="
+                  getConnectionAge(user.online_at) > 60
+                    ? 'opacity-50'
+                    : 'opacity-100'
+                "
+              >
+                <UBadge
+                  :color="user.user_type === 'controller' ? 'blue' : 'green'"
+                  variant="subtle"
+                >
+                  {{ user.user_type }}
+                </UBadge>
+                <span class="text-slate-600 font-mono text-xs">
+                  {{ user.user_id.substring(0, 8) }}
+                </span>
+                <span class="text-slate-400 text-xs ml-auto">
+                  {{ formatConnectionAge(user.online_at) }}
+                </span>
               </div>
             </div>
-          </div>
+          </UCard>
 
-          <!-- Accordion List -->
-          <div v-if="hasReachedSpaceLimit" class="mb-6 p-4 bg-amber-50 border border-amber-200 flex items-center gap-3">
-            <UIcon name="i-heroicons-information-circle" class="w-5 h-5 text-amber-500" />
-            <p class="text-sm text-amber-700">
-              Need more spaces? <NuxtLink to="/pricing" class="font-semibold underline">Subscribe to get more</NuxtLink>
-            </p>
+          <!-- Footer -->
+          <div class="z-50 pointer-events-none">
+            <UContainer>
+              <div class="">
+                <div
+                  class="lg:col-span-3 pb-6 pointer-events-auto flex items-center justify-between text-xs text-slate-400"
+                >
+                  <div class="flex items-center gap-2">
+                    <NuxtLink
+                      to="/"
+                      class="hover:text-slate-600 transition-colors underline decoration-dotted underline-offset-2"
+                    >
+                      nownext.live
+                    </NuxtLink>
+                  </div>
+                  <NuxtLink
+                    to="/docs"
+                    class="hover:text-slate-600 transition-colors underline decoration-dotted underline-offset-2"
+                  >
+                    docs
+                  </NuxtLink>
+                  <span>v{{ config.public.version }}</span>
+                  <UBadge
+                    :color="connectionStatusColor"
+                    variant="subtle"
+                    size="xs"
+                  >
+                    {{ connectionStatusLabel }}
+                  </UBadge>
+                </div>
+              </div>
+            </UContainer>
           </div>
+        </aside>
 
-          <div class="space-y-6" ref="spacesContainer">
-            <UCollapsible
-              v-for="(item, index) in event.spaces"
-              :key="item.id"
-              :default-open="index === 0"
-              class="space-y-4 border border-gray-200 rounded-none bg-white shadow-sm"
-              :ui="{
-                header: {
-                  base: 'flex justify-between w-full px-4 py-4 text-left cursor-pointer items-center'
-                },
-                body: { base: 'px-0 pb-4 bg-gray-50 border-t border-gray-100' }
-              }"
+        <!-- MAIN CONTENT -->
+        <main class="lg:col-span-9 order-1 lg:order-2">
+          <div
+            class="px-6 py-6 rounded-none overflow-hidden bg-default ring ring-default"
+          >
+            <!-- Top Header -->
+            <div class="mb-8">
+              <!-- Status + Room -->
+              <div class="flex justify-between items-center mt-6">
+                <p class="text-sm text-slate-500">
+                  Room:
+                  <span class="font-semibold text-slate-700">{{
+                    eventId
+                  }}</span>
+                </p>
+
+                <div id="tour-global-actions" class="flex gap-2">
+                  <UButton
+                    icon="i-heroicons-play"
+                    size="sm"
+                    color="green"
+                    variant="soft"
+                    label="Next Session (All)"
+                    class="cursor-pointer"
+                    @click="setNextSessionAll"
+                  />
+                  <UButton
+                    icon="i-heroicons-plus"
+                    size="sm"
+                    color="primary"
+                    variant="soft"
+                    label="Add Space"
+                    :class="{ 'opacity-50': !canAddSpace }"
+                    @click="handleAddSpace"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Accordion List -->
+            <div
+              v-if="hasReachedSpaceLimit"
+              class="mb-6 p-4 bg-amber-50 border border-amber-200 flex items-center gap-3"
             >
-              <template #default="{ open }">
-                  <div class="flex items-center gap-3 cursor-pointer w-full px-6 py-5">
+              <UIcon
+                name="i-heroicons-information-circle"
+                class="w-5 h-5 text-amber-500"
+              />
+              <p class="text-sm text-amber-700">
+                Need more spaces?
+                <NuxtLink to="/pricing" class="font-semibold underline"
+                  >Subscribe to get more</NuxtLink
+                >
+              </p>
+            </div>
+
+            <div ref="spacesContainer" class="space-y-6">
+              <UCollapsible
+                v-for="(item, index) in event.spaces"
+                :id="index === 0 ? 'tour-space-card' : undefined"
+                :key="item.id"
+                :default-open="index === 0"
+                class="space-y-4 border border-gray-200 rounded-none bg-white shadow-sm"
+                :ui="{
+                  header: {
+                    base: 'flex justify-between w-full px-4 py-4 text-left cursor-pointer items-center'
+                  },
+                  body: {
+                    base: 'px-0 pb-4 bg-gray-50 border-t border-gray-100'
+                  }
+                }"
+              >
+                <template #default="{ open }">
+                  <div
+                    class="flex items-center gap-3 cursor-pointer w-full px-6 py-5"
+                  >
                     <UIcon
                       name="i-heroicons-bars-3"
                       class="w-5 h-5 text-gray-400 space-drag-handle cursor-move hover:text-gray-600"
@@ -234,163 +274,197 @@
                     <span class="text-slate-700 font-semibold tracking-wide">
                       {{ item.title }}
                     </span>
-                  <UIcon
-                    name="i-heroicons-chevron-down"
-                    class="w-5 h-5 text-gray-500 transition-transform duration-200 ml-auto"
-                    :class="[open && 'transform rotate-180']"
-                  />
-                </div>
-
-                <div class="flex items-center gap-2" @click.stop>
-                  <ModalSpace
-                    :title="`Editing space ${item.title}`"
-                    :data="item"
-                    @update:space="updateSpace(item, $event)"
-                  />
-                  <UTooltip text="Advance to Next Session">
-                    <UButton
-                      color="white"
-                      variant="solid"
-                      icon="i-heroicons-forward"
-                      class="cursor-pointer"
-                      :disabled="!canGoNext(item)"
-                      @click="setNextSession(item)"
+                    <UIcon
+                      name="i-heroicons-chevron-down"
+                      class="w-5 h-5 text-gray-500 transition-transform duration-200 ml-auto"
+                      :class="[open && 'transform rotate-180']"
                     />
-                  </UTooltip>
-                  <UTooltip text="Delete Space">
-                    <UButton
-                      color="red"
-                      variant="ghost"
-                      icon="i-heroicons-trash"
-                      class="cursor-pointer"
-                      @click="deleteSpace(item)"
+                  </div>
+
+                  <div class="flex items-center gap-2" @click.stop>
+                    <ModalSpace
+                      :title="`Editing space ${item.title}`"
+                      :data="item"
+                      @update:space="updateSpace(item, $event)"
                     />
-                  </UTooltip>
-                </div>
-              </template>           
-
-              <!-- EXPANDED CONTENT VIEW -->
-              <template #content>
-                <div class="space-y-4 px-4" :key="item.now" :ref="(el) => setSessionContainerRef(el, item.id)">
-                  <!-- Session Card Loop -->
-                  <div
-                    v-for="session in item.sessions"
-                    :key="session.id"
-                    class="flex justify-between items-center border rounded-none bg-gradient-to-br from-slate-50 to-slate-100 relative overflow-hidden group py-1"
-                  >
-                    <!-- Left Colour Bar -->
-                    <div
-                      class="w-1 h-full absolute left-0 top-0 transition-colors duration-300"
-                      :class="
-                        session.id === item.now
-                          ? 'bg-green-500 animate-pulse'
-                          : 'bg-transparent'
-                      "
-                    ></div>
-
-                    <!-- Session Info & Timer Edit Trigger Row -->
-                    <div class="flex items-center space-x-3 pl-4 py-2 flex-wrap sm:flex-nowrap gap-y-1">
-                      <!-- Drag Handle -->
-                      <UIcon
-                        name="i-heroicons-bars-3"
-                        class="w-4 h-4 text-gray-300 session-drag-handle cursor-move hover:text-gray-500 flex-shrink-0"
+                    <UTooltip text="Advance to Next Session">
+                      <UButton
+                        color="white"
+                        variant="solid"
+                        icon="i-heroicons-forward"
+                        class="cursor-pointer"
+                        :disabled="!canGoNext(item)"
+                        @click="setNextSession(item)"
                       />
-                      
-                      <span class="text-slate-300 text-xs hidden sm:inline">|</span>
+                    </UTooltip>
+                    <UTooltip text="Delete Space">
+                      <UButton
+                        color="red"
+                        variant="ghost"
+                        icon="i-heroicons-trash"
+                        class="cursor-pointer"
+                        @click="deleteSpace(item)"
+                      />
+                    </UTooltip>
+                  </div>
+                </template>
 
-                      <!-- Duration Trigger with Popover -->
-                      <div class="text-xs flex items-center">
-                        <PopoverTimerEdit
-                          :session="session"
-                          @update:session="updateSession(item, session, $event)"
-                          @apply-to-all="applyTimerToAllSessions(item, $event)"
+                <!-- EXPANDED CONTENT VIEW -->
+                <template #content>
+                  <div
+                    :key="item.now"
+                    :ref="(el) => setSessionContainerRef(el, item.id)"
+                    class="space-y-4 px-4"
+                  >
+                    <!-- Session Card Loop -->
+                    <div
+                      v-for="(session, sessionIndex) in item.sessions"
+                      :id="
+                        index === 0 && sessionIndex === 0
+                          ? 'tour-session-card'
+                          : undefined
+                      "
+                      :key="session.id"
+                      class="flex justify-between items-center border rounded-none bg-gradient-to-br from-slate-50 to-slate-100 relative overflow-hidden group py-1"
+                    >
+                      <!-- Left Colour Bar -->
+                      <div
+                        class="w-1 h-full absolute left-0 top-0 transition-colors duration-300"
+                        :class="
+                          session.id === item.now
+                            ? 'bg-green-500 animate-pulse'
+                            : 'bg-transparent'
+                        "
+                      ></div>
+
+                      <!-- Session Info & Timer Edit Trigger Row -->
+                      <div
+                        class="flex items-center space-x-3 pl-4 py-2 flex-wrap sm:flex-nowrap gap-y-1"
+                      >
+                        <!-- Drag Handle -->
+                        <UIcon
+                          name="i-heroicons-bars-3"
+                          class="w-4 h-4 text-gray-300 session-drag-handle cursor-move hover:text-gray-500 flex-shrink-0"
+                        />
+
+                        <span class="text-slate-300 text-xs hidden sm:inline"
+                          >|</span
                         >
-                          <button
-                            type="button"
-                            class="group/duration flex flex-col items-start cursor-pointer focus:outline-none py-0.5"
+
+                        <!-- Duration Trigger with Popover -->
+                        <div class="text-xs flex items-center">
+                          <PopoverTimerEdit
+                            :session="session"
+                            @update:session="
+                              updateSession(item, session, $event)
+                            "
+                            @apply-to-all="
+                              applyTimerToAllSessions(item, $event)
+                            "
                           >
-                            <span
-                              class="text-[10px] font-semibold uppercase tracking-wider text-slate-400 opacity-0 group-hover/duration:opacity-100 transition-opacity duration-150 select-none leading-none mb-0.5"
+                            <button
+                              type="button"
+                              class="group/duration flex flex-col items-start cursor-pointer focus:outline-none py-0.5"
                             >
-                              Duration
-                            </span>
-                            <span class="text-slate-700 group-hover/duration:text-indigo-600 font-mono font-semibold underline decoration-dotted leading-none">
-                              {{ formatSessionDuration(session) }}
-                            </span>
-                          </button>
-                        </PopoverTimerEdit>
+                              <span
+                                class="text-[10px] font-semibold uppercase tracking-wider text-slate-400 opacity-0 group-hover/duration:opacity-100 transition-opacity duration-150 select-none leading-none mb-0.5"
+                              >
+                                Duration
+                              </span>
+                              <span
+                                class="text-slate-700 group-hover/duration:text-indigo-600 font-mono font-semibold underline decoration-dotted leading-none"
+                              >
+                                {{ formatSessionDuration(session) }}
+                              </span>
+                            </button>
+                          </PopoverTimerEdit>
+                        </div>
+
+                        <span class="text-slate-300 text-xs hidden sm:inline"
+                          >|</span
+                        >
+
+                        <!-- Title + Edit Icon Trigger -->
+                        <div class="flex items-center gap-1.5">
+                          <Modal
+                            :title="`Editing session ${session.title}`"
+                            :data="session"
+                            @update:session="
+                              updateSession(item, session, $event)
+                            "
+                          >
+                            <button
+                              type="button"
+                              class="font-semibold text-slate-700 hover:text-indigo-600 cursor-pointer flex items-center gap-1"
+                            >
+                              <span>{{ session.title }}</span>
+                              <UIcon
+                                name="i-heroicons-pencil-20-solid"
+                                class="w-3.5 h-3.5 text-slate-400 hover:text-slate-600"
+                              />
+                            </button>
+                          </Modal>
+                          <span
+                            v-if="session.subtitle"
+                            class="text-xs text-slate-400 font-normal"
+                          >
+                            ({{ session.subtitle }})
+                          </span>
+                        </div>
                       </div>
 
-                      <span class="text-slate-300 text-xs hidden sm:inline">|</span>
-
-                      <!-- Title + Edit Icon Trigger -->
-                      <div class="flex items-center gap-1.5">
+                      <!-- Controls -->
+                      <div
+                        class="flex items-center space-x-2 pr-4 flex-shrink-0"
+                      >
                         <Modal
                           :title="`Editing session ${session.title}`"
                           :data="session"
                           @update:session="updateSession(item, session, $event)"
-                        >
-                          <button type="button" class="font-semibold text-slate-700 hover:text-indigo-600 cursor-pointer flex items-center gap-1">
-                            <span>{{ session.title }}</span>
-                            <UIcon name="i-heroicons-pencil-20-solid" class="w-3.5 h-3.5 text-slate-400 hover:text-slate-600" />
-                          </button>
-                        </Modal>
-                        <span v-if="session.subtitle" class="text-xs text-slate-400 font-normal">
-                          ({{ session.subtitle }})
-                        </span>
+                        />
+
+                        <UTooltip text="Set Live">
+                          <UButton
+                            color="white"
+                            variant="solid"
+                            icon="i-heroicons-play"
+                            class="!rounded-none cursor-pointer"
+                            :disabled="session.id === item.now"
+                            @click="setLive(item, session.id)"
+                          />
+                        </UTooltip>
+
+                        <UTooltip text="Delete Session">
+                          <UButton
+                            color="red"
+                            variant="ghost"
+                            icon="i-heroicons-trash"
+                            class="!rounded-none cursor-pointer"
+                            @click="deleteSession(item, session)"
+                          />
+                        </UTooltip>
                       </div>
                     </div>
 
-                    <!-- Controls -->
-                    <div class="flex items-center space-x-2 pr-4 flex-shrink-0">
-                      <Modal
-                        :title="`Editing session ${session.title}`"
-                        :data="session"
-                        @update:session="updateSession(item, session, $event)"
+                    <!-- Add Session Button -->
+                    <div class="flex justify-center pt-2">
+                      <UButton
+                        icon="i-heroicons-plus"
+                        size="xs"
+                        color="gray"
+                        variant="ghost"
+                        label="Add Session"
+                        :class="{ 'opacity-50': !canAddSession(item) }"
+                        @click="handleAddSession(item)"
                       />
-
-                      <UTooltip text="Set Live">
-                        <UButton
-                          color="white"
-                          variant="solid"
-                          icon="i-heroicons-play"
-                          class="!rounded-none cursor-pointer"
-                          :disabled="session.id === item.now"
-                          @click="setLive(item, session.id)"
-                        />
-                      </UTooltip>
-
-                      <UTooltip text="Delete Session">
-                        <UButton
-                          color="red"
-                          variant="ghost"
-                          icon="i-heroicons-trash"
-                          class="!rounded-none cursor-pointer"
-                          @click="deleteSession(item, session)"
-                        />
-                      </UTooltip>
                     </div>
                   </div>
-
-                  <!-- Add Session Button -->
-                  <div class="flex justify-center pt-2">
-                    <UButton
-                      icon="i-heroicons-plus"
-                      size="xs"
-                      color="gray"
-                      variant="ghost"
-                      label="Add Session"
-                      :class="{ 'opacity-50': !canAddSession(item) }"
-                      @click="handleAddSession(item)"
-                    />
-                  </div>
-                </div>
-              </template>
-            </UCollapsible>
+                </template>
+              </UCollapsible>
+            </div>
           </div>
-        </div>
-      </main>
-    </div>
+        </main>
+      </div>
     </div>
     <ModalConfirm
       v-model:open="confirmModalOpen"
@@ -400,15 +474,12 @@
     />
 
     <!-- Beta Mode Modal -->
-    <UModal
-      v-model:open="showBetaModal"
-      title="Beta Mode"
-      prevent-close
-    >
+    <UModal v-model:open="showBetaModal" title="Beta Mode" prevent-close>
       <template #body>
         <div class="py-4">
           <p class="text-sm text-gray-500">
-            This product is currently in beta mode. You may experience some bugs or incomplete features.
+            This product is currently in beta mode. You may experience some bugs
+            or incomplete features.
           </p>
         </div>
       </template>
@@ -425,10 +496,16 @@
     <UModal v-model:open="showSignupModal" title="Sign in to save">
       <template #body>
         <div class="p-4 text-center">
-          <UIcon name="i-heroicons-user-plus" class="w-12 h-12 text-primary-500 mb-4" />
-          <h3 class="text-lg font-semibold text-gray-900 mb-2">Sign in to save this event</h3>
+          <UIcon
+            name="i-heroicons-user-plus"
+            class="w-12 h-12 text-primary-500 mb-4"
+          />
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">
+            Sign in to save this event
+          </h3>
           <p class="text-gray-500 mb-6">
-            You need to be signed in to claim and save this event to your account.
+            You need to be signed in to claim and save this event to your
+            account.
           </p>
           <div class="flex justify-center gap-3">
             <UButton
@@ -455,7 +532,6 @@
     />
   </UContainer>
 </template>
-
 
 <script setup>
 useSeoMeta({
@@ -494,30 +570,30 @@ let heartbeatInterval
 
 // Update current time every 5 seconds for connection age display (client-side only)
 onMounted(() => {
-
   setInterval(() => {
     currentTime.value = new Date()
   }, 5000)
 
-  const STALE_MS = 2 * 60 * 1000;
-  
+  const STALE_MS = 2 * 60 * 1000
+
   // Subscribe to presence events (client-side only to prevent SSR duplicates)
   myChannel
     .on('presence', { event: 'sync' }, () => {
       const state = myChannel.presenceState()
-      const now = Date.now();
+      const now = Date.now()
       // Convert presence state to array of users and sort by most recent first
       connectedUsers.value = Object.keys(state)
-        .flatMap(key => state[key])
-        .filter(meta => {
-    const ts = new Date(meta.online_at).getTime();
-    return now - ts < STALE_MS; // keep only recent presence
-  })
+        .flatMap((key) => state[key])
+        .filter((meta) => {
+          const ts = new Date(meta.online_at).getTime()
+          return now - ts < STALE_MS // keep only recent presence
+        })
         .sort((a, b) => new Date(b.online_at) - new Date(a.online_at))
     })
     .on('presence', { event: 'join' }, ({ newPresences }) => {
       // User joined
-    }).on('presence', { event: 'leave' }, ({ leftPresences }) => {
+    })
+    .on('presence', { event: 'leave' }, ({ leftPresences }) => {
       // User left
     })
     .subscribe(async (status) => {
@@ -580,24 +656,23 @@ const getConnectionAge = (onlineAt) => {
 const formatConnectionAge = (onlineAt) => {
   return ''
   const ageInSeconds = getConnectionAge(onlineAt)
-  
+
   if (ageInSeconds < 10) return 'just now'
   if (ageInSeconds < 60) return `${ageInSeconds}s ago`
-  
+
   const ageInMinutes = Math.floor(ageInSeconds / 60)
   if (ageInMinutes < 60) return `${ageInMinutes}m ago`
-  
+
   const ageInHours = Math.floor(ageInMinutes / 60)
   return `${ageInHours}h ago`
 }
-
-
-
 
 definePageMeta({
   layout: 'app',
   middleware: ['event-auth']
 })
+
+const { startTour, maybeAutoStartTour } = useControllerTour()
 
 const showloading = ref(true)
 const showBetaModal = ref(false)
@@ -605,32 +680,49 @@ const showBetaModal = ref(false)
 const dismissBetaModal = () => {
   showBetaModal.value = false
   sessionStorage.setItem('beta_modal_dismissed', 'true')
+  maybeAutoStartTour(400)
 }
 
-onMounted(() => { 
-      showloading.value = false 
-      
-      if (config.public.enableBetaModal && !sessionStorage.getItem('beta_modal_dismissed')) {
-        showBetaModal.value = true
-      }
-    });
+onMounted(() => {
+  showloading.value = false
+
+  if (
+    config.public.enableBetaModal &&
+    !sessionStorage.getItem('beta_modal_dismissed')
+  ) {
+    showBetaModal.value = true
+  } else {
+    maybeAutoStartTour(600)
+  }
+})
 
 const eventId = route.params.id
 const { data, error } = await useFetch(`/api/events/${route.params.id}`, {
-  lazy: true,
+  lazy: true
 })
 
 const { data: userSession } = await useFetch(`/api/user/me`, {
-  lazy: true,
+  lazy: true
 })
 
 const localEvent = ref({ spaces: [] })
 
-watch(data, (newData) => {
-  if (newData) {
-    localEvent.value = JSON.parse(JSON.stringify(newData))
-  }
-}, { immediate: true, deep: true })
+watch(
+  data,
+  (newData) => {
+    if (newData) {
+      localEvent.value = JSON.parse(JSON.stringify(newData))
+      if (
+        !showBetaModal.value &&
+        (!config.public.enableBetaModal ||
+          sessionStorage.getItem('beta_modal_dismissed'))
+      ) {
+        maybeAutoStartTour(600)
+      }
+    }
+  },
+  { immediate: true, deep: true }
+)
 
 const event = computed(() => localEvent.value)
 
@@ -647,24 +739,32 @@ const saveEvent = async () => {
         spaces: localEvent.value.spaces
       }
     })
-    
+
     myChannel
       .send({
         type: 'broadcast',
         event: 'update',
-        payload: { message: 'update' },
+        payload: { message: 'update' }
       })
-  .then((resp) => toast.add({ title: 'Event saved', color: 'green' }))
+      .then((resp) => toast.add({ title: 'Event saved', color: 'green' }))
   } catch (e) {
-    toast.add({ title: 'Error saving event', description: e.message, color: 'red' })
+    toast.add({
+      title: 'Error saving event',
+      description: e.message,
+      color: 'red'
+    })
   }
 }
 
-watch(error, (newError) => {
-  if (newError) {
-    showloading.value = false
-  }
-}, { immediate: true })
+watch(
+  error,
+  (newError) => {
+    if (newError) {
+      showloading.value = false
+    }
+  },
+  { immediate: true }
+)
 
 const canAddSpace = computed(() => {
   if (!userSession.value?.restrictions) return false
@@ -794,7 +894,6 @@ const handleConfirm = () => {
   onConfirm.value()
 }
 
-
 const updateSpace = (space, newSpace) => {
   const index = event.value.spaces.findIndex((s) => s.id === space.id)
   if (index !== -1) {
@@ -891,7 +990,7 @@ const setSessionContainerRef = (el, spaceId) => {
           put: false
         },
         onEnd: (evt) => {
-          const space = localEvent.value.spaces.find(s => s.id === spaceId)
+          const space = localEvent.value.spaces.find((s) => s.id === spaceId)
           if (space) {
             const item = space.sessions.splice(evt.oldIndex, 1)[0]
             space.sessions.splice(evt.newIndex, 0, item)
@@ -929,13 +1028,20 @@ const handleClaim = async () => {
     toast.add({ title: 'Event claimed successfully', color: 'green' })
   } catch (e) {
     if (e.response?.status === 409) {
-       toast.add({ title: 'Event already claimed', description: 'This event is already associated with an account.', color: 'amber' })
+      toast.add({
+        title: 'Event already claimed',
+        description: 'This event is already associated with an account.',
+        color: 'amber'
+      })
     } else {
-       toast.add({ title: 'Error claiming event', description: e.message, color: 'red' })
+      toast.add({
+        title: 'Error claiming event',
+        description: e.message,
+        color: 'red'
+      })
     }
   } finally {
     claiming.value = false
   }
 }
-
 </script>
