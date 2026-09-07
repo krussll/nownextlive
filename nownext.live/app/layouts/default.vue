@@ -201,6 +201,8 @@
         </UContainer>
       </template>
     </UFooter>
+
+    <ModalNewUserFeedback />
   </div>
 </template>
 
